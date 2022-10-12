@@ -5,8 +5,6 @@ import java.util.*;
 import negocio.entities.*;
 
 public class GestorConsultas {
-
-	//asdfasfasfasff
 	
 	/**
 	 * 
