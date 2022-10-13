@@ -13,8 +13,6 @@ public abstract class AbstractEntityDAO <E> {
 	 * 
 	 * @param id
 	 */
-	public abstract E get(String id);
-
 	/**
 	 * 
 	 * @param entity
@@ -31,8 +29,6 @@ public abstract class AbstractEntityDAO <E> {
 	 * 
 	 * @param entity
 	 */
-	public abstract int delete(E entity) ;
-
 	public abstract void operation();
 
 }
