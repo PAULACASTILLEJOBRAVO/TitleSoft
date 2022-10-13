@@ -29,7 +29,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	 */
 	public Matricula seleccionarMatricula(Matricula matricula) throws Exception {
 		Vector<Object> resultado;
-		String SelectSQL= "SELECT * FROM matricula WHERE id LIKE '"+matricula.getTitulacion()+"' ";
+		String SelectSQL= "SELECT * FROM matricula WHERE id LIKE '"+matricula.getTitulo()+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);

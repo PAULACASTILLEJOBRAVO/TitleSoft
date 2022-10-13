@@ -12,17 +12,45 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/commons-lang3-3.8.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/commons-logging-1.2.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/derby-10.14.2.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/hsqldb-2.5.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/jackcess-3.0.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/mysql-connector-java-8.0.28.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/ucanaccess-5.0.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/commons-lang3-3.8.1.jar"/>
-	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/derby-10.14.2.0.jar"/>
-	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/hsqldb-2.5.0.jar"/>
-	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/jackcess-3.0.1.jar"/>
-	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/mysql-connector-java-8.0.28.jar"/>
-	<classpathentry kind="lib" path="D:/UCLM/3º-CURSO_2022-2023(60)/Primer_cuatrimestre(30)/Ingenieria_de_software_II(6)/Laboratorios/LibreriasJava/ucanaccess-5.0.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
