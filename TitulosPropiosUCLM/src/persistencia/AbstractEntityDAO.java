@@ -4,6 +4,7 @@ import java.util.*;
 
 public abstract class AbstractEntityDAO <E> {
 
+	
 	private String id;
 	private Date fechaCreacion;
 	private Date fechaActualizacion;
