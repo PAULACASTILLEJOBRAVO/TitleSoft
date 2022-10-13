@@ -10,7 +10,7 @@ public class GestorMatriculacion {
 	 */
 	public void realizarMatriculacion(CursoPropio curso, Estudiante estudiante) {
 		
-	
+		Matricula matricula = new Matricula(estudiante, curso);
 		
 		throw new UnsupportedOperationException();
 	}

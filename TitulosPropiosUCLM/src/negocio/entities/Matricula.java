@@ -56,5 +56,9 @@ public class Matricula {
 		this.pagado = pagado;
 		this.attribute = attribute;
 	}
+	public Matricula(Estudiante estudiante, CursoPropio titulo) {
+		this.estudiante = estudiante;
+		this.titulo = titulo;
+	}
 
 }

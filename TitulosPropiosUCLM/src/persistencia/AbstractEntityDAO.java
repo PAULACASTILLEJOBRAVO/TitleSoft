@@ -4,7 +4,6 @@ import java.util.*;
 
 public abstract class AbstractEntityDAO <E> {
 
-	
 	private String id;
 	private Date fechaCreacion;
 	private Date fechaActualizacion;
@@ -13,6 +12,8 @@ public abstract class AbstractEntityDAO <E> {
 	 * 
 	 * @param id
 	 */
+	public abstract E get(String id) ;
+
 	/**
 	 * 
 	 * @param entity
@@ -29,6 +30,9 @@ public abstract class AbstractEntityDAO <E> {
 	 * 
 	 * @param entity
 	 */
+	public abstract int delete(E entity);
+
+	
 	public abstract void operation();
 
 }
