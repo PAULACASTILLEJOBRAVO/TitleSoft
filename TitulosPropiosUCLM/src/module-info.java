@@ -6,4 +6,5 @@
  *
  */
 module TitulosPropiosUCLM {
+	requires java.sql;
 }
