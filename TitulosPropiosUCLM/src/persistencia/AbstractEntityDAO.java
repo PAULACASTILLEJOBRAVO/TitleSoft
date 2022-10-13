@@ -12,41 +12,26 @@ public abstract class AbstractEntityDAO <E> {
 	 * 
 	 * @param id
 	 */
-	public E get(String id) {
-		// TODO - implement AbstractEntityDAO.get
-		throw new UnsupportedOperationException();
-	}
+	public abstract E get(String id);
 
 	/**
 	 * 
 	 * @param entity
 	 */
-	public int insert(E entity) {
-		// TODO - implement AbstractEntityDAO.insert
-		throw new UnsupportedOperationException();
-	}
+	public abstract int insert(E entity);
 
 	/**
 	 * 
 	 * @param entity
 	 */
-	public E update(E entity) {
-		// TODO - implement AbstractEntityDAO.update
-		throw new UnsupportedOperationException();
-	}
+	public abstract E update(E entity);
 
 	/**
 	 * 
 	 * @param entity
 	 */
-	public int delete(E entity) {
-		// TODO - implement AbstractEntityDAO.delete
-		throw new UnsupportedOperationException();
-	}
+	public abstract int delete(E entity) ;
 
-	public void operation() {
-		// TODO - implement AbstractEntityDAO.operation
-		throw new UnsupportedOperationException();
-	}
+	public abstract void operation();
 
 }
