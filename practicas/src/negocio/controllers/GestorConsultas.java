@@ -1,6 +1,7 @@
 package negocio.controllers;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 import negocio.entities.*;
 
@@ -15,9 +16,6 @@ public class GestorConsultas {
 	public List<CursoPropio> consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
 		// TODO - implement GestorConsultas.consultarIngresos
 		throw new UnsupportedOperationException();
-		listarIngersos(tipo, fechaInicio, fechaFin);
-		CursoPropio curso;
-		curso.TipoCurso()
 	}
 
 	/**
@@ -29,9 +27,8 @@ public class GestorConsultas {
 	public List<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso, Date fechaInicio, Date fechaFin) {
 		// TODO - implement GestorConsultas.consultarEstadoCursos
 		throw new UnsupportedOperationException();
-		CursoPropipo= new CursoPropio (estadoCurso, fechaNacimiento, fechaFin);
-		listarCursosPorEstado(estado, fechaInicio, fechaFin); //conectar irectamente con al DAO
 	}
+
 
 	/**
 	 * 
