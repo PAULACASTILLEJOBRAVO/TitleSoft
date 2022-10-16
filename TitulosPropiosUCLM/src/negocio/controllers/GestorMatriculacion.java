@@ -1,5 +1,4 @@
 package negocio.controllers;
-
 import negocio.entities.*;
 
 public class GestorMatriculacion {
@@ -10,7 +9,9 @@ public class GestorMatriculacion {
 	 * @param estudiante
 	 */
 	public void realizarMatriculacion(CursoPropio curso, Estudiante estudiante) {
-		// TODO - implement GestorMatriculacion.realizarMatriculacion
+		
+		Matricula matricula = new Matricula(estudiante, curso);
+		
 		throw new UnsupportedOperationException();
 	}
 
