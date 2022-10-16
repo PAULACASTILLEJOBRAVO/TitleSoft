@@ -5,9 +5,7 @@ import negocio.entities.*;
 public class GestorPropuestasCursos {
 
 	public CursoPropio realizarPropuestaCurso() {
-		
-		
-		
+		// TODO - implement GestorPropuestasCursos.realizarPropuestaCurso
 		throw new UnsupportedOperationException();
 	}
 
