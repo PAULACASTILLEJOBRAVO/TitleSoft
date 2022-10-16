@@ -1,6 +1,5 @@
 package negocio.controllers;
 import negocio.entities.*;
-import persistencia.*;
 
 public class GestorMatriculacion {
 
@@ -11,15 +10,9 @@ public class GestorMatriculacion {
 	 */
 	public void realizarMatriculacion(CursoPropio curso, Estudiante estudiante) {
 		
-		Matricula matriculaNuevoIngreso = new Matricula(estudiante, curso, null, null, false);
-		MatriculaDAO matriculaDAO= new MatriculaDAO();
+		Matricula matricula = new Matricula(estudiante, curso);
 		
-		try {
-			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
-		} catch (Exception e) {
-			throw new UnsupportedOperationException();
-		}
-		
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -28,11 +21,7 @@ public class GestorMatriculacion {
 	 * @param estudiante
 	 */
 	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante) {
-		
-		realizarPagoTarjeta(curso, estudiante);
-		
-		realizarPagoTransferencia(curso, estudiante);
-		
+		// TODO - implement GestorMatriculacion.realizarPagoMatricula
 		throw new UnsupportedOperationException();
 	}
 
@@ -42,7 +31,7 @@ public class GestorMatriculacion {
 	 * @param estudiante
 	 */
 	private void realizarPagoTarjeta(CursoPropio curso, Estudiante estudiante) {
-		ModoPago TargetaCredito = ModoPago.TARJETA_CREDITO;
+		// TODO - implement GestorMatriculacion.realizarPagoTarjeta
 		throw new UnsupportedOperationException();
 	}
 
@@ -52,10 +41,13 @@ public class GestorMatriculacion {
 	 * @param estudiante
 	 */
 	private void realizarPagoTransferencia(CursoPropio curso, Estudiante estudiante) {
-		ModoPago Trasferencia = ModoPago.TRANSFERENCIA;
+		// TODO - implement GestorMatriculacion.realizarPagoTransferencia
 		throw new UnsupportedOperationException();
 	}
 
-
+	private void operation() {
+		// TODO - implement GestorMatriculacion.operation
+		throw new UnsupportedOperationException();
+	}
 
 }
