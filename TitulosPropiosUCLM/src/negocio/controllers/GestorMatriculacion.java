@@ -1,5 +1,4 @@
 package negocio.controllers;
-import org.apache.derby.iapi.store.raw.Transaction;
 
 import negocio.entities.*;
 import persistencia.*;
@@ -13,7 +12,7 @@ public class GestorMatriculacion {
 	 */
 	public void realizarMatriculacion(CursoPropio curso, Estudiante estudiante) {
 		
-		Matricula matriculaNuevoIngreso = new Matricula(estudiante, curso, null, null, false, 0);
+		Matricula matriculaNuevoIngreso = new Matricula(estudiante, curso, null, null, false);
 		MatriculaDAO matriculaDAO= new MatriculaDAO();
 		
 		try {

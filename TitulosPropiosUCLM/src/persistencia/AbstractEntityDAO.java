@@ -32,7 +32,4 @@ public abstract class AbstractEntityDAO <E> {
 	 */
 	public abstract int delete(E entity);
 
-	
-	public abstract void operation();
-
 }
