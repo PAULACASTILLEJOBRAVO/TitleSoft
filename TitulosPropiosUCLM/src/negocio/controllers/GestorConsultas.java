@@ -16,8 +16,6 @@ public class GestorConsultas {
 		// TODO - implement GestorConsultas.consultarIngresos
 		throw new UnsupportedOperationException();
 		listarIngersos(tipo, fechaInicio, fechaFin);
-		CursoPropio curso;
-		curso.TipoCurso()
 	}
 
 	/**
@@ -30,7 +28,8 @@ public class GestorConsultas {
 		// TODO - implement GestorConsultas.consultarEstadoCursos
 		throw new UnsupportedOperationException();
 		CursoPropipo= new CursoPropio (estadoCurso, fechaNacimiento, fechaFin);
-		listarCursosPorEstado(estado, fechaInicio, fechaFin); //conectar irectamente con al DAO
+		listarCursosPorEstado(estado, fechaInicio, fechaFin); //conectar irectamente con al DAO 
+		
 	}
 
 	/**
