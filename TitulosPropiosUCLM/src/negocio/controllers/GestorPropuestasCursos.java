@@ -1,12 +1,14 @@
 package negocio.controllers;
 
 import negocio.entities.*;
+import persistencia.CursoPropioDAO;
 
 public class GestorPropuestasCursos {
 
 	public CursoPropio realizarPropuestaCurso() {
 		// TODO - implement GestorPropuestasCursos.realizarPropuestaCurso
 		throw new UnsupportedOperationException();
+		
 	}
 
 	/**
@@ -14,8 +16,15 @@ public class GestorPropuestasCursos {
 	 * @param curso
 	 */
 	public void editarPropuestaCurso(CursoPropio curso) {
-		// TODO - implement GestorPropuestasCursos.editarPropuestaCurso
-		throw new UnsupportedOperationException();
+		
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		
+		try {
+			cursoPropioDAO.editarCurso(curso);
+		}catch (Exception e) {
+			throw new UnsupportedOperationException();
+		}
+		
 	}
 
 	/**
@@ -23,8 +32,22 @@ public class GestorPropuestasCursos {
 	 * @param curso
 	 */
 	public EstadoCurso evaluarPropuesta(CursoPropio curso) {
-		// TODO - implement GestorPropuestasCursos.evaluarPropuesta
-		throw new UnsupportedOperationException();
+		
+		EstadoCurso estado;
+		
+		EstadoCurso valido = EstadoCurso.VALIDADO;
+				
+		EstadoCurso impartido = EstadoCurso.EN_IMPARTIZICION;
+				
+		EstadoCurso matriculado = EstadoCurso.EN_MATRICULACION;
+		
+		EstadoCurso rechazado = EstadoCurso.PROPUESTA_RECHAZADA;
+		
+		EstadoCurso propuesto = EstadoCurso.PROPUESTO;
+		
+		EstadoCurso terminado = EstadoCurso.TERMINADO;
+		
+		return estado;
 	}
 
 	/**
@@ -32,8 +55,9 @@ public class GestorPropuestasCursos {
 	 * @param curso
 	 */
 	public void altaCursoAprobado(CursoPropio curso) {
-		// TODO - implement GestorPropuestasCursos.altaCursoAprobado
-		throw new UnsupportedOperationException();
+		if(curso.getEstado().equals(EstadoCurso.VALIDADO)) {
+			throw new UnsupportedOperationException();
+		}
 	}
 
 }
