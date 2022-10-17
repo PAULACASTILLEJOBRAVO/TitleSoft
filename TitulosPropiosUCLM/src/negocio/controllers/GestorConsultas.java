@@ -17,7 +17,7 @@ public class GestorConsultas {
 		throw new UnsupportedOperationException();
 		
 		List ingresos = new ArrayList (listarIngersos(tipo, fechaInicio, fechaFin));
-		return ingresos;
+		return ingresos; 
 	}
 
 	/**
