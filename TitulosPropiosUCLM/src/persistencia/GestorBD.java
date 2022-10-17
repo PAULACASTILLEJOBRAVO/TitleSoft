@@ -103,9 +103,4 @@ public class GestorBD {
 		return res;
 	}
 
-	public void operation() {
-		// TODO - implement GestorBD.operation
-		throw new UnsupportedOperationException();
-	}
-
 }

@@ -1,5 +1,7 @@
 package negocio.controllers;
+
 import negocio.entities.*;
+import persistencia.*;
 
 public class GestorMatriculacion {
 
@@ -10,9 +12,14 @@ public class GestorMatriculacion {
 	 */
 	public void realizarMatriculacion(CursoPropio curso, Estudiante estudiante) {
 		
-		Matricula matricula = new Matricula(estudiante, curso);
+		Matricula matriculaNuevoIngreso = new Matricula(estudiante, curso, null, null, false);
+		MatriculaDAO matriculaDAO= new MatriculaDAO();
 		
-		throw new UnsupportedOperationException();
+		try {
+			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
+		} catch (Exception e) {
+			throw new UnsupportedOperationException();
+		}
 	}
 
 	/**
@@ -21,8 +28,14 @@ public class GestorMatriculacion {
 	 * @param estudiante
 	 */
 	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante) {
-		// TODO - implement GestorMatriculacion.realizarPagoMatricula
-		throw new UnsupportedOperationException();
+		
+		if(.setModoPago()) {
+			realizarPagoTarjeta(curso, estudiante);
+		
+			realizarPagoTransferencia(curso, estudiante);
+		
+			throw new UnsupportedOperationException();
+		}
 	}
 
 	/**
@@ -30,9 +43,9 @@ public class GestorMatriculacion {
 	 * @param curso
 	 * @param estudiante
 	 */
-	private void realizarPagoTarjeta(CursoPropio curso, Estudiante estudiante) {
-		// TODO - implement GestorMatriculacion.realizarPagoTarjeta
-		throw new UnsupportedOperationException();
+	private String realizarPagoTarjeta(CursoPropio curso, Estudiante estudiante) {
+		ModoPago targetaCredito = ModoPago.TARJETA_CREDITO;
+		return targetaCredito.name();
 	}
 
 	/**
@@ -40,14 +53,9 @@ public class GestorMatriculacion {
 	 * @param curso
 	 * @param estudiante
 	 */
-	private void realizarPagoTransferencia(CursoPropio curso, Estudiante estudiante) {
-		// TODO - implement GestorMatriculacion.realizarPagoTransferencia
-		throw new UnsupportedOperationException();
-	}
-
-	private void operation() {
-		// TODO - implement GestorMatriculacion.operation
-		throw new UnsupportedOperationException();
+	private String realizarPagoTransferencia(CursoPropio curso, Estudiante estudiante) {
+		ModoPago trasferencia = ModoPago.TRANSFERENCIA;
+		return trasferencia.name();
 	}
 
 }
