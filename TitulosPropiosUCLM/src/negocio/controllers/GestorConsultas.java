@@ -3,7 +3,7 @@ package negocio.controllers;
 import java.util.*;
 
 import negocio.entities.*;
-
+import persistencia;
 public class GestorConsultas {
 
 	/**
@@ -15,8 +15,8 @@ public class GestorConsultas {
 	public List<CursoPropio> consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
 		// TODO - implement GestorConsultas.consultarIngresos
 		throw new UnsupportedOperationException();
-		
-		List ingresos = new ArrayList (listarIngersos(tipo, fechaInicio, fechaFin));
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		List ingresos = new ArrayList (cursoPropioDAO.listarIngersos(tipo, fechaInicio, fechaFin));
 		return ingresos;
 	}
 
@@ -29,7 +29,8 @@ public class GestorConsultas {
 	public List<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso, Date fechaInicio, Date fechaFin) {
 		// TODO - implement GestorConsultas.consultarEstadoCursos
 		throw new UnsupportedOperationException();
-		List estados = new ArrayList (listarCursosPorEstado(estadoCurso, fechaInicio, fechaFin));
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		List estados = new ArrayList (cursoPropioDAO.listarCursosPorEstado(estadoCurso, fechaInicio, fechaFin));
 		return estados; 
 		
 	}
@@ -42,7 +43,8 @@ public class GestorConsultas {
 	public List<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
 		// TODO - implement GestorConsultas.listarEdicionesCursos
 		throw new UnsupportedOperationException();
-		List ediciones = new ArrayList (listarEdicionesCursos(fechaInicio, fechaFin));
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		List ediciones = new ArrayList (cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin));
 		return ediciones;
 	}
 
