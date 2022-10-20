@@ -30,7 +30,7 @@ public class GestorConsultas {
 		// TODO - implement GestorConsultas.consultarEstadoCursos
 		throw new UnsupportedOperationException();
 		List estados = new ArrayList (listarCursosPorEstado(estadoCurso, fechaInicio, fechaFin));
-		return estados;
+		return estados; 
 		
 	}
 
