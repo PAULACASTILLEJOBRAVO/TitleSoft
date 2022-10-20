@@ -29,8 +29,8 @@ public class GestorConsultas {
 	public List<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso, Date fechaInicio, Date fechaFin) {
 		// TODO - implement GestorConsultas.consultarEstadoCursos
 		throw new UnsupportedOperationException();
-		CursoPropipo= new CursoPropio (estadoCurso, fechaNacimiento, fechaFin);
-		listarCursosPorEstado(estado, fechaInicio, fechaFin); //conectar irectamente con al DAO 
+		List estados = new ArrayList (listarCursosPorEstado(estadoCurso, fechaInicio, fechaFin));
+		return estados;
 		
 	}
 
