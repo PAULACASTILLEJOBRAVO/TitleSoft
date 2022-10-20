@@ -42,6 +42,8 @@ public class GestorConsultas {
 	public List<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
 		// TODO - implement GestorConsultas.listarEdicionesCursos
 		throw new UnsupportedOperationException();
+		List ediciones = new ArrayList (listarEdicionesCursos(fechaInicio, fechaFin));
+		return ediciones;
 	}
 
 }
