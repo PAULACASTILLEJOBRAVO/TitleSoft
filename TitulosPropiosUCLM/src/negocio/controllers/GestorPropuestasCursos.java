@@ -6,8 +6,17 @@ import persistencia.CursoPropioDAO;
 public class GestorPropuestasCursos {
 
 	public CursoPropio realizarPropuestaCurso() {
-		// TODO - implement GestorPropuestasCursos.realizarPropuestaCurso
-		throw new UnsupportedOperationException();
+		
+		CursoPropio nuevoCurso = new CursoPropio(null, null, null, null, null, null, null, null, null, null, 0, null, null, 0, 0);
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		
+		try {
+			cursoPropioDAO.crearNuevoCurso(nuevoCurso);
+		}catch (Exception e) {
+			throw new UnsupportedOperationException();
+		}
+		
+		return nuevoCurso;
 		
 	}
 
@@ -35,17 +44,16 @@ public class GestorPropuestasCursos {
 		
 		EstadoCurso estado;
 		
-		EstadoCurso valido = EstadoCurso.VALIDADO;
-				
-		EstadoCurso impartido = EstadoCurso.EN_IMPARTIZICION;
-				
-		EstadoCurso matriculado = EstadoCurso.EN_MATRICULACION;
-		
+		EstadoCurso valido = EstadoCurso.VALIDADO;	
 		EstadoCurso rechazado = EstadoCurso.PROPUESTA_RECHAZADA;
 		
-		EstadoCurso propuesto = EstadoCurso.PROPUESTO;
+		if(valido == curso.getEstado()) {
+			estado = rechazado;
+		}else {
+			estado = valido;
+		}
 		
-		EstadoCurso terminado = EstadoCurso.TERMINADO;
+		curso.setEstado(estado);
 		
 		return estado;
 	}

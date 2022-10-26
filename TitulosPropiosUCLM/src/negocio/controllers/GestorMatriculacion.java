@@ -29,7 +29,9 @@ public class GestorMatriculacion {
 	 */
 	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante) {
 		
-		if(.setModoPago()) {
+		Matricula matricula = new Matricula(estudiante, curso, null, null, true);
+		
+		if(matricula.isPagado()) {
 			realizarPagoTarjeta(curso, estudiante);
 		
 			realizarPagoTransferencia(curso, estudiante);
