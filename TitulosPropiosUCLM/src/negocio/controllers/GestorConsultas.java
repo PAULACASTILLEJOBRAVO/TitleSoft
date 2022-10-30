@@ -1,22 +1,28 @@
 package negocio.controllers;
 
 import java.util.*;
+import java.sql.Date;
 
 import negocio.entities.*;
-import persistencia;
+import persistencia.CursoPropioDAO;
+import negocio.entities.*;
 public class GestorConsultas {
-
+	private CursoPropioDAO cursoPropioDAO;
 	/**
 	 * 
 	 * @param tipo
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public List<CursoPropio> consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
-		// TODO - implement GestorConsultas.consultarIngresos
-		throw new UnsupportedOperationException();
+	public double consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
+		double ingresos = 0;
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
-		List ingresos = new ArrayList (cursoPropioDAO.listarIngersos(tipo, fechaInicio, fechaFin));
+		 try {
+			ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ingresos;
 	}
 
@@ -26,11 +32,14 @@ public class GestorConsultas {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public List<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso, Date fechaInicio, Date fechaFin) {
-		// TODO - implement GestorConsultas.consultarEstadoCursos
-		throw new UnsupportedOperationException();
+	public Collection<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso, Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
-		List estados = new ArrayList (cursoPropioDAO.listarCursosPorEstado(estadoCurso, fechaInicio, fechaFin));
+		Collection<CursoPropio> estados = null;
+		try {
+			estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso, fechaInicio, fechaFin);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return estados; 
 		
 	}
@@ -40,11 +49,15 @@ public class GestorConsultas {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public List<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
-		// TODO - implement GestorConsultas.listarEdicionesCursos
-		throw new UnsupportedOperationException();
+	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
-		List ediciones = new ArrayList (cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin));
+		Collection<CursoPropio> ediciones = null;
+		try {
+			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ediciones;
 	}
 

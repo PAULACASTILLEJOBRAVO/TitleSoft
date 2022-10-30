@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+//import java.util.*;
 
 import negocio.entities.*;
 
@@ -167,6 +168,30 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 	
 		
+	}
+
+	@Override
+	public Object get(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insert(Object entity) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object update(Object entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int delete(Object entity) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
