@@ -162,9 +162,9 @@ public class EstudianteDAO extends AbstractEntityDAO{
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
-			System.out.println("Estudiante nuevo creado");
+			System.out.println("Estudiante nuevo eliminado");
 		}else
-			System.err.println("Error creando curso estudiante ");
+			System.err.println("Error eliminando estudiante ");
 
 		return resultado;
 	}

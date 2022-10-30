@@ -10,17 +10,7 @@ import negocio.entities.*;
 public class MatriculaDAO extends AbstractEntityDAO {
 
 	public int crearMatricula(Matricula matricula) throws Exception {
-		int resultado=0;
-		String insertSQL = "INSERT INTO matricula (titulacion,Fecha,pagado,Modo,Curso) " //quitar curso de la base de datos
-				+ "VALUES ( '"+matricula.getTitulo()+"' , '"+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' , '"+matricula.getCurso()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
-
-		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Matricula nueva creado");
-		}else
-			System.err.println("Error creando matricula nueva ");
-
-		return resultado;
+		return insert(matricula);
 
 	}
 
@@ -29,21 +19,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	 * @param curso
 	 */
 	public Matricula seleccionarMatricula(Matricula matricula) throws Exception {
-		Vector<Object> resultado;
-		Matricula matriculaEncontrada=null;
-		String SelectSQL= "SELECT * FROM matricula WHERE id LIKE '"+matricula.getTitulo()+"' ";
-
-
-		resultado = GestorBD.select(SelectSQL);
-
-		if (resultado.isEmpty()==false) {
-			System.out.println("Matricula seleccionada");
-			matriculaEncontrada=(Matricula)resultado.get(0);
-		}else
-			System.err.println("Error al seleccionar la matricula");
-
-		return matriculaEncontrada ;
-
+		return (Matricula)update(matricula.getTitulo());
 		//error por el tipo de return
 	}
 
@@ -52,24 +28,12 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	 * @param curso
 	 */
 	public Matricula editarMatricula(Matricula matricula) throws Exception {
-		// TODO - implement CursoPropioDAO.editarCurso
-		int resultado=0;
-		String updateSQL = "UPDATE matricula SET"
-				+ "titulacion= '"+matricula.getTitulo()+"',"
-				+ "Fecha= '"+matricula.getFecha()+"',"
-				+ "pagado= '"+matricula.getPagado()+"',"
-				+ "Modo= '"+matricula.getTipoPago()+"',"
-				+ "Curso= '"+matricula.getCurso()+"'";//no se si el curso que se le pasa es el curso que se quiere modificar o es el curso ya modificado
-
-		resultado = GestorBD.update(updateSQL);
-		if (resultado > 0) {
-			System.out.println("Matricula modificado");
-		}else
-			System.err.println("Error modificando matricula ");
-
-		return matricula;
+		return (Matricula)update(matricula);
 	}
 
+	public int eliminarrMatricula(Matricula matricula) throws Exception {
+		return delete(matricula);
+	}
 	/**
 	 * 
 	 * @param estado
@@ -127,6 +91,77 @@ public class MatriculaDAO extends AbstractEntityDAO {
 		return matriculasEncontradas;
 
 		
+	}
+
+	@Override
+	public Object get(String id) throws Exception {
+		Vector<Object> resultado;
+		Matricula matriculaEncontrada=null;
+		
+		String SelectSQL= "SELECT * FROM matricula WHERE id LIKE '"+id+"' ";
+
+
+		resultado = GestorBD.select(SelectSQL);
+
+		if (resultado.isEmpty()==false) {
+			System.out.println("Matricula seleccionada");
+			matriculaEncontrada=(Matricula)resultado.get(0);
+		}else
+			System.err.println("Error al seleccionar la matricula");
+
+		return matriculaEncontrada ;
+
+	}
+
+	@Override
+	public int insert(Object entity) throws Exception {
+		int resultado=0;
+		Matricula matricula= (Matricula)entity;
+		String insertSQL = "INSERT INTO matricula (titulacion,Fecha,pagado,Modo,Curso) " //quitar curso de la base de datos
+				+ "VALUES ( '"+matricula.getTitulo()+"' , '"+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
+
+		resultado = GestorBD.insert(insertSQL);
+		if (resultado > 0) {
+			System.out.println("Matricula nueva creado");
+		}else
+			System.err.println("Error creando matricula nueva ");
+
+		return resultado;
+	}
+
+	@Override
+	public Object update(Object entity) throws Exception {
+		
+		int resultado=0;
+		Matricula matricula=(Matricula)entity;
+		String updateSQL = "UPDATE matricula SET"
+				+ "titulacion= '"+matricula.getTitulo()+"',"
+				+ "Fecha= '"+matricula.getFecha()+"',"
+				+ "pagado= '"+matricula.isPagado()+"',"
+				+ "Modo= '"+matricula.getTipoPago()+"',";
+				
+		resultado = GestorBD.update(updateSQL);
+		if (resultado > 0) {
+			System.out.println("Matricula modificado");
+		}else
+			System.err.println("Error modificando matricula ");
+
+		return matricula;
+	}
+
+	@Override
+	public int delete(Object entity) throws Exception {
+		int resultado=0;
+		Matricula matricula= (Matricula)entity;
+		String insertSQL = "DELETE FROM mareicula WHERE '"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
+
+		resultado = GestorBD.insert(insertSQL);
+		if (resultado > 0) {
+			System.out.println("Matricula nueva creado");
+		}else
+			System.err.println("Error creando matricula nueva ");
+
+		return resultado;
 	}
 
 
