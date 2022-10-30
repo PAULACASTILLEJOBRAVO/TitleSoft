@@ -1,5 +1,6 @@
 package persistencia;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
@@ -9,9 +10,54 @@ public class CentroDAO extends AbstractEntityDAO {
 
 
 	public int crearCentro(Centro centro) throws Exception {
+		return insert(centro);
+	}
+
+
+	public Centro seleccionarCentro(Centro centro) throws Exception {
+		return (Centro) get(centro.getNombre());
+
+	}
+
+
+	public Centro editarCentro(Centro centro) throws Exception { 
+		// TODO - implement CursoPropioDAO.editarCurso
+		return (Centro) update(centro);
+	}
+
+	public int eleminiarCentro(Centro centro) throws Exception{
+		return delete (centro.getNombre()) ;
+		
+	}
+
+	@Override
+	public Object get(String id) throws Exception {
+		Vector<Object> resultado;
+		Centro centroEncontrado=null;
+		
+		String SelectSQL= "SELECT * FROM centro WHERE id LIKE '"+id+"' ";
+
+
+		resultado = GestorBD.select(SelectSQL);
+
+		if (resultado.isEmpty()==false) {
+			System.out.println("Centro seleccionado");
+				centroEncontrado = (Centro) resultado.get(0);
+			
+		}else
+			System.err.println("Error al seleccionar centro");
+
+		
+		return centroEncontrado ;
+	}
+
+
+	@Override
+	public int insert(Object entity) throws Exception {
 		int resultado=0;
-		String insertSQL = "INSERT INTO centro (nomnre,localizacion)"
-				+ "VALUES ()";//falta los get
+		Centro centro= (Centro) entity;
+		String insertSQL = "INSERT INTO centro (nombre,localizacion)"
+				+ "VALUES ('"+centro.getNombre()+"', '"+centro.getLocalizacion()+"')";
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
@@ -20,59 +66,42 @@ public class CentroDAO extends AbstractEntityDAO {
 			System.err.println("Error creando centro nuevo ");
 
 		return resultado;
-
 	}
 
 
-	public Centro seleccionarCentro(Centro centro) throws Exception {
-		Vector<Object> resultado;
-		String SelectSQL= "SELECT * FROM centro WHERE id LIKE '"+centro.getNombre()+"' ";
-
-
-		resultado = GestorBD.select(SelectSQL);
-
-		if (resultado.isEmpty()==false) {
-			System.out.println("Centro seleccionado");
-		}else
-			System.err.println("Error al seleccionar centro");
-
-		return resultado ;
-
-		//error por el tipo de return
-	}
-
-
-	public Centro editarCentro(Centro centro) throws Exception {
-		// TODO - implement CursoPropioDAO.editarCurso
+	@Override
+	public Object update(Object entity) throws Exception {
+		Centro centroReturn=null;
 		int resultado=0;
-		String updateSQL = "";//no se si el curso que se le pasa es el curso que se quiere modificar o es el curso ya modificado
-
+		Centro centro= (Centro) entity;
+		String updateSQL = "UPDATE centro SET"
+				+ " nombre = '"+centro.getNombre()+"',"
+						+ "localizacion = '"+centro.getLocalizacion()+"' ";
+		
 		resultado = GestorBD.update(updateSQL);
 		if (resultado > 0) {
 			System.out.println("centro modificado");
 		}else
 			System.err.println("Error modificando centro ");
 
-		return resultado;//no se porque devuelve curso, como esta hecho devuelve un numero
+		return centroReturn;
 	}
 
 
+	@Override
+	public int delete(Object entity) throws Exception {
+		int resultado=0;
+		Centro centro= (Centro) entity;
+		String insertSQL = "DELETE FROM centro WHERE nombre= '"+centro.getNombre()+"' ";
 
+		resultado = GestorBD.insert(insertSQL);
+		if (resultado > 0) {
+			System.out.println("Centro eliminiado");
+		}else
+			System.err.println("Error eliminando centro  ");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		return resultado;
+	}
 
 
 

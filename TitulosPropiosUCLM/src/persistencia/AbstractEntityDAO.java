@@ -12,24 +12,25 @@ public abstract class AbstractEntityDAO <E> {
 	 * 
 	 * @param id
 	 */
-	public abstract E get(String id) ;
+	public abstract E get(String id) throws Exception ;
+
+	/**
+	 * 
+	 * @param entity
+	 * @throws Exception 
+	 */
+	public abstract int insert(E entity) throws Exception;
 
 	/**
 	 * 
 	 * @param entity
 	 */
-	public abstract int insert(E entity);
+	public abstract E update(E entity) throws Exception;
 
 	/**
 	 * 
 	 * @param entity
 	 */
-	public abstract E update(E entity);
-
-	/**
-	 * 
-	 * @param entity
-	 */
-	public abstract int delete(E entity);
+	public abstract int delete(E entity) throws Exception;
 
 }

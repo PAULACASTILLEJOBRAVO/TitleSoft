@@ -1,6 +1,8 @@
 package persistencia;
 
 import java.sql.Date;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -15,7 +17,10 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public int crearNuevoCurso(CursoPropio curso) throws Exception {
 		int resultado=0;
 		String insertSQL = "INSERT INTO cursopropio (id,nombre,ECTS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,tipoCurso,Centro,secretario,director) "
-				+ "VALUES ()";//falta los get
+				+ "VALUES ( '"+curso.getId()+"' , '"+curso.getNombre()+"' , '"+curso.getECTS()+"' ,"
+						+ " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , '"+curso.getTasaMatricula()+"' , "
+						+ " '"+curso.getEdicion()+"' , '"+curso.getEstado()+"' , '"+curso.getTipo()+"', "
+						+ " '"+curso.getCentro()+"' , '"+curso.getSecretario()+"' , '"+curso.getDirector()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
@@ -33,19 +38,21 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	 */
 	public CursoPropio seleccionarCurso(CursoPropio curso) throws Exception {
 		Vector<Object> resultado;
-		String SelectSQL= "SELECT * FROM cursopropio WHERE id LIKE '"+curso.getId()+"' ";
+		CursoPropio cursoReturn=null;
+		String SelectSQL= "SELECT * FROM cursopropio WHERE id LIKE '"+curso.getId()+"' " ;
 
 
 		resultado = GestorBD.select(SelectSQL);
 		
 		if (resultado.isEmpty()==false) {
 			System.out.println("Curso seleccionado");
+			cursoReturn=(CursoPropio)  resultado.get(0);
+			
 		}else
 			System.err.println("Error al seleccionar curso");
 
-		return resultado ;
+		return cursoReturn ;
 		
-		//error por el tipo de return
 	}
 
 	/**
@@ -55,15 +62,27 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public CursoPropio editarCurso(CursoPropio curso) throws Exception {
 		// TODO - implement CursoPropioDAO.editarCurso
 		int resultado=0;
-		String updateSQL = "";//no se si el curso que se le pasa es el curso que se quiere modificar o es el curso ya modificado
-
+		String updateSQL = "UPDATE cursopropio SET "
+				+ "id= '"+curso.getId()+"',"
+				+ "nombre=  '"+curso.getNombre()+"' ,"
+				+ "ECTS= '"+curso.getECTS()+"' "
+				+ "fechaInicio= '"+curso.getFechaInicio()+"' , "
+				+ "fechaFin='"+curso.getFechaFin()+"',"
+				+ "tasaMatricula='"+curso.getTasaMatricula()+"',"
+				+ "edicion= '"+curso.getEdicion()+"',"
+				+ "estado= '"+curso.getEstado()+"',"
+				+ "tipoCurso='"+curso.getTipo()+"',"
+				+ "Centro= '"+curso.getCentro()+"',"
+				+ "secretario='"+curso.getSecretario()+"',"
+				+ "director= '"+curso.getDirector()+"'";
+		
 		resultado = GestorBD.update(updateSQL);
 		if (resultado > 0) {
 			System.out.println("Curso modificado");
 		}else
 			System.err.println("Error modificando curso ");
 
-		return resultado;//no se porque devuelve curso, como esta hecho devuelve un numero
+		return curso;
 	}
 
 	/**
@@ -72,8 +91,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public List<CursoPropio> listarCursosPorEstado(EstadoCurso estado, Date fechaInicio, Date fechaFin) throws Exception {
+	public Collection<CursoPropio> listarCursosPorEstado(EstadoCurso estado, Date fechaInicio, Date fechaFin) throws Exception {
 		Vector<Object> resultado;
+		Collection<CursoPropio> cursosEncontrados = null;
 		String SelectSQLEdicion= "SELECT * FROM cursopropio"
 				+ "WHERE estado = '"+estado+"'and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
 
@@ -81,11 +101,16 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Cursos encontrados");
+			
+			for (int i = 0; i < resultado.size(); i++) {
+				CursoPropio cursoAUX= (CursoPropio) resultado.get(i);
+				cursosEncontrados.add(cursoAUX);
+			}
 
 		}else
 			System.err.println("Error encontrando cursos");
 
-		return resultado;
+		return cursosEncontrados;
 		
 		//lo he hecho con vector<object> porque es como lo hice en base de datos, se puede cambiar
 	}
@@ -121,13 +146,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public void listarEdicionesCursos(Date fechaInicio, Date fechaFin) throws Exception {
+	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) throws Exception { //he cambiado a que devuelva una colleccion, antes estaba como void, lo he cambiado porque pone listar
 		Vector<Object> resultado;
-		
-		/*
-		 * no se porque para listar las ediciones se utilizan las fechas cuando hay una columna que es la edicion en si
-		 */
-		
+		Collection cursosEncontrados=null;
 		String SelectSQLEdicion= "SELECT edicion FROM cursopropio"
 				+ "WHERE  fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
 
@@ -135,10 +156,14 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		
 		if (resultado.isEmpty()==false) {
 			System.out.println("Ediciones encotradas");
-			
+			for (int i = 0; i < resultado.size(); i++) {
+				CursoPropio cursoAUX=(CursoPropio)resultado.get(i);
+				cursosEncontrados.add(cursoAUX);
+			}
 
 		}else
 			System.err.println("Error encotrando ediciones");
+		return cursosEncontrados;
 
 	
 		

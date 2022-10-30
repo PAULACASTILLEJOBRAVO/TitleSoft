@@ -1,26 +1,19 @@
 package persistencia;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 import negocio.entities.*;
 
 public class EstudianteDAO extends AbstractEntityDAO{
 	
+	/*
+	 * falta ver los select expecificos
+	 */
+	
 	
 	public int crearEstudiante(Estudiante alumno) throws Exception {
-		int resultado=0;
-		String insertSQL = "INSERT INTO estudiante (dni,nombre,apellidos,titulacion,calificacion)"
-				+ "VALUES ()";//falta los get
-
-		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Estudiante nuevo creado");
-		}else
-			System.err.println("Error creando curso estudiante ");
-
-		return resultado;
+		return insert(alumno);
 
 	}
 
@@ -29,23 +22,8 @@ public class EstudianteDAO extends AbstractEntityDAO{
 	 * @param curso
 	 */
 	public Estudiante seleccionarEstudiante(Estudiante alumno) throws Exception {
-		Vector<Object> resultado;
-		String SelectSQL= "SELECT * FROM estudiante WHERE id LIKE '"+alumno.getDni()+"' ";
-
-
-		resultado = GestorBD.select(SelectSQL);
+		return (Estudiante)get(alumno.getDni());
 		
-	
-		
-		if (resultado.isEmpty()==false) {
-			System.out.println("Estudiante seleccionado");
-			
-		}else
-			System.err.println("Error al seleccionar estudiante");
-
-		return resultado ;
-		
-		//error por el tipo de return
 	}
 
 	/**
@@ -54,26 +32,22 @@ public class EstudianteDAO extends AbstractEntityDAO{
 	 */
 	public Estudiante editarEstudiante(Estudiante alumno) throws Exception {
 		// TODO - implement CursoPropioDAO.editarCurso
-		int resultado=0;
-		String updateSQL = "";//no se si el curso que se le pasa es el curso que se quiere modificar o es el curso ya modificado
-
-		resultado = GestorBD.update(updateSQL);
-		if (resultado > 0) {
-			System.out.println("Estudiante modificado");
-		}else
-			System.err.println("Error modificando estudiante ");
-
-		return resultado;//no se porque devuelve curso, como esta hecho devuelve un numero
+		return (Estudiante) update(alumno);
 	}
 
+	public int eliminarEstudiante(Estudiante alumno) throws Exception{
+		return delete(alumno);
+	}
+	
 	/**
 	 * 
 	 * @param estado
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public List<Estudiante> listarEstudianteTitulacion(String titulacion) throws Exception {
+	public Collection<Estudiante> listarEstudianteTitulacion(String titulacion) throws Exception {
 		Vector<Object> resultado;
+		Collection alumnosEncontrados=null;
 		String SelectSQLEdicion= "SELECT * FROM estudiante"
 				+ "WHERE titulacion = '"+titulacion+"'  ";
 
@@ -82,13 +56,16 @@ public class EstudianteDAO extends AbstractEntityDAO{
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Estudiantes encontrados");
-			
+			for (int i = 0; i <resultado.size(); i++) {
+				Estudiante alumnoAux=(Estudiante) resultado.get(i);
+				alumnosEncontrados.add(alumnoAux);
+
+			}
 		}else
 			System.err.println("Error encontrando estudiantes");
 
-		return resultado;
+		return alumnosEncontrados;
 		
-		//lo he hecho con vector<object> porque es como lo hice en base de datos, se puede cambiar
 	}
 
 	/**
@@ -97,28 +74,100 @@ public class EstudianteDAO extends AbstractEntityDAO{
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public double listarCalificacion(double calificacion) throws Exception {
+	public Collection<Estudiante> listarCalificacion(double calificacion) throws Exception { //he cambiado el return como una coleccion, estaba como double,devuelve los almnos con esa nota
 		// TODO - implement CursoPropioDAO.listarIngresos
 		Vector<Object> resultado;
+		Collection alumnosEncontrados=null;
 	
 		String SelectSQLEdicion= "SELECT * FROM estudiante"
-				+ "WHERE calificacion >= '"+calificacion+"' ";
+				+ "WHERE calificacion = '"+calificacion+"' ";
 		resultado = GestorBD.select(SelectSQLEdicion);
 		
 		if (resultado.isEmpty()==false) {
 			System.out.println("Estudiantes encontrados");
+			for (int i = 0; i < resultado.size(); i++) {
+				Estudiante alumnoAux=(Estudiante)resultado.get(i);
+				alumnosEncontrados.add(alumnoAux);
+			}
 
 		}else
 			System.err.println("Error encontrando estudiantes");
 
-		return resultado;
-		//error por el tipo de return
+		return alumnosEncontrados;
+		
 
 		
 	}
 
-	
-	
-	
+	@Override
+	public Object get(String id) throws Exception {
+		Vector<Object> resultado;
+		Estudiante alumnoEncontrado=null;
+		String SelectSQL= "SELECT * FROM estudiante WHERE id LIKE '"+id+"' ";
+
+
+		resultado = GestorBD.select(SelectSQL);
+		
+		if (resultado.isEmpty()==false) {
+			System.out.println("Estudiante seleccionado");
+			alumnoEncontrado=(Estudiante)resultado.get(0);
+		}else
+			System.err.println("Error al seleccionar estudiante");
+
+		return alumnoEncontrado ;
+		
+	}
+
+	@Override
+	public int insert(Object entity) throws Exception {
+		int resultado=0;
+		Estudiante alumno=(Estudiante)entity;
+		String insertSQL = "INSERT INTO estudiante (dni,nombre,apellidos,titulacion,calificacion)"
+				+ "VALUES ( '"+alumno.getDni()+", '"+alumno.getNombre()+"'', '"+alumno.getApellidos()+"', '"+alumno.getTitulacion()+"', '"+alumno.getCualificacion()+"' )";
+
+		resultado = GestorBD.insert(insertSQL);
+		if (resultado > 0) {
+			System.out.println("Estudiante nuevo creado");
+		}else
+			System.err.println("Error creando curso estudiante ");
+
+		return resultado;
+	}
+
+	@Override
+	public Object update(Object entity) throws Exception {
+		int resultado=0;
+		Estudiante alumno=(Estudiante) entity;
+		String updateSQL = "UPDATE estudiante SET "
+				+ "dni= '"+alumno.getDni()+","
+				+ "nombre= '"+alumno.getNombre()+","
+				+ "apellidos= '"+alumno.getApellidos()+","
+				+ "titulacion= '"+alumno.getTitulacion()+","
+				+ "calificacion= '"+alumno.getCualificacion()+"";
+
+		resultado = GestorBD.update(updateSQL);
+		if (resultado > 0) {
+			System.out.println("Estudiante modificado");
+		}else
+			System.err.println("Error modificando estudiante ");
+
+		return alumno;
+	}
+
+	@Override
+	public int delete(Object entity) throws Exception {
+		int resultado=0;
+		Estudiante alumno=(Estudiante)entity;
+		String insertSQL = " DELETE FROM estudiante WHERE dni= '"+alumno.getDni()+"'   ";
+
+		resultado = GestorBD.insert(insertSQL);
+		if (resultado > 0) {
+			System.out.println("Estudiante nuevo creado");
+		}else
+			System.err.println("Error creando curso estudiante ");
+
+		return resultado;
+	}
+
 	
 }
