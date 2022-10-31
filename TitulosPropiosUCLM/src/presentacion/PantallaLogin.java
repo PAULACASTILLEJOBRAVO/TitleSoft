@@ -1,83 +1,58 @@
 package presentacion;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
-import negocio.controllers.GestorUsuarios;
 import persistencia.GestorBD;
 
+import javax.swing.JButton;
 
-public class PantallaLogin extends JFrame {
-	private JPanel contentPane;
-	JTextField textField = new JTextField();;
-	JTextField textField_1 = new JTextField();;
-
+public class PantallaLogin extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
 	
 	/**
 	 * Create the panel.
 	 */
 	public PantallaLogin() {
-
+		setLayout(null);
 		
-		setTitle("Log in");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(200, 200, 500, 400);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-
-		
-
 		JLabel lblusuario = new JLabel("Usuario:");
 		lblusuario.setBounds(80, 94, 79, 13);
-		contentPane.add(lblusuario);
-
-		JLabel lblcontraseña = new JLabel("Contrase\u00F1a:");
-		lblcontraseña.setBounds(80, 157, 76, 13);
-		contentPane.add(lblcontraseña);
-
-		textField.setColumns(10);
+		add(lblusuario);
+		
+<<<<<<< HEAD
+		JLabel lblcontrasena = new JLabel("Contrase\u00F1a:");
+		lblcontrasena.setBounds(80, 157, 76, 13);
+		add(lblcontrasena);
+=======
+		JLabel lblcontraseï¿½a = new JLabel("Contrase\u00F1a:");
+		lblcontraseï¿½a.setBounds(80, 157, 76, 13);
+		add(lblcontraseï¿½a);
+>>>>>>> branch 'main' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
+		
+		textField = new JTextField();
 		textField.setBounds(145, 91, 132, 19);
-		contentPane.add(textField);
+		add(textField);
+		textField.setColumns(10);
 		
-
-		textField_1.setColumns(10);
+		textField_1 = new JTextField();
 		textField_1.setBounds(145, 154, 132, 19);
-		contentPane.add(textField_1);
+		add(textField_1);
+		textField_1.setColumns(10);
 		
-
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.setBounds(89, 224, 83, 21);
-		btnNewButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				GestorUsuarios gUsuario=new GestorUsuarios();
-				
-				if(gUsuario.ComprobarUsuario(textField.getText(), textField_1.getText()  )) {
-					System.out.println("Usuario en la base de datos");
-				}else {
-					System.out.println("Usuario no encontrado en la base de datos");
-				}
-				
-			}
-		});
-			
 		add(btnNewButton);
-
+		
 		JButton btnNewButton_1 = new JButton("Cancelar");
 		btnNewButton_1.setBounds(201, 224, 83, 21);
 		add(btnNewButton_1);
-
+		
 		JLabel lblbienvenida = new JLabel("Bienvenido");
 		lblbienvenida.setBounds(154, 40, 68, 13);
 		add(lblbienvenida);
 
 	}
-	
-	
 }

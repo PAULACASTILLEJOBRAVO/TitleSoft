@@ -14,7 +14,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		CursoPropio UsuarioReturn=null;
 		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
 
-		
+
 		resultado = GestorBD.select(SelectSQL);
 		String[] aux =resultado.get(0).toString().split(",");
 		System.out.println(aux[2]);
