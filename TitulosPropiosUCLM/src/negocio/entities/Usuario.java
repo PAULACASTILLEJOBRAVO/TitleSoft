@@ -4,6 +4,8 @@ public class Usuario {
 	private String idUsuario;
 	private String password;
 	TipoUsuario tipo;
+	
+	
 	public String getIdUsuario() {
 		return idUsuario;
 	}
