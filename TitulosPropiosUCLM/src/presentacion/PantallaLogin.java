@@ -19,9 +19,9 @@ public class PantallaLogin extends JPanel {
 		lblusuario.setBounds(80, 94, 79, 13);
 		add(lblusuario);
 		
-		JLabel lblcontraseña = new JLabel("Contrase\u00F1a:");
-		lblcontraseña.setBounds(80, 157, 76, 13);
-		add(lblcontraseña);
+		JLabel lblcontraseï¿½a = new JLabel("Contrase\u00F1a:");
+		lblcontraseï¿½a.setBounds(80, 157, 76, 13);
+		add(lblcontraseï¿½a);
 		
 		textField = new JTextField();
 		textField.setBounds(145, 91, 132, 19);
