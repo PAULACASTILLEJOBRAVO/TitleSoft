@@ -3,12 +3,15 @@ package presentacion;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import persistencia.GestorBD;
+
 import javax.swing.JButton;
 
 public class PantallaLogin extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
-
+	
 	/**
 	 * Create the panel.
 	 */
@@ -19,9 +22,9 @@ public class PantallaLogin extends JPanel {
 		lblusuario.setBounds(80, 94, 79, 13);
 		add(lblusuario);
 		
-		JLabel lblcontraseña = new JLabel("Contrase\u00F1a:");
-		lblcontraseña.setBounds(80, 157, 76, 13);
-		add(lblcontraseña);
+		JLabel lblcontrasena = new JLabel("Contrase\u00F1a:");
+		lblcontrasena.setBounds(80, 157, 76, 13);
+		add(lblcontrasena);
 		
 		textField = new JTextField();
 		textField.setBounds(145, 91, 132, 19);
