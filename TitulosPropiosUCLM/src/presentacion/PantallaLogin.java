@@ -22,15 +22,15 @@ public class PantallaLogin extends JPanel {
 		lblusuario.setBounds(80, 94, 79, 13);
 		add(lblusuario);
 		
-<<<<<<< HEAD
+
 		JLabel lblcontrasena = new JLabel("Contrase\u00F1a:");
 		lblcontrasena.setBounds(80, 157, 76, 13);
 		add(lblcontrasena);
-=======
-		JLabel lblcontrase�a = new JLabel("Contrase\u00F1a:");
-		lblcontrase�a.setBounds(80, 157, 76, 13);
-		add(lblcontrase�a);
->>>>>>> branch 'main' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
+
+		JLabel lblcontrasena1 = new JLabel("Contrase\u00F1a:");
+		lblcontrasena1.setBounds(80, 157, 76, 13);
+		add(lblcontrasena1);
+
 		
 		textField = new JTextField();
 		textField.setBounds(145, 91, 132, 19);
