@@ -8,8 +8,8 @@ import negocio.entities.*;
 public class ProfesorDAO extends AbstractEntityDAO {
 	
 	
-	public int crearProfesor(Profesor profesores) throws Exception {
-		return insert(profesores);
+	public int crearProfesor(Profesor profe) throws Exception {
+		return insert(profe);
 
 	}
 
@@ -32,8 +32,8 @@ public class ProfesorDAO extends AbstractEntityDAO {
 		return(Profesor)update(profe);
 	}
 
-	public int eliminarProfesor(Profesor profesores) throws Exception {
-		return delete(profesores);
+	public int eliminarProfesor(Profesor profe) throws Exception {
+		return delete(profe);
 	}
 	
 	/**
