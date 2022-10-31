@@ -12,14 +12,16 @@ public class UsuarioDAO extends AbstractEntityDAO{
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		CursoPropio UsuarioReturn=null;
-		String SelectSQL= "SELECT * FROM cursopropio WHERE id LIKE '"+id+"' " ;
+		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
 
 		
 		resultado = GestorBD.select(SelectSQL);
-
+		String[] aux =resultado.get(0).toString().split(",");
+		System.out.println(aux[2]);
 		if (resultado.isEmpty()==false) {
 			System.out.println("usuario seleccionado");
-			UsuarioReturn=(CursoPropio)  resultado.get(0);
+			
+			//UsuarioReturn=(Usuario)  resultado.get(0);
 
 		}else
 			System.err.println("Error al seleccionar usuario");
@@ -32,7 +34,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String insertSQL = "INSERT INTO usuarios (idusuario,password,tipo) "
+		String insertSQL = "INSERT INTO usuarios (idusuarios,password,tipo) "
 				+ "VALUES ( '"+usuario.getIdUsuario()+"', '"+usuario.getPassword()+"','"+usuario.getTipo()+"')";
 
 		resultado = GestorBD.insert(insertSQL); 
