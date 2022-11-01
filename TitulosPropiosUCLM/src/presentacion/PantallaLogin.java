@@ -69,6 +69,7 @@ public class PantallaLogin extends JFrame {
 				if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 					
 					System.out.println("Sesion iniciada");
+
 					
 					Usuario usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 					
@@ -81,6 +82,7 @@ public class PantallaLogin extends JFrame {
 					}
 					
 					
+
 				}else {
 					System.out.println("Error iniciando sesion");
 				}
