@@ -6,6 +6,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import negocio.controllers.GestorUsuarios;
+import negocio.entities.TipoUsuario;
+import negocio.entities.Usuario;
 import persistencia.GestorBD;
 
 import java.awt.event.ActionEvent;
@@ -68,6 +70,15 @@ public class PantallaLogin extends JFrame {
 					
 					System.out.println("Sesion iniciada");
 					
+					Usuario usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
+					
+					if(usuario.getTipo()==TipoUsuario.ESTUDIANTE) {
+						accionesEstudiante();
+					}else if (usuario.getTipo()==TipoUsuario.VICERECTOR) {
+						accionesVicerector();
+					}else if(usuario.getTipo()==TipoUsuario.PROFESOR) {
+						accionesProfesores();
+					}
 					
 					
 				}else {
@@ -88,4 +99,21 @@ public class PantallaLogin extends JFrame {
 		add(lblbienvenida);
 
 	}
+	
+	public void accionesProfesores() {
+		
+	}
+	
+	public void accionesVicerector() {
+		PantallaEmpleadosVicerrectorado frame =new PantallaEmpleadosVicerrectorado();
+		frame.setVisible(true);
+		
+	}
+	
+	public void accionesEstudiante() {
+		
+		
+		
+	}
+	
 }
