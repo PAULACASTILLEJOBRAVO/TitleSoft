@@ -5,6 +5,7 @@ import java.util.*;
 import negocio.entities.*;
 import persistencia.EstudianteDAO;
 import persistencia.UsuarioDAO;
+import presentacion.Main_testing;
 
 public class GestorUsuarios {
 
@@ -23,9 +24,10 @@ public class GestorUsuarios {
 			}
 
 		} catch (Exception e) {
-			throw new UnsupportedOperationException();
+			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
+			return false;
 		}
-
+		
 	}
 
 	public Usuario seleccionarUsuario(String usuario) {
@@ -36,8 +38,10 @@ public class GestorUsuarios {
 			return (Usuario) usuarioDAO.get(usuario);
 
 		} catch (Exception e) {
-			throw new UnsupportedOperationException();
+			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
+			return null;
 		}
+		
 
 	}
 

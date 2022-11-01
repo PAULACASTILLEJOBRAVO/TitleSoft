@@ -2,6 +2,7 @@ package negocio.controllers;
 
 import negocio.entities.*;
 import persistencia.*;
+import presentacion.Main_testing;
 
 public class GestorProfesor {
 
@@ -14,7 +15,8 @@ public class GestorProfesor {
 		try {
 			profesorDAO.crearProfesor(profesor);
 		} catch (Exception e) {
-			throw new UnsupportedOperationException();
+			Main_testing.escribirLog(Main_testing.error,"Error al encontrar introduccir Profesor");
+			
 		}
 	}
 
@@ -27,7 +29,8 @@ public class GestorProfesor {
 			return (Profesor) profesorDAO.seleccionarProfesor(dni);
 			
 		} catch (Exception e) {
-			throw new UnsupportedOperationException();
+			Main_testing.escribirLog(Main_testing.error,"Error al seleccionar Profesor");
+			return null;
 		}
 	}
 

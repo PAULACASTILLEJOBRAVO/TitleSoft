@@ -28,7 +28,7 @@ public class PantallaLogin extends JFrame {
 		
 		
 		
-		setTitle("Gestion de Edicion");
+		setTitle("Log in");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 520, 300);
 		contentPane = new JPanel();
