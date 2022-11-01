@@ -1,10 +1,12 @@
 package persistencia;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
+import negocio.controllers.GestorProfesor;
 import negocio.entities.*;
 
 public class MateriaDAO extends AbstractEntityDAO {
@@ -128,7 +130,26 @@ public class MateriaDAO extends AbstractEntityDAO {
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Materia seleccionado");
-			materiaEncontrada=(Materia)resultado.get(0);
+			
+			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			
+			
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+			
+			Date fecha1=(Date) formato.parse(aux[2]);
+			java.sql.Date sqlDate1 = new java.sql.Date(fecha1.getTime());
+			
+			Date fecha2=(Date) formato.parse(aux[3]);
+			java.sql.Date sqlDate2 = new java.sql.Date(fecha2.getTime());
+			
+			GestorProfesor gProfesor=new GestorProfesor();
+			
+			Profesor responsable=gProfesor.seleccionarProfesor(aux[4]);
+			
+			materiaEncontrada=new Materia(responsable, aux[0], Double.parseDouble(aux[1]), sqlDate1, sqlDate2);
+			
+			
+			
 		}else
 			System.err.println("Error al seleccionar materia");
 
