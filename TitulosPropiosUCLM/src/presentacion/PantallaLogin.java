@@ -67,6 +67,9 @@ public class PantallaLogin extends JFrame {
 				if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 					
 					System.out.println("Sesion iniciada");
+					
+					
+					
 				}else {
 					System.out.println("Error iniciando sesion");
 				}

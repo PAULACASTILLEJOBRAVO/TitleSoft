@@ -1,5 +1,6 @@
 package persistencia;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
@@ -106,13 +107,23 @@ public class MatriculaDAO extends AbstractEntityDAO {
 		if (resultado.isEmpty()==false) {
 			System.out.println("Matricula seleccionada");
 			
-			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
+			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			
+			
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+			Date fecha=(Date) formato.parse(aux[1]);
+			
+			java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
+
+			
+			if(aux[3].equals("credito")) {
+				matriculaEncontrada=new Matricula( aux[0], ModoPago.TARJETA_CREDITO, sqlDate,Boolean.parseBoolean(aux[2]));
+			}else if(aux[3].equals("transferencia")){
+				matriculaEncontrada=new Matricula( aux[0], ModoPago.TRANSFERENCIA, sqlDate, Boolean.parseBoolean(aux[2]));
+			}
 			
 			
 			
-			
-			
-			matriculaEncontrada=new Matricula( null, null, fechaActualizacion, false);
 		}else
 			System.err.println("Error al seleccionar la matricula");
 

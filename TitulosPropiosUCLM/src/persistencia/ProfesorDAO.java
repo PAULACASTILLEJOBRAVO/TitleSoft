@@ -17,8 +17,8 @@ public class ProfesorDAO extends AbstractEntityDAO {
 	 * 
 	 * @param curso
 	 */
-	public Profesor seleccionarProfesor(Profesor profe) throws Exception {
-		return (Profesor) get(profe.getDni());
+	public Profesor seleccionarProfesor(String id) throws Exception {
+		return (Profesor) get(id);
 		
 		
 	}

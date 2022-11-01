@@ -12,10 +12,10 @@ public class GestorEstudiante {
 	 * @param curso
 	 * @param estudiante
 	 */
-	public int introducirEstudiante(Collection<Matricula> matriculas, String dni, String nombre, String apellidos, String titulacion,
+	public int introducirEstudiante(int idEstudiante,Collection<Matricula> matriculas, String dni, String nombre, String apellidos, String titulacion,
 			String cualificacion) {
 		
-		Estudiante estudianteNuevo=new Estudiante(matriculas, cualificacion, cualificacion, cualificacion, cualificacion, cualificacion);
+		Estudiante estudianteNuevo=new Estudiante(matriculas,idEstudiante, cualificacion, cualificacion, cualificacion, cualificacion, cualificacion);
 		
 		EstudianteDAO estudianteDAO=new EstudianteDAO();
 		
@@ -26,10 +26,10 @@ public class GestorEstudiante {
 		}
 	}
 	
-	public Estudiante selecionarEstudiante(Collection<Matricula> matriculas, String dni, String nombre, String apellidos, String titulacion,
+	public Estudiante selecionarEstudiante(int idEstudiante,Collection<Matricula> matriculas, String dni, String nombre, String apellidos, String titulacion,
 			String cualificacion) {
 		
-		Estudiante estudianteNuevo=new Estudiante(matriculas, cualificacion, cualificacion, cualificacion, cualificacion, cualificacion);
+		Estudiante estudianteNuevo=new Estudiante(matriculas,idEstudiante, cualificacion, cualificacion, cualificacion, cualificacion, cualificacion);
 		
 		EstudianteDAO estudianteDAO=new EstudianteDAO();
 		
@@ -40,10 +40,10 @@ public class GestorEstudiante {
 		}
 	}
 	
-	public Estudiante actualizarEstudiante(Collection<Matricula> matriculas, String dni, String nombre, String apellidos, String titulacion,
+	public Estudiante actualizarEstudiante(int idEstudiante,Collection<Matricula> matriculas, String dni, String nombre, String apellidos, String titulacion,
 			String cualificacion) {
 		
-		Estudiante estudianteNuevo=new Estudiante(matriculas, cualificacion, cualificacion, cualificacion, cualificacion, cualificacion);
+		Estudiante estudianteNuevo=new Estudiante(matriculas,idEstudiante, cualificacion, cualificacion, cualificacion, cualificacion, cualificacion);
 		
 		EstudianteDAO estudianteDAO=new EstudianteDAO();
 		
@@ -54,10 +54,10 @@ public class GestorEstudiante {
 		}
 	}
 	
-	public int eliminarEstudiante(Collection<Matricula> matriculas, String dni, String nombre, String apellidos, String titulacion,
+	public int eliminarEstudiante(int idEstudiante,Collection<Matricula> matriculas, String dni, String nombre, String apellidos, String titulacion,
 			String cualificacion) {
 		
-		Estudiante estudianteNuevo=new Estudiante(matriculas, cualificacion, cualificacion, cualificacion, cualificacion, cualificacion);
+		Estudiante estudianteNuevo=new Estudiante(matriculas,idEstudiante, cualificacion, cualificacion, cualificacion, cualificacion, cualificacion);
 		
 		EstudianteDAO estudianteDAO=new EstudianteDAO();
 		
