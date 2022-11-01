@@ -3,76 +3,45 @@ package presentacion;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
-import negocio.controllers.GestorUsuarios;
 import persistencia.GestorBD;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JFrame;
 
-public class PantallaLogin extends JFrame {
-	private JTextField textFieldUsuario= new JTextField();;
-	private JTextField textFieldPassword= new JTextField();
-	private JPanel contentPane;
+public class PantallaLogin extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
 	
 	/**
 	 * Create the panel.
 	 */
 	public PantallaLogin() {
-		
-		
-		
-		setTitle("Gestion de Edicion");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(300, 300, 520, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		
-		
+		setLayout(null);
 		
 		JLabel lblusuario = new JLabel("Usuario:");
 		lblusuario.setBounds(80, 94, 79, 13);
 		add(lblusuario);
 		
 
-		JLabel lblcontrasena1 = new JLabel("Contrase\u00F1a:");
-		lblcontrasena1.setBounds(80, 157, 76, 13);
-		add(lblcontrasena1);
+		JLabel lblcontrasena = new JLabel("Contrase\u00F1a:");
+		lblcontrasena.setBounds(80, 157, 76, 13);
+		add(lblcontrasena);
 
+		JLabel lblcontrase�a = new JLabel("Contrase\u00F1a:");
+		lblcontrase�a.setBounds(80, 157, 76, 13);
+		add(lblcontrase�a);
 		
-	
-		textFieldUsuario.setBounds(145, 91, 132, 19);
-		add(textFieldUsuario);
-		textFieldUsuario.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(145, 91, 132, 19);
+		add(textField);
+		textField.setColumns(10);
 		
-	
-		textFieldPassword.setBounds(145, 154, 132, 19);
-		add(textFieldPassword);
-		textFieldPassword.setColumns(10);
+		textField_1 = new JTextField();
+		textField_1.setBounds(145, 154, 132, 19);
+		add(textField_1);
+		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Login");
-		btnNewButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				GestorUsuarios gUsuario=new GestorUsuarios();
-				
-				if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
-					
-					System.out.println("Sesion iniciada");
-				}else {
-					System.out.println("Error iniciando sesion");
-				}
-				
-			}
-		});
 		btnNewButton.setBounds(89, 224, 83, 21);
 		add(btnNewButton);
 		
