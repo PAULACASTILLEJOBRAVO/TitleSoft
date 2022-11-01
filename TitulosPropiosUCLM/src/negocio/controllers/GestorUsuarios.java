@@ -16,7 +16,7 @@ public class GestorUsuarios {
 		try {
 			Usuario usuarioAux=(Usuario) usuarioDAO.get(usuario);
 
-			if(password.equals(usuarioAux.getPassword() )){
+			if(password.trim().equals(usuarioAux.getPassword().trim() )){
 				return true;
 			}else {
 				return false;

@@ -3,6 +3,7 @@ package persistencia;
 import java.util.Vector;
 
 import negocio.entities.CursoPropio;
+import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
 
 public class UsuarioDAO extends AbstractEntityDAO{
@@ -11,17 +12,27 @@ public class UsuarioDAO extends AbstractEntityDAO{
 	@Override
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
-		CursoPropio UsuarioReturn=null;
+		Usuario UsuarioReturn=null;
 		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
 
 		
 		resultado = GestorBD.select(SelectSQL);
-		String[] aux =resultado.get(0).toString().split(",");
-		System.out.println(aux[2]);
+		
 		if (resultado.isEmpty()==false) {
 			System.out.println("usuario seleccionado");
 			
-			//UsuarioReturn=(Usuario)  resultado.get(0);
+			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
+			
+			
+			if(aux[2].trim().equals("estudiante")) {
+				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
+			}else if(aux[2].trim().equals("profesor")) {
+				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
+			}else if (aux[2].trim().equals("vicerector")) {
+				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
+			}
+			
+	
 
 		}else
 			System.err.println("Error al seleccionar usuario");
@@ -55,6 +66,8 @@ public class UsuarioDAO extends AbstractEntityDAO{
 				+ " password='"+usuario.getPassword()+"',"
 				+ "tipo='"+usuario.getTipo()+"' ";
 		resultado = GestorBD.update(updateSQL);
+		
+		
 		if (resultado > 0) {
 			System.out.println("usuario modificado");
 		}else

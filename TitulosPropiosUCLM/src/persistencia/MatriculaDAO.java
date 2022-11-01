@@ -105,7 +105,14 @@ public class MatriculaDAO extends AbstractEntityDAO {
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Matricula seleccionada");
-			matriculaEncontrada=(Matricula)resultado.get(0);
+			
+			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
+			
+			
+			
+			
+			
+			matriculaEncontrada=new Matricula( null, null, fechaActualizacion, false);
 		}else
 			System.err.println("Error al seleccionar la matricula");
 
@@ -117,7 +124,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
-		String insertSQL = "INSERT INTO matricula (titulacion,Fecha,pagado,Modo,Curso) " //quitar curso de la base de datos
+		String insertSQL = "INSERT INTO matricula (titulacion,Fecha,pagado,Modo) " //quitar curso de la base de datos
 				+ "VALUES ( '"+matricula.getTitulo()+"' , '"+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
 
 		resultado = GestorBD.insert(insertSQL);

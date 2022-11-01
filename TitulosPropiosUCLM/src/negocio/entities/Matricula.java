@@ -4,18 +4,12 @@ import java.util.*;
 
 public class Matricula {
 
-	Estudiante estudiante;
 	CursoPropio titulo;
 	ModoPago tipoPago;
 	private Date fecha;
 	private boolean pagado;
 	
-	public Estudiante getEstudiante() {
-		return estudiante;
-	}
-	public void setEstudiante(Estudiante estudiante) {
-		this.estudiante = estudiante;
-	}
+
 	public CursoPropio getTitulo() {
 		return titulo;
 	}
@@ -40,9 +34,8 @@ public class Matricula {
 	public void setPagado(boolean pagado) {
 		this.pagado = pagado;
 	}
-	public Matricula(Estudiante estudiante, CursoPropio titulo, ModoPago tipoPago, Date fecha, boolean pagado) {
+	public Matricula( CursoPropio titulo, ModoPago tipoPago, Date fecha, boolean pagado) {
 		super();
-		this.estudiante = estudiante;
 		this.titulo = titulo;
 		this.tipoPago = tipoPago;
 		this.fecha = fecha;

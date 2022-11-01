@@ -122,8 +122,8 @@ public class EstudianteDAO extends AbstractEntityDAO{
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		Estudiante alumno=(Estudiante)entity;
-		String insertSQL = "INSERT INTO estudiante (dni,nombre,apellidos,titulacion,calificacion)"
-				+ "VALUES ( '"+alumno.getDni()+", '"+alumno.getNombre()+"'', '"+alumno.getApellidos()+"', '"+alumno.getTitulacion()+"', '"+alumno.getCualificacion()+"' )";
+		String insertSQL = "INSERT INTO estudiante (idEstudiante,dni,nombre,apellidos,titulacion,calificacion)"
+				+ "VALUES ( '"+alumno.getIdEstudiante()+"','"+alumno.getDni()+", '"+alumno.getNombre()+"'', '"+alumno.getApellidos()+"', '"+alumno.getTitulacion()+"', '"+alumno.getCualificacion()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
@@ -139,6 +139,7 @@ public class EstudianteDAO extends AbstractEntityDAO{
 		int resultado=0;
 		Estudiante alumno=(Estudiante) entity;
 		String updateSQL = "UPDATE estudiante SET "
+				+ "idEstudiante= '"+alumno.getIdEstudiante()+"' ,"
 				+ "dni= '"+alumno.getDni()+","
 				+ "nombre= '"+alumno.getNombre()+","
 				+ "apellidos= '"+alumno.getApellidos()+","
