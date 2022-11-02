@@ -10,9 +10,10 @@ public class GestorMatriculacion {
 	 * @param curso
 	 * @param estudiante
 	 */
-	public void realizarMatriculacion(CursoPropio curso, Estudiante estudiante) {
+	public void realizarMatriculacion(CursoPropio curso, String id) {
 		
-		Matricula matriculaNuevoIngreso = new Matricula(estudiante, curso, null, null, false);
+		
+		Matricula matriculaNuevoIngreso = new Matricula(id, null, null, false);
 		MatriculaDAO matriculaDAO= new MatriculaDAO();
 		
 		try {
@@ -27,9 +28,9 @@ public class GestorMatriculacion {
 	 * @param curso
 	 * @param estudiante
 	 */
-	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante) {
+	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante, String id) {
 		
-		Matricula matricula = new Matricula(estudiante, curso, null, null, true);
+		Matricula matricula = new Matricula(id, null, null, false);
 		
 		if(matricula.isPagado()) {
 			realizarPagoTarjeta(curso, estudiante);
