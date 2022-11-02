@@ -39,9 +39,31 @@ dificultades que ha tenido cada persona. De esta forma se crea una reunión híb
 se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada miembro del equipo podrá mostrar lo que ha hecho y se pondrán soluciones a las cosas que no funcionen bien.
 </p>
 <br>
-
-#ZONA DE IVAN
-  
+<H2>2. Memoria del Proyecto:
+</H2>
+<H3>2.1. Gestores:
+</H3>
+<p>Los archivos .java de controladores que son los encargados de comunicar las calses DAO que pertenecen a persistencia con la clases de presentacion, para ello tenemos diferentes .java es decir, los diferentes gestores. Tenemos uno para cada entidad controlando la accion a la DAO de su entidad.
+</p>
+<p>Por ejemplo tenemos en Controlador un GestorEstudiates, este tendra metodos para los utilice la presentacion como hemos dicho con anterioridad y dichos metodos se conectara con la persistencia, es decir con las DAO, en este caso el GestorEstudiantes tiene el metodo SeleccionarEstudiante() y este accede al metodo get() de EstudianteDAO.
+</p>
+<br>
+<H3>2.2. Entidades:
+</H3>
+<p>Aqui se encuentran las entidades siendo cada una una tabla de la base de datos teniendo cada una como propiedades las columnas de dicha base de datos. Ademas tendra los get, set y constructores los cuales seran necesarios en las clases DAO en persistencia para llevar a cabo la creacion de los objetos de estas entidades y trabajar con ellas y por supuesto el poder guardarlo en la base de datos.
+</p>
+<p>Por ejemplo, siguiendo el ejemplo anterior tanto el metodo SeleccionarEstudiante() como el metodo get() de EstudianteDAO te retorna un objeto tipo Estudiante por lo que sera necesario crear dicho estudiante a traves del contructor. Y es en el get de EstudiateDAO donde se construye y se accede a la base de datos.
+</p>
+<br>
+<H3>2.3. Persistencia:
+</H3>
+<p>Estas clases son las encargadas de acceder a la base de datos, es decir, crear las sentencias sql para guardar datos en ella, para recogerlos e incluso para borralos. Para ello tendra metodos que accedan al GestorBD, estas clases DAOs extienden de una clase abstracta. Dicho GestorBD es el encargado de establecer la conexion con la base de datos teniendo metodos de conexion y desconexion.
+</p>
+<br>
+<H3>2.4. Presentacion
+</H3>
+<p>En presentacion nos encontraremos las clases que crean la interfaz de usuario y son los que llaman a los metodos de los controladores como mencionamos en el primer apartado. Nos encontraremos un .java para cada tipo de usuario, es decir, uno para estudiantes, otro para vicerrector, etc. Ademas encontraremos algunos extras para aquellas acciones mas complejas o conjunto de ellas que realiza un usuario y que se pueden agrupar como la matriculacion.
+</p>
 <br>
 <h2>3. Gestión de la Configuración:
 </h2>
