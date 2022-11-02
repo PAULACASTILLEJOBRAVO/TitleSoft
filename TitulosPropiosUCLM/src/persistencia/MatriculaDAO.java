@@ -171,7 +171,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	public int delete(Object entity) throws Exception {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
-		String insertSQL = "DELETE FROM mareicula WHERE '"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
+		String insertSQL = "DELETE FROM matricula WHERE '"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
