@@ -79,6 +79,8 @@ public class PantallaLogin extends JFrame {
 						accionesVicerector();
 					}else if(usuario.getTipo()==TipoUsuario.PROFESOR) {
 						accionesProfesores();
+					}else if(usuario.getTipo()==TipoUsuario.JEFE) {
+						accionesJefe();
 					}
 					
 					
@@ -117,6 +119,11 @@ public class PantallaLogin extends JFrame {
 		PantallaMatriculacion frame =new PantallaMatriculacion();
 		frame.setVisible(true);
 		
+	}
+	
+	public void accionesJefe() {
+		PantallaJefeGabineteVicerrectorado frame =new PantallaJefeGabineteVicerrectorado();
+		frame.setVisible(true);
 		
 	}
 	

@@ -2,6 +2,7 @@ package negocio.controllers;
 
 import negocio.entities.*;
 import persistencia.*;
+import presentacion.Main_testing;
 
 public class GestorMatriculacion {
 
@@ -23,6 +24,22 @@ public class GestorMatriculacion {
 		}
 	}
 
+	public Matricula seleccionarUsuario(String id) {
+
+		MatriculaDAO matriculaDAO=new MatriculaDAO();
+
+		try {
+			return (Matricula) matriculaDAO.seleccionarMatricula(id);
+
+		} catch (Exception e) {
+			Main_testing.escribirLog(Main_testing.error,"Error al seleccionar matricula");
+			return null;
+		}
+		
+
+	}
+
+	
 	/**
 	 * 
 	 * @param curso

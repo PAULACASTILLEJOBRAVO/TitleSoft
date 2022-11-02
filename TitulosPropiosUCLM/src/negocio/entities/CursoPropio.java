@@ -13,7 +13,8 @@ public class CursoPropio {
 	EstadoCurso estado;
 	TipoCurso tipo;
 	CursoPropioDAO cursoPropioDao;
-	private String id;
+	private int idReal;
+	private int idControlador;
 	private String nombre;
 	private int ECTS;
 	private Date fechaInicio;
@@ -69,11 +70,11 @@ public class CursoPropio {
 	public void setCursoPropioDao(CursoPropioDAO cursoPropioDao) {
 		this.cursoPropioDao = cursoPropioDao;
 	}
-	public String getId() {
-		return id;
+	public int getId() {
+		return idReal;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(int id) {
+		this.idReal = id;
 	}
 	public String getNombre() {
 		return nombre;
@@ -112,7 +113,7 @@ public class CursoPropio {
 		this.edicion = edicion;
 	}
 	public CursoPropio(Collection<Matricula> matriculas, Centro centro, ProfesorUCLM director, ProfesorUCLM secretario,
-			Collection<Materia> materias, EstadoCurso estado, TipoCurso tipo, CursoPropioDAO cursoPropioDao, String id,
+			Collection<Materia> materias, EstadoCurso estado, TipoCurso tipo, CursoPropioDAO cursoPropioDao,int idControlador, int idReal,
 			String nombre, int eCTS, Date fechaInicio, Date fechaFin, double tasaMatricula, int edicion) {
 		super();
 		this.matriculas = matriculas;
@@ -123,13 +124,15 @@ public class CursoPropio {
 		this.estado = estado;
 		this.tipo = tipo;
 		this.cursoPropioDao = cursoPropioDao;
-		this.id = id;
+		this.idReal = idReal;
 		this.nombre = nombre;
+		this.idControlador=idControlador;
 		ECTS = eCTS;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.tasaMatricula = tasaMatricula;
 		this.edicion = edicion;
 	}
+	
 
 }
