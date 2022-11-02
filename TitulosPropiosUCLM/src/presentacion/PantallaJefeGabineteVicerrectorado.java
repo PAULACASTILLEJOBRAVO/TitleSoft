@@ -20,7 +20,7 @@ import javax.swing.table.TableRowSorter;
 import persistencia.*;
 
 
-public class PantallaJefeGabineteVicerrectorado {
+public class PantallaJefeGabineteVicerrectorado extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 
