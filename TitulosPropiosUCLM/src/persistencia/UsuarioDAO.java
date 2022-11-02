@@ -30,9 +30,10 @@ public class UsuarioDAO extends AbstractEntityDAO{
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
 			}else if (aux[2].trim().equals("vicerector")) {
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
-			}
+			}else if (aux[2].trim().equals("jefe")) {
+				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			
-	
+			}
 
 		}else
 			System.err.println("Error al seleccionar usuario");

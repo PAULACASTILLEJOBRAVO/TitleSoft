@@ -19,8 +19,8 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	 * 
 	 * @param curso
 	 */
-	public Matricula seleccionarMatricula(Matricula matricula) throws Exception {
-		return (Matricula)update(matricula.getTitulo());
+	public Matricula seleccionarMatricula(String id) throws Exception {
+		return (Matricula)update(id);
 		//error por el tipo de return
 	}
 
