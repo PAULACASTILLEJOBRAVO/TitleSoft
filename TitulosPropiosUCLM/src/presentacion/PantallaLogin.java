@@ -103,7 +103,8 @@ public class PantallaLogin extends JFrame {
 	}
 	
 	public void accionesProfesores() {
-		
+		PantallaDireccionCursos frame =new PantallaDireccionCursos();
+		frame.setVisible(true);
 	}
 	
 	public void accionesVicerector() {
@@ -113,7 +114,8 @@ public class PantallaLogin extends JFrame {
 	}
 	
 	public void accionesEstudiante() {
-		
+		PantallaMatriculacion frame =new PantallaMatriculacion();
+		frame.setVisible(true);
 		
 		
 	}
