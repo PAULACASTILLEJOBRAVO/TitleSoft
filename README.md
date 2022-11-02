@@ -45,13 +45,11 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 <H3>1.Gestores</H3>
 	<H3><p>Los archivos .java de controladores que son los encargados de comunicar las calses DAO que pertenecen a persistencia con la clases de presentacion, para ello tenemos diferentes .java es decir, los diferentes gestores. Tenemos uno para cada entidad controlando la accion a la DAO de su entidad.
 	</p></H3>
-
 	<H3><p>Por ejemplo tenemos en Controlador un GestorEstudiates, este tendra metodos para los utilice la presentacion como hemos dicho con anterioridad y dichos metodos se conectara con la persistencia, es decir con las DAO, en este caso el GestorEstudiantes tiene el metodo SeleccionarEstudiante() y este accede al metodo get() de EstudianteDAO.
 	</p></H3>
 <H3>2.Entidades</H3>
 	<H3><p>Aqui se encuentran las entidades siendo cada una una tabla de la base de datos teniendo cada una como propiedades las columnas de dicha base de datos.Ademas tendra los get,set y constructores los cuales seran necesarios en las clases DAO en persistencia para llevar a cabo la creacion de los objetos de estas entidades y trabajar con ellas y por supuesto el poder guardarlo en la base de datos
 	</p></H3>
-	
 	<H3><p>Por ejemplo, siguiendo el ejemplo anterior tanto el metodo SeleccionarEstudiante() como el metodo get() de EstudianteDAO te retorna un objeto tipo Estudiante por lo que sera necesario crear dicho estudiante a traves del contructor. Y es en el get de EstudiateDAO donde se construye y se accede a la base de datos
 	</p></H3>
 	
