@@ -40,7 +40,27 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 </p>
 <br>
 
-#ZONA DE IVAN
+<br>
+<H2>2.Memoria del Proyecto</H1>
+<H3>1.Gestores</H3>
+	<H3>Los archivos .java de controladores que son los encargados de comunicar las calses DAO que pertenecen a persistencia con la clases de presentacion, para ello tenemos diferentes .java es decir, los diferentes gestores. Tenemos uno para cada entidad controlando la accion a la DAO de su entidad.
+	</H3>
+
+	<H3>Por ejemplo tenemos en Controlador un GestorEstudiates, este tendra metodos para los utilice la presentacion como hemos dicho con anterioridad y dichos metodos se conectara con la persistencia, es decir con las DAO, en este caso el GestorEstudiantes tiene el metodo SeleccionarEstudiante() y este accede al metodo get() de EstudianteDAO.
+	</H3>
+<H3>2.Entidades</H3>
+	<H3>Aqui se encuentran las entidades siendo cada una una tabla de la base de datos teniendo cada una como propiedades las columnas de dicha base de datos.Ademas tendra los get,set y constructores los cuales seran necesarios en las clases DAO en persistencia para llevar a cabo la creacion de los objetos de estas entidades y trabajar con ellas y por supuesto el poder guardarlo en la base de datos
+	</H3>
+	
+	<H3>Por ejemplo, siguiendo el ejemplo anterior tanto el metodo SeleccionarEstudiante() como el metodo get() de EstudianteDAO te retorna un objeto tipo Estudiante por lo que sera necesario crear dicho estudiante a traves del contructor. Y es en el get de EstudiateDAO donde se construye y se accede a la base de datos
+	</H3>
+	
+<H3>3.Persistencia</H3>
+	<H3>Estas clases son las encargadas de acceder a la base de datos,es decir, crear las sentencias sql para guardar datos en ella, para recogerlos e incluso para borralos. Para ello tendra metodos que accedan al GestorBD,estas clases DAOs extienden de una clase abstracta. Dicho GestorBD es el encargado de establecer la conexion con la base de datos teniendo metodos de conexion y desconexion.
+	</H3>
+<H3>4.Presentacion</H3>
+	<H3>En presentacion nos encontraremos las clases que crean la interfaz de usuario y son los que llaman a los metodos de los controladores como mencionamos en el primer apartado. Nos encontraremos un .java para cada tipo de usuario,es decir, uno para estudiantes, otro para vicerrector, etc. Ademas encontraremos algunos extras para aquellas acciones mas complejas o conjunto de ellas que realiza un usuario y que se pueden agrupar como la matriculacion.
+	</H3>
   
 <br>
 <h2>3. Gestión de la Configuración:
