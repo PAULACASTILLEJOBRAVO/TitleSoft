@@ -46,8 +46,9 @@ DROP TABLE IF EXISTS `cursopropio`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cursopropio` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) DEFAULT NULL,
+  `idreal` int NOT NULL AUTO_INCREMENT,
+  `idControlador` int DEFAULT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
   `ECTS` int DEFAULT NULL,
   `fechaInicio` date DEFAULT NULL,
   `fechaFin` date DEFAULT NULL,
@@ -58,13 +59,15 @@ CREATE TABLE `cursopropio` (
   `Centro` varchar(100) DEFAULT NULL,
   `secretario` varchar(9) DEFAULT NULL,
   `director` varchar(9) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`idreal`),
   KEY `FKCursoPropi877771` (`Centro`),
   KEY `FKCursoPropi466812` (`secretario`),
-  KEY `FKCursoPropi658153` (`director`),
+  KEY `FKCursoPropi658153` (`director`) /*!80000 INVISIBLE */,
+  KEY `FKCursoPropio-Matricula_idx` (`nombre`),
   CONSTRAINT `FKCursoPropi466812` FOREIGN KEY (`secretario`) REFERENCES `profesoruclm` (`dni`),
   CONSTRAINT `FKCursoPropi658153` FOREIGN KEY (`director`) REFERENCES `profesoruclm` (`dni`),
-  CONSTRAINT `FKCursoPropi877771` FOREIGN KEY (`Centro`) REFERENCES `centro` (`nombre`)
+  CONSTRAINT `FKCursoPropi877771` FOREIGN KEY (`Centro`) REFERENCES `centro` (`nombre`),
+  CONSTRAINT `FKCursoPropio-Matricula` FOREIGN KEY (`nombre`) REFERENCES `matricula` (`titulacion`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -74,6 +77,7 @@ CREATE TABLE `cursopropio` (
 
 LOCK TABLES `cursopropio` WRITE;
 /*!40000 ALTER TABLE `cursopropio` DISABLE KEYS */;
+INSERT INTO `cursopropio` VALUES (1,1,'ADE',4,'2002-05-23','2003-02-20',200,1,NULL,'Master',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cursopropio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,12 +89,13 @@ DROP TABLE IF EXISTS `estudiante`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `estudiante` (
+  `idEstudiante` int NOT NULL,
   `dni` varchar(9) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `apellidos` varchar(100) DEFAULT NULL,
   `titulacion` varchar(100) NOT NULL,
   `calificacion` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`dni`),
+  PRIMARY KEY (`idEstudiante`),
   KEY `FKEstudiante540879` (`titulacion`),
   CONSTRAINT `FKEstudiante540879` FOREIGN KEY (`titulacion`) REFERENCES `matricula` (`titulacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -102,6 +107,7 @@ CREATE TABLE `estudiante` (
 
 LOCK TABLES `estudiante` WRITE;
 /*!40000 ALTER TABLE `estudiante` DISABLE KEYS */;
+INSERT INTO `estudiante` VALUES (1,'123','pepe','de los montes','ADE','5'),(2,'123','pepe','de los montes','Derecho','2'),(3,'345','juan','bosque','ADE','9');
 /*!40000 ALTER TABLE `estudiante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,10 +123,10 @@ CREATE TABLE `materia` (
   `horas` double DEFAULT NULL,
   `fechaInicio` date DEFAULT NULL,
   `fechaFinal` date DEFAULT NULL,
-  `Curso` int DEFAULT NULL,
+  `dniProfesor` varchar(9) DEFAULT NULL,
   PRIMARY KEY (`nombre`),
-  KEY `FKMateria203058` (`Curso`),
-  CONSTRAINT `FKMateria203058` FOREIGN KEY (`Curso`) REFERENCES `cursopropio` (`id`)
+  KEY `fk_MateriaProfesor_idx` (`dniProfesor`),
+  CONSTRAINT `fk_MateriaProfesor` FOREIGN KEY (`dniProfesor`) REFERENCES `profesor` (`dni`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -143,12 +149,10 @@ DROP TABLE IF EXISTS `matricula`;
 CREATE TABLE `matricula` (
   `titulacion` varchar(100) NOT NULL,
   `Fecha` date DEFAULT NULL,
-  `pagado` tinyint DEFAULT NULL,
+  `pagado` varchar(45) DEFAULT NULL,
   `Modo` varchar(50) DEFAULT NULL,
-  `Curso` int DEFAULT NULL,
   PRIMARY KEY (`titulacion`),
-  KEY `FKMatricula544796` (`Curso`),
-  CONSTRAINT `FKMatricula544796` FOREIGN KEY (`Curso`) REFERENCES `cursopropio` (`id`)
+  KEY `FK_Matricula-Titulacion` (`titulacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,6 +162,7 @@ CREATE TABLE `matricula` (
 
 LOCK TABLES `matricula` WRITE;
 /*!40000 ALTER TABLE `matricula` DISABLE KEYS */;
+INSERT INTO `matricula` VALUES ('ADE','2002-02-06','true','a'),('Derecho','2002-02-06','false','a');
 /*!40000 ALTER TABLE `matricula` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,11 +178,8 @@ CREATE TABLE `profesor` (
   `nombre` varchar(50) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
   `doctor` tinyint NOT NULL,
-  `materia` varchar(50) NOT NULL,
   PRIMARY KEY (`dni`),
-  KEY `FKProfesor880853` (`materia`),
   CONSTRAINT `FKProfesor156388` FOREIGN KEY (`dni`) REFERENCES `profesoruclm` (`dni`),
-  CONSTRAINT `FKProfesor880853` FOREIGN KEY (`materia`) REFERENCES `materia` (`nombre`),
   CONSTRAINT `FKProfesorExterno` FOREIGN KEY (`dni`) REFERENCES `profesorexterno` (`dni`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -249,7 +251,7 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
-  `idusuarios` int NOT NULL,
+  `idusuarios` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   PRIMARY KEY (`idusuarios`),
@@ -263,6 +265,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES ('ivan','hola','jefe');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -275,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-31 12:12:01
+-- Dump completed on 2022-11-02 19:19:14
