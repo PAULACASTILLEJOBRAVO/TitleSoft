@@ -30,7 +30,7 @@ public class PantallaLogin extends JFrame {
 		
 		setTitle("Log in");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(300, 300, 520, 300);
+		setBounds(300, 300, 527, 305);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -41,22 +41,22 @@ public class PantallaLogin extends JFrame {
 		
 		JLabel lblusuario = new JLabel("Usuario:");
 		lblusuario.setBounds(80, 94, 79, 13);
-		add(lblusuario);
+		getContentPane().add(lblusuario);
 		
 
 		JLabel lblcontrasena1 = new JLabel("Contrase\u00F1a:");
 		lblcontrasena1.setBounds(80, 157, 76, 13);
-		add(lblcontrasena1);
+		getContentPane().add(lblcontrasena1);
 
 		
 	
 		textFieldUsuario.setBounds(145, 91, 132, 19);
-		add(textFieldUsuario);
+		getContentPane().add(textFieldUsuario);
 		textFieldUsuario.setColumns(10);
 		
 	
 		textFieldPassword.setBounds(145, 154, 132, 19);
-		add(textFieldPassword);
+		getContentPane().add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Login");
@@ -90,15 +90,15 @@ public class PantallaLogin extends JFrame {
 			}
 		});
 		btnNewButton.setBounds(89, 224, 83, 21);
-		add(btnNewButton);
+		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
 		btnNewButton_1.setBounds(201, 224, 83, 21);
-		add(btnNewButton_1);
+		getContentPane().add(btnNewButton_1);
 		
 		JLabel lblbienvenida = new JLabel("Bienvenido");
 		lblbienvenida.setBounds(154, 40, 68, 13);
-		add(lblbienvenida);
+		getContentPane().add(lblbienvenida);
 
 	}
 	
