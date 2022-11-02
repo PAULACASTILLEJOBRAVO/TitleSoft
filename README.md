@@ -60,9 +60,15 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 <p>Estas clases son las encargadas de acceder a la base de datos, es decir, crear las sentencias sql para guardar datos en ella, para recogerlos e incluso para borralos. Para ello tendra metodos que accedan al GestorBD, estas clases DAOs extienden de una clase abstracta. Dicho GestorBD es el encargado de establecer la conexion con la base de datos teniendo metodos de conexion y desconexion.
 </p>
 <br>
-<H3>2.4. Presentacion
+<H3>2.4. Presentacion:
 </H3>
 <p>En presentacion nos encontraremos las clases que crean la interfaz de usuario y son los que llaman a los metodos de los controladores como mencionamos en el primer apartado. Nos encontraremos un .java para cada tipo de usuario, es decir, uno para estudiantes, otro para vicerrector, etc. Ademas encontraremos algunos extras para aquellas acciones mas complejas o conjunto de ellas que realiza un usuario y que se pueden agrupar como la matriculacion.
+</p>
+<br>
+<H3>2.5. Maven:
+</H3>
+<p>
+Hemos utilizado maven para incluir las dependencias del proyecto, es decir, otras librerías que java no contiene de forma nativa (los .jar). Por ejemplomysql-connector-java-8.0.28.jar
 </p>
 <br>
 <h2>3. Gestión de la Configuración:
