@@ -124,6 +124,7 @@ public class PantallaMatriculacion extends JFrame {
 				lblError.setText("No se ha podido completar la matrícula. Rellena todos los campos.");
 			}
 		}catch (Exception e) {
+			Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula");
 
 		}
 	}

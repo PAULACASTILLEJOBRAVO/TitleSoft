@@ -2,6 +2,7 @@ package negocio.controllers;
 
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
+import presentacion.Main_testing;
 
 public class GestorPropuestasCursos {
 
@@ -13,7 +14,8 @@ public class GestorPropuestasCursos {
 		try {
 			cursoPropioDAO.crearNuevoCurso(nuevoCurso);
 		}catch (Exception e) {
-			throw new UnsupportedOperationException();
+			Main_testing.escribirLog(Main_testing.error,"Error al realizar propuesta");
+
 		}
 		
 		return nuevoCurso;
@@ -31,7 +33,8 @@ public class GestorPropuestasCursos {
 		try {
 			cursoPropioDAO.editarCurso(curso);
 		}catch (Exception e) {
-			throw new UnsupportedOperationException();
+			Main_testing.escribirLog(Main_testing.error,"Error al editar curso");
+
 		}
 		
 	}
@@ -64,7 +67,7 @@ public class GestorPropuestasCursos {
 	 */
 	public void altaCursoAprobado(CursoPropio curso) {
 		if(curso.getEstado().equals(EstadoCurso.VALIDADO)) {
-			throw new UnsupportedOperationException();
+			
 		}
 	}
 

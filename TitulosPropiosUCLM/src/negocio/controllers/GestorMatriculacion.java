@@ -22,7 +22,7 @@ public class GestorMatriculacion {
 		try {
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
 		} catch (Exception e) {
-			throw new UnsupportedOperationException();
+			Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
 		}
 	}
 
@@ -56,7 +56,7 @@ public class GestorMatriculacion {
 		
 			realizarPagoTransferencia(curso, estudiante);
 		
-			throw new UnsupportedOperationException();
+			
 		}
 	}
 

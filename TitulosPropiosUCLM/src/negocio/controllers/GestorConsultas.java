@@ -5,6 +5,7 @@ import java.util.*;
 
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
+import presentacion.Main_testing;
 import negocio.entities.*;
 public class GestorConsultas {
 	private CursoPropioDAO cursoPropioDAO;
@@ -20,8 +21,8 @@ public class GestorConsultas {
 		 try {
 			ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Main_testing.escribirLog(Main_testing.error,"Error al consulatar ingresos");
+
 		}
 		return ingresos;
 	}
@@ -38,7 +39,8 @@ public class GestorConsultas {
 		try {
 			estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso, fechaInicio, fechaFin);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
+
 		}
 		return estados; 
 		
@@ -55,8 +57,8 @@ public class GestorConsultas {
 		try {
 			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
+
 		}
 		return ediciones;
 	}

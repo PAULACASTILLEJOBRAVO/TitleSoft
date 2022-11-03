@@ -197,9 +197,9 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 				}
 
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} catch (Exception e1) {
+				Main_testing.escribirLog(Main_testing.error,"Error al consultar ingresos");
+
 			}
 
 
