@@ -5,8 +5,9 @@ public class PantallaDireccionCursos extends JFrame {
 	private JTextField textFieldUsuario= new JTextField();;
 	private JTextField textFieldPassword= new JTextField();
 	private JPanel contentPane;
-	public void altaCurso() {
-		throw new UnsupportedOperationException();
+	
+	public PantallaDireccionCursos() {
+		
 		setTitle("Sesion:Direccion");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 520, 300);

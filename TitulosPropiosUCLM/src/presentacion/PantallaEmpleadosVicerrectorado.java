@@ -9,7 +9,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 	private JTextField textFieldPassword= new JTextField();
 	private JPanel contentPane;
 	
-	public void evaluarCurso() {
+	public void PantallaEmpleadosVicerrectorado() {
 
 		setTitle("Sesion:Vicerrector");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

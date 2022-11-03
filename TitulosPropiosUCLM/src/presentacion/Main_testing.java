@@ -44,7 +44,7 @@ public class Main_testing extends JFrame{
 
 		setTitle("Gestion Titulaciones");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(300, 300, 520, 300);
+		setBounds(300, 300, 670, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -53,17 +53,54 @@ public class Main_testing extends JFrame{
 		
 		
 		
-		JButton btnNewButton = new JButton("Consultar Curso");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnConsultar = new JButton("Consultar Curso");
+		btnConsultar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PantallaLogin frame =new PantallaLogin();
+				PantallaLogin frame =new PantallaLogin(0);
 				frame.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(89, 84, 223, 21);
-		add(btnNewButton);
+		btnConsultar.setBounds(89, 84, 223, 21);
+		add(btnConsultar);
+		
+		JButton btnMatriculas = new JButton("Realizar Matriculas");
+		 btnMatriculas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PantallaLogin frame =new PantallaLogin(1);
+				frame.setVisible(true);
+			}
+		});
+		 btnMatriculas.setBounds(89, 144, 223, 21);
+		add( btnMatriculas);
+		
+		JButton btnEvaluar = new JButton("Evaluar Cursos");
+		 btnMatriculas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PantallaLogin frame =new PantallaLogin(2);
+				frame.setVisible(true);
+			}
+		});
+		 btnEvaluar.setBounds(89, 204, 223, 21);
+		add( btnEvaluar);
+		
+		JButton btnCursos = new JButton("Gestionar Cursos");
+		btnCursos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PantallaLogin frame =new PantallaLogin(3);
+				frame.setVisible(true);
+			}
+		});
+		btnCursos.setBounds(400, 84, 223, 21);
+		add( btnCursos);
+		
 		
 		
 	}

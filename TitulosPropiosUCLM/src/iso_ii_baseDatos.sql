@@ -107,7 +107,7 @@ CREATE TABLE `estudiante` (
 
 LOCK TABLES `estudiante` WRITE;
 /*!40000 ALTER TABLE `estudiante` DISABLE KEYS */;
-INSERT INTO `estudiante` VALUES (1,'123','pepe','de los montes','ADE','5'),(2,'123','pepe','de los montes','Derecho','2'),(3,'345','juan','bosque','ADE','9');
+INSERT INTO `estudiante` VALUES (1,'123','pepe','de los montes','Derecho','2'),(2,'345','juan','bosque','ADE','9');
 /*!40000 ALTER TABLE `estudiante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +265,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('ivan','hola','jefe');
+INSERT INTO `usuarios` VALUES ('estudiante','estudiante','estudiante'),('jefe','jefe','jefe'),('profesor','profesor','profesor'),('vicerector','vicerector','vicerector');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -278,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-02 19:19:14
+-- Dump completed on 2022-11-03  9:39:34

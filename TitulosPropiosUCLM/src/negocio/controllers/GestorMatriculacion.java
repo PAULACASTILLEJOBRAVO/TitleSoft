@@ -1,5 +1,7 @@
 package negocio.controllers;
 
+import java.sql.Date;
+
 import negocio.entities.*;
 import persistencia.*;
 import presentacion.Main_testing;
@@ -11,10 +13,10 @@ public class GestorMatriculacion {
 	 * @param curso
 	 * @param estudiante
 	 */
-	public void realizarMatriculacion(CursoPropio curso, String id) {
+	public void realizarMatriculacion(String curso, ModoPago tipo,Date fecha,boolean pagado) {
 		
 		
-		Matricula matriculaNuevoIngreso = new Matricula(id, null, null, false);
+		Matricula matriculaNuevoIngreso = new Matricula(curso, tipo, fecha, pagado);
 		MatriculaDAO matriculaDAO= new MatriculaDAO();
 		
 		try {

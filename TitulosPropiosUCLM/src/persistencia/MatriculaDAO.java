@@ -110,7 +110,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			
 			
-			SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha=(Date) formato.parse(aux[1]);
 			
 			java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
