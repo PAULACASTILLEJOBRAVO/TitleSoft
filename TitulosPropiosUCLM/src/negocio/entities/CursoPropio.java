@@ -70,10 +70,16 @@ public class CursoPropio {
 	public void setCursoPropioDao(CursoPropioDAO cursoPropioDao) {
 		this.cursoPropioDao = cursoPropioDao;
 	}
-	public int getId() {
+	public int getIdReal() {
 		return idReal;
 	}
-	public void setId(int id) {
+	public int getIdControlador() {
+		return idControlador;
+	}
+	public void setIdControlador(int idControlador) {
+		this.idControlador = idControlador;
+	}
+	public void setIdReal(int id) {
 		this.idReal = id;
 	}
 	public String getNombre() {

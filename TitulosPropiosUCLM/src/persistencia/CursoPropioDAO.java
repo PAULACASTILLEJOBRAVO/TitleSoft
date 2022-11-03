@@ -7,7 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
+import negocio.controllers.GestorCentro;
+import negocio.controllers.GestorMateria;
 import negocio.controllers.GestorMatriculacion;
+import negocio.controllers.GestorProfesor;
+import negocio.controllers.GestorProfesorUCLM;
 import negocio.entities.*;
 
 public class CursoPropioDAO extends AbstractEntityDAO {
@@ -25,8 +29,8 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	 * 
 	 * @param curso
 	 */
-	public CursoPropio seleccionarCurso(CursoPropio curso) throws Exception {
-		return (CursoPropio)get(curso.getId());
+	public CursoPropio seleccionarCurso(String id) throws Exception {
+		return (CursoPropio)get(id);
 	}
 
 	/**
@@ -127,7 +131,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 	public Vector<Object> listarIdControlador(int idControlador) throws Exception{
-	
+
 
 		Vector<Object> resultado;
 		String SelectSQLEdicion= "SELECT FROM cursopropio"
@@ -144,119 +148,175 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	}
 
 
-@Override
-public Object get(String id) throws Exception {
-	Vector<Object> resultado;
-	CursoPropio cursoReturn=null;
-	String SelectSQL= "SELECT * FROM cursopropio WHERE id LIKE '"+id+"' " ;
+	@Override
+	public Object get(String id) throws Exception {
+		Vector<Object> resultado;
+		CursoPropio cursoReturn=null;
+		String SelectSQL= "SELECT * FROM cursopropio WHERE id LIKE '"+id+"' " ;
 
 
-	resultado = GestorBD.select(SelectSQL);
+		resultado = GestorBD.select(SelectSQL);
 
-	if (resultado.isEmpty()==false) {
-		System.out.println("Curso seleccionado");
+		if (resultado.isEmpty()==false) {
+			System.out.println("Curso seleccionado");
 
-		String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
-
-		Vector<Object> listaCursosIdControlador= listarIdControlador(Integer.parseInt(aux[1]));
-		Collection<Matricula> matriculas=null;
-		GestorMatriculacion gMatriculas=new GestorMatriculacion();
-		Matricula matriculaTemp = null;
-		
-		
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-		Date fechaInicialAux=(Date) formato.parse(aux[4]);
-		Date fechFinalAux=(Date) formato.parse(aux[5]);
-		java.sql.Date fechaInicial = new java.sql.Date(fechaInicialAux.getTime());
-		java.sql.Date fechaFinal = new java.sql.Date(fechFinalAux.getTime());
-		
-		for(int i=0;i<listaCursosIdControlador.size();i++) {
+			CursoPropioDAO cursoDAO=new CursoPropioDAO();
 			
-			String[] auxMatriculas =  (listaCursosIdControlador.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			
-			Date fecha=(Date) formato.parse(auxMatriculas[1]);
+			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			//Coleccion de matriculas y materias
+			Vector<Object> listaCursosIdControlador= listarIdControlador(Integer.parseInt(aux[1]));
+			Collection<Matricula> matriculas=null;
+			Collection<Materia> materias=null;
+			GestorMatriculacion gMatriculas=new GestorMatriculacion();
+			GestorMateria gMateria=new GestorMateria();
 			
-			java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
+			
+			//centro
+			GestorCentro gCentro=new GestorCentro();
+			Centro centro= gCentro.seleccionarCentro(aux[10]);//metoodo crear centro en centroDAO incompleto
+			
+			//ProfesorUCLM Director y secretario
+			GestorProfesorUCLM gProfesor= new GestorProfesorUCLM();
+			ProfesorUCLM director=gProfesor.seleccionarProfesor(aux[12]);
+			ProfesorUCLM secretario=gProfesor.seleccionarProfesor(aux[11]);
+			
+			
+			
+			//Collection<Materia>
+			
+			
+			
+			
+			
+			
+			//fecha
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			Date fechaInicialAux=(Date) formato.parse(aux[4]);
+			Date fechFinalAux=(Date) formato.parse(aux[5]);
+			java.sql.Date fechaInicial = new java.sql.Date(fechaInicialAux.getTime());
+			java.sql.Date fechaFinal = new java.sql.Date(fechFinalAux.getTime());
 
 			
-			if(aux[3].equals("credito")) {
-				matriculaTemp=new Matricula( aux[0], ModoPago.TARJETA_CREDITO, sqlDate,Boolean.parseBoolean(auxMatriculas[2]));
-			}else if(aux[3].equals("transferencia")){
-				matriculaTemp=new Matricula( aux[0], ModoPago.TRANSFERENCIA, sqlDate, Boolean.parseBoolean(auxMatriculas[2]));
+			
+			
+			//Creacion de Collection<Matriculas>
+			for(int i=0;i<listaCursosIdControlador.size();i++) {
+
+				String[] auxMatriculas =  (listaCursosIdControlador.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
+
+				matriculas.add(gMatriculas.seleccionarMatricula(auxMatriculas[2]));
+				materias.add(gMateria.seleccionarMaterias(auxMatriculas[13]));
 			}
-			matriculas.add(matriculaTemp);
-		}
-		
+			
+			
+			EstadoCurso estado=null;
+			TipoCurso tipo=null;
+			//estado
+			if(aux[8].equals("imparizicion")) {
+				estado=EstadoCurso.EN_IMPARTIZICION;
+			}else if (aux[8].equals("matriculacion")) {
+				estado=EstadoCurso.EN_MATRICULACION;
+			}else if (aux[8].equals("propuesta rechazada")) {
+				estado=EstadoCurso.PROPUESTA_RECHAZADA;
+			}else if (aux[8].equals("propuesto")) {
+				estado=EstadoCurso.PROPUESTO;
+			}else if (aux[8].equals("terminado")) {
+				estado=EstadoCurso.TERMINADO;
+			}else if (aux[8].equals("validado")) {
+				estado=EstadoCurso.VALIDADO;
+			}
+			
+			//tipoCurso
+			if(aux[9].equals("corta duracion")) {
+				tipo=TipoCurso.CORTA_DURACION;
+			}else if (aux[9].equals("especialista")) {
+				tipo=TipoCurso.ESPECIALISTA;
+			}else if (aux[9].equals("experto")) {
+				tipo=TipoCurso.EXPERTO;
+			}else if (aux[9].equals("formacion avanzada")) {
+				tipo=TipoCurso.FORMACION_AVANZADA;
+			}else if (aux[9].equals("formacion continua")) {
+				tipo=TipoCurso.FORMACION_CONTINUA;
+			}else if (aux[9].equals("master")) {
+				tipo=TipoCurso.MASTER;
+			}else if (aux[9].equals("microcredenciles")) {
+				tipo=TipoCurso.MICROCREDENCIALES;
+			}
+			
+			
+			cursoReturn= new CursoPropio(matriculas, centro, director, secretario, materias, estado, tipo.CORTA_DURACION, cursoDAO, Integer.parseInt(aux[1]), Integer.parseInt(aux[0]), aux[2],Integer.parseInt( aux[3]), fechaInicial, fechaFinal, Double.parseDouble(aux[6]), Integer.parseInt(aux[7]));
 
-		cursoReturn= new CursoPropio(matriculas, null, null, null, null, null, null, null, Integer.parseInt(aux[1]), Integer.parseInt(aux[0]), aux[2],Integer.parseInt( aux[3]), fechaInicial, fechaFinal, Double.parseDouble(aux[6]), Integer.parseInt(aux[7]));
+			
+//			
+		}else
+			System.err.println("Error al seleccionar curso");
 
-	}else
-		System.err.println("Error al seleccionar curso");
+		return cursoReturn ;
 
-	return cursoReturn ;
+	}
 
-}
+	@Override
+	public int insert(Object entity) throws Exception {
+		int resultado=0;
+		CursoPropio curso =(CursoPropio) entity;
+		String insertSQL = "INSERT INTO cursopropio (idReal,idControlador,nombre,ECTS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,tipoCurso,Centro,secretario,director) "
+				+ "VALUES ( '"+curso.getIdReal()+"','"+curso.getIdControlador()+"' , '"+curso.getNombre()+"' , '"+curso.getECTS()+"' ,"
+				+ " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , '"+curso.getTasaMatricula()+"' , "
+				+ " '"+curso.getEdicion()+"' , '"+curso.getEstado()+"' , '"+curso.getTipo()+"', "
+				+ " '"+curso.getCentro()+"' , '"+curso.getSecretario()+"' , '"+curso.getDirector()+"' )";
 
-@Override
-public int insert(Object entity) throws Exception {
-	int resultado=0;
-	CursoPropio curso =(CursoPropio) entity;
-	String insertSQL = "INSERT INTO cursopropio (id,nombre,ECTS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,tipoCurso,Centro,secretario,director) "
-			+ "VALUES ( '"+curso.getId()+"' , '"+curso.getNombre()+"' , '"+curso.getECTS()+"' ,"
-			+ " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , '"+curso.getTasaMatricula()+"' , "
-			+ " '"+curso.getEdicion()+"' , '"+curso.getEstado()+"' , '"+curso.getTipo()+"', "
-			+ " '"+curso.getCentro()+"' , '"+curso.getSecretario()+"' , '"+curso.getDirector()+"' )";
+		resultado = GestorBD.insert(insertSQL); 
+		if (resultado > 0) {
+			System.out.println("Curso nuevo creado");
+		}else
+			System.err.println("Error creando curso nuevo ");
 
-	resultado = GestorBD.insert(insertSQL); 
-	if (resultado > 0) {
-		System.out.println("Curso nuevo creado");
-	}else
-		System.err.println("Error creando curso nuevo ");
+		return resultado;
+	}
 
-	return resultado;
-}
+	@Override
+	public Object update(Object entity) throws Exception {
+		// TODO - implement CursoPropioDAO.editarCurso
+		int resultado=0;
+		CursoPropio curso=(CursoPropio)entity;
+		String updateSQL = "UPDATE cursopropio SET "
+				+ "idReal= '"+curso.getIdReal()+"',"
+				+ "idControlador= '"+curso.getIdControlador()+"'"
+				+ "nombre=  '"+curso.getNombre()+"' ,"
+				+ "ECTS= '"+curso.getECTS()+"' "
+				+ "fechaInicio= '"+curso.getFechaInicio()+"' , "
+				+ "fechaFin='"+curso.getFechaFin()+"',"
+				+ "tasaMatricula='"+curso.getTasaMatricula()+"',"
+				+ "edicion= '"+curso.getEdicion()+"',"
+				+ "estado= '"+curso.getEstado()+"',"
+				+ "tipoCurso='"+curso.getTipo()+"',"
+				+ "Centro= '"+curso.getCentro()+"',"
+				+ "secretario='"+curso.getSecretario()+"',"
+				+ "director= '"+curso.getDirector()+"'";
 
-@Override
-public Object update(Object entity) throws Exception {
-	// TODO - implement CursoPropioDAO.editarCurso
-	int resultado=0;
-	CursoPropio curso=(CursoPropio)entity;
-	String updateSQL = "UPDATE cursopropio SET "
-			+ "id= '"+curso.getId()+"',"
-			+ "nombre=  '"+curso.getNombre()+"' ,"
-			+ "ECTS= '"+curso.getECTS()+"' "
-			+ "fechaInicio= '"+curso.getFechaInicio()+"' , "
-			+ "fechaFin='"+curso.getFechaFin()+"',"
-			+ "tasaMatricula='"+curso.getTasaMatricula()+"',"
-			+ "edicion= '"+curso.getEdicion()+"',"
-			+ "estado= '"+curso.getEstado()+"',"
-			+ "tipoCurso='"+curso.getTipo()+"',"
-			+ "Centro= '"+curso.getCentro()+"',"
-			+ "secretario='"+curso.getSecretario()+"',"
-			+ "director= '"+curso.getDirector()+"'";
+		resultado = GestorBD.update(updateSQL);
+		if (resultado > 0) {
+			System.out.println("Curso modificado");
+		}else
+			System.err.println("Error modificando curso ");
 
-	resultado = GestorBD.update(updateSQL);
-	if (resultado > 0) {
-		System.out.println("Curso modificado");
-	}else
-		System.err.println("Error modificando curso ");
+		return curso;
+	}
 
-	return curso;
-}
+	@Override
+	public int delete(Object entity) throws Exception {
+		int resultado=0;
+		CursoPropio curso =(CursoPropio) entity;
+		String insertSQL = "DELETE FROM cursopropio WHERE id= '"+curso.getIdControlador()+"' ";
 
-@Override
-public int delete(Object entity) throws Exception {
-	int resultado=0;
-	CursoPropio curso =(CursoPropio) entity;
-	String insertSQL = "DELETE FROM cursopropio WHERE id= '"+curso.getId()+"' ";
+		resultado = GestorBD.insert(insertSQL); 
+		if (resultado > 0) {
+			System.out.println("Curso eleminado");
+		}else
+			System.err.println("Error eleminando curso ");
 
-	resultado = GestorBD.insert(insertSQL); 
-	if (resultado > 0) {
-		System.out.println("Curso eleminado");
-	}else
-		System.err.println("Error eleminando curso ");
-
-	return resultado;
-}
+		return resultado;
+	}
 
 }

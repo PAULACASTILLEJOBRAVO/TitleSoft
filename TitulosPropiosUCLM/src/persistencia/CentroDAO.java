@@ -14,8 +14,8 @@ public class CentroDAO extends AbstractEntityDAO {
 	}
 
 
-	public Centro seleccionarCentro(Centro centro) throws Exception {
-		return (Centro) get(centro.getNombre());
+	public Centro seleccionarCentro(String id) throws Exception {
+		return (Centro) get(id);
 
 	}
 
@@ -42,7 +42,10 @@ public class CentroDAO extends AbstractEntityDAO {
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Centro seleccionado");
-				centroEncontrado = (Centro) resultado.get(0);
+			
+			
+			
+				centroEncontrado = new Centro(null, null, id, SelectSQL, 0);
 			
 		}else
 			System.err.println("Error al seleccionar centro");

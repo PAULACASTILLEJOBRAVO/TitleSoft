@@ -26,7 +26,7 @@ public class GestorMatriculacion {
 		}
 	}
 
-	public Matricula seleccionarUsuario(String id) {
+	public Matricula seleccionarMatricula(String id) {
 
 		MatriculaDAO matriculaDAO=new MatriculaDAO();
 

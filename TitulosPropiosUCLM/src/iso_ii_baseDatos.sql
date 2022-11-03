@@ -59,14 +59,17 @@ CREATE TABLE `cursopropio` (
   `Centro` varchar(100) DEFAULT NULL,
   `secretario` varchar(9) DEFAULT NULL,
   `director` varchar(9) DEFAULT NULL,
+  `materia` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idreal`),
   KEY `FKCursoPropi877771` (`Centro`),
   KEY `FKCursoPropi466812` (`secretario`),
   KEY `FKCursoPropi658153` (`director`) /*!80000 INVISIBLE */,
   KEY `FKCursoPropio-Matricula_idx` (`nombre`),
+  KEY `fkCursoPropio-Materia_idx` (`materia`),
   CONSTRAINT `FKCursoPropi466812` FOREIGN KEY (`secretario`) REFERENCES `profesoruclm` (`dni`),
   CONSTRAINT `FKCursoPropi658153` FOREIGN KEY (`director`) REFERENCES `profesoruclm` (`dni`),
   CONSTRAINT `FKCursoPropi877771` FOREIGN KEY (`Centro`) REFERENCES `centro` (`nombre`),
+  CONSTRAINT `fkCursoPropio-Materia` FOREIGN KEY (`materia`) REFERENCES `materia` (`nombre`),
   CONSTRAINT `FKCursoPropio-Matricula` FOREIGN KEY (`nombre`) REFERENCES `matricula` (`titulacion`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -77,7 +80,7 @@ CREATE TABLE `cursopropio` (
 
 LOCK TABLES `cursopropio` WRITE;
 /*!40000 ALTER TABLE `cursopropio` DISABLE KEYS */;
-INSERT INTO `cursopropio` VALUES (1,1,'ADE',4,'2002-05-23','2003-02-20',200,1,NULL,'Master',NULL,NULL,NULL);
+INSERT INTO `cursopropio` VALUES (1,1,'ADE',4,'2002-05-23','2003-02-20',200,1,NULL,'Master',NULL,NULL,NULL,NULL),(2,1,'Derecho',5,'2002-05-23','2002-05-23',200,4,NULL,'Master',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cursopropio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-03  9:39:34
+-- Dump completed on 2022-11-03 11:20:32

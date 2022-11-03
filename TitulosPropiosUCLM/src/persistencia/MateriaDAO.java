@@ -18,8 +18,8 @@ public class MateriaDAO extends AbstractEntityDAO {
 	}
 
 
-	public Materia seleccionarMateria(Materia materia) throws Exception {
-		return (Materia)get(materia.getNombre());
+	public Materia seleccionarMateria(String id) throws Exception {
+		return (Materia)get(id);
 
 	}
 
@@ -69,7 +69,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public Materia listarMateriaCurso(int curso) throws Exception {
+	public Materia listarMateriaCurso(String curso) throws Exception {
 		// TODO - implement CursoPropioDAO.listarIngresos
 		Vector<Object> resultado;
 		Materia materiaEncontrada=null;

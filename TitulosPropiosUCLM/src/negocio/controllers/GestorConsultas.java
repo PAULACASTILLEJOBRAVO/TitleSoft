@@ -63,4 +63,14 @@ public class GestorConsultas {
 		return ediciones;
 	}
 
+	
+	public CursoPropio seleccionarCurso(String id) throws Exception {
+		CursoPropioDAO cursoDAO=new CursoPropioDAO();
+		return cursoDAO.seleccionarCurso(id);
+	}
+	
+	
+	
+	
+	
 }

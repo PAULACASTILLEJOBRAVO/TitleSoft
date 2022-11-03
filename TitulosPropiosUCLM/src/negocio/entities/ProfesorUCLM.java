@@ -37,9 +37,10 @@ public class ProfesorUCLM extends Profesor {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	public ProfesorUCLM(String dni, String nombre, String apellidos, boolean doctor) {
+	public ProfesorUCLM(String dni, String nombre, String apellidos, boolean doctor,CategoriaProfesor categoria,Centro centro) {
 		super(dni, nombre, apellidos, doctor);
-		// TODO Auto-generated constructor stub
+		this.categoria=categoria;
+		this.centroAdscripcion=centro;
 	}
 
 }

@@ -22,13 +22,14 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import negocio.controllers.GestorConsultas;
+import negocio.entities.CursoPropio;
 import negocio.entities.TipoCurso;
 import persistencia.*;
 
 
 public class PantallaJefeGabineteVicerrectorado extends JFrame{
 	//private static final long serialVersionUID = 1L;  no se que es
-	private JTextField textFieldTipoCurso= new JTextField();;
+	private JTextField textFieldTipo= new JTextField();;
 	private JTextField textFieldFechaInicio= new JTextField();
 	private JTextField textFieldFechaFinal= new JTextField();
 	private JPanel contentPane;
@@ -47,9 +48,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 		//Consultar Ingresos
 
-		JTextField textFieldTipoCurso= new JTextField();;
-		JTextField textFieldFechaInicio= new JTextField();
-		JTextField textFieldFechaFinal= new JTextField();
+		
 
 
 
@@ -72,9 +71,9 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				add(lblcurso);
 
 
-				textFieldTipoCurso.setBounds(145, 94, 132, 19);
-				add(textFieldTipoCurso);
-				textFieldTipoCurso.setColumns(10);
+				textFieldTipo.setBounds(145, 94, 132, 19);
+				add(textFieldTipo);
+				textFieldTipo.setColumns(10);
 
 				JLabel lblFechaInicio = new JLabel("Fecha inicio(yyyy-mm-dd):");
 				lblFechaInicio.setBounds(80, 150, 79, 13);
@@ -136,10 +135,10 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			try {
 				Date fechaInicioAux = (Date) formato.parse(textFieldFechaInicio.getText());
 				Date fechaFinalAux=(Date) formato.parse(textFieldFechaFinal.getText());
-
+			
+				CursoPropio curso=gConsultas.seleccionarCurso(textFieldTipo.getText());
 				
-				
-				if(textFieldTipoCurso.getText().equals("Corta Duracion")) {
+				if(curso.getTipo().equals("Corta Duracion")) {
 
 					ingresos=gConsultas.consultarIngresos(TipoCurso.CORTA_DURACION, fechaInicioAux, fechaFinalAux);
 
@@ -147,7 +146,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					lblIngresos.setBounds(80, 274, 79, 13);
 					add(lblIngresos);
 
-				}else if(textFieldTipoCurso.equals("Master")) {
+				}else if(curso.getTipo().equals("Master")) {
 					ingresos=gConsultas.consultarIngresos(TipoCurso.MASTER, fechaInicioAux, fechaFinalAux);
 
 					JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -155,7 +154,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					add(lblIngresos);
 
 
-				}else if(textFieldTipoCurso.equals("Experto")) {
+				}else if(curso.getTipo().equals("Experto")) {
 					ingresos=gConsultas.consultarIngresos(TipoCurso.EXPERTO, fechaInicioAux, fechaFinalAux);
 
 					JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -163,7 +162,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					add(lblIngresos);
 
 
-				}else if(textFieldTipoCurso.equals("Especialista")) {
+				}else if(curso.getTipo().equals("Especialista")) {
 					ingresos=gConsultas.consultarIngresos(TipoCurso.ESPECIALISTA, fechaInicioAux, fechaFinalAux);
 
 					JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -171,7 +170,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					add(lblIngresos);
 
 
-				}else if(textFieldTipoCurso.equals("Formacion avanzada")) {
+				}else if(curso.getTipo().equals("Formacion avanzada")) {
 					ingresos=gConsultas.consultarIngresos(TipoCurso.FORMACION_AVANZADA, fechaInicioAux, fechaFinalAux);
 
 					JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -179,7 +178,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					add(lblIngresos);
 
 
-				}else if(textFieldTipoCurso.equals("Formacion Continua")) {
+				}else if(curso.getTipo().equals("Formacion Continua")) {
 					ingresos=gConsultas.consultarIngresos(TipoCurso.FORMACION_CONTINUA, fechaInicioAux, fechaFinalAux);
 
 					JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -187,7 +186,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					add(lblIngresos);
 
 
-				}else if(textFieldTipoCurso.equals("Microcredenciales")) {
+				}else if(curso.getTipo().equals("Microcredenciales")) {
 					ingresos=gConsultas.consultarIngresos(TipoCurso.MICROCREDENCIALES, fechaInicioAux, fechaFinalAux);
 
 					JLabel lblIngresos = new JLabel(""+ingresos+"");
