@@ -38,6 +38,13 @@ lo que se ha desarrollado. Como el product owner también ha participado en el d
 dificultades que ha tenido cada persona. De esta forma se crea una reunión híbrida entre la reunión de revisión del sprint y la reuinión de retrospectiva del sprint (que en la teoría es donde
 se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada miembro del equipo podrá mostrar lo que ha hecho y se pondrán soluciones a las cosas que no funcionen bien.
 </p>
+<p>-------------------------------------------------------------------------------------------------------------------------------</p>
+<p>Sprint dia 19/11/2022.</p>
+<p>	Lo deseado para la proxima semana dia 26/11/2022</p>
+<p>		Base de datos de Derby terminada (Virginia)</p>
+<p>		Corregir Maven con sonarCloud y Junit(Paula)</p>
+<p>		Terminar funcionalidades de Jefe Gabinete(Iván)</p>
+<p>-------------------------------------------------------------------------------------------------------------------------------</p>
 <br>
 <H2>2. Memoria del Proyecto:
 </H2>
