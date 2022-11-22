@@ -1,5 +1,10 @@
 package negocio.controllers;
 
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 
@@ -15,6 +20,45 @@ public class GestorConsultas {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
+	class Ejercicio {
+//		 public static void main (String [] args){
+//			 Connection conexion = null;
+//			 Statement sentencia = null;
+//			 ResultSet resultado;
+//			 try {
+//				 Class.forName ("sun.jdbc.odbc.JdbcOdbcDriver");
+//				 }
+//				 catch (Exception e) {
+//				 System.out.println("No se pudo cargar el puente JDBC-ODBC");
+//				 return;
+//				 }
+//			 try {
+//				conexion=DriverManager.getConnection ("jdbc:odbc:prueba");
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			 try {
+//				sentencia = (Statement) conexion.createStatement();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			 try {
+//				resultado =((java.sql.Statement) sentencia).executeQuery("SELECT * FROM nombre");
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			 while (resultado.next()) {
+//				 String nombre = resultado.getString ("Nombre");
+//				 String apellido = resultado.getString ("Apellidos");
+//				 System.out.println( "Los datos son: "+ nombre+“"+apellido);
+//				 }
+//
+//		}
+		}
+	
 	public double consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
 		double ingresos = 0;
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();

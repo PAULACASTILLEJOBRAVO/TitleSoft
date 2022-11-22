@@ -57,7 +57,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		String SelectSQLEdicion= "SELECT * FROM cursopropio"
 				+ "WHERE estado = '"+estado+"'and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBaseDeDatos.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Cursos encontrados");

@@ -6,6 +6,15 @@ import negocio.entities.CursoPropio;
 import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
 
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Vector;
+
+import org.apache.derby.jdbc.EmbeddedDriver;
 public class UsuarioDAO extends AbstractEntityDAO{
 
 	
@@ -16,7 +25,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
 
 		
-		resultado = GestorBD.select(SelectSQL);
+		resultado = GestorBaseDeDatos.select(SelectSQL);
 		
 		if (resultado.isEmpty()==false) {
 			System.out.println("usuario seleccionado");
@@ -49,7 +58,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		String insertSQL = "INSERT INTO usuarios (idusuarios,password,tipo) "
 				+ "VALUES ( '"+usuario.getIdUsuario()+"', '"+usuario.getPassword()+"','"+usuario.getTipo()+"')";
 
-		resultado = GestorBD.insert(insertSQL); 
+		resultado = GestorBaseDeDatos.insert(insertSQL); 
 		if (resultado > 0) {
 			System.out.println("Usuario nuevo creado");
 		}else
@@ -66,7 +75,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 				+  "idusuario='"+usuario.getIdUsuario()+"',"
 				+ " password='"+usuario.getPassword()+"',"
 				+ "tipo='"+usuario.getTipo()+"' ";
-		resultado = GestorBD.update(updateSQL);
+		resultado = GestorBaseDeDatos.update(updateSQL);
 		
 		
 		if (resultado > 0) {
@@ -83,7 +92,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		Usuario usuario =(Usuario) entity;
 		String insertSQL = " DELETE FROM usuarios WHERE idusuario='"+usuario.getIdUsuario()+"' ";
 
-		resultado = GestorBD.insert(insertSQL); 
+		resultado = GestorBaseDeDatos.insert(insertSQL); 
 		if (resultado > 0) {
 			System.out.println("Eliminado usuario");
 		}else

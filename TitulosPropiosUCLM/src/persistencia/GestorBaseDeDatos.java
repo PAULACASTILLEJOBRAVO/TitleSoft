@@ -14,7 +14,7 @@ public class GestorBaseDeDatos {
 		// Conexion con la base de datos
 		protected static Connection mBD;
 		// Identificador ODBC de la base de datos
-		private static String url = "jdbc:mysql://localhost:3307/practicabd?user=alumno&password=alumno; create = true";
+		private static String url = "jdbc:mysql://localhost:3307/DataBase; create = true";
 		// Driven para conectar con bases de datos MySQL
 		private static String driver = "com.mysql.jdbc.Driver";
 
@@ -30,16 +30,16 @@ public class GestorBaseDeDatos {
 		}
 
 		// Metodo para realizar la conexion a la base de datos
-		private void conectar() throws Exception {
+		public static void conectar() throws Exception {
 			Class.forName(driver);
 			mBD = DriverManager.getConnection(url);
 		}
-		public void desconectar() throws Exception {
+		public static void desconectar() throws Exception {
 			mBD.close();
 		}
 
 		// Metodo para realizar una insercion en la base de datos
-		public int insert(String SQL) throws SQLException, Exception {
+		public static int insert(String SQL) throws SQLException, Exception {
 			conectar();
 			PreparedStatement stmt = mBD.prepareStatement(SQL);
 			int res = stmt.executeUpdate();
@@ -58,7 +58,7 @@ public class GestorBaseDeDatos {
 		}
 
 		// Metodo para realizar una eliminacion en la base de datos
-		public int update(String SQL) throws SQLException, Exception {
+		public static int update(String SQL) throws SQLException, Exception {
 			conectar();
 			PreparedStatement stmt = mBD.prepareStatement(SQL);
 			int res = stmt.executeUpdate();
@@ -67,7 +67,7 @@ public class GestorBaseDeDatos {
 			return res;
 		}
 
-		public Vector<Object> select(String SQL) throws SQLException, Exception {
+		public static Vector<Object> select(String SQL) throws SQLException, Exception {
 
 			Vector<Object> vectoradevolver = new Vector<Object>();
 			conectar();
