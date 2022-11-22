@@ -92,7 +92,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Ingresos Calculados");
-			ingresos=Integer.parseInt(resultado.toString());
+			ingresos=Double.parseDouble(resultado.toString());
 
 		}else
 			System.err.println("Error calculando ingresos");
@@ -130,19 +130,18 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	}
 
 
-	public Vector<Object> listarIdControlador(int idControlador) throws Exception{
+	public Vector<Object> listarIdControlador(String idControlador) throws Exception{
 
 
 		Vector<Object> resultado;
-		String SelectSQLEdicion= "SELECT FROM cursopropio"
-				+ "WHERE idControlador= '"+idControlador+"' ";
+		String SelectSQLEdicion= "SELECT * FROM cursopropio WHERE idControlador LIKE '"+idControlador+"' ";
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Cursos encotradas");
 
 		}else
-			System.err.println("Error encotrando cursos");
+			System.err.println("Error encontrando cursos");
 
 		return resultado;
 	}
@@ -152,7 +151,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		CursoPropio cursoReturn=null;
-		String SelectSQL= "SELECT * FROM cursopropio WHERE id LIKE '"+id+"' " ;
+		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal LIKE '"+id+"' " ;
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -165,7 +164,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 			
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			//Coleccion de matriculas y materias
-			Vector<Object> listaCursosIdControlador= listarIdControlador(Integer.parseInt(aux[1]));
+			Vector<Object> listaCursosIdControlador= listarIdControlador(aux[1].trim());
 			Collection<Matricula> matriculas=null;
 			Collection<Materia> materias=null;
 			GestorMatriculacion gMatriculas=new GestorMatriculacion();

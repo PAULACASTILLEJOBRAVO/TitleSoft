@@ -45,7 +45,9 @@ public class GestorConsultas {
 		return estados; 
 		
 	}
-
+	
+	
+	
 	/**
 	 * 
 	 * @param fechaInicio

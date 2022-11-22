@@ -43,9 +43,10 @@ public class CentroDAO extends AbstractEntityDAO {
 		if (resultado.isEmpty()==false) {
 			System.out.println("Centro seleccionado");
 			
+			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			
 			
-				centroEncontrado = new Centro(null, null, id, SelectSQL, 0);
+				centroEncontrado = new Centro(null, null, aux[0], aux[1], 0);
 			
 		}else
 			System.err.println("Error al seleccionar centro");
