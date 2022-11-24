@@ -64,12 +64,12 @@ public class PantallaLogin extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				GestorUsuarios gUsuario=new GestorUsuarios();
 
 				if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 					System.out.println("Sesion iniciada");
-
 
 					Usuario usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
