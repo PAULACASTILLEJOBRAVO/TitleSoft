@@ -199,9 +199,9 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
 
 		try {
-			Date fechaInicioAux = (Date) formato.parse(textFieldFechaInicio.getText());
+			java.sql.Date fechaInicioAux =new java.sql.Date( ((formato.parse(textFieldFechaInicio.getText()).getTime())));
 			Date fechaFinalAux=(Date) formato.parse(textFieldFechaFinal.getText());
-
+			System.out.println(fechaInicioAux);
 			CursoPropio curso=gConsultas.seleccionarCurso(textFieldTipo.getText().trim());
 
 			if(curso.getTipo().equals("Corta Duracion")) {
@@ -272,15 +272,19 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 	public void botonConfirmarEdiciones(JTextField textFieldFechaFinalEdiciones, JTextField textFieldFechaInicioEdiciones) {
 
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
 		try {
 			Date fechaInicioAux = (Date) formato.parse(textFieldFechaInicioEdiciones.getText());
 			Date fechaFinalAux=(Date) formato.parse(textFieldFechaFinalEdiciones.getText());
 
+			java.sql.Date fechaInicioSQL= new java.sql.Date(fechaInicioAux.getTime());
+			java.sql.Date fechaFinalSQL= new java.sql.Date(fechaFinalAux.getTime());
+			
+			System.out.println(fechaInicioSQL);
 			GestorConsultas gConsultas=new GestorConsultas();
 
-			Collection<CursoPropio> cursosEncontrados=gConsultas.listarEdicionesCursos(fechaInicioAux, fechaFinalAux);
+			Collection<CursoPropio> cursosEncontrados=gConsultas.listarEdicionesCursos(fechaInicioSQL, fechaFinalSQL);
 
 			Object []aux= cursosEncontrados.toArray();				
 
@@ -288,7 +292,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 
 			JFrame jFrame=new JFrame();
-			jFrame.setTitle("Ediciones: Fecha inicial "+fechaInicioAux+" .Fecha final "+fechaFinalAux);
+			jFrame.setTitle("Ediciones: Fecha inicial "+fechaInicioSQL+" .Fecha final "+fechaFinalSQL);
 			DefaultTableModel tabla=new DefaultTableModel();
 			JTable jTabla = new JTable();
 			jTabla.setBounds(30,10,230,280);
