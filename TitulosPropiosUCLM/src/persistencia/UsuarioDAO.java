@@ -1,23 +1,67 @@
 package persistencia;
 
+import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
 import java.util.Vector;
 
-import negocio.entities.CursoPropio;
-import negocio.entities.TipoUsuario;
-import negocio.entities.Usuario;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import negocio.controllers.GestorConsultas;
+import negocio.controllers.GestorProfesorUCLM;
+import negocio.entities.*;
+import org.apache.derby.jdbc.EmbeddedDriver;
 
 public class UsuarioDAO extends AbstractEntityDAO{
 
 	
 	@Override
+//	public Object get(String id) throws Exception {
+//		Vector<Object> resultado;
+//		Usuario UsuarioReturn=null;
+//		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
+//
+//		
+//		resultado = GestorBD.select(SelectSQL);
+//		
+//		if (resultado.isEmpty()==false) {
+//			System.out.println("usuario seleccionado");
+//			
+//			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
+//			
+//			
+//			if(aux[2].trim().equals("estudiante")) {
+//				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
+//			}else if(aux[2].trim().equals("profesor")) {
+//				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
+//			}else if (aux[2].trim().equals("vicerector")) {
+//				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
+//			}else if (aux[2].trim().equals("jefe")) {
+//				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
+//			
+//			}
+//
+//		}else
+//			System.err.println("Error al seleccionar usuario");
+//
+//		return UsuarioReturn ;
+//
+//	}
 	public Object get(String id) throws Exception {
-		Vector<Object> resultado;
-		Usuario UsuarioReturn=null;
-		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
+		System.out.println("'''''''''''''''''''''''''''''''''''''");
 
-		
+		Usuario UsuarioReturn = null;
+		Vector<Object> resultado;
+		//Vector<Object> aux = null;
+		String SelectSQL = "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' ";
+		//Vector<Object> vectoradevolver=new Vector<Object>();
 		resultado = GestorBD.select(SelectSQL);
-		
+		System.out.println("+++++++++++++++++++++++++++++++++");
+
 		if (resultado.isEmpty()==false) {
 			System.out.println("usuario seleccionado");
 			
@@ -34,12 +78,11 @@ public class UsuarioDAO extends AbstractEntityDAO{
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			
 			}
-
+			
 		}else
 			System.err.println("Error al seleccionar usuario");
-
-		return UsuarioReturn ;
-
+		
+		return UsuarioReturn;
 	}
 
 	@Override

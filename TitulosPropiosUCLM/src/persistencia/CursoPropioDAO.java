@@ -1,18 +1,25 @@
 package persistencia;
 
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+
 import negocio.controllers.GestorCentro;
+import negocio.controllers.GestorConsultas;
 import negocio.controllers.GestorMateria;
 import negocio.controllers.GestorMatriculacion;
-import negocio.controllers.GestorProfesor;
 import negocio.controllers.GestorProfesorUCLM;
 import negocio.entities.*;
+import org.apache.derby.jdbc.EmbeddedDriver;
 
 public class CursoPropioDAO extends AbstractEntityDAO {
 
@@ -336,7 +343,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		return cursoReturn= new CursoPropio(matriculas, centro, director, secretario, materias, estado, tipo.CORTA_DURACION, cursoDAO, Integer.parseInt(aux[1]), Integer.parseInt(aux[0]), aux[2],Integer.parseInt( aux[3]), fechaInicial, fechaFinal, Double.parseDouble(aux[6]), Integer.parseInt(aux[7]));
 
 
-		//		
+				
 	}
 	
 
