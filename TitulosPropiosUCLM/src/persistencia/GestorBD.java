@@ -169,15 +169,13 @@ public class GestorBD {
 		 * recuperan de la base de datos.
 		 */
 
-//		Driver derbyEmbeddedDriver = new EmbeddedDriver();
-//		DriverManager.registerDriver(derbyEmbeddedDriver);
-//		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
-//		
-		System.out.println("tttttttttttttttttttttttttttttttttttttt");
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		String SQL_Consulta = "SELECT idusuario, contrasenia FROM Usuario WHERE idusuario = '"+SQL+"'";
 
 		Vector<Object> vectoradevolver = new Vector<Object>();
-		conectar();
-		System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+		//conectar();
 		Statement stmt = mBD.createStatement();
 		ResultSet res = stmt.executeQuery(SQL);
 		while (res.next()) {

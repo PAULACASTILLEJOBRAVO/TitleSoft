@@ -52,8 +52,6 @@ public class UsuarioDAO extends AbstractEntityDAO{
 //
 //	}
 	public Object get(String id) throws Exception {
-		System.out.println("'''''''''''''''''''''''''''''''''''''");
-
 		Usuario UsuarioReturn = null;
 		Vector<Object> resultado;
 		//Vector<Object> aux = null;
