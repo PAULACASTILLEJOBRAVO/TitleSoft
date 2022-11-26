@@ -33,11 +33,11 @@ public class GestorConsultas {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public Collection<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso, Date fechaInicio, Date fechaFin) {
+	public Collection<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
 		try {
-			estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso, fechaInicio, fechaFin);
+			estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso);
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
 
@@ -71,8 +71,17 @@ public class GestorConsultas {
 		return cursoDAO.seleccionarCurso(id);
 	}
 	
+	public CursoPropio actualizarCurso(CursoPropio curso) throws Exception {
+		
+		CursoPropioDAO cursoDAO=new CursoPropioDAO();
+		return cursoDAO.editarCurso(curso);
+	}
 	
-	
-	
+	public Collection<CursoPropio> cursosPorCentro(String id) throws Exception{
+		CursoPropioDAO cursoDAO=new CursoPropioDAO();
+		return cursoDAO.cursosPorCentro(id);
+		
+	}
+
 	
 }

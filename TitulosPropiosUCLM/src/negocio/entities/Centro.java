@@ -39,13 +39,13 @@ public class Centro {
 		this.idReal = attribute;
 	}
 	public Centro(Collection<CursoPropio> cursoPropios, Collection<ProfesorUCLM> plantilla, String nombre,
-			String localizacion, int attribute) {
+			String localizacion, int idReal) {
 		super();
 		this.cursoPropios = cursoPropios;
 		this.plantilla = plantilla;
 		this.nombre = nombre;
 		this.localizacion = localizacion;
-		this.idReal = attribute;
+		this.idReal = idReal;
 	}
 
 }

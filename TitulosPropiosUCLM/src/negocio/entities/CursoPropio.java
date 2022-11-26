@@ -6,7 +6,6 @@ import persistencia.*;
 public class CursoPropio {
 
 	Collection<Matricula> matriculas;
-	Centro centro;
 	ProfesorUCLM director;
 	ProfesorUCLM secretario;
 	Collection<Materia> materias;
@@ -27,12 +26,6 @@ public class CursoPropio {
 	}
 	public void setMatriculas(Collection<Matricula> matriculas) {
 		this.matriculas = matriculas;
-	}
-	public Centro getCentro() {
-		return centro;
-	}
-	public void setCentro(Centro centro) {
-		this.centro = centro;
 	}
 	public ProfesorUCLM getDirector() {
 		return director;
@@ -118,12 +111,11 @@ public class CursoPropio {
 	public void setEdicion(int edicion) {
 		this.edicion = edicion;
 	}
-	public CursoPropio(Collection<Matricula> matriculas, Centro centro, ProfesorUCLM director, ProfesorUCLM secretario,
+	public CursoPropio(Collection<Matricula> matriculas, ProfesorUCLM director, ProfesorUCLM secretario,
 			Collection<Materia> materias, EstadoCurso estado, TipoCurso tipo, CursoPropioDAO cursoPropioDao,int idControlador, int idReal,
 			String nombre, int eCTS, Date fechaInicio, Date fechaFin, double tasaMatricula, int edicion) {
 		super();
 		this.matriculas = matriculas;
-		this.centro = centro;
 		this.director = director;
 		this.secretario = secretario;
 		this.materias = materias;

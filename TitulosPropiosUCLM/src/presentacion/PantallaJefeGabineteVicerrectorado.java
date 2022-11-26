@@ -25,6 +25,7 @@ import javax.swing.table.TableRowSorter;
 
 import negocio.controllers.GestorConsultas;
 import negocio.entities.CursoPropio;
+import negocio.entities.EstadoCurso;
 import negocio.entities.TipoCurso;
 import persistencia.*;
 
@@ -114,11 +115,6 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				add(btnConfirmar);
 
 
-
-
-
-
-
 			}
 		});
 		btnConsultarIngresos.setBounds(200, 100, 150, 20);
@@ -185,7 +181,116 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		btnListarEdiciones.setBounds(200, 150, 150, 20);
 		add(btnListarEdiciones);
 
+		JButton btnAprobarCursos = new JButton("Aprobar Cursos");
+		btnAprobarCursos.addActionListener(new ActionListener(){
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				JTextField TextIDcurso = new JTextField();
+
+				setTitle("Sesion: Jefe Gabinete-------Aprobar Cursos");
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				setBounds(300, 300, 520, 300);
+				contentPane = new JPanel();
+				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+				setContentPane(contentPane);
+				contentPane.setLayout(null);
+
+
+
+
+				//mostrar informacion de los cursos propuestos
+				GestorConsultas gConsultas=new GestorConsultas();
+				Collection<CursoPropio> resultado=gConsultas.consultarEstadoCursos(EstadoCurso.PROPUESTO);
+
+				JFrame jFrame=new JFrame();
+				jFrame.setTitle("Propuestas Cursos");
+				DefaultTableModel tabla=new DefaultTableModel();
+				JTable jTabla = new JTable();
+				jTabla.setBounds(30,10,230,280);
+				tabla.addColumn("Id");
+				tabla.addColumn("Nombre del Curso");
+				tabla.addColumn("ECTS");
+				tabla.addColumn("Tasa Matricula");
+				tabla.addColumn("Edicion");
+				tabla.addColumn("Estado");
+				tabla.addColumn("Tipo Curso");
+				tabla.addColumn("Secretario");
+				tabla.addColumn("Director");
+				tabla.addColumn("Materia");
+
+				Iterator<CursoPropio> it=resultado.iterator();
+				while(it.hasNext()) {
+					CursoPropio cursoAux=it.next();
+
+					tabla.addRow(new Object[] {
+							cursoAux.getIdReal(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
+							cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
+							cursoAux.getSecretario(),cursoAux.getDirector(),cursoAux.getDirector(),cursoAux.getMaterias()
+
+					});
+				}
+
+				JScrollPane jScrollPane = new JScrollPane(jTabla);
+				jFrame.add(jScrollPane);
+				jFrame.setSize(350, 300);
+				jFrame.setVisible(true);
+
+				//fin de la informacion de los cursos
+
+				JLabel lblIDcurso = new JLabel("Id del curso:");
+				lblIDcurso.setBounds(100, 90, 79, 20);
+				add(lblIDcurso);
+
+
+				TextIDcurso.setBounds(250, 94, 132, 20);
+				add(TextIDcurso);
+				TextIDcurso.setColumns(10);
+
+
+				JButton btnConfirmar = new JButton("Aprobar");
+				btnConfirmar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						try {
+							botonAprobarCurso(TextIDcurso);
+						} catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+
+					}
+				});
+				btnConfirmar.setBounds(201, 274, 100, 20);
+				add(btnConfirmar);
+
+				JButton btnRechazar = new JButton("Rechazar");
+				btnRechazar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						try {
+							botonRechazarCurso(TextIDcurso);
+						} catch (Exception e1) {
+						
+							e1.printStackTrace();
+						}
+
+					}
+				});
+				btnRechazar.setBounds(201, 294, 100, 20);
+				add(btnRechazar);
+
+
+
+
+
+			}
+		});
+		btnAprobarCursos.setBounds(200, 200, 150, 20);
+		add(btnAprobarCursos);
 
 
 	}
@@ -280,7 +385,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 			java.sql.Date fechaInicioSQL= new java.sql.Date(fechaInicioAux.getTime());
 			java.sql.Date fechaFinalSQL= new java.sql.Date(fechaFinalAux.getTime());
-			
+
 			System.out.println(fechaInicioSQL);
 			GestorConsultas gConsultas=new GestorConsultas();
 
@@ -335,4 +440,27 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 	}
 
+	public void botonAprobarCurso(JTextField textIDcurso) throws Exception {
+		
+		GestorConsultas gConsultas= new GestorConsultas();
+		CursoPropio cursoAprobado= gConsultas.seleccionarCurso(textIDcurso.toString());
+		
+		cursoAprobado.setEstado(EstadoCurso.VALIDADO);
+		
+		cursoAprobado=gConsultas.actualizarCurso(cursoAprobado);
+		
+		
+		
+	}	
+
+	public void botonRechazarCurso(JTextField textIDcurso) throws Exception {
+		
+		GestorConsultas gConsultas= new GestorConsultas();
+		CursoPropio cursoRechazado= gConsultas.seleccionarCurso(textIDcurso.toString());
+		
+		cursoRechazado.setEstado(EstadoCurso.PROPUESTA_RECHAZADA);
+		
+		cursoRechazado=gConsultas.actualizarCurso(cursoRechazado);
+
+	}
 }
