@@ -186,6 +186,8 @@ public class GestorBD {
 		}
 		stmt.close();
 		//desconectar();
+		
+		
 		return vectoradevolver;
 		
 	}
