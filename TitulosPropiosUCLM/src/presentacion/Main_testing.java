@@ -17,7 +17,6 @@ import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
 import persistencia.*;
 
-
 public class Main_testing extends JFrame{
 
 	
@@ -32,8 +31,7 @@ public class Main_testing extends JFrame{
 		frame.setVisible(true);
 
 		
-		GestorBD.conectarBD();	
-		
+		GestorBD.conectar();	 
 
 	}
 
