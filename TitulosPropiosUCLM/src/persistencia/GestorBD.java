@@ -16,7 +16,7 @@ public class GestorBD {
 
 	private static String driver= "com.mysql.cj.jdbc.Driver"; 
 	private static String user= "root"; 
-	private static String password="root";
+	private static String password="Pelusina2008";
 
 	public static void conectarBD() throws Exception { 
 		Class.forName(driver); 
