@@ -19,38 +19,6 @@ import org.apache.derby.jdbc.EmbeddedDriver;
 public class UsuarioDAO extends AbstractEntityDAO{
 
 	
-	@Override
-//	public Object get(String id) throws Exception {
-//		Vector<Object> resultado;
-//		Usuario UsuarioReturn=null;
-//		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
-//
-//		
-//		resultado = GestorBD.select(SelectSQL);
-//		
-//		if (resultado.isEmpty()==false) {
-//			System.out.println("usuario seleccionado");
-//			
-//			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
-//			
-//			
-//			if(aux[2].trim().equals("estudiante")) {
-//				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
-//			}else if(aux[2].trim().equals("profesor")) {
-//				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
-//			}else if (aux[2].trim().equals("vicerector")) {
-//				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
-//			}else if (aux[2].trim().equals("jefe")) {
-//				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
-//			
-//			}
-//
-//		}else
-//			System.err.println("Error al seleccionar usuario");
-//
-//		return UsuarioReturn ;
-//
-//	}
 	public Object get(String id) throws Exception {
 		Usuario UsuarioReturn = null;
 		Vector<Object> resultado;
@@ -58,13 +26,10 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		String SelectSQL = "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' ";
 		//Vector<Object> vectoradevolver=new Vector<Object>();
 		resultado = GestorBD.select(SelectSQL);
-		System.out.println("+++++++++++++++++++++++++++++++++");
-
 		if (resultado.isEmpty()==false) {
 			System.out.println("usuario seleccionado");
 			
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
-			
 			
 			if(aux[2].trim().equals("estudiante")) {
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);

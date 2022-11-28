@@ -9,11 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-public class GestorBD {
 
-	protected static GestorBD mInstancia = null; // Conexion con la base de datos
-	protected static Connection mBD; // Identificador ODBC de la base de datos
-	private static String url ="jdbc:mysql://localhost:3306/iso_ii"; // Driven para conectar con bases de datos MySQL
 
 import org.apache.derby.jdbc.EmbeddedDriver;
 
@@ -22,10 +18,6 @@ public class GestorBD {
 	protected static GestorBD mInstancia = null;
 	// Conexion con la base de datos
 	protected static Connection mBD;
-	// Identificador ODBC de la base de datos
-	private static String url = "jdbc:mysql://localhost:3307/practicabd?user=alumno&password=alumno";
-	// Driven para conectar con bases de datos MySQL
-	private static String driver = "com.mysql.jdbc.Driver";
 
 	// Constructor
 	private GestorBD() throws Exception {
@@ -41,10 +33,6 @@ public class GestorBD {
 		if (mInstancia == null) {
 			mInstancia = new GestorBD();
 		}
-<<<<<<< HEAD
-		stmt.close(); 
-		conectarBD(); 
-=======
 		return mInstancia;
 	}
 
@@ -177,15 +165,13 @@ public class GestorBD {
 		 * recuperan de la base de datos.
 		 */
 
-//		Driver derbyEmbeddedDriver = new EmbeddedDriver();
-//		DriverManager.registerDriver(derbyEmbeddedDriver);
-//		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
-//		
-		System.out.println("tttttttttttttttttttttttttttttttttttttt");
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		String SQL_Consulta = "SELECT idusuario, contrasenia FROM Usuario WHERE idusuario = '"+SQL+"'";
 
 		Vector<Object> vectoradevolver = new Vector<Object>();
-		conectar();
-		System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+		//conectar();
 		Statement stmt = mBD.createStatement();
 		ResultSet res = stmt.executeQuery(SQL);
 		while (res.next()) {
@@ -196,6 +182,8 @@ public class GestorBD {
 		}
 		stmt.close();
 		//desconectar();
+		
+		
 		return vectoradevolver;
 		
 	}
