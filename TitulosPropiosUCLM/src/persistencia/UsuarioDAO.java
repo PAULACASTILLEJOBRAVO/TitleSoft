@@ -26,18 +26,25 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		String SelectSQL = "SELECT * FROM usuario WHERE idusuario LIKE '"+id+"' ";
 		//Vector<Object> vectoradevolver=new Vector<Object>();
 		resultado = GestorBD.select(SelectSQL);
+		
 		if (resultado.isEmpty()==false) {
 			System.out.println("usuario seleccionado");
 			
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
-			
 			if(aux[1].trim().equals("estudiante")) {
+				System.out.println("SOY EL ESTUDIANTE");
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
 			}else if(aux[1].trim().equals("profesor")) {
+				System.out.println("SOY EL PROFESOR");
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
 			}else if (aux[1].trim().equals("vicerector")) {
+				System.out.println("SOY EL VICERRECTOR");
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
-			}else if (aux[1].trim().equals("jefe")) {
+			}else if (aux[2].trim().equals("jefe")) {
+				System.out.println("SOY EL JEFE");
+				System.out.println(aux[1]);
+				System.out.println(aux[0]);
+				System.out.println(aux[2]);
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			
 			}

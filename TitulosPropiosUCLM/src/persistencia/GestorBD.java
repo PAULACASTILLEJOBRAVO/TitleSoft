@@ -168,7 +168,7 @@ public class GestorBD {
 		Driver derbyEmbeddedDriver = new EmbeddedDriver();
 		DriverManager.registerDriver(derbyEmbeddedDriver);
 		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
-		String SQL_Consulta = "select idusuario, contrasenia FROM Usuario where idusuario = '"+SQL+"'";
+		String SQL_Consulta = "select * FROM Usuario where idusuario = '"+SQL+"'";
 
 		Vector<Object> vectoradevolver = new Vector<Object>();
 		//conectar();
@@ -178,6 +178,7 @@ public class GestorBD {
 			Vector<Object> v = new Vector<Object>();
 			v.add(res.getObject(1));
 			v.add(res.getObject(2));
+			v.add(res.getObject(3));
 			vectoradevolver.add(v);
 		}
 		stmt.close();
