@@ -23,7 +23,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		Usuario UsuarioReturn = null;
 		Vector<Object> resultado;
 		//Vector<Object> aux = null;
-		String SelectSQL = "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' ";
+		String SelectSQL = "SELECT * FROM usuario WHERE idusuario LIKE '"+id+"' ";
 		//Vector<Object> vectoradevolver=new Vector<Object>();
 		resultado = GestorBD.select(SelectSQL);
 		if (resultado.isEmpty()==false) {
@@ -31,13 +31,13 @@ public class UsuarioDAO extends AbstractEntityDAO{
 			
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
 			
-			if(aux[2].trim().equals("estudiante")) {
+			if(aux[1].trim().equals("estudiante")) {
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
-			}else if(aux[2].trim().equals("profesor")) {
+			}else if(aux[1].trim().equals("profesor")) {
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
-			}else if (aux[2].trim().equals("vicerector")) {
+			}else if (aux[1].trim().equals("vicerector")) {
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
-			}else if (aux[2].trim().equals("jefe")) {
+			}else if (aux[1].trim().equals("jefe")) {
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			
 			}
@@ -52,7 +52,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String insertSQL = "INSERT INTO usuarios (idusuarios,password,tipo) "
+		String insertSQL = "INSERT INTO usuario (idusuario,password,tipo) "
 				+ "VALUES ( '"+usuario.getIdUsuario()+"', '"+usuario.getPassword()+"','"+usuario.getTipo()+"')";
 
 		resultado = GestorBD.insert(insertSQL); 
@@ -87,7 +87,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 	public int delete(Object entity) throws Exception {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String insertSQL = " DELETE FROM usuarios WHERE idusuario='"+usuario.getIdUsuario()+"' ";
+		String insertSQL = " DELETE FROM usuario WHERE idusuario='"+usuario.getIdUsuario()+"' ";
 
 		resultado = GestorBD.insert(insertSQL); 
 		if (resultado > 0) {
