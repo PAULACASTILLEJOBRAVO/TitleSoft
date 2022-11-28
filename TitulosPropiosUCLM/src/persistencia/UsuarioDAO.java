@@ -68,7 +68,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 	public Object update(Object entity) throws Exception {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String updateSQL = "UPDATE usuarios SET "
+		String updateSQL = "UPDATE usuario SET "
 				+  "idusuario='"+usuario.getIdUsuario()+"',"
 				+ " password='"+usuario.getPassword()+"',"
 				+ "tipo='"+usuario.getTipo()+"' ";
