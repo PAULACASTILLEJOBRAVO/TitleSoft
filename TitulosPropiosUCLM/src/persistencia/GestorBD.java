@@ -12,7 +12,7 @@ public class GestorBD {
 
 	protected static GestorBD mInstancia = null; // Conexion con la base de datos
 	protected static Connection mBD; // Identificador ODBC de la base de datos
-	private static String url ="jdbc:mysql://localhost:3306/iso_ii"; // Driven para conectar con bases de datos MySQL
+	private static String url ="jdbc:mysql://localhost:3306/iso2"; // Driven para conectar con bases de datos MySQL
 
 	private static String driver= "com.mysql.cj.jdbc.Driver"; 
 	private static String user= "root"; 
@@ -59,7 +59,7 @@ public class GestorBD {
 	 * @param sql
 	 */
 
-	public static int insert(String sql)throws Exception { 
+	public static int insert(String sql)throws Exception{ 
 		conectarBD();
 		PreparedStatement stmt = mBD.prepareStatement(sql); 
 		int res = stmt.executeUpdate(sql); 

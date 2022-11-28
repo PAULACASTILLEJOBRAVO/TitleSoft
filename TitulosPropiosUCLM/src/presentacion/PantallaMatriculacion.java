@@ -1,10 +1,10 @@
 package presentacion;
 
 import java.sql.Date;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -116,15 +116,14 @@ public class PantallaMatriculacion extends JFrame {
 				ModoPago modoPago = rdbtnNewRadioButton.isSelected() ? ModoPago.TRANSFERENCIA : ModoPago.TARJETA_CREDITO;
 				GestorMatriculacion gm = new GestorMatriculacion();
 				String fecha=textFieldFecha.getText();
-				java.sql.Date fechaSQL = java.sql.Date.valueOf(fecha);
-				
-				gm.realizarMatriculacion(textFieldId.getText(), modoPago, fechaSQL, true);
+				Date fechaSQL = Date.valueOf(fecha);
+
+				gm.realizarMatriculacion(textFieldCurso.getText(), modoPago, fechaSQL, true);
 			} else {
 				lblError.setText("No se ha podido completar la matricula. Rellena todos los campos.");
 			}
 		}catch (Exception e) {
-			//Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula");
-			e.getStackTrace();
+			Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula.");
 		}
 	}
 

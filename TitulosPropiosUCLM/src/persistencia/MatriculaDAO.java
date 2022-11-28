@@ -1,5 +1,6 @@
 package persistencia;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
@@ -132,17 +133,17 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	}
 
 	@Override
-	public int insert(Object entity) throws Exception {
+	public int insert(Object entity) throws Exception{
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
-		String insertSQL = "INSERT INTO matricula (titulacion,Fecha,pagado,Modo) " //quitar curso de la base de datos
-				+ "VALUES ( '"+matricula.getTitulo()+"' , '"+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
+		String insertSQL = "INSERT INTO matricula (titulacion,Fecha,pagado,Modo) " 
+				+ "VALUES ( '"+matricula.getTitulo()+"' , '"+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
-			System.out.println("Matricula nueva creado");
+			System.out.println("Matricula nueva creada.");
 		}else
-			System.err.println("Error creando matricula nueva ");
+			System.err.println("Error creando matricula nueva.");
 
 		return resultado;
 	}
