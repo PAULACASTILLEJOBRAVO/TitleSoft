@@ -1,5 +1,5 @@
 package persistencia;
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
@@ -20,7 +20,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	 * @param curso
 	 */
 	public Matricula seleccionarMatricula(String id) throws Exception {
-		return (Matricula)update(id);
+		return (Matricula)get(id);
 		//error por el tipo de return
 	}
 
@@ -99,7 +99,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 		Vector<Object> resultado;
 		Matricula matriculaEncontrada=null;
 		
-		String SelectSQL= "SELECT * FROM matricula WHERE id LIKE '"+id+"' ";
+		String SelectSQL= "SELECT * FROM matricula WHERE titulacion LIKE '"+id.trim()+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -116,9 +116,9 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
 
 			
-			if(aux[3].equals("credito")) {
+			if(aux[3].trim().equals("credito")) {
 				matriculaEncontrada=new Matricula( aux[0], ModoPago.TARJETA_CREDITO, sqlDate,Boolean.parseBoolean(aux[2]));
-			}else if(aux[3].equals("transferencia")){
+			}else if(aux[3].trim().equals("transferencia")){
 				matriculaEncontrada=new Matricula( aux[0], ModoPago.TRANSFERENCIA, sqlDate, Boolean.parseBoolean(aux[2]));
 			}
 			

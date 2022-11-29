@@ -6,8 +6,8 @@ import java.util.Vector;
 
 import negocio.entities.*;
 public class ProfesorDAO extends AbstractEntityDAO {
-	
-	
+
+
 	public int crearProfesor(Profesor profe) throws Exception {
 		return insert(profe);
 
@@ -19,8 +19,8 @@ public class ProfesorDAO extends AbstractEntityDAO {
 	 */
 	public Profesor seleccionarProfesor(String id) throws Exception {
 		return (Profesor) get(id);
-		
-		
+
+
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class ProfesorDAO extends AbstractEntityDAO {
 	public int eliminarProfesor(Profesor profe) throws Exception {
 		return delete(profe);
 	}
-	
+
 	/**
 	 * 
 	 * @param estado
@@ -55,15 +55,15 @@ public class ProfesorDAO extends AbstractEntityDAO {
 			for (int i = 0; i < resultado.size(); i++) {
 				Profesor profeAux=(Profesor) resultado.get(i);
 				profesorEncontrados.add(profeAux);
-				
+
 			}
 
 		}else
 			System.err.println("Error encontrando cursos");
 
 		return profesorEncontrados;
-		
-		
+
+
 	}
 
 	@Override
@@ -74,10 +74,23 @@ public class ProfesorDAO extends AbstractEntityDAO {
 
 
 		resultado = GestorBD.select(SelectSQL);
-		
+
 		if (resultado.isEmpty()==false) {
 			System.out.println("Profesor seleccionado");
-			profesorEncontrado=(Profesor) resultado.get(0);
+
+			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
+
+			boolean doctor=false;
+			if(Integer.parseInt(aux[3].trim()) == 0) {
+				doctor=true;
+			}else if(Integer.parseInt(aux[3].trim()) == 1) {
+				doctor=false;
+			}else{
+				System.out.println("Error en la entradad de la base de datos, valor para doctor no valido");
+				return profesorEncontrado ;
+				
+			}
+			profesorEncontrado=new Profesor(aux[0],aux[1],aux[2],doctor);
 		}else
 			System.err.println("Error al seleccionar profesor");
 
@@ -131,6 +144,6 @@ public class ProfesorDAO extends AbstractEntityDAO {
 		return resultado;
 	}
 
-	
-	
+
+
 }

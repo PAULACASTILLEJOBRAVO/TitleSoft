@@ -42,9 +42,6 @@ public class UsuarioDAO extends AbstractEntityDAO{
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
 			}else if (aux[2].trim().equals("jefe")) {
 				System.out.println("SOY EL JEFE");
-				System.out.println(aux[1]);
-				System.out.println(aux[0]);
-				System.out.println(aux[2]);
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			
 			}

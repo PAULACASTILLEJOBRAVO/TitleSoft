@@ -2,6 +2,7 @@ package persistencia;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +14,7 @@ import negocio.controllers.GestorMatriculacion;
 import negocio.controllers.GestorProfesor;
 import negocio.controllers.GestorProfesorUCLM;
 import negocio.entities.*;
-
+//el bueno
 public class CursoPropioDAO extends AbstractEntityDAO {
 
 	/**
@@ -256,24 +257,20 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		String[] aux =  (cursoSplit.trim().replace("[", "").replace("]", "")).split(",") ;
 		//Coleccion de matriculas y materias
 		Vector<Object> listaCursosIdControlador= listarIdControlador(aux[1].trim());
-		Collection<Matricula> matriculas=null;
-		Collection<Materia> materias=null;
+		Collection<Matricula> matriculas = new ArrayList<Matricula>();
+		Collection<Materia> materias= new ArrayList<Materia>();
 		GestorMatriculacion gMatriculas=new GestorMatriculacion();
 		GestorMateria gMateria=new GestorMateria();
 
 
-		//centro
-		GestorCentro gCentro=new GestorCentro();
-
-
 		//ProfesorUCLM Director y secretario
 		GestorProfesorUCLM gProfesor= new GestorProfesorUCLM();
-		ProfesorUCLM director=gProfesor.seleccionarProfesor(aux[12]);
-		ProfesorUCLM secretario=gProfesor.seleccionarProfesor(aux[11]);
+		ProfesorUCLM director=gProfesor.seleccionarProfesor(aux[11]);
+		ProfesorUCLM secretario=gProfesor.seleccionarProfesor(aux[10]);
 
 
 
-		//Collection<Materia>
+		
 
 		//fecha
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -285,13 +282,13 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 
-		//Creacion de Collection<Matriculas>
+		//Creacion de Collection<Matriculas> y //Collection<Materia>
 		for(int i=0;i<listaCursosIdControlador.size();i++) {
 
 			String[] auxMatriculas =  (listaCursosIdControlador.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
-
-			matriculas.add(gMatriculas.seleccionarMatricula(auxMatriculas[2]));
-			materias.add(gMateria.seleccionarMaterias(auxMatriculas[13]));
+			Matricula matriculaAux=gMatriculas.seleccionarMatricula(auxMatriculas[2]);
+			matriculas.add(matriculaAux);
+			materias.add(gMateria.seleccionarMaterias(auxMatriculas[12]));
 		}
 
 

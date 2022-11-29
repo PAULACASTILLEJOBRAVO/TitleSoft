@@ -69,10 +69,10 @@ public class MateriaDAO extends AbstractEntityDAO {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public Materia listarMateriaCurso(String curso) throws Exception {
+	public Vector<Object> listarMateriaCurso(String curso) throws Exception {
 		// TODO - implement CursoPropioDAO.listarIngresos
 		Vector<Object> resultado;
-		Materia materiaEncontrada=null;
+		Vector<Object>  materiaEncontrada=null;
 		String SelectSQLEdicion= "SELECT * FROM materia"
 				+ "WHERE Curso = '"+curso+"'";
 
@@ -80,7 +80,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Materia encontrada");
-			materiaEncontrada= (Materia)resultado.get(0);
+//			materiaEncontrada= (Materia)resultado.get(0);
 		}else
 			System.err.println("Error encontrando materia");
 
@@ -123,7 +123,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		Materia materiaEncontrada=null;
-		String SelectSQL= "SELECT * FROM materia WHERE id LIKE '"+id+"' ";
+		String SelectSQL= "SELECT * FROM materia WHERE nombre LIKE '"+id.trim()+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
