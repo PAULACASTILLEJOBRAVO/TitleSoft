@@ -70,7 +70,7 @@ public class ProfesorDAO extends AbstractEntityDAO {
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		Profesor profesorEncontrado =null; 
-		String SelectSQL= "SELECT * FROM profesor WHERE dni LIKE '"+id+"' ";
+		String SelectSQL= "SELECT * FROM profesor WHERE dni = '"+id.trim()+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -81,9 +81,9 @@ public class ProfesorDAO extends AbstractEntityDAO {
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 
 			boolean doctor=false;
-			if(Integer.parseInt(aux[3].trim()) == 0) {
+			if(aux[3].trim().equals("true")) {
 				doctor=true;
-			}else if(Integer.parseInt(aux[3].trim()) == 1) {
+			}else if(aux[3].trim().equals("false")) {
 				doctor=false;
 			}else{
 				System.out.println("Error en la entradad de la base de datos, valor para doctor no valido");

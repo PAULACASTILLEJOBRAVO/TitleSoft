@@ -26,6 +26,8 @@ import javax.swing.table.TableRowSorter;
 import negocio.controllers.GestorConsultas;
 import negocio.entities.CursoPropio;
 import negocio.entities.EstadoCurso;
+import negocio.entities.Materia;
+import negocio.entities.ProfesorUCLM;
 import negocio.entities.TipoCurso;
 import persistencia.*;
 
@@ -257,7 +259,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 						try {
 							botonAprobarCurso(TextIDcurso);
 						} catch (Exception e1) {
-						
+
 							e1.printStackTrace();
 						}
 
@@ -274,7 +276,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 						try {
 							botonRechazarCurso(TextIDcurso);
 						} catch (Exception e1) {
-						
+
 							e1.printStackTrace();
 						}
 
@@ -301,15 +303,19 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 		double ingresos=0;
 
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
 		try {
-			java.sql.Date fechaInicioAux =new java.sql.Date( ((formato.parse(textFieldFechaInicio.getText()).getTime())));
-			Date fechaFinalAux=(Date) formato.parse(textFieldFechaFinal.getText());
+			Date fechaAux1 =(Date)formato.parse(textFieldFechaInicio.getText());
+			Date fechaAux2=(Date) formato.parse(textFieldFechaFinal.getText());
+			
+			Date fechaInicioAux=new java.sql.Date(fechaAux1.getTime());
+			Date fechaFinalAux=new java.sql.Date(fechaAux2.getTime());
+			
 			System.out.println(fechaInicioAux);
 			CursoPropio curso=gConsultas.seleccionarCurso(textFieldTipo.getText().trim());
 
-			if(curso.getTipo().equals("Corta Duracion")) {
+			if(curso.getTipo().toString().equals("CORTA_DURACION")) {
 
 				ingresos=gConsultas.consultarIngresos(TipoCurso.CORTA_DURACION, fechaInicioAux, fechaFinalAux);
 
@@ -317,7 +323,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				lblIngresos.setBounds(80, 274, 79, 13);
 				add(lblIngresos);
 
-			}else if(curso.getTipo().equals("Master")) {
+			}else if(curso.getTipo().toString().equals("MASTER")) {
 				ingresos=gConsultas.consultarIngresos(TipoCurso.MASTER, fechaInicioAux, fechaFinalAux);
 
 				JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -325,7 +331,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				add(lblIngresos);
 
 
-			}else if(curso.getTipo().equals("Experto")) {
+			}else if(curso.getTipo().toString().equals("EXPERTO")) {
 				ingresos=gConsultas.consultarIngresos(TipoCurso.EXPERTO, fechaInicioAux, fechaFinalAux);
 
 				JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -333,7 +339,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				add(lblIngresos);
 
 
-			}else if(curso.getTipo().equals("Especialista")) {
+			}else if(curso.getTipo().toString().equals("ESPECIALISTA")) {
 				ingresos=gConsultas.consultarIngresos(TipoCurso.ESPECIALISTA, fechaInicioAux, fechaFinalAux);
 
 				JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -341,7 +347,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				add(lblIngresos);
 
 
-			}else if(curso.getTipo().equals("Formacion avanzada")) {
+			}else if(curso.getTipo().toString().equals("FORMACION_AVANZADA")) {
 				ingresos=gConsultas.consultarIngresos(TipoCurso.FORMACION_AVANZADA, fechaInicioAux, fechaFinalAux);
 
 				JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -349,7 +355,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				add(lblIngresos);
 
 
-			}else if(curso.getTipo().equals("Formacion Continua")) {
+			}else if(curso.getTipo().toString().equals("FORMACION_CONTINUA")) {
 				ingresos=gConsultas.consultarIngresos(TipoCurso.FORMACION_CONTINUA, fechaInicioAux, fechaFinalAux);
 
 				JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -357,7 +363,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				add(lblIngresos);
 
 
-			}else if(curso.getTipo().equals("Microcredenciales")) {
+			}else if(curso.getTipo().toString().equals("MICROCREDENCIALES")) {
 				ingresos=gConsultas.consultarIngresos(TipoCurso.MICROCREDENCIALES, fechaInicioAux, fechaFinalAux);
 
 				JLabel lblIngresos = new JLabel(""+ingresos+"");
@@ -399,7 +405,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			JFrame jFrame=new JFrame();
 			jFrame.setTitle("Ediciones: Fecha inicial "+fechaInicioSQL+" .Fecha final "+fechaFinalSQL);
 			DefaultTableModel tabla=new DefaultTableModel();
-			JTable jTabla = new JTable();
+			JTable jTabla = new JTable(tabla);
 			jTabla.setBounds(30,10,230,280);
 			tabla.addColumn("Id");
 			tabla.addColumn("Nombre del Curso");
@@ -408,25 +414,35 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			tabla.addColumn("Edicion");
 			tabla.addColumn("Estado");
 			tabla.addColumn("Tipo Curso");
-			tabla.addColumn("Centro");
 			tabla.addColumn("Secretario");
 			tabla.addColumn("Director");
 			tabla.addColumn("Materia");
 
 
 			for (int i=0; i< aux.length;i++) {
-				String[] auxVariables=aux[i].toString().trim().replace("[", "").replace("]", "").split(",");
+				CursoPropio cursoAux=(CursoPropio)aux[i];
+				ProfesorUCLM director=cursoAux.getDirector();
+				ProfesorUCLM secretario=cursoAux.getSecretario();
+				Object[] materiasCurso=cursoAux.getMaterias().toArray();
+				String datosMateriaNombres="Materias: ";
+				
+				for(int j=0;j<materiasCurso.length;j++) {
 
-				tabla.addRow(new Object[] {auxVariables[0],auxVariables[1],auxVariables[2],auxVariables[3],
-						auxVariables[4],auxVariables[5],auxVariables[6],auxVariables[7],
-						auxVariables[8],auxVariables[9],auxVariables[10]
+					Materia materiaAux=(Materia)materiasCurso[j];
+					datosMateriaNombres=datosMateriaNombres+", "+materiaAux.getNombre();
+				}
+
+
+				tabla.addRow(new Object[] {cursoAux.getIdControlador(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
+						cursoAux.getEdicion(),cursoAux.getEstado().toString(),cursoAux.getTipo().toString(),secretario.getDni(),
+						director.getDni(),datosMateriaNombres
 
 				});
 			}
 
 			JScrollPane jScrollPane = new JScrollPane(jTabla);
 			jFrame.add(jScrollPane);
-			jFrame.setSize(350, 300);
+			jFrame.setSize(550, 500);
 			jFrame.setVisible(true);
 
 
@@ -441,25 +457,25 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 	}
 
 	public void botonAprobarCurso(JTextField textIDcurso) throws Exception {
-		
+
 		GestorConsultas gConsultas= new GestorConsultas();
 		CursoPropio cursoAprobado= gConsultas.seleccionarCurso(textIDcurso.toString());
-		
+
 		cursoAprobado.setEstado(EstadoCurso.VALIDADO);
-		
+
 		cursoAprobado=gConsultas.actualizarCurso(cursoAprobado);
-		
-		
-		
+
+
+
 	}	
 
 	public void botonRechazarCurso(JTextField textIDcurso) throws Exception {
-		
+
 		GestorConsultas gConsultas= new GestorConsultas();
 		CursoPropio cursoRechazado= gConsultas.seleccionarCurso(textIDcurso.toString());
-		
+
 		cursoRechazado.setEstado(EstadoCurso.PROPUESTA_RECHAZADA);
-		
+
 		cursoRechazado=gConsultas.actualizarCurso(cursoRechazado);
 
 	}

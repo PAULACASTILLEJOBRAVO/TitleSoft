@@ -76,7 +76,7 @@ public class Main_testing extends JFrame{
 		add( btnMatriculas);
 		
 		JButton btnEvaluar = new JButton("Evaluar Cursos");
-		 btnMatriculas.addActionListener(new ActionListener() {
+		btnEvaluar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {

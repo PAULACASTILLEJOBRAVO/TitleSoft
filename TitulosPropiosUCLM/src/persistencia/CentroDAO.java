@@ -36,7 +36,7 @@ public class CentroDAO extends AbstractEntityDAO {
 	public Vector<Object> listarNombreCentro(String nombre) throws Exception{
 		
 		Vector<Object> resultado;
-		String SelectSQLEdicion= "SELECT * FROM centro WHERE nombre LIKE '"+nombre.trim()+"' ";
+		String SelectSQLEdicion= "SELECT * FROM centro WHERE nombre = '"+nombre.trim()+"' ";
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
@@ -55,7 +55,7 @@ public class CentroDAO extends AbstractEntityDAO {
 		Vector<Object> resultado;
 		Centro centroEncontrado=null;
 		
-		String SelectSQL= "SELECT * FROM centro WHERE nombre LIKE '"+id.trim()+"' ";
+		String SelectSQL= "SELECT * FROM centro WHERE nombre = '"+id.trim()+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);

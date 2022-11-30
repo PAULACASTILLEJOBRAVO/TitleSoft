@@ -99,7 +99,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 		Vector<Object> resultado;
 		Matricula matriculaEncontrada=null;
 		
-		String SelectSQL= "SELECT * FROM matricula WHERE titulacion LIKE '"+id.trim()+"' ";
+		String SelectSQL= "SELECT * FROM matricula WHERE titulacion = '"+id.trim()+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -171,7 +171,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	public int delete(Object entity) throws Exception {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
-		String insertSQL = "DELETE FROM matricula WHERE '"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
+		String insertSQL = "DELETE FROM matricula WHERE titulacion='"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {

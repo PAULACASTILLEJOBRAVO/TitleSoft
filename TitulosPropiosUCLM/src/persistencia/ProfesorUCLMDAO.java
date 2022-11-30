@@ -15,7 +15,7 @@ public class ProfesorUCLMDAO extends AbstractEntityDAO{
 
 		Vector<Object> resultado;
 		ProfesorUCLM profesorReturn=null;
-		String SelectSQL= "SELECT * FROM profesoruclm WHERE dni LIKE '"+id.trim()+"' " ;
+		String SelectSQL= "SELECT * FROM profesoruclm WHERE dni = '"+id.trim()+"' " ;
 
 
 		resultado = GestorBD.select(SelectSQL);

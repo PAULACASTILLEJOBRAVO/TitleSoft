@@ -174,14 +174,29 @@ public class GestorBD {
 		//conectar();
 		Statement stmt = mBD.createStatement();
 		ResultSet res = stmt.executeQuery(SQL);
-		while (res.next()) {
-			Vector<Object> v = new Vector<Object>();
-			v.add(res.getObject(1));
-			v.add(res.getObject(2));
-			v.add(res.getObject(3));
-			vectoradevolver.add(v);
+		
+		while (res.next()) { Vector<Object> v = new
+				Vector<Object>(); 
+		for(int i=1; i<20; i++) {
+			try	{ 
+				v.add(res.getObject(i)); 
+			} catch(SQLException ex) { 
+				continue; 
+			} 
+		} 
+		vectoradevolver.add(v); 
 		}
 		stmt.close();
+		
+		
+//		while (res.next()) {
+//			Vector<Object> v = new Vector<Object>();
+//			v.add(res.getObject(1));
+//			v.add(res.getObject(2));
+//			v.add(res.getObject(3));
+//			vectoradevolver.add(v);
+//		}
+//		stmt.close();
 		//desconectar();
 		
 		

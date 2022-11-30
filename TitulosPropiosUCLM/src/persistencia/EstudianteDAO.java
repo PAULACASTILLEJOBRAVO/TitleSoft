@@ -103,7 +103,7 @@ public class EstudianteDAO extends AbstractEntityDAO{
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		Estudiante alumnoEncontrado=null;
-		String SelectSQL= "SELECT * FROM estudiante WHERE id LIKE '"+id+"' ";
+		String SelectSQL= "SELECT * FROM estudiante WHERE id = '"+id+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
