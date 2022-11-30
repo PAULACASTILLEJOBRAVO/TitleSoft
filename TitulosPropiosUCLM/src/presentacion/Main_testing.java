@@ -31,12 +31,7 @@ public class Main_testing extends JFrame{
 		frame.setVisible(true);
 
 		
-<<<<<<< HEAD
 		GestorBD.conectar();	
-		
-=======
-		GestorBD.conectar();	 
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 	}
 

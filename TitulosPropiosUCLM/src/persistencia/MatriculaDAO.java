@@ -1,10 +1,7 @@
 package persistencia;
-<<<<<<< HEAD
+
 import java.sql.Date;
 import java.sql.SQLException;
-=======
-import java.util.Date;
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;

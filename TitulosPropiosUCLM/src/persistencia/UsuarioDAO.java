@@ -15,56 +15,31 @@ import negocio.entities.*;
 import org.apache.derby.jdbc.EmbeddedDriver;
 public class UsuarioDAO extends AbstractEntityDAO{
 
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 	public Object get(String id) throws Exception {
 		Usuario UsuarioReturn = null;
 		Vector<Object> resultado;
 		//Vector<Object> aux = null;
-<<<<<<< HEAD
-		String SelectSQL = "SELECT * FROM usuario WHERE idusuario LIKE '"+id+"' ";
-=======
 		String SelectSQL = "SELECT * FROM usuario WHERE idusuario = '"+id+"' ";
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
+
 		//Vector<Object> vectoradevolver=new Vector<Object>();
 		resultado = GestorBD.select(SelectSQL);
-<<<<<<< HEAD
-=======
-		
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
+
 		if (resultado.isEmpty()==false) {
 			System.out.println("usuario seleccionado");
 
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
-<<<<<<< HEAD
 
 			if(aux[1].trim().equals("estudiante")) {
-=======
-			if(aux[1].trim().equals("estudiante")) {
 				System.out.println("SOY EL ESTUDIANTE");
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
 			}else if(aux[1].trim().equals("profesor")) {
-<<<<<<< HEAD
-=======
 				System.out.println("SOY EL PROFESOR");
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
 			}else if (aux[1].trim().equals("vicerector")) {
-<<<<<<< HEAD
-=======
 				System.out.println("SOY EL VICERRECTOR");
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
-<<<<<<< HEAD
-			}else if (aux[1].trim().equals("jefe")) {
-=======
 			}else if (aux[2].trim().equals("jefe")) {
 				System.out.println("SOY EL JEFE");
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			}
 		}else
@@ -107,10 +82,6 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
 		String insertSQL = " DELETE FROM usuario WHERE idusuario='"+usuario.getIdUsuario()+"' ";
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 		resultado = GestorBD.insert(insertSQL); 
 		if (resultado > 0) {
 			System.out.println("Eliminado usuario");
