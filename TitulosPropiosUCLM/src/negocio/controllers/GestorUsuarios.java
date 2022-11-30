@@ -19,6 +19,10 @@ public class GestorUsuarios {
 				return false;
 			}
 		} catch (Exception e) {
+<<<<<<< HEAD
+=======
+			e.printStackTrace();
+>>>>>>> branch 'Feature3' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
 			return false;
 		}
