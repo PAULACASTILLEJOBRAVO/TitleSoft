@@ -32,7 +32,7 @@ public class Main_testing extends JFrame{
 		frame.setVisible(true);
 
 		
-		GestorBD.conectarBD();	
+		GestorBD.conectar();	
 		
 
 	}
