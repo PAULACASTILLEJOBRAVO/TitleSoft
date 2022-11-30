@@ -1,7 +1,7 @@
 package presentacion;
 
 import java.sql.Date;
-
+import java.sql.SQLException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -110,7 +110,6 @@ public class PantallaMatriculacion extends JFrame {
 	}
 
 	private void validarDatosMatriculacion() {
-		try {
 			if (validarDatos()) {
 				lblError.setText("");
 				ModoPago modoPago = rdbtnNewRadioButton.isSelected() ? ModoPago.TRANSFERENCIA : ModoPago.TARJETA_CREDITO;
@@ -118,13 +117,10 @@ public class PantallaMatriculacion extends JFrame {
 				String fecha=textFieldFecha.getText();
 				Date fechaSQL = Date.valueOf(fecha);
 
-				gm.realizarMatriculacion(textFieldCurso.getText(), modoPago, fechaSQL, true);
+				gm.realizarMatriculacion(textFieldCurso.getText(), textFieldId.getText(), modoPago, fechaSQL, true);
 			} else {
 				lblError.setText("No se ha podido completar la matricula. Rellena todos los campos.");
 			}
-		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula.");
-		}
 	}
 
 	private boolean validarDatos() {

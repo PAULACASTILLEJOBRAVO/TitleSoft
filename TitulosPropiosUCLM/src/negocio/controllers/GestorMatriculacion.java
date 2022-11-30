@@ -1,6 +1,7 @@
 package negocio.controllers;
 
 import java.sql.Date;
+import java.sql.SQLException;
 
 import negocio.entities.*;
 import persistencia.*;
@@ -13,15 +14,17 @@ public class GestorMatriculacion {
 	 * @param curso
 	 * @param estudiante
 	 */
-	public void realizarMatriculacion(String curso, ModoPago tipo,Date fecha,boolean pagado) {
+	public void realizarMatriculacion(String curso, String alumno, ModoPago tipo,Date fecha,boolean pagado) {
 		
 		
-		Matricula matriculaNuevoIngreso = new Matricula(curso, tipo, fecha, pagado);
+		Matricula matriculaNuevoIngreso = new Matricula(curso, alumno, tipo, fecha, pagado);
 		MatriculaDAO matriculaDAO= new MatriculaDAO();
 		
 		try {
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
+		}catch (ClassNotFoundException e) {
 			Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
 		}
 	}
@@ -47,9 +50,9 @@ public class GestorMatriculacion {
 	 * @param curso
 	 * @param estudiante
 	 */
-	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante, String id) {
+	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante, int id) {
 		
-		Matricula matricula = new Matricula(id, null, null, false);
+		Matricula matricula = new Matricula(id,null, null, null, null, false);
 		
 		if(matricula.isPagado()) {
 			realizarPagoTarjeta(curso, estudiante);

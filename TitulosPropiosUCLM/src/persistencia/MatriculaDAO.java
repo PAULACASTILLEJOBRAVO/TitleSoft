@@ -1,5 +1,4 @@
 package persistencia;
-
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -12,7 +11,7 @@ import negocio.entities.*;
 
 public class MatriculaDAO extends AbstractEntityDAO {
 
-	public int crearMatricula(Matricula matricula) throws Exception {
+	public int crearMatricula(Matricula matricula) throws ClassNotFoundException, SQLException {
 		return insert(matricula);
 
 	}
@@ -22,7 +21,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	 * @param curso
 	 */
 	public Matricula seleccionarMatricula(String id) throws Exception {
-		return (Matricula)get(id);
+		return (Matricula)update(id);
 		//error por el tipo de return
 	}
 
@@ -101,7 +100,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 		Vector<Object> resultado;
 		Matricula matriculaEncontrada=null;
 		
-		String SelectSQL= "SELECT * FROM matricula WHERE titulacion = '"+id.trim()+"' ";
+		String SelectSQL= "SELECT * FROM matricula WHERE id LIKE '"+id+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -118,10 +117,10 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
 
 			
-			if(aux[3].trim().equals("credito")) {
-				matriculaEncontrada=new Matricula( aux[0], ModoPago.TARJETA_CREDITO, sqlDate,Boolean.parseBoolean(aux[2]));
-			}else if(aux[3].trim().equals("transferencia")){
-				matriculaEncontrada=new Matricula( aux[0], ModoPago.TRANSFERENCIA, sqlDate, Boolean.parseBoolean(aux[2]));
+			if(aux[3].equals("credito")) {
+				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]),aux[1],aux[2], ModoPago.TARJETA_CREDITO, sqlDate,Boolean.parseBoolean(aux[4]));
+			}else if(aux[3].equals("transferencia")){
+				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]),aux[1],aux[2], ModoPago.TRANSFERENCIA, sqlDate, Boolean.parseBoolean(aux[4]));
 			}
 			
 			
@@ -134,11 +133,11 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	}
 
 	@Override
-	public int insert(Object entity) throws Exception{
+	public int insert(Object entity) throws ClassNotFoundException, SQLException {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
-		String insertSQL = "INSERT INTO matricula (titulacion,Fecha,pagado,Modo) " 
-				+ "VALUES ( '"+matricula.getTitulo()+"' , '"+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";
+		String insertSQL = "INSERT INTO matricula (titulacion,dni,Fecha,pagado,Modo) " 
+				+ "VALUES ( '"+matricula.getTitulo()+"' , '"+matricula.getDni()+"' , '"+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
@@ -173,7 +172,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	public int delete(Object entity) throws Exception {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
-		String insertSQL = "DELETE FROM matricula WHERE titulacion='"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
+		String insertSQL = "DELETE FROM matricula WHERE '"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {

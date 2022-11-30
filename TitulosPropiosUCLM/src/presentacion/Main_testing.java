@@ -17,6 +17,7 @@ import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
 import persistencia.*;
 
+
 public class Main_testing extends JFrame{
 
 	
@@ -31,7 +32,8 @@ public class Main_testing extends JFrame{
 		frame.setVisible(true);
 
 		
-		GestorBD.conectar();	
+		GestorBD.conectarBD();	
+		
 
 	}
 
@@ -73,10 +75,10 @@ public class Main_testing extends JFrame{
 			}
 		});
 		 btnMatriculas.setBounds(89, 144, 223, 21);
-		add( btnMatriculas);
+		add(btnMatriculas);
 		
 		JButton btnEvaluar = new JButton("Evaluar Cursos");
-		btnEvaluar.addActionListener(new ActionListener() {
+		 btnEvaluar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
