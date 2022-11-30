@@ -129,8 +129,7 @@ public class GestorBD {
 	}
 
 	// Metodo para realizar una insercion en la base de datos
-	public static int insert(String SQL) throws SQLException, Exception {
-		conectar();
+	public static int insert(String SQL) throws Exception {
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
