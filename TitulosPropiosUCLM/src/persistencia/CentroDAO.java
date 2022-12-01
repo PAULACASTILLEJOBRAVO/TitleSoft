@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
+import negocio.controllers.GestorConsultas;
+import negocio.controllers.GestorProfesorUCLM;
 import negocio.entities.*;
 
 public class CentroDAO extends AbstractEntityDAO {
@@ -30,12 +32,30 @@ public class CentroDAO extends AbstractEntityDAO {
 		
 	}
 
+	
+	public Vector<Object> listarNombreCentro(String nombre) throws Exception{
+		
+		Vector<Object> resultado;
+		String SelectSQLEdicion= "SELECT * FROM centro WHERE nombre LIKE '"+nombre+"' ";
+		resultado = GestorBD.select(SelectSQLEdicion);
+
+		if (resultado.isEmpty()==false) {
+			System.out.println("Centro encotrados");
+
+		}else
+			System.err.println("Error encontrando centros");
+		
+		return resultado;
+		
+	}
+	
+	
 	@Override
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		Centro centroEncontrado=null;
 		
-		String SelectSQL= "SELECT * FROM centro WHERE id LIKE '"+id+"' ";
+		String SelectSQL= "SELECT * FROM centro WHERE idReal LIKE '"+id+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -43,9 +63,30 @@ public class CentroDAO extends AbstractEntityDAO {
 		if (resultado.isEmpty()==false) {
 			System.out.println("Centro seleccionado");
 			
+			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			
+			Vector<Object> resultadosNombreCentro= listarNombreCentro(aux[1]);
+			
+			//collecion de ProfesoresUCLM
+			Collection<ProfesorUCLM> profesoresCollection=null;
+			GestorProfesorUCLM gProfesorUCLM= new GestorProfesorUCLM();
+			
+			for(int i=0;i<resultadosNombreCentro.size();i++) {
+
+				String[] auxProfesores =  (resultadosNombreCentro.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
+
+				profesoresCollection.add(gProfesorUCLM.seleccionarProfesor(auxProfesores[4]));
+				profesoresCollection.add(gProfesorUCLM.seleccionarProfesor(auxProfesores[4]));
+			}
+			
+			//collection de cursosPropios 
 			
 			
-				centroEncontrado = new Centro(null, null, id, SelectSQL, 0);
+			GestorConsultas gConsultas=new GestorConsultas();
+			Collection<CursoPropio> cursosCentro=gConsultas.cursosPorCentro(aux[0]);
+			
+	
+				centroEncontrado = new Centro(cursosCentro, profesoresCollection, aux[1], aux[2], Integer.parseInt(aux[0]));
 			
 		}else
 			System.err.println("Error al seleccionar centro");
@@ -105,6 +146,9 @@ public class CentroDAO extends AbstractEntityDAO {
 
 		return resultado;
 	}
+
+
+	
 
 
 

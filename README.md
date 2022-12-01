@@ -38,6 +38,24 @@ lo que se ha desarrollado. Como el product owner también ha participado en el d
 dificultades que ha tenido cada persona. De esta forma se crea una reunión híbrida entre la reunión de revisión del sprint y la reuinión de retrospectiva del sprint (que en la teoría es donde
 se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada miembro del equipo podrá mostrar lo que ha hecho y se pondrán soluciones a las cosas que no funcionen bien.
 </p>
+<p>-------------------------------------------------------------------------------------------------------------------------------</p>
+<p>Sprint 1, dia 19/11/2022.</p>
+<p>	Lo deseado para la proxima semana dia 26/11/2022</p>
+<p>		Base de datos de Derby terminada (Virginia)</p>
+<p>		Corregir Maven con sonarCloud y Junit(Paula)</p>
+<p>		Terminar funcionalidades de Jefe Gabinete(Iván)</p>
+<p>	***********Resultados******</p>
+<p>		Base de datos de Derby. Errores en la seleccion de los datos en la base de datos</p>
+<p>		Corregir Maven con SonarCloud y Junit. Todo conectado y solucionado</p>
+<p>		Terminar Funcionalides de Jefe Gabinete. Terminacion de la funicon Consultar Ingresos e implementacion de Listar Ediciones y Aprobar Cursos. No funcionales, tiene errores en ejecucion</p>
+
+<p>Sprint 2, dia 26/11/2022</p>
+<p>	Lo deseado para la proxima semana dia 3/12/2022</p>
+<p>		Corregir errores de Derby(Virginia)</p>
+<p>		Corregir errores de la funcionalides de Jefe Gabinete(Iván)</p>
+<p>		Terminar las funcionalides de Matriculacion(Paula)</p>
+	
+<p>-------------------------------------------------------------------------------------------------------------------------------</p>
 <br>
 <H2>2. Memoria del Proyecto:
 </H2>
