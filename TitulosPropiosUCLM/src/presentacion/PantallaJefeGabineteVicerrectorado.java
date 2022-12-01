@@ -77,8 +77,8 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				setContentPane(contentPane);
 				contentPane.setLayout(null);
 
-				JLabel lblcurso = new JLabel("Tipo Curso:");
-				lblcurso.setBounds(100, 90, 79, 20);
+				JLabel lblcurso = new JLabel("Id Curso:");
+				lblcurso.setBounds(100, 90, 200, 20);
 				add(lblcurso);
 
 
@@ -87,7 +87,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				textFieldTipo.setColumns(10);
 
 				JLabel lblFechaInicio = new JLabel("Fecha inicio(yyyy-mm-dd):");
-				lblFechaInicio.setBounds(100, 150, 79, 20);
+				lblFechaInicio.setBounds(100, 150, 200, 20);
 				add(lblFechaInicio);
 
 
@@ -96,7 +96,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				textFieldFechaInicio.setColumns(10);
 
 				JLabel lblFechaFinal = new JLabel("Fecha final(yyyy-mm-dd):");
-				lblFechaFinal.setBounds(100, 210, 79, 20);
+				lblFechaFinal.setBounds(100, 210, 200, 20);
 				add(lblFechaFinal);
 
 
@@ -109,8 +109,13 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						botonConfirmarIngresos(textFieldFechaFinal,textFieldFechaInicio,textFieldTipo);
-
+						double ingresos=botonConfirmarIngresos(textFieldFechaFinal,textFieldFechaInicio,textFieldTipo);
+						
+						JLabel lblingresos = new JLabel("Ingresos: "+ingresos+"");
+						lblingresos.setBounds(100, 300, 200,70);
+						add(lblingresos);
+									
+						
 					}
 				});
 				btnConfirmar.setBounds(201, 274, 100, 20);
@@ -209,7 +214,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				JFrame jFrame=new JFrame();
 				jFrame.setTitle("Propuestas Cursos");
 				DefaultTableModel tabla=new DefaultTableModel();
-				JTable jTabla = new JTable();
+				JTable jTabla = new JTable(tabla);
 				jTabla.setBounds(30,10,230,280);
 				tabla.addColumn("Id");
 				tabla.addColumn("Nombre del Curso");
@@ -225,11 +230,21 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				Iterator<CursoPropio> it=resultado.iterator();
 				while(it.hasNext()) {
 					CursoPropio cursoAux=it.next();
+					Object[] materiasCurso=cursoAux.getMaterias().toArray();
+					String datosMateriaNombres="Materias: ";
 
+					for(int j=0;j<materiasCurso.length;j++) {
+
+						Materia materiaAux=(Materia)materiasCurso[j];
+						datosMateriaNombres=datosMateriaNombres+", "+materiaAux.getNombre();
+					}
+					
+					
+					
 					tabla.addRow(new Object[] {
 							cursoAux.getIdReal(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
 							cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
-							cursoAux.getSecretario(),cursoAux.getDirector(),cursoAux.getDirector(),cursoAux.getMaterias()
+							cursoAux.getSecretario().getDni(),cursoAux.getDirector().getDni(),cursoAux.getMaterias()
 
 					});
 				}
@@ -258,6 +273,11 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					public void actionPerformed(ActionEvent e) {
 						try {
 							botonAprobarCurso(TextIDcurso);
+							JLabel lblCursoAprobado = new JLabel("Curso Aprobado correctamente");
+							lblCursoAprobado.setBounds(100, 120, 150, 20);
+							add(lblCursoAprobado);
+							
+							
 						} catch (Exception e1) {
 
 							e1.printStackTrace();
@@ -265,7 +285,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 					}
 				});
-				btnConfirmar.setBounds(201, 274, 100, 20);
+				btnConfirmar.setBounds(201, 150, 100, 20);
 				add(btnConfirmar);
 
 				JButton btnRechazar = new JButton("Rechazar");
@@ -275,6 +295,12 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					public void actionPerformed(ActionEvent e) {
 						try {
 							botonRechazarCurso(TextIDcurso);
+							
+							JLabel lblCursoRechazado = new JLabel("Curso rechazado correctamente");
+							lblCursoRechazado.setBounds(100, 120, 180, 20);
+							add(lblCursoRechazado);
+							
+							
 						} catch (Exception e1) {
 
 							e1.printStackTrace();
@@ -282,7 +308,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 					}
 				});
-				btnRechazar.setBounds(201, 294, 100, 20);
+				btnRechazar.setBounds(201, 170, 100, 20);
 				add(btnRechazar);
 
 
@@ -298,85 +324,35 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 	}
 
 
-	public void botonConfirmarIngresos(JTextField textFieldFechaFinal, JTextField textFieldFechaInicio, JTextField textFieldTipo) {
+	public double botonConfirmarIngresos(JTextField textFieldFechaFinal, JTextField textFieldFechaInicio, JTextField textFieldTipo) {
 		GestorConsultas gConsultas=new GestorConsultas();
 
-		double ingresos=0;
+		
 
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
 		try {
 			Date fechaAux1 =(Date)formato.parse(textFieldFechaInicio.getText());
 			Date fechaAux2=(Date) formato.parse(textFieldFechaFinal.getText());
-			
+
 			Date fechaInicioAux=new java.sql.Date(fechaAux1.getTime());
 			Date fechaFinalAux=new java.sql.Date(fechaAux2.getTime());
-			
+
 			System.out.println(fechaInicioAux);
 			CursoPropio curso=gConsultas.seleccionarCurso(textFieldTipo.getText().trim());
 
-			if(curso.getTipo().toString().equals("CORTA_DURACION")) {
 
-				ingresos=gConsultas.consultarIngresos(TipoCurso.CORTA_DURACION, fechaInicioAux, fechaFinalAux);
+			return gConsultas.consultarIngresos(curso.getTipo(), fechaInicioAux, fechaFinalAux);
 
-				JLabel lblIngresos = new JLabel(""+ingresos+"");
-				lblIngresos.setBounds(80, 274, 79, 13);
-				add(lblIngresos);
+			
 
-			}else if(curso.getTipo().toString().equals("MASTER")) {
-				ingresos=gConsultas.consultarIngresos(TipoCurso.MASTER, fechaInicioAux, fechaFinalAux);
-
-				JLabel lblIngresos = new JLabel(""+ingresos+"");
-				lblIngresos.setBounds(80, 274, 79, 13);
-				add(lblIngresos);
-
-
-			}else if(curso.getTipo().toString().equals("EXPERTO")) {
-				ingresos=gConsultas.consultarIngresos(TipoCurso.EXPERTO, fechaInicioAux, fechaFinalAux);
-
-				JLabel lblIngresos = new JLabel(""+ingresos+"");
-				lblIngresos.setBounds(80, 274, 79, 13);
-				add(lblIngresos);
-
-
-			}else if(curso.getTipo().toString().equals("ESPECIALISTA")) {
-				ingresos=gConsultas.consultarIngresos(TipoCurso.ESPECIALISTA, fechaInicioAux, fechaFinalAux);
-
-				JLabel lblIngresos = new JLabel(""+ingresos+"");
-				lblIngresos.setBounds(80, 274, 79, 13);
-				add(lblIngresos);
-
-
-			}else if(curso.getTipo().toString().equals("FORMACION_AVANZADA")) {
-				ingresos=gConsultas.consultarIngresos(TipoCurso.FORMACION_AVANZADA, fechaInicioAux, fechaFinalAux);
-
-				JLabel lblIngresos = new JLabel(""+ingresos+"");
-				lblIngresos.setBounds(80, 274, 79, 13);
-				add(lblIngresos);
-
-
-			}else if(curso.getTipo().toString().equals("FORMACION_CONTINUA")) {
-				ingresos=gConsultas.consultarIngresos(TipoCurso.FORMACION_CONTINUA, fechaInicioAux, fechaFinalAux);
-
-				JLabel lblIngresos = new JLabel(""+ingresos+"");
-				lblIngresos.setBounds(80, 274, 79, 13);
-				add(lblIngresos);
-
-
-			}else if(curso.getTipo().toString().equals("MICROCREDENCIALES")) {
-				ingresos=gConsultas.consultarIngresos(TipoCurso.MICROCREDENCIALES, fechaInicioAux, fechaFinalAux);
-
-				JLabel lblIngresos = new JLabel(""+ingresos+"");
-				lblIngresos.setBounds(80, 274, 79, 13);
-				add(lblIngresos);
-
-
-			}
 
 		} catch (Exception e1) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consultar ingresos");
+			return 0;
 
 		}
+		
 
 
 	}
@@ -425,7 +401,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				ProfesorUCLM secretario=cursoAux.getSecretario();
 				Object[] materiasCurso=cursoAux.getMaterias().toArray();
 				String datosMateriaNombres="Materias: ";
-				
+
 				for(int j=0;j<materiasCurso.length;j++) {
 
 					Materia materiaAux=(Materia)materiasCurso[j];
@@ -459,7 +435,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 	public void botonAprobarCurso(JTextField textIDcurso) throws Exception {
 
 		GestorConsultas gConsultas= new GestorConsultas();
-		CursoPropio cursoAprobado= gConsultas.seleccionarCurso(textIDcurso.toString());
+		CursoPropio cursoAprobado= gConsultas.seleccionarCurso(textIDcurso.getText());
 
 		cursoAprobado.setEstado(EstadoCurso.VALIDADO);
 
@@ -472,7 +448,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 	public void botonRechazarCurso(JTextField textIDcurso) throws Exception {
 
 		GestorConsultas gConsultas= new GestorConsultas();
-		CursoPropio cursoRechazado= gConsultas.seleccionarCurso(textIDcurso.toString());
+		CursoPropio cursoRechazado= gConsultas.seleccionarCurso(textIDcurso.getText());
 
 		cursoRechazado.setEstado(EstadoCurso.PROPUESTA_RECHAZADA);
 
