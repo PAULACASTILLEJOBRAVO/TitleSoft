@@ -1,6 +1,6 @@
 package persistencia;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
@@ -123,7 +123,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		Materia materiaEncontrada=null;
-		String SelectSQL= "SELECT * FROM materia WHERE nombre LIKE '"+id.trim()+"' ";
+		String SelectSQL= "SELECT * FROM materia WHERE nombre = '"+id.trim()+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -134,7 +134,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			
 			
-			SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 			
 			Date fecha1=(Date) formato.parse(aux[2]);
 			java.sql.Date sqlDate1 = new java.sql.Date(fecha1.getTime());

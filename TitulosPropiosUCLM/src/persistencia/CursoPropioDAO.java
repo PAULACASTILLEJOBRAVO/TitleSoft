@@ -56,12 +56,35 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		 * Se puede poner en el metodo Date fechainicial,Date fechafinal para poner prioridad y para que se pueda buscar en un rango de fecha en concreto
 		 */
 		Vector<Object> resultado;
-		Collection<CursoPropio> cursosEncontrados = null;
+		Collection<CursoPropio> cursosEncontrados = new ArrayList<CursoPropio>();
+		String SelectSQLEdicion="";
 
+		if(estado.toString().trim().equals("PROPUESTO")) {
 
-		String SelectSQLEdicion= "SELECT * FROM cursopropio"
-				+ "WHERE estado like '"+estado.toString()+"' ";
+			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesto' ";
+		
+		}else if (estado.toString().trim().equals("VALIDADO")) {
 
+			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'validado' ";
+		
+		}else if (estado.toString().trim().equals("PROPUESTA_RECHAZADA")) {
+
+			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesta_rechazada' ";
+		
+		}else if (estado.toString().trim().equals("EN_MATRICULACION")) {
+
+			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_matriculacion' ";
+		
+		}else if (estado.toString().trim().equals("EN_IMPARTIZICION")) {
+
+			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_impartizicioon' ";
+		
+		}else if (estado.toString().trim().equals("TERMINADO")) {
+
+			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'terminado' ";
+		}
+		
+		
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
@@ -71,10 +94,8 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 			for (int i = 0; i < resultado.size(); i++) {
 
-				String[] cursoSplit=(resultado.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
-
-
-				CursoPropio cursoAUX=crearObjetoCursoPropio(cursoSplit[i]);
+				
+				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
 				cursosEncontrados.add(cursoAUX);
 			}
 
@@ -96,14 +117,50 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		// TODO - implement CursoPropioDAO.listarIngresos
 		Vector<Object> resultado;
 		double ingresos=0.0;
-		String SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
-				+ "WHERE tipoCurso = '"+tipo+"'and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+		String SelectSQLEdicion="";
+
+		if(tipo.toString().equals("MASTER")) {
+
+			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
+					+ " WHERE tipoCurso = 'master' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+
+		}else if(tipo.toString().equals("EXPERTO")) {
+
+			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
+					+ " WHERE tipoCurso = 'experto' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+
+		}else if(tipo.toString().equals("ESPECIALISTA")) {
+
+			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
+					+ " WHERE tipoCurso = 'especialista' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+
+		}else if(tipo.toString().equals("FORMACION_AVANZADA")) {
+
+			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
+					+ " WHERE tipoCurso = 'formacion_avanzada' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+
+		}else if(tipo.toString().equals("FORMACION_CONTINUA")) {
+
+			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
+					+ " WHERE tipoCurso = 'formacion_continua' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+
+		}else if(tipo.toString().equals("MICROCREDENCIALES")) {
+
+			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
+					+ " WHERE tipoCurso = 'microcredenciales' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+
+		}else if(tipo.toString().equals("CORTA_DURACION")) {
+
+			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
+					+ " WHERE tipoCurso = 'corta_duracion' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+		}
+
 
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
 			System.out.println("Ingresos Calculados");
-			ingresos=Double.parseDouble(resultado.toString());
+			ingresos=Double.parseDouble(resultado.get(0).toString().trim().replace("[", "").replace("]", ""));
 
 		}else
 			System.err.println("Error calculando ingresos");
@@ -119,9 +176,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	 */
 	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) throws Exception { //he cambiado a que devuelva una colleccion, antes estaba como void, lo he cambiado porque pone listar
 		Vector<Object> resultado;
-		Collection cursosEncontrados=null;
+		Collection<CursoPropio> cursosEncontrados=new ArrayList<CursoPropio>();
 		String SelectSQLEdicion= "SELECT * FROM cursopropio"
-				+ " WHERE  fechaInicio like '"+fechaInicio+"'and fechaFin like '"+fechaFin+"' ";
+				+ " WHERE  fechaInicio = '"+fechaInicio+"'and fechaFin = '"+fechaFin+"' ";
 
 		resultado = GestorBD.select(SelectSQLEdicion);
 
@@ -150,7 +207,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 		Vector<Object> resultado;
-		String SelectSQLEdicion= "SELECT * FROM cursopropio WHERE idControlador LIKE '"+idControlador+"' ";
+		String SelectSQLEdicion= "SELECT * FROM cursopropio WHERE idcontrolador = "+idControlador+" ";
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
@@ -167,7 +224,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		CursoPropio cursoReturn=null;
-		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal LIKE '"+id+"' " ;
+		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal = "+id+" " ;
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -211,18 +268,19 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		int resultado=0;
 		CursoPropio curso=(CursoPropio)entity;
 		String updateSQL = "UPDATE cursopropio SET "
-				+ "idReal= '"+curso.getIdReal()+"',"
-				+ "idControlador= '"+curso.getIdControlador()+"'"
+				+ "idReal= "+curso.getIdReal()+","
+				+ "idControlador= "+curso.getIdControlador()+","
 				+ "nombre=  '"+curso.getNombre()+"' ,"
-				+ "ECTS= '"+curso.getECTS()+"' "
+				+ "ECTS= "+curso.getECTS()+", "
 				+ "fechaInicio= '"+curso.getFechaInicio()+"' , "
 				+ "fechaFin='"+curso.getFechaFin()+"',"
-				+ "tasaMatricula='"+curso.getTasaMatricula()+"',"
-				+ "edicion= '"+curso.getEdicion()+"',"
-				+ "estado= '"+curso.getEstado()+"',"
-				+ "tipoCurso='"+curso.getTipo()+"',"
-				+ "secretario='"+curso.getSecretario()+"',"
-				+ "director= '"+curso.getDirector()+"'";
+				+ "tasaMatricula="+curso.getTasaMatricula()+","
+				+ "edicion= "+curso.getEdicion()+","
+				+ "estado= '"+curso.getEstado().toString().toLowerCase()+"',"
+				+ "tipoCurso='"+curso.getTipo().toString().toLowerCase()+"',"
+				+ "secretario='"+curso.getSecretario().getDni()+"',"
+				+ "director= '"+curso.getDirector().getDni()+"'"
+						+ " WHERE idReal= "+curso.getIdReal()+" ";
 
 		resultado = GestorBD.update(updateSQL);
 		if (resultado > 0) {
@@ -270,7 +328,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 
-		
+
 
 		//fecha
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -295,39 +353,42 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		EstadoCurso estado=null;
 		TipoCurso tipo=null;
 		//estado
-		if(aux[8].equals("imparizicion")) {
+		if(aux[8].trim().equals("imparizicion")) {
 			estado=EstadoCurso.EN_IMPARTIZICION;
-		}else if (aux[8].equals("matriculacion")) {
+		}else if (aux[8].trim().equals("matriculacion")) {
 			estado=EstadoCurso.EN_MATRICULACION;
-		}else if (aux[8].equals("propuesta rechazada")) {
+		}else if (aux[8].trim().equals("propuesta_rechazada")) {
 			estado=EstadoCurso.PROPUESTA_RECHAZADA;
-		}else if (aux[8].equals("propuesto")) {
+		}else if (aux[8].trim().equals("propuesto")) {
 			estado=EstadoCurso.PROPUESTO;
-		}else if (aux[8].equals("terminado")) {
+		}else if (aux[8].trim().equals("terminado")) {
 			estado=EstadoCurso.TERMINADO;
-		}else if (aux[8].equals("validado")) {
+		}else if (aux[8].trim().equals("validado")) {
 			estado=EstadoCurso.VALIDADO;
 		}
 
 		//tipoCurso
-		if(aux[9].equals("corta duracion")) {
+		if(aux[9].trim().equals("corta_duracion")) {
 			tipo=TipoCurso.CORTA_DURACION;
-		}else if (aux[9].equals("especialista")) {
+		}else if (aux[9].trim().equals("especialista")) {
 			tipo=TipoCurso.ESPECIALISTA;
-		}else if (aux[9].equals("experto")) {
+		}else if (aux[9].trim().equals("experto")) {
 			tipo=TipoCurso.EXPERTO;
-		}else if (aux[9].equals("formacion avanzada")) {
+		}else if (aux[9].trim().equals("formacion_avanzada")) {
 			tipo=TipoCurso.FORMACION_AVANZADA;
-		}else if (aux[9].equals("formacion continua")) {
+		}else if (aux[9].trim().equals("formacion_continua")) {
 			tipo=TipoCurso.FORMACION_CONTINUA;
-		}else if (aux[9].equals("master")) {
+		}else if (aux[9].trim().equals("master")) {
 			tipo=TipoCurso.MASTER;
-		}else if (aux[9].equals("microcredenciles")) {
+		}else if (aux[9].trim().equals("microcredenciles")) {
 			tipo=TipoCurso.MICROCREDENCIALES;
 		}
 
 
-		return cursoReturn= new CursoPropio(matriculas, director, secretario, materias, estado, tipo.CORTA_DURACION, cursoDAO, Integer.parseInt(aux[1]), Integer.parseInt(aux[0]), aux[2],Integer.parseInt( aux[3]), fechaInicial, fechaFinal, Double.parseDouble(aux[6]), Integer.parseInt(aux[7]));
+		return cursoReturn= new CursoPropio(matriculas, director, secretario, materias, 
+				estado, tipo, cursoDAO, Integer.parseInt(aux[1].trim()), 
+				Integer.parseInt(aux[0]), aux[2],Integer.parseInt( aux[3].trim()), fechaInicial, 
+				fechaFinal, Double.parseDouble(aux[6].trim()), Integer.parseInt(aux[7].trim()));
 
 
 		//		
@@ -338,7 +399,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		Collection<Object> resultado=null;
 		Collection<CursoPropio> cursosCentroReturn=null;
 		CursoPropio cursoReturn=null;
-		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal LIKE '"+id+"' " ;
+		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal = '"+id+"' " ;
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -348,9 +409,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 			Iterator<Object> it=resultado.iterator();
 			while(it.hasNext())
 				System.out.println(it.next().toString());
-				cursoReturn= crearObjetoCursoPropio(it.next().toString());
-				cursosCentroReturn.add(cursoReturn);
-			
+			cursoReturn= crearObjetoCursoPropio(it.next().toString());
+			cursosCentroReturn.add(cursoReturn);
+
 			//			
 		}else
 			System.err.println("Error al seleccionar curso");

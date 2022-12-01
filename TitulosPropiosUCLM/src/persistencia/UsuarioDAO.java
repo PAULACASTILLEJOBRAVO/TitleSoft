@@ -23,7 +23,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		Usuario UsuarioReturn = null;
 		Vector<Object> resultado;
 		//Vector<Object> aux = null;
-		String SelectSQL = "SELECT * FROM usuario WHERE idusuario LIKE '"+id+"' ";
+		String SelectSQL = "SELECT * FROM usuario WHERE idusuario = '"+id+"' ";
 		//Vector<Object> vectoradevolver=new Vector<Object>();
 		resultado = GestorBD.select(SelectSQL);
 		
