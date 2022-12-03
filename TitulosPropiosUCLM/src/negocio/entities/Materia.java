@@ -3,12 +3,19 @@ package negocio.entities;
 import java.util.*;
 
 public class Materia {
-
+	int idMateria;
 	Profesor responsable;
 	private String nombre;
 	private double horas;
 	private Date fechaInicio;
 	private Date fechaFin;
+	
+	public int getIdMateria() {
+		return idMateria;
+	}
+	public void setIdMateria(int idMateria) {
+		this.idMateria = idMateria;
+	}
 	public Profesor getResponsable() {
 		return responsable;
 	}
@@ -39,9 +46,10 @@ public class Materia {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-	public Materia(Profesor responsable, String nombre, double horas, Date fechaInicio, Date fechaFin) {
+	public Materia(Profesor responsable, int idMateria, String nombre, double horas, Date fechaInicio, Date fechaFin) {
 		super();
 		this.responsable = responsable;
+		this.idMateria=idMateria;
 		this.nombre = nombre;
 		this.horas = horas;
 		this.fechaInicio = fechaInicio;

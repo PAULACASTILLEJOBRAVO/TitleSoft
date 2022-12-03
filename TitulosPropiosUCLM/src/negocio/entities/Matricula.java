@@ -1,7 +1,6 @@
 package negocio.entities;
 
 import java.util.*;
-import java.sql.Date;
 
 public class Matricula {
 	
@@ -56,7 +55,7 @@ public class Matricula {
 		this.fecha = fecha;
 		this.pagado = pagado;
 	}
-	public Matricula(int idMatricula ,String titulo, String dni, ModoPago tipoPago, Date fecha, boolean pagado) {
+	public Matricula(int idMatricula,String titulo, String dni, ModoPago tipoPago, Date fecha, boolean pagado) {
 		super();
 		this.idMatricula=idMatricula;
 		this.titulo = titulo;

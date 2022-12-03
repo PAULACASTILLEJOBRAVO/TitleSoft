@@ -37,7 +37,7 @@ public class GestorBD {
 	}
 
 	// Metodo para realizar la conexion a la base de datos
-	public static void conectar() throws Exception {
+	public static void conectar() throws SQLException {
 		PreparedStatement pstmt;
 		Statement stmt;
 		ResultSet rs = null;
@@ -124,12 +124,12 @@ public class GestorBD {
 //	}
 //
 	// Metodo para desconectar de la base de datos
-	public static void desconectar() throws Exception {
+	public static void desconectar() throws SQLException {
 		mBD.close();
 	}
 
 	// Metodo para realizar una insercion en la base de datos
-	public static int insert(String SQL) throws Exception {
+	public static int insert(String SQL) throws ClassNotFoundException, SQLException {
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();

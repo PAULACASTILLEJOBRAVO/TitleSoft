@@ -1,5 +1,4 @@
 package persistencia;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -11,7 +10,7 @@ import negocio.entities.*;
 
 public class MatriculaDAO extends AbstractEntityDAO {
 
-	public int crearMatricula(Matricula matricula) throws Exception {
+	public int crearMatricula(Matricula matricula) throws ClassNotFoundException, SQLException {
 		return insert(matricula);
 
 	}
@@ -21,7 +20,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	 * @param curso
 	 */
 	public Matricula seleccionarMatricula(String id) throws Exception {
-		return (Matricula)update(id);
+		return (Matricula)get(id);
 		//error por el tipo de return
 	}
 
@@ -100,7 +99,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 		Vector<Object> resultado;
 		Matricula matriculaEncontrada=null;
 		
-		String SelectSQL= "SELECT * FROM matricula WHERE id LIKE '"+id+"' ";
+		String SelectSQL= "SELECT * FROM matricula WHERE idMatricula = "+id+" ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -112,15 +111,13 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			
 			
 			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-			Date fecha=(Date) formato.parse(aux[1]);
-			
-			java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
+			java.util.Date fecha= formato.parse(aux[3]);
 
 			
-			if(aux[3].equals("credito")) {
-				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]),aux[1],aux[2], ModoPago.TARJETA_CREDITO, sqlDate,Boolean.parseBoolean(aux[4]));
-			}else if(aux[3].equals("transferencia")){
-				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]),aux[1],aux[2], ModoPago.TRANSFERENCIA, sqlDate, Boolean.parseBoolean(aux[4]));
+			if(aux[5].equals("credito")) {
+				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]), aux[1],aux[2], ModoPago.TARJETA_CREDITO, fecha,Boolean.parseBoolean(aux[4]));
+			}else if(aux[5].equals("transferencia")){
+				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]),aux[1],aux[2], ModoPago.TRANSFERENCIA, fecha, Boolean.parseBoolean(aux[4]));
 			}
 			
 			
@@ -133,11 +130,12 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	}
 
 	@Override
-	public int insert(Object entity) throws Exception {
+	public int insert(Object entity) throws ClassNotFoundException, SQLException {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
 		String insertSQL = "INSERT INTO matricula (curso,dni,fecha,pagado,modo) " 
-				+ "VALUES ( '"+matricula.getTitulo()+"' , '"+matricula.getDni()+"' , '"+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";
+				+ "VALUES ( "+matricula.getTitulo()+" , '"+matricula.getDni()+"' , '"
+				+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {

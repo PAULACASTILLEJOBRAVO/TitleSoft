@@ -27,7 +27,7 @@ public class PantallaMatriculacion extends JFrame {
 	private JRadioButton rdbtnNewRadioButton_1;
 	private JPanel contentPane;
 
-	public PantallaMatriculacion() throws Exception{
+	public PantallaMatriculacion() throws SQLException, ClassNotFoundException, NumberFormatException{
 		setTitle("Sesion: Estudiante");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 200, 820, 500);
@@ -72,7 +72,7 @@ public class PantallaMatriculacion extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					validarDatosMatriculacion();
-				} catch (Exception e1) {
+				} catch (SQLException | NumberFormatException | ClassNotFoundException e1) {
 					Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
 				}
 			}
@@ -113,14 +113,14 @@ public class PantallaMatriculacion extends JFrame {
 		lblError.setText("");
 	}
 
-	private void validarDatosMatriculacion() throws Exception {
+	private void validarDatosMatriculacion() throws NumberFormatException, SQLException, ClassNotFoundException {
 			if (validarDatos()) {
 				lblError.setText("");
 				ModoPago modoPago = rdbtnNewRadioButton.isSelected() ? ModoPago.TRANSFERENCIA : ModoPago.TARJETA_CREDITO;
 				GestorMatriculacion gm = new GestorMatriculacion();
 				String fecha=textFieldFecha.getText();
 				Date fechaSQL = Date.valueOf(fecha);
-
+				
 				gm.realizarMatriculacion(textFieldCurso.getText(), textFieldId.getText(), modoPago,  fechaSQL, true);
 			} else {
 				lblError.setText("No se ha podido completar la matricula. Rellena todos los campos.");
