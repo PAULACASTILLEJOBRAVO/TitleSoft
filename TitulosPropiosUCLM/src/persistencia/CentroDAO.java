@@ -4,9 +4,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import negocio.controllers.GestorConsultas;
 import negocio.controllers.GestorProfesorUCLM;
 import negocio.entities.*;
+import org.apache.derby.jdbc.EmbeddedDriver;
 
 public class CentroDAO extends AbstractEntityDAO {
 
@@ -36,7 +43,7 @@ public class CentroDAO extends AbstractEntityDAO {
 	public Vector<Object> listarNombreCentro(String nombre) throws Exception{
 		
 		Vector<Object> resultado;
-		String SelectSQLEdicion= "SELECT * FROM centro WHERE nombre = '"+nombre.trim()+"' ";
+		String SelectSQLEdicion= "SELECT * FROM centro WHERE nombre LIKE '"+nombre+"' ";
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
@@ -55,7 +62,7 @@ public class CentroDAO extends AbstractEntityDAO {
 		Vector<Object> resultado;
 		Centro centroEncontrado=null;
 		
-		String SelectSQL= "SELECT * FROM centro WHERE nombre = '"+id.trim()+"' ";
+		String SelectSQL= "SELECT * FROM centro WHERE idReal LIKE '"+id+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -76,16 +83,19 @@ public class CentroDAO extends AbstractEntityDAO {
 				String[] auxProfesores =  (resultadosNombreCentro.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 
 				profesoresCollection.add(gProfesorUCLM.seleccionarProfesor(auxProfesores[4]));
+				profesoresCollection.add(gProfesorUCLM.seleccionarProfesor(auxProfesores[4]));
 			}
 			
-			//collection de cursosPropios 
+			//collection de cursosPropios (En base de datos no me hace el fk)
+			
+			Collection<CursoPropio> cursosPropiosCentro=null;
+			GestorConsultas gConsultasCurso= new GestorConsultas();
 			
 			
-			GestorConsultas gConsultas=new GestorConsultas();
-			Collection<CursoPropio> cursosCentro=gConsultas.cursosPorCentro(aux[0]);
 			
-	
-				centroEncontrado = new Centro(cursosCentro, profesoresCollection, aux[1], aux[2], Integer.parseInt(aux[0]));
+			
+			
+				centroEncontrado = new Centro(cursosPropiosCentro, profesoresCollection, aux[1], aux[2], Integer.parseInt(aux[0]));
 			
 		}else
 			System.err.println("Error al seleccionar centro");
@@ -145,9 +155,6 @@ public class CentroDAO extends AbstractEntityDAO {
 
 		return resultado;
 	}
-
-
-	
 
 
 
