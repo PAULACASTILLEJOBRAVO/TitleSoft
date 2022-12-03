@@ -130,6 +130,11 @@ public class GestorBD {
 
 	// Metodo para realizar una insercion en la base de datos
 	public static int insert(String SQL) throws ClassNotFoundException, SQLException {
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
@@ -139,6 +144,11 @@ public class GestorBD {
 
 	// Metodo para realizar una eliminacion en la base de datos
 	public int delete(String SQL) throws SQLException, Exception {
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
@@ -148,7 +158,10 @@ public class GestorBD {
 
 	// Metodo para realizar una eliminacion en la base de datos
 	public static int update(String SQL) throws SQLException, Exception {
-		conectar();
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();

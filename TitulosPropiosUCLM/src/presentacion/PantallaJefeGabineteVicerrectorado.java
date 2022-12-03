@@ -77,6 +77,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				setContentPane(contentPane);
 				contentPane.setLayout(null);
+				contentPane.revalidate();
 
 				JLabel lblcurso = new JLabel("Id Curso:");
 				lblcurso.setBounds(100, 90, 200, 20);
@@ -146,6 +147,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				setContentPane(contentPane);
 				contentPane.setLayout(null);
+				contentPane.revalidate();
 
 
 				JLabel lblFechaInicioEdiciones = new JLabel("Fecha inicio(yyyy-mm-dd):");
@@ -204,7 +206,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				setContentPane(contentPane);
 				contentPane.setLayout(null);
-
+				contentPane.revalidate();
 
 
 

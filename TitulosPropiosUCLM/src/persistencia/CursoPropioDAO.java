@@ -269,7 +269,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		CursoPropio curso=(CursoPropio)entity;
 		String updateSQL = "UPDATE cursopropio SET "
 				+ "nombre=  '"+curso.getNombre()+"' ,"
-				+ "ECTS= "+curso.getECTS()+", "
+				+ "ETCS= "+curso.getECTS()+", "
 				+ "fechaInicio= '"+curso.getFechaInicio()+"' , "
 				+ "fechaFin='"+curso.getFechaFin()+"',"
 				+ "tasaMatricula="+curso.getTasaMatricula()+","
