@@ -19,7 +19,20 @@ public class CursoPropio {
 	private Date fechaFin;
 	private double tasaMatricula;
 	private int edicion;
+	String centro;
 	
+	public String getCentro() {
+		return centro;
+	}
+	public void setCentro(String centro) {
+		this.centro = centro;
+	}
+	public void setDirector(Profesor director) {
+		this.director = director;
+	}
+	public void setSecretario(Profesor secretario) {
+		this.secretario = secretario;
+	}
 	public Collection<Matricula> getMatriculas() {
 		return matriculas;
 	}
@@ -124,5 +137,19 @@ public class CursoPropio {
 		this.edicion = edicion;
 	}
 	
-
+	public CursoPropio(String nombre, Date fechaInicio, Date fechaFin, int ECTS, double tasaMatricula, int edicion, 
+						Profesor director, Profesor secretario, EstadoCurso estado, TipoCurso tipo, String centro) {
+		super();
+		this.director = director;
+		this.secretario = secretario;
+		this.estado = estado;
+		this.tipo = tipo;
+		this.nombre = nombre;
+		this.ECTS = ECTS;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.tasaMatricula = tasaMatricula;
+		this.edicion = edicion;
+		this.centro = centro;
+	}
 }

@@ -247,11 +247,10 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		CursoPropio curso =(CursoPropio) entity;
-		String insertSQL = "INSERT INTO cursopropio (nombre,ECTS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,tipoCurso,Centro,secretario,director) "
-				+ "VALUES ( '"+curso.getNombre()+"' , '"+curso.getECTS()+"' ,"
-				+ " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , '"+curso.getTasaMatricula()+"' , "
-				+ " '"+curso.getEdicion()+"' , '"+curso.getEstado()+"', "
-				+ "  '"+curso.getSecretario()+"' , '"+curso.getDirector()+"' , '"+curso.getTipo()+"'+ )";
+		String insertSQL = "INSERT INTO cursopropio (nombre,ETCS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,centro,secretario,director,tipoCurso) "
+				+ "VALUES ( '"+curso.getNombre()+"' , "+curso.getECTS()+" ," + " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , "
+				+ curso.getTasaMatricula()+" , "+curso.getEdicion()+" , '"+curso.getEstado()+"', '"+curso.getCentro()+"' , '"
+				+ curso.getSecretario().getDni()+"' , '"+curso.getDirector().getDni()+"' , '"+curso.getTipo()+"' )";
 
 		resultado = GestorBD.insert(insertSQL); 
 		if (resultado > 0) {

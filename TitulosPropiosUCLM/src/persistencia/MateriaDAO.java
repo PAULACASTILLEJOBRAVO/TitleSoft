@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.util.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
@@ -164,11 +165,8 @@ public class MateriaDAO extends AbstractEntityDAO {
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		Materia materia=(Materia)entity;
-		String insertSQL = "INSERT INTO materia (nombre,horas,fechaInicio,fechaFin,Curso) " //cambiar en la base de datos lo de curso con el responsable que es el profesor
-				+ "VALUES ('"+materia.getNombre()+"' ,'"+materia.getHoras()+"' , '"+materia.getFechaInicio()+"', '"+materia.getFechaFin()+"', '"+materia.getResponsable()+"' )";
-		/*
-		 * duda en el getResponsable, que es, en la tabla puse curso haciendo referencia a que curso peretenecia la materia, con responsable hace referencia al profesor que la imparte?
-		 */
+		String insertSQL = "INSERT INTO materia (nombre,horas,fechaInicio,fechaFin,dniProfesor) " 
+				+ "VALUES ('"+materia.getNombre()+"' ,"+materia.getHoras()+" , '"+materia.getFechaInicio()+"', '"+materia.getFechaFin()+"', '"+materia.getResponsable()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
@@ -209,6 +207,20 @@ public class MateriaDAO extends AbstractEntityDAO {
 		String insertSQL = "DELETE FROM materia WHERE nombre= '"+materia.getNombre()+"' ";
 		
 
+		resultado = GestorBD.insert(insertSQL);
+		if (resultado > 0) {
+			System.out.println("Materia nuevo creado");
+		}else
+			System.err.println("Error creando materia nueva ");
+
+		return resultado;
+	}
+	
+	public int vincularCursoMateria(Materia materia, CursoPropio curso) throws ClassNotFoundException, SQLException {
+		int resultado=0;
+		String insertSQL = "INSERT INTO relacionmateriacurso (materia,curso) "
+				+ "VALUES ('"+materia.getNombre()+"' , '"+curso.getNombre()+"') ";
+		
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
 			System.out.println("Materia nuevo creado");
