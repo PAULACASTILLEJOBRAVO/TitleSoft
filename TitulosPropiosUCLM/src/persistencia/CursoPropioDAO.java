@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.util.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -232,10 +233,8 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		if (resultado.isEmpty()==false) {
 			System.out.println("Curso seleccionado");
 
-
 			cursoReturn= crearObjetoCursoPropio(resultado.toString());
-
-			//			
+		
 		}else
 			System.err.println("Error al seleccionar curso");
 
@@ -303,6 +302,26 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		return resultado;
 	}
 
+	public int seleccinarID(CursoPropio curso) throws SQLException {
+		int idCurso=0;
+		Vector<Object> resultado;
+		
+		String insertSQL = "SELECT IdCursoPropio FROM cursopropio WHERE estado = '"+curso.getEstado()+"' AND nombre = '"+curso.getNombre()
+				+"' AND fechaInicio = '"+curso.getFechaInicio()+"'  AND fechaFin = '"+curso.getFechaFin()+"' AND tasaMatricula = "+curso.getTasaMatricula()
+				+" AND edicion = "+curso.getEdicion()+" AND centro = '"+curso.getCentro()+"' AND secretario = '"+curso.getSecretario().getDni()+"' AND director = '"+curso.getDirector().getDni()
+				+"'AND tipoCurso = '"+curso.getTipo()+"' AND ETCS = "+curso.getECTS()+" ";
+		
+		resultado = GestorBD.select(insertSQL); 
+		if (resultado.isEmpty()==false) {
+			System.out.println("Identificador de curso encontrado");
+			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			
+			idCurso=Integer.parseInt(aux[0]);
+		}else
+			System.err.println("Error al buscar el identificador del curso");
+		
+		return idCurso;
+	}
 
 	public CursoPropio crearObjetoCursoPropio(String cursoSplit) throws Exception {
 		CursoPropio cursoReturn=null;

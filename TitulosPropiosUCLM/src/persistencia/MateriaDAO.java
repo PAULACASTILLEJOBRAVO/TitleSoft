@@ -166,7 +166,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 		int resultado=0;
 		Materia materia=(Materia)entity;
 		String insertSQL = "INSERT INTO materia (nombre,horas,fechaInicio,fechaFin,dniProfesor) " 
-				+ "VALUES ('"+materia.getNombre()+"' ,"+materia.getHoras()+" , '"+materia.getFechaInicio()+"', '"+materia.getFechaFin()+"', '"+materia.getResponsable()+"' )";
+				+ "VALUES ('"+materia.getNombre()+"' ,"+materia.getHoras()+" , '"+materia.getFechaInicio()+"', '"+materia.getFechaFin()+"', '"+materia.getResponsable().getDni()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
@@ -216,18 +216,38 @@ public class MateriaDAO extends AbstractEntityDAO {
 		return resultado;
 	}
 	
-	public int vincularCursoMateria(Materia materia, CursoPropio curso) throws ClassNotFoundException, SQLException {
+	public int vincularCursoMateria(int idMateria, int IdCurso) throws ClassNotFoundException, SQLException {
 		int resultado=0;
-		String insertSQL = "INSERT INTO relacionmateriacurso (materia,curso) "
-				+ "VALUES ('"+materia.getNombre()+"' , '"+curso.getNombre()+"') ";
+		String insertSQL = "INSERT INTO RELACIONMATERIASCURSO (materia,curso) "
+				+ "VALUES ("+idMateria+" , "+IdCurso+") ";
 		
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
-			System.out.println("Materia nuevo creado");
+			System.out.println("Materia añadida a curso");
 		}else
-			System.err.println("Error creando materia nueva ");
+			System.err.println("Error añadiendo materia nueva a un curso ");
 
 		return resultado;
 	}
 
+	public int seleccionarId(Materia materia) throws SQLException {
+		
+		int idMateria=0;
+		Vector<Object> resultado;
+		
+		String insertSQL = "SELECT idmateria FROM materia WHERE nombre = '"+materia.getNombre()
+				+"' AND fechaInicio = '"+materia.getFechaInicio()+"'  AND fechaFin = '"+materia.getFechaFin()
+				+"' AND dniProfesor = '"+materia.getResponsable().getDni()+"' AND horas = "+materia.getHoras()+" ";
+		
+		resultado = GestorBD.select(insertSQL); 
+		if (resultado.isEmpty()==false) {
+			System.out.println("Identificador de materia encontrado");
+			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			
+			idMateria=Integer.parseInt(aux[0]);
+		}else
+			System.err.println("Error al buscar el identificador de la materia");
+		
+		return idMateria;
+	}
 }

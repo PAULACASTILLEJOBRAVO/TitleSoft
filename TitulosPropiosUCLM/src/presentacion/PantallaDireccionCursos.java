@@ -8,11 +8,14 @@ import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import negocio.controllers.GestorMateria;
 import negocio.controllers.GestorMatriculacion;
 import negocio.controllers.GestorPropuestasCursos;
+import negocio.entities.CursoPropio;
 import negocio.entities.EstadoCurso;
 import negocio.entities.ModoPago;
 import negocio.entities.TipoCurso;
+import persistencia.CursoPropioDAO;
 public class PantallaDireccionCursos extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldFechaInicio;
@@ -24,6 +27,11 @@ public class PantallaDireccionCursos extends JFrame {
 	private JTextField textFieldCentro;
 	private JTextField textFieldSecretario;
 	private JTextField textFieldDirector;
+	private JTextField textFieldMateria;
+	private JTextField textFieldHora;
+	private JTextField textFieldFechaInicioMateria;
+	private JTextField textFieldFechaFinMateria;
+	private JTextField textFieldDniProfesor;
 	private JLabel lblError;
 	private JRadioButton rdbtnNewRadioButtonMaster;
 	private JRadioButton rdbtnNewRadioButtonExperto;
@@ -32,6 +40,7 @@ public class PantallaDireccionCursos extends JFrame {
 	private JRadioButton rdbtnNewRadioButtonMicrocredenciales;
 	private JRadioButton rdbtnNewRadioButtonFormacionContinua;
 	private JRadioButton rdbtnNewRadioButtonFormacionAvanzada;
+	CursoPropio cursoNuevo;
 	
 	public PantallaDireccionCursos() {
 		
@@ -130,27 +139,107 @@ public class PantallaDireccionCursos extends JFrame {
 		textFieldSecretario.setColumns(10);
 		
 		
-		JButton btnNewButton = new JButton("Aceptar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnNewButtonAceptar = new JButton("Aceptar");
+		btnNewButtonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					validarDatosPropuestaCurso();
+					
+					setTitle("Sesion:Direccion");
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					setBounds(300, 300, 520, 300);
+					contentPane = new JPanel();
+					contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+					setContentPane(contentPane);
+					contentPane.setLayout(null);
+					contentPane.revalidate();
+					
+					JLabel lblFechaInicioMateria = new JLabel("Fecha de inicio de la materia (yyyy-mm-dd):");
+					lblFechaInicio.setBounds(416, 170, 300, 40);
+					add(lblFechaInicio);
+					
+					textFieldFechaInicioMateria = new JTextField();
+					textFieldFechaInicioMateria.setBounds(416, 205, 76, 19);
+					add(textFieldFechaInicioMateria);
+					textFieldFechaInicioMateria.setColumns(10);
+					
+					JLabel lblFechaFinMateria = new JLabel("Fecha de finalizacion de la materia (yyyy-mm-dd):");
+					lblFechaFinMateria.setBounds(416, 225, 300, 40);
+					add(lblFechaFinMateria);
+					
+					textFieldFechaFinMateria = new JTextField();
+					textFieldFechaFinMateria.setBounds(416, 255, 76, 19);
+					add(textFieldFechaFinMateria);
+					textFieldFechaFinMateria.setColumns(10);
+					
+					JLabel lblMateria = new JLabel("Nombre de la materia:");
+					lblMateria.setBounds(90, 190, 125, 13);
+					add(lblMateria);
+
+					textFieldMateria = new JTextField();
+					textFieldMateria.setBounds(90, 205, 76, 19);
+					add(textFieldMateria);
+					textFieldMateria.setColumns(10);
+					
+					JLabel lblHoras = new JLabel("Horas:");
+					lblHoras.setBounds(90, 240, 105, 13);
+					add(lblHoras);
+					
+					textFieldHora = new JTextField();
+					textFieldHora.setBounds(90, 255, 76, 19);
+					add(textFieldHora);
+					textFieldHora.setColumns(10);
+					
+					JLabel lblDniProfesor = new JLabel("DNI del profesor responsabele de la materia:");
+					lblDniProfesor.setBounds(416, 300, 450, 13);
+					add(lblDniProfesor);
+					
+					textFieldDniProfesor = new JTextField();
+					textFieldDniProfesor.setBounds(416, 330, 76, 19);
+					add(textFieldDniProfesor);
+					textFieldDniProfesor.setColumns(10);
+					
+					JLabel lblNewLabel = new JLabel("Solicitud de la materia:");
+					lblNewLabel.setBounds(550, 100, 120, 13);
+					add(lblNewLabel);
+					
+					JButton btnAceptar = new JButton("Aceptar");
+					btnAceptar.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							validarDatosMateriaPorCurso();
+
+						}
+					});
+					btnAceptar.setBounds(200, 432, 100, 20);
+					add(btnAceptar);
+					
+					JButton btnNewButtonCancelar = new JButton("Cancelar");
+					btnNewButtonCancelar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							limpiarFormulario();
+						}
+					});
+					btnNewButtonCancelar.setBounds(400, 432, 95, 21);
+					add(btnNewButtonCancelar);
+					
 				} catch (SQLException | NumberFormatException | ClassNotFoundException e1) {
 					Main_testing.escribirLog(Main_testing.error,"Error a realizar propuesta del curso");
 				}
 			}
 		});
-		btnNewButton.setBounds(553, 432, 83, 21);
-		add(btnNewButton);
+		btnNewButtonAceptar.setBounds(553, 432, 83, 21);
+		add(btnNewButtonAceptar);
 
-		JButton btnNewButton_1 = new JButton("Cancelar");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnNewButtonCancelar = new JButton("Cancelar");
+		btnNewButtonCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limpiarFormulario();
 			}
 		});
-		btnNewButton_1.setBounds(658, 432, 83, 21);
-		add(btnNewButton_1);
+		btnNewButtonCancelar.setBounds(658, 432, 83, 21);
+		add(btnNewButtonCancelar);
 
 		JLabel lblNewLabel = new JLabel("Solicitud de curso:");
 		lblNewLabel.setBounds(550, 100, 120, 13);
@@ -209,13 +298,23 @@ public class PantallaDireccionCursos extends JFrame {
 	private void validarDatosPropuestaCurso() throws NumberFormatException, SQLException, ClassNotFoundException {
 			if (validarDatosCurso()) {
 				lblError.setText("");
-				TipoCurso tipoCurso = rdbtnNewRadioButtonMaster.isSelected() ? TipoCurso.MASTER : TipoCurso.EXPERTO;
-				tipoCurso = rdbtnNewRadioButtonExperto.isSelected() ? TipoCurso.EXPERTO : TipoCurso.ESPECIALISTA;
-				tipoCurso = rdbtnNewRadioButtonEspecialista.isSelected() ? TipoCurso.ESPECIALISTA : TipoCurso.MICROCREDENCIALES;
-				tipoCurso = rdbtnNewRadioButtonMicrocredenciales.isSelected() ? TipoCurso.MICROCREDENCIALES : TipoCurso.CORTA_DURACION;
-				tipoCurso = rdbtnNewRadioButtonCortaDuracion.isSelected() ? TipoCurso.CORTA_DURACION : TipoCurso.FORMACION_AVANZADA;
-				tipoCurso = rdbtnNewRadioButtonFormacionAvanzada.isSelected() ? TipoCurso.FORMACION_AVANZADA : TipoCurso.FORMACION_CONTINUA;
-				tipoCurso = rdbtnNewRadioButtonFormacionContinua.isSelected() ? TipoCurso.FORMACION_CONTINUA : TipoCurso.MASTER;
+				TipoCurso tipoCurso = null;
+				
+				if(rdbtnNewRadioButtonCortaDuracion.isSelected()) {
+					tipoCurso = TipoCurso.CORTA_DURACION;
+				}else if(rdbtnNewRadioButtonMaster.isSelected()) {
+					tipoCurso = TipoCurso.MASTER;
+				}else if(rdbtnNewRadioButtonEspecialista.isSelected()) {
+					tipoCurso = TipoCurso.ESPECIALISTA;
+				}else if(rdbtnNewRadioButtonExperto.isSelected()) {
+					tipoCurso = TipoCurso.EXPERTO;
+				}else if(rdbtnNewRadioButtonFormacionAvanzada.isSelected()) {
+					tipoCurso = TipoCurso.FORMACION_AVANZADA;
+				}else if(rdbtnNewRadioButtonFormacionContinua.isSelected()) {
+					tipoCurso = TipoCurso.FORMACION_CONTINUA;
+				}else if(rdbtnNewRadioButtonMicrocredenciales.isSelected()) {
+					tipoCurso = TipoCurso.MICROCREDENCIALES;
+				}
 				
 				GestorPropuestasCursos gestorPropuestaCurso = new GestorPropuestasCursos();
 				String fechaInicio=textFieldFechaInicio.getText();
@@ -226,10 +325,29 @@ public class PantallaDireccionCursos extends JFrame {
 				
 				double tasaMatricula = Integer.parseInt(textFieldTasaMatricula.getText()) + 0.0;
 				
-				gestorPropuestaCurso.realizarPropuestaCurso(textFieldCurso.getText(), fechaSQLInicio, fechaSQLFin, Integer.parseInt(textFieldEtcs.getText()), tasaMatricula, Integer.parseInt(textFieldEdicion.getText()), textFieldDirector.getText(), textFieldSecretario.getText(), EstadoCurso.PROPUESTO, tipoCurso, textFieldCentro.getText());
+				cursoNuevo = gestorPropuestaCurso.realizarPropuestaCurso(textFieldCurso.getText(), fechaSQLInicio, fechaSQLFin, Integer.parseInt(textFieldEtcs.getText()), tasaMatricula, Integer.parseInt(textFieldEdicion.getText()), textFieldDirector.getText(), textFieldSecretario.getText(), EstadoCurso.PROPUESTO, tipoCurso, textFieldCentro.getText());
 			} else {
-				lblError.setText("No se ha podido completar la matricula. Rellena todos los campos.");
+				lblError.setText("No se ha podido completar el curso. Rellena todos los campos.");
 			}
+	}
+	
+	public void validarDatosMateriaPorCurso() {
+		if (validarDatosMateria()) {
+			lblError.setText("");
+			
+			GestorMateria gestorMateria = new GestorMateria();
+			String fechaInicio=textFieldFechaInicioMateria.getText();
+			Date fechaSQLInicio = Date.valueOf(fechaInicio);
+			
+			String fechaFin=textFieldFechaFinMateria.getText();
+			Date fechaSQLFin = Date.valueOf(fechaFin);
+			
+			int horas = Integer.parseInt(textFieldHora.getText());
+			
+			gestorMateria.realizarMateria(textFieldDniProfesor.getText(), textFieldMateria.getText(), horas, fechaSQLInicio, fechaSQLFin, cursoNuevo);
+			} else {
+			lblError.setText("No se ha podido completar la materia. Rellena todos los campos.");
+		}
 	}
 
 	private boolean validarDatosCurso() {

@@ -68,18 +68,6 @@ public class GestorPropuestasCursos {
 		return estado;
 	}
 
-	/**
-	 * 
-	 * @param curso
-	 */
-	public void altaCursoAprobado(CursoPropio curso) {
-		if(curso.getEstado().equals(EstadoCurso.VALIDADO)) {
-			
-		}
-	}
+
 	
-	public void realizarMateriasCurso(Materia materia, CursoPropio curso) throws ClassNotFoundException, SQLException {
-		MateriaDAO materiaDAO = new MateriaDAO();
-		materiaDAO.vincularCursoMateria(materia, curso);
-	}
 }
