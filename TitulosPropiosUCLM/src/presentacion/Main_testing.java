@@ -17,6 +17,7 @@ import negocio.controllers.GestorUsuarios;
 import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
 import persistencia.*;
+import negocio.controllers.*;
 
 public class Main_testing extends JFrame{
 
@@ -32,7 +33,9 @@ public class Main_testing extends JFrame{
 		frame.setVisible(true);
 
 		
-		GestorBD.conectar();	 
+		GestorBD.conectar();
+		
+		GestorMatriculacion.seleccionarMatricula("-1");
 
 	}
 

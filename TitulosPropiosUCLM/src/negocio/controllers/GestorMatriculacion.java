@@ -22,6 +22,10 @@ public class GestorMatriculacion {
 		MatriculaDAO matriculaDAO= new MatriculaDAO();
 		
 		try {
+			if(curso == "" || alumno == "" || (tipo != ModoPago.TARJETA_CREDITO || tipo != ModoPago.TRANSFERENCIA)) {
+				System.out.println("Datos de matriculación no válidos");
+				return;
+			}
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
 		} catch (SQLException e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula");
@@ -30,17 +34,25 @@ public class GestorMatriculacion {
 		}
 	}
 
-	public Matricula seleccionarMatricula(String id) {
+	public static Matricula seleccionarMatricula(String id) {
 
 		MatriculaDAO matriculaDAO=new MatriculaDAO();
 
 		try {
-			return (Matricula) matriculaDAO.seleccionarMatricula(id);
-
+			int n = Integer.parseInt(id);
+			if(n <0) {
+				System.out.println("id no valido");
+			}
+			
+			else {
+				System.out.println("entra opr el if");
+				return (Matricula) matriculaDAO.seleccionarMatricula(id);
+			}
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al seleccionar matricula");
 			return null;
 		}
+		return null;
 		
 
 	}

@@ -9,8 +9,13 @@ public class GestorCentro {
 	
 	public Centro seleccionarCentro(String id) throws Exception {
 		
-		CentroDAO centroDAO= new CentroDAO();	
-		return (Centro) centroDAO.seleccionarCentro(id);
+		int n = Integer.parseInt(id);
+		if(n >=0) {
+			CentroDAO centroDAO= new CentroDAO();	
+			return (Centro) centroDAO.seleccionarCentro(id);
+		}
+		return null;
+		
 	}
 	
 	

@@ -19,7 +19,13 @@ public class GestorConsultas {
 		double ingresos = 0;
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		 try {
-			ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+			 if(tipo !=TipoCurso.CORTA_DURACION || tipo != TipoCurso.ESPECIALISTA || tipo != TipoCurso.EXPERTO || tipo != TipoCurso.FORMACION_AVANZADA || tipo != TipoCurso.FORMACION_CONTINUA || tipo != TipoCurso.MASTER || tipo != TipoCurso.MICROCREDENCIALES) {
+					ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+			 }
+			 else {
+				 System.out.println("Error al introducir los datos para consultar los ingresos");
+				 return (Double) null;
+			 }
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consulatar ingresos");
 
@@ -37,7 +43,12 @@ public class GestorConsultas {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
 		try {
-			estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso);
+			if(estadoCurso != EstadoCurso.EN_IMPARTIZICION || estadoCurso != EstadoCurso.EN_MATRICULACION || estadoCurso != EstadoCurso.PROPUESTA_RECHAZADA || estadoCurso != EstadoCurso.PROPUESTO || estadoCurso!= EstadoCurso.TERMINADO || estadoCurso!=EstadoCurso.VALIDADO) {
+				estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso);
+			}
+			else {
+				System.out.println("Error al introducir los datos para consultar los estados de los cursos");
+			}
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
 
@@ -68,6 +79,10 @@ public class GestorConsultas {
 	
 	public CursoPropio seleccionarCurso(String id) throws Exception {
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
+		int n = Integer.parseInt(id);
+		if(n<0) {
+			System.out.println("id introducido no válido para la selección del curso");
+		}
 		return cursoDAO.seleccionarCurso(id);
 	}
 	
@@ -79,6 +94,10 @@ public class GestorConsultas {
 	
 	public Collection<CursoPropio> cursosPorCentro(String id) throws Exception{
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
+		int n = Integer.parseInt(id);
+		if(n<0) {
+			System.out.println("id introducido no válido para la selección del curso por centro");
+		}
 		return cursoDAO.cursosPorCentro(id);
 		
 	}
