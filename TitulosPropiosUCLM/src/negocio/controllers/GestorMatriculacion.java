@@ -22,10 +22,6 @@ public class GestorMatriculacion {
 		MatriculaDAO matriculaDAO= new MatriculaDAO();
 		
 		try {
-			if(curso == "" || alumno == "" || (tipo != ModoPago.TARJETA_CREDITO || tipo != ModoPago.TRANSFERENCIA)) {
-				System.out.println("Datos de matriculación no válidos");
-				return;
-			}
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
 		} catch (SQLException e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula");

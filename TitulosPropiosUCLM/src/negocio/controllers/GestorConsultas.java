@@ -19,13 +19,7 @@ public class GestorConsultas {
 		double ingresos = 0;
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		 try {
-			 if(tipo !=TipoCurso.CORTA_DURACION || tipo != TipoCurso.ESPECIALISTA || tipo != TipoCurso.EXPERTO || tipo != TipoCurso.FORMACION_AVANZADA || tipo != TipoCurso.FORMACION_CONTINUA || tipo != TipoCurso.MASTER || tipo != TipoCurso.MICROCREDENCIALES) {
-					ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
-			 }
-			 else {
-				 System.out.println("Error al introducir los datos para consultar los ingresos");
-				 return (Double) null;
-			 }
+			 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consulatar ingresos");
 
@@ -43,12 +37,9 @@ public class GestorConsultas {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
 		try {
-			if(estadoCurso != EstadoCurso.EN_IMPARTIZICION || estadoCurso != EstadoCurso.EN_MATRICULACION || estadoCurso != EstadoCurso.PROPUESTA_RECHAZADA || estadoCurso != EstadoCurso.PROPUESTO || estadoCurso!= EstadoCurso.TERMINADO || estadoCurso!=EstadoCurso.VALIDADO) {
+			
 				estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso);
-			}
-			else {
 				System.out.println("Error al introducir los datos para consultar los estados de los cursos");
-			}
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
 
@@ -68,6 +59,7 @@ public class GestorConsultas {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
 		try {
+			//filtro para poner fechas realistas
 			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
@@ -87,7 +79,7 @@ public class GestorConsultas {
 	}
 	
 	public CursoPropio actualizarCurso(CursoPropio curso) throws Exception {
-		
+		//si está vacío o no
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		return cursoDAO.editarCurso(curso);
 	}
