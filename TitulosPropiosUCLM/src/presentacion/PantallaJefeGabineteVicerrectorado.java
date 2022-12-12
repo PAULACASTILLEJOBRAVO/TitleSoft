@@ -228,7 +228,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 					CursoPropio cursoAux=it.next();
 
 					tabla.addRow(new Object[] {
-							cursoAux.getIdReal(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
+							cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
 							cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
 							cursoAux.getSecretario(),cursoAux.getDirector(),cursoAux.getDirector(),cursoAux.getMaterias()
 
@@ -423,8 +423,8 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 			for (int i=0; i< aux.length;i++) {
 				CursoPropio cursoAux=(CursoPropio)aux[i];
-				ProfesorUCLM director=cursoAux.getDirector();
-				ProfesorUCLM secretario=cursoAux.getSecretario();
+				Profesor director=cursoAux.getDirector();
+				Profesor secretario=cursoAux.getSecretario();
 				Object[] materiasCurso=cursoAux.getMaterias().toArray();
 				String datosMateriaNombres="Materias: ";
 				
@@ -435,7 +435,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				}
 
 
-				tabla.addRow(new Object[] {cursoAux.getIdControlador(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
+				tabla.addRow(new Object[] {cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
 						cursoAux.getEdicion(),cursoAux.getEstado().toString(),cursoAux.getTipo().toString(),secretario.getDni(),
 						director.getDni(),datosMateriaNombres
 

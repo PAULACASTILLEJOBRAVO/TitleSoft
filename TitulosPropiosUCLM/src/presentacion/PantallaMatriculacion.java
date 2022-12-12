@@ -1,6 +1,7 @@
 package presentacion;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

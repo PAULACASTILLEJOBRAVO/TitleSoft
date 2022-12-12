@@ -1,7 +1,9 @@
 package negocio.controllers;
 
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Vector;
 
 import negocio.entities.CursoPropio;
 import negocio.entities.Materia;
@@ -21,14 +23,12 @@ public class GestorMateria {
 	}
 
 	
-	public Collection<Materia> seleccionarMateriaCurso(String id){
+	public Vector<Object> seleccionarMateriaCurso(String id) throws Exception{
 		
 		MateriaDAO materiaDAO=new MateriaDAO();
 		return materiaDAO.listarMateriaCurso(id);
 		
 	}
-=======
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 	
 	public Materia realizarMateria(String dniProfesorResponsable, String nombre, double horas, Date fechaInicio, Date fechaFin, CursoPropio curso) {
 		

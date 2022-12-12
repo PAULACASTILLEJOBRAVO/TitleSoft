@@ -1,5 +1,6 @@
 package persistencia;
 import java.util.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
@@ -115,9 +116,9 @@ public class MatriculaDAO extends AbstractEntityDAO {
 
 			
 			if(aux[3].trim().equals("credito")) {
-				matriculaEncontrada=new Matricula( aux[0], ModoPago.TARJETA_CREDITO, sqlDate,Boolean.parseBoolean(aux[2]));
+				matriculaEncontrada=new Matricula(aux[0], aux[1], ModoPago.TARJETA_CREDITO, fecha,Boolean.parseBoolean(aux[2]));
 			}else if(aux[3].trim().equals("transferencia")){
-				matriculaEncontrada=new Matricula( aux[0], ModoPago.TRANSFERENCIA, sqlDate, Boolean.parseBoolean(aux[2]));
+				matriculaEncontrada=new Matricula( aux[0], aux[1], ModoPago.TRANSFERENCIA, fecha, Boolean.parseBoolean(aux[2]));
 			}
 			
 			

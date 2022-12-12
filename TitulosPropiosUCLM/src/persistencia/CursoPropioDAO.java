@@ -151,11 +151,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 		Vector<Object> resultado;
-<<<<<<< HEAD
-		String SelectSQLEdicion= "SELECT * FROM cursopropio WHERE idControlador LIKE '"+idControlador+"' ";
-=======
+		
 		String SelectSQLEdicion= "SELECT * FROM cursopropio WHERE idCursoPropio = "+idCursoPropio+" ";
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
+		
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
@@ -172,11 +170,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		CursoPropio cursoReturn=null;
-<<<<<<< HEAD
-		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal LIKE '"+id+"' " ;
-=======
+
 		String SelectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = "+id+" " ;
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
+
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -281,15 +277,10 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 		String[] aux =  (cursoSplit.trim().replace("[", "").replace("]", "")).split(",") ;
 		//Coleccion de matriculas y materias
-<<<<<<< HEAD
-		Vector<Object> listaCursosIdControlador= listarIdControlador(aux[1].trim());
-		Collection<Matricula> matriculas=null;
-		Collection<Materia> materias=null;
-=======
+
 		Vector<Object> listaCursosIdCursoPropio= listarIdCursoPropio(aux[0].trim());
 		Collection<Matricula> matriculas = new ArrayList<Matricula>();
 		Collection<Materia> materias= new ArrayList<Materia>();
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 		GestorMatriculacion gMatriculas=new GestorMatriculacion();
 		GestorMateria gMateria=new GestorMateria();
 
@@ -299,23 +290,11 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 		//ProfesorUCLM Director y secretario
-<<<<<<< HEAD
-		GestorProfesorUCLM gProfesor= new GestorProfesorUCLM();
-		ProfesorUCLM director=gProfesor.seleccionarProfesor(aux[12]);
-		ProfesorUCLM secretario=gProfesor.seleccionarProfesor(aux[11]);
-=======
+
 		GestorProfesor gProfesor= new GestorProfesor();
 		Profesor director=gProfesor.seleccionarProfesor(aux[10]);
 		Profesor secretario=gProfesor.seleccionarProfesor(aux[9]);
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
-
-
-<<<<<<< HEAD
-		//Collection<Materia>
-=======
-
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 		//fecha
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -327,123 +306,56 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 
-<<<<<<< HEAD
-		//Creacion de Collection<Matriculas>
-		for(int i=0;i<listaCursosIdControlador.size();i++) {
-=======
+
 		//Creacion de Collection<Matriculas> y //Collection<Materia>
 		for(int i=0;i<listaCursosIdCursoPropio.size();i++) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
-
-<<<<<<< HEAD
-			String[] auxMatriculas =  (listaCursosIdControlador.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
-
-			matriculas.add(gMatriculas.seleccionarMatricula(auxMatriculas[2]));
-			materias.add(gMateria.seleccionarMaterias(auxMatriculas[13]));
-=======
 			String[] auxMatriculas =  (listaCursosIdCursoPropio.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			Matricula matriculaAux=gMatriculas.seleccionarMatricula(auxMatriculas[0]);
 			matriculas.add(matriculaAux);
 			String curso = aux[0];
 			materias.add(gMateria.seleccionarMaterias(aux[0]));
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 		}
 
 
 		EstadoCurso estado=null;
 		TipoCurso tipo=null;
 		//estado
-<<<<<<< HEAD
-		if(aux[8].equals("imparizicion")) {
-=======
+
 		if(aux[7].trim().equals("imparticion")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.EN_IMPARTIZICION;
-<<<<<<< HEAD
-		}else if (aux[8].equals("matriculacion")) {
-=======
 		}else if (aux[7].trim().equals("matriculacion")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.EN_MATRICULACION;
-<<<<<<< HEAD
-		}else if (aux[8].equals("propuesta rechazada")) {
-=======
 		}else if (aux[7].trim().equals("propuesta_rechazada")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.PROPUESTA_RECHAZADA;
-<<<<<<< HEAD
-		}else if (aux[8].equals("propuesto")) {
-=======
 		}else if (aux[7].trim().equals("propuesto")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.PROPUESTO;
-<<<<<<< HEAD
-		}else if (aux[8].equals("terminado")) {
-=======
 		}else if (aux[7].trim().equals("terminado")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.TERMINADO;
-<<<<<<< HEAD
-		}else if (aux[8].equals("validado")) {
-=======
 		}else if (aux[7].trim().equals("validado")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.VALIDADO;
 		}
 
 		//tipoCurso
-<<<<<<< HEAD
-		if(aux[9].equals("corta duracion")) {
-=======
 		if(aux[11].trim().equals("corta_duracion")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.CORTA_DURACION;
-<<<<<<< HEAD
-		}else if (aux[9].equals("especialista")) {
-=======
 		}else if (aux[11].trim().equals("especialista")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.ESPECIALISTA;
-<<<<<<< HEAD
-		}else if (aux[9].equals("experto")) {
-=======
 		}else if (aux[11].trim().equals("experto")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.EXPERTO;
-<<<<<<< HEAD
-		}else if (aux[9].equals("formacion avanzada")) {
-=======
 		}else if (aux[11].trim().equals("formacion_avanzada")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.FORMACION_AVANZADA;
-<<<<<<< HEAD
-		}else if (aux[9].equals("formacion continua")) {
-=======
 		}else if (aux[11].trim().equals("formacion_continua")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.FORMACION_CONTINUA;
-<<<<<<< HEAD
-		}else if (aux[9].equals("master")) {
-=======
 		}else if (aux[11].trim().equals("master")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.MASTER;
-<<<<<<< HEAD
-		}else if (aux[9].equals("microcredenciles")) {
-=======
 		}else if (aux[11].trim().equals("microcredenciles")) {
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.MICROCREDENCIALES;
 		}
 
 
-<<<<<<< HEAD
-		return cursoReturn= new CursoPropio(matriculas, director, secretario, materias, estado, tipo.CORTA_DURACION, cursoDAO, Integer.parseInt(aux[1]), Integer.parseInt(aux[0]), aux[2],Integer.parseInt( aux[3]), fechaInicial, fechaFinal, Double.parseDouble(aux[6]), Integer.parseInt(aux[7]));
-=======
 		return cursoReturn= new CursoPropio(matriculas, director, secretario, materias, 
 				estado, tipo, cursoDAO, Integer.parseInt(aux[0]), aux[1],Integer.parseInt(aux[2].trim()), 
 				fechaInicial, fechaFinal, Double.parseDouble(aux[5].trim()), Integer.parseInt(aux[6].trim()));
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 
 		//		
@@ -454,11 +366,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		Collection<Object> resultado=null;
 		Collection<CursoPropio> cursosCentroReturn=null;
 		CursoPropio cursoReturn=null;
-<<<<<<< HEAD
-		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal LIKE '"+id+"' " ;
-=======
 		String SelectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = '"+Integer.getInteger(id)+"' " ;
->>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 
 		resultado = GestorBD.select(SelectSQL);
