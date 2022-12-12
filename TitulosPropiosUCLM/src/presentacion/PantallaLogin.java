@@ -33,17 +33,24 @@ public class PantallaLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+
+
+
 		JLabel lblusuario = new JLabel("Usuario:");
 		lblusuario.setBounds(80, 94, 79, 13);
 		getContentPane().add(lblusuario);
 
+
 		JLabel lblcontrasena1 = new JLabel("Contrase\u00F1a:");
-		lblcontrasena1.setBounds(65, 157, 76, 17);
+		lblcontrasena1.setBounds(80, 157, 76, 13);
 		getContentPane().add(lblcontrasena1);
+
+
 
 		textFieldUsuario.setBounds(145, 91, 132, 19);
 		getContentPane().add(textFieldUsuario);
 		textFieldUsuario.setColumns(10);
+
 
 		textFieldPassword.setBounds(145, 154, 132, 19);
 		getContentPane().add(textFieldPassword);
@@ -54,6 +61,7 @@ public class PantallaLogin extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				GestorUsuarios gUsuario=new GestorUsuarios();
 
 				if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
@@ -71,12 +79,15 @@ public class PantallaLogin extends JFrame {
 					}else if(id==0) {
 						accionesJefe(gUsuario,usuario);
 					}
+
+
+
 				}else {
 					System.out.println("Error iniciando sesion");
 				}
+
 			}
 		});
-		
 		btnNewButton.setBounds(89, 224, 83, 21);
 		getContentPane().add(btnNewButton);
 
@@ -87,6 +98,7 @@ public class PantallaLogin extends JFrame {
 		JLabel lblbienvenida = new JLabel("Bienvenido");
 		lblbienvenida.setBounds(154, 40, 68, 13);
 		getContentPane().add(lblbienvenida);
+
 	}
 
 	public void accionesProfesores(GestorUsuarios gUsuario,Usuario usuario) {
@@ -94,21 +106,36 @@ public class PantallaLogin extends JFrame {
 
 			System.out.println("Sesion iniciada");
 
+
 			usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
 			if(usuario.getTipo()==TipoUsuario.PROFESOR) {
 				PantallaDireccionCursos frame =new PantallaDireccionCursos();
 				frame.setVisible(true);
 			}
+
+
+
 		}else {
 			System.out.println("Ususario no permitido");
 		}
+
+
+
+
+
+
+
+
 	}
 
 	public void accionesVicerector(GestorUsuarios gUsuario,Usuario usuario) {
+
+
 		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
+
 
 			usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
@@ -116,15 +143,27 @@ public class PantallaLogin extends JFrame {
 				PantallaEmpleadosVicerrectorado frame =new PantallaEmpleadosVicerrectorado();
 				frame.setVisible(true);
 			}
+
+
+
 		}else {
 			System.out.println("Ususario no permitido");
 		}
+
+
+
+		
+
 	}
 
 	public void accionesEstudiante(GestorUsuarios gUsuario,Usuario usuario) {
+		
+		
+
 		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
+
 
 			usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
@@ -132,15 +171,24 @@ public class PantallaLogin extends JFrame {
 				PantallaMatriculacion frame =new PantallaMatriculacion();
 				frame.setVisible(true);
 			}
+
+
+
 		}else {
 			System.out.println("Ususario no permitido");
 		}
+
+
+
+
 	}
-	
+
 	public void accionesJefe(GestorUsuarios gUsuario,Usuario usuario) {
+		
 		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
+
 
 			usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
@@ -148,8 +196,16 @@ public class PantallaLogin extends JFrame {
 				PantallaJefeGabineteVicerrectorado frame =new PantallaJefeGabineteVicerrectorado();
 				frame.setVisible(true);
 			}
+
+
+
 		}else {
 			System.out.println("Ususario no permitido");
 		}
+
+
+		
+
 	}
+
 }

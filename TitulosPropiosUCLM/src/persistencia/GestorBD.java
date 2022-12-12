@@ -32,7 +32,7 @@ public class GestorBD {
 	}
 
 	// Metodo para realizar la conexion a la base de datos
-	public static void conectar() throws Exception {
+	public static void conectar() throws SQLException {
 		PreparedStatement pstmt;
 		Statement stmt;
 		ResultSet rs = null;
@@ -119,13 +119,17 @@ public class GestorBD {
 //	}
 //
 	// Metodo para desconectar de la base de datos
-	public static void desconectar() throws Exception {
+	public static void desconectar() throws SQLException {
 		mBD.close();
 	}
 
 	// Metodo para realizar una insercion en la base de datos
-	public static int insert(String SQL) throws SQLException, Exception {
-		conectar();
+	public static int insert(String SQL) throws ClassNotFoundException, SQLException {
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
@@ -135,6 +139,11 @@ public class GestorBD {
 
 	// Metodo para realizar una eliminacion en la base de datos
 	public int delete(String SQL) throws SQLException, Exception {
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
@@ -144,7 +153,10 @@ public class GestorBD {
 
 	// Metodo para realizar una eliminacion en la base de datos
 	public static int update(String SQL) throws SQLException, Exception {
-		conectar();
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
@@ -152,7 +164,7 @@ public class GestorBD {
 		return res;
 	}
 
-	public static Vector<Object> select(String SQL) throws SQLException, Exception {
+	public static Vector<Object> select(String SQL) throws SQLException  {
 		/*
 		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
 		 * datos El mŽtodo select develve un vector de vectores, donde cada uno de los

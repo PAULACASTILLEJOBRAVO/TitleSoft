@@ -6,34 +6,46 @@ import persistencia.*;
 public class CursoPropio {
 
 	Collection<Matricula> matriculas;
-	ProfesorUCLM director;
-	ProfesorUCLM secretario;
+	Profesor director;
+	Profesor secretario;
 	Collection<Materia> materias;
 	EstadoCurso estado;
 	TipoCurso tipo;
 	CursoPropioDAO cursoPropioDao;
-	private int idReal;
-	private int idControlador;
+	private int idCursoPropio;
 	private String nombre;
 	private int ECTS;
 	private Date fechaInicio;
 	private Date fechaFin;
 	private double tasaMatricula;
 	private int edicion;
+	String centro;
 	
+	public String getCentro() {
+		return centro;
+	}
+	public void setCentro(String centro) {
+		this.centro = centro;
+	}
+	public void setDirector(Profesor director) {
+		this.director = director;
+	}
+	public void setSecretario(Profesor secretario) {
+		this.secretario = secretario;
+	}
 	public Collection<Matricula> getMatriculas() {
 		return matriculas;
 	}
 	public void setMatriculas(Collection<Matricula> matriculas) {
 		this.matriculas = matriculas;
 	}
-	public ProfesorUCLM getDirector() {
+	public Profesor getDirector() {
 		return director;
 	}
 	public void setDirector(ProfesorUCLM director) {
 		this.director = director;
 	}
-	public ProfesorUCLM getSecretario() {
+	public Profesor getSecretario() {
 		return secretario;
 	}
 	public void setSecretario(ProfesorUCLM secretario) {
@@ -63,17 +75,11 @@ public class CursoPropio {
 	public void setCursoPropioDao(CursoPropioDAO cursoPropioDao) {
 		this.cursoPropioDao = cursoPropioDao;
 	}
-	public int getIdReal() {
-		return idReal;
+	public int getIdCursoPropio() {
+		return idCursoPropio;
 	}
-	public int getIdControlador() {
-		return idControlador;
-	}
-	public void setIdControlador(int idControlador) {
-		this.idControlador = idControlador;
-	}
-	public void setIdReal(int id) {
-		this.idReal = id;
+	public void setIdCursoPropio(int idCursoPropio) {
+		this.idCursoPropio = idCursoPropio;
 	}
 	public String getNombre() {
 		return nombre;
@@ -111,8 +117,8 @@ public class CursoPropio {
 	public void setEdicion(int edicion) {
 		this.edicion = edicion;
 	}
-	public CursoPropio(Collection<Matricula> matriculas, ProfesorUCLM director, ProfesorUCLM secretario,
-			Collection<Materia> materias, EstadoCurso estado, TipoCurso tipo, CursoPropioDAO cursoPropioDao,int idControlador, int idReal,
+	public CursoPropio(Collection<Matricula> matriculas, Profesor director, Profesor secretario,
+			Collection<Materia> materias, EstadoCurso estado, TipoCurso tipo, CursoPropioDAO cursoPropioDao,int idCursoPropio,
 			String nombre, int eCTS, Date fechaInicio, Date fechaFin, double tasaMatricula, int edicion) {
 		super();
 		this.matriculas = matriculas;
@@ -122,9 +128,8 @@ public class CursoPropio {
 		this.estado = estado;
 		this.tipo = tipo;
 		this.cursoPropioDao = cursoPropioDao;
-		this.idReal = idReal;
 		this.nombre = nombre;
-		this.idControlador=idControlador;
+		this.idCursoPropio=idCursoPropio;
 		ECTS = eCTS;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
@@ -132,5 +137,19 @@ public class CursoPropio {
 		this.edicion = edicion;
 	}
 	
-
+	public CursoPropio(String nombre, Date fechaInicio, Date fechaFin, int ECTS, double tasaMatricula, int edicion, 
+						Profesor director, Profesor secretario, EstadoCurso estado, TipoCurso tipo, String centro) {
+		super();
+		this.director = director;
+		this.secretario = secretario;
+		this.estado = estado;
+		this.tipo = tipo;
+		this.nombre = nombre;
+		this.ECTS = ECTS;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.tasaMatricula = tasaMatricula;
+		this.edicion = edicion;
+		this.centro = centro;
+	}
 }

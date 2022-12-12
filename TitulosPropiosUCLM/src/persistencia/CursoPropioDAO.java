@@ -1,7 +1,9 @@
 package persistencia;
 
 import java.util.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -59,7 +61,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 		String SelectSQLEdicion= "SELECT * FROM cursopropio"
-				+ "WHERE estado like '"+estado.toString()+"' ";
+				+ "WHERE estado = '"+estado.toString()+"' ";
 
 		resultado = GestorBD.select(SelectSQLEdicion);
 
@@ -145,11 +147,15 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	}
 
 
-	public Vector<Object> listarIdControlador(String idControlador) throws Exception{
+	public Vector<Object> listarIdCursoPropio(String idCursoPropio) throws Exception{
 
 
 		Vector<Object> resultado;
+<<<<<<< HEAD
 		String SelectSQLEdicion= "SELECT * FROM cursopropio WHERE idControlador LIKE '"+idControlador+"' ";
+=======
+		String SelectSQLEdicion= "SELECT * FROM cursopropio WHERE idCursoPropio = "+idCursoPropio+" ";
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
@@ -166,7 +172,11 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		CursoPropio cursoReturn=null;
+<<<<<<< HEAD
 		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal LIKE '"+id+"' " ;
+=======
+		String SelectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = "+id+" " ;
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -174,10 +184,8 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		if (resultado.isEmpty()==false) {
 			System.out.println("Curso seleccionado");
 
-
 			cursoReturn= crearObjetoCursoPropio(resultado.toString());
-
-			//			
+		
 		}else
 			System.err.println("Error al seleccionar curso");
 
@@ -189,11 +197,10 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		CursoPropio curso =(CursoPropio) entity;
-		String insertSQL = "INSERT INTO cursopropio (idReal,idControlador,nombre,ECTS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,tipoCurso,Centro,secretario,director) "
-				+ "VALUES ( '"+curso.getIdReal()+"','"+curso.getIdControlador()+"' , '"+curso.getNombre()+"' , '"+curso.getECTS()+"' ,"
-				+ " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , '"+curso.getTasaMatricula()+"' , "
-				+ " '"+curso.getEdicion()+"' , '"+curso.getEstado()+"' , '"+curso.getTipo()+"', "
-				+ "  '"+curso.getSecretario()+"' , '"+curso.getDirector()+"' )";
+		String insertSQL = "INSERT INTO cursopropio (nombre,ETCS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,centro,secretario,director,tipoCurso) "
+				+ "VALUES ( '"+curso.getNombre()+"' , "+curso.getECTS()+" ," + " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , "
+				+ curso.getTasaMatricula()+" , "+curso.getEdicion()+" , '"+curso.getEstado()+"', '"+curso.getCentro()+"' , '"
+				+ curso.getSecretario().getDni()+"' , '"+curso.getDirector().getDni()+"' , '"+curso.getTipo()+"' )";
 
 		resultado = GestorBD.insert(insertSQL); 
 		if (resultado > 0) {
@@ -210,18 +217,17 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		int resultado=0;
 		CursoPropio curso=(CursoPropio)entity;
 		String updateSQL = "UPDATE cursopropio SET "
-				+ "idReal= '"+curso.getIdReal()+"',"
-				+ "idControlador= '"+curso.getIdControlador()+"'"
 				+ "nombre=  '"+curso.getNombre()+"' ,"
-				+ "ECTS= '"+curso.getECTS()+"' "
+				+ "ETCS= "+curso.getECTS()+", "
 				+ "fechaInicio= '"+curso.getFechaInicio()+"' , "
 				+ "fechaFin='"+curso.getFechaFin()+"',"
-				+ "tasaMatricula='"+curso.getTasaMatricula()+"',"
-				+ "edicion= '"+curso.getEdicion()+"',"
-				+ "estado= '"+curso.getEstado()+"',"
-				+ "tipoCurso='"+curso.getTipo()+"',"
-				+ "secretario='"+curso.getSecretario()+"',"
-				+ "director= '"+curso.getDirector()+"'";
+				+ "tasaMatricula="+curso.getTasaMatricula()+","
+				+ "edicion= "+curso.getEdicion()+","
+				+ "estado= '"+curso.getEstado().toString().toLowerCase()+"',"
+				+ "tipoCurso='"+curso.getTipo().toString().toLowerCase()+"',"
+				+ "secretario='"+curso.getSecretario().getDni()+"',"
+				+ "director= '"+curso.getDirector().getDni()+"'"
+						+ " WHERE idCursoPropio= "+curso.getIdCursoPropio()+" ";
 
 		resultado = GestorBD.update(updateSQL);
 		if (resultado > 0) {
@@ -236,7 +242,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public int delete(Object entity) throws Exception {
 		int resultado=0;
 		CursoPropio curso =(CursoPropio) entity;
-		String insertSQL = "DELETE FROM cursopropio WHERE id= '"+curso.getIdControlador()+"' ";
+		String insertSQL = "DELETE FROM cursopropio WHERE id= '"+curso.getIdCursoPropio()+"' ";
 
 		resultado = GestorBD.insert(insertSQL); 
 		if (resultado > 0) {
@@ -247,6 +253,26 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		return resultado;
 	}
 
+	public int seleccinarID(CursoPropio curso) throws SQLException {
+		int idCurso=0;
+		Vector<Object> resultado;
+		
+		String insertSQL = "SELECT IdCursoPropio FROM cursopropio WHERE estado = '"+curso.getEstado()+"' AND nombre = '"+curso.getNombre()
+				+"' AND fechaInicio = '"+curso.getFechaInicio()+"'  AND fechaFin = '"+curso.getFechaFin()+"' AND tasaMatricula = "+curso.getTasaMatricula()
+				+" AND edicion = "+curso.getEdicion()+" AND centro = '"+curso.getCentro()+"' AND secretario = '"+curso.getSecretario().getDni()+"' AND director = '"+curso.getDirector().getDni()
+				+"'AND tipoCurso = '"+curso.getTipo()+"' AND ETCS = "+curso.getECTS()+" ";
+		
+		resultado = GestorBD.select(insertSQL); 
+		if (resultado.isEmpty()==false) {
+			System.out.println("Identificador de curso encontrado");
+			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			
+			idCurso=Integer.parseInt(aux[0]);
+		}else
+			System.err.println("Error al buscar el identificador del curso");
+		
+		return idCurso;
+	}
 
 	public CursoPropio crearObjetoCursoPropio(String cursoSplit) throws Exception {
 		CursoPropio cursoReturn=null;
@@ -255,9 +281,15 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 		String[] aux =  (cursoSplit.trim().replace("[", "").replace("]", "")).split(",") ;
 		//Coleccion de matriculas y materias
+<<<<<<< HEAD
 		Vector<Object> listaCursosIdControlador= listarIdControlador(aux[1].trim());
 		Collection<Matricula> matriculas=null;
 		Collection<Materia> materias=null;
+=======
+		Vector<Object> listaCursosIdCursoPropio= listarIdCursoPropio(aux[0].trim());
+		Collection<Matricula> matriculas = new ArrayList<Matricula>();
+		Collection<Materia> materias= new ArrayList<Materia>();
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 		GestorMatriculacion gMatriculas=new GestorMatriculacion();
 		GestorMateria gMateria=new GestorMateria();
 
@@ -267,70 +299,151 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 
 		//ProfesorUCLM Director y secretario
+<<<<<<< HEAD
 		GestorProfesorUCLM gProfesor= new GestorProfesorUCLM();
 		ProfesorUCLM director=gProfesor.seleccionarProfesor(aux[12]);
 		ProfesorUCLM secretario=gProfesor.seleccionarProfesor(aux[11]);
+=======
+		GestorProfesor gProfesor= new GestorProfesor();
+		Profesor director=gProfesor.seleccionarProfesor(aux[10]);
+		Profesor secretario=gProfesor.seleccionarProfesor(aux[9]);
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 
 
+<<<<<<< HEAD
 		//Collection<Materia>
+=======
+
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 		//fecha
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-		Date fechaInicialAux=(Date) formato.parse(aux[4]);
-		Date fechFinalAux=(Date) formato.parse(aux[5]);
+		Date fechaInicialAux=(Date) formato.parse(aux[3]);
+		Date fechFinalAux=(Date) formato.parse(aux[4]);
 		java.sql.Date fechaInicial = new java.sql.Date(fechaInicialAux.getTime());
 		java.sql.Date fechaFinal = new java.sql.Date(fechFinalAux.getTime());
 
 
 
 
+<<<<<<< HEAD
 		//Creacion de Collection<Matriculas>
 		for(int i=0;i<listaCursosIdControlador.size();i++) {
+=======
+		//Creacion de Collection<Matriculas> y //Collection<Materia>
+		for(int i=0;i<listaCursosIdCursoPropio.size();i++) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
+<<<<<<< HEAD
 			String[] auxMatriculas =  (listaCursosIdControlador.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 
 			matriculas.add(gMatriculas.seleccionarMatricula(auxMatriculas[2]));
 			materias.add(gMateria.seleccionarMaterias(auxMatriculas[13]));
+=======
+			String[] auxMatriculas =  (listaCursosIdCursoPropio.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			Matricula matriculaAux=gMatriculas.seleccionarMatricula(auxMatriculas[0]);
+			matriculas.add(matriculaAux);
+			String curso = aux[0];
+			materias.add(gMateria.seleccionarMaterias(aux[0]));
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 		}
 
 
 		EstadoCurso estado=null;
 		TipoCurso tipo=null;
 		//estado
+<<<<<<< HEAD
 		if(aux[8].equals("imparizicion")) {
+=======
+		if(aux[7].trim().equals("imparticion")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.EN_IMPARTIZICION;
+<<<<<<< HEAD
 		}else if (aux[8].equals("matriculacion")) {
+=======
+		}else if (aux[7].trim().equals("matriculacion")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.EN_MATRICULACION;
+<<<<<<< HEAD
 		}else if (aux[8].equals("propuesta rechazada")) {
+=======
+		}else if (aux[7].trim().equals("propuesta_rechazada")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.PROPUESTA_RECHAZADA;
+<<<<<<< HEAD
 		}else if (aux[8].equals("propuesto")) {
+=======
+		}else if (aux[7].trim().equals("propuesto")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.PROPUESTO;
+<<<<<<< HEAD
 		}else if (aux[8].equals("terminado")) {
+=======
+		}else if (aux[7].trim().equals("terminado")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.TERMINADO;
+<<<<<<< HEAD
 		}else if (aux[8].equals("validado")) {
+=======
+		}else if (aux[7].trim().equals("validado")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			estado=EstadoCurso.VALIDADO;
 		}
 
 		//tipoCurso
+<<<<<<< HEAD
 		if(aux[9].equals("corta duracion")) {
+=======
+		if(aux[11].trim().equals("corta_duracion")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.CORTA_DURACION;
+<<<<<<< HEAD
 		}else if (aux[9].equals("especialista")) {
+=======
+		}else if (aux[11].trim().equals("especialista")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.ESPECIALISTA;
+<<<<<<< HEAD
 		}else if (aux[9].equals("experto")) {
+=======
+		}else if (aux[11].trim().equals("experto")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.EXPERTO;
+<<<<<<< HEAD
 		}else if (aux[9].equals("formacion avanzada")) {
+=======
+		}else if (aux[11].trim().equals("formacion_avanzada")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.FORMACION_AVANZADA;
+<<<<<<< HEAD
 		}else if (aux[9].equals("formacion continua")) {
+=======
+		}else if (aux[11].trim().equals("formacion_continua")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.FORMACION_CONTINUA;
+<<<<<<< HEAD
 		}else if (aux[9].equals("master")) {
+=======
+		}else if (aux[11].trim().equals("master")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.MASTER;
+<<<<<<< HEAD
 		}else if (aux[9].equals("microcredenciles")) {
+=======
+		}else if (aux[11].trim().equals("microcredenciles")) {
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 			tipo=TipoCurso.MICROCREDENCIALES;
 		}
 
 
+<<<<<<< HEAD
 		return cursoReturn= new CursoPropio(matriculas, director, secretario, materias, estado, tipo.CORTA_DURACION, cursoDAO, Integer.parseInt(aux[1]), Integer.parseInt(aux[0]), aux[2],Integer.parseInt( aux[3]), fechaInicial, fechaFinal, Double.parseDouble(aux[6]), Integer.parseInt(aux[7]));
+=======
+		return cursoReturn= new CursoPropio(matriculas, director, secretario, materias, 
+				estado, tipo, cursoDAO, Integer.parseInt(aux[0]), aux[1],Integer.parseInt(aux[2].trim()), 
+				fechaInicial, fechaFinal, Double.parseDouble(aux[5].trim()), Integer.parseInt(aux[6].trim()));
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 
 		//		
@@ -341,7 +454,11 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		Collection<Object> resultado=null;
 		Collection<CursoPropio> cursosCentroReturn=null;
 		CursoPropio cursoReturn=null;
+<<<<<<< HEAD
 		String SelectSQL= "SELECT * FROM cursopropio WHERE idReal LIKE '"+id+"' " ;
+=======
+		String SelectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = '"+Integer.getInteger(id)+"' " ;
+>>>>>>> branch 'develop' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -351,9 +468,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 			Iterator<Object> it=resultado.iterator();
 			while(it.hasNext())
 				System.out.println(it.next().toString());
-				cursoReturn= crearObjetoCursoPropio(it.next().toString());
-				cursosCentroReturn.add(cursoReturn);
-			
+			cursoReturn= crearObjetoCursoPropio(it.next().toString());
+			cursosCentroReturn.add(cursoReturn);
+
 			//			
 		}else
 			System.err.println("Error al seleccionar curso");

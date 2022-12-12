@@ -1,7 +1,6 @@
 package presentacion;
 
 import java.sql.Date;
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +26,7 @@ public class PantallaMatriculacion extends JFrame {
 	private JRadioButton rdbtnNewRadioButton_1;
 	private JPanel contentPane;
 
-	public PantallaMatriculacion() {
+	public PantallaMatriculacion() throws SQLException, ClassNotFoundException, NumberFormatException{
 		setTitle("Sesion: Estudiante");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 200, 820, 500);
@@ -70,7 +69,11 @@ public class PantallaMatriculacion extends JFrame {
 		JButton btnNewButton = new JButton("Aceptar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				validarDatosMatriculacion();
+				try {
+					validarDatosMatriculacion();
+				} catch (SQLException | NumberFormatException | ClassNotFoundException e1) {
+					Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
+				}
 			}
 		});
 		btnNewButton.setBounds(553, 432, 83, 21);
@@ -109,8 +112,7 @@ public class PantallaMatriculacion extends JFrame {
 		lblError.setText("");
 	}
 
-	private void validarDatosMatriculacion() {
-		try {
+	private void validarDatosMatriculacion() throws NumberFormatException, SQLException, ClassNotFoundException {
 			if (validarDatos()) {
 				lblError.setText("");
 				ModoPago modoPago = rdbtnNewRadioButton.isSelected() ? ModoPago.TRANSFERENCIA : ModoPago.TARJETA_CREDITO;
@@ -118,14 +120,15 @@ public class PantallaMatriculacion extends JFrame {
 				String fecha=textFieldFecha.getText();
 				Date fechaSQL = Date.valueOf(fecha);
 
-				gm.realizarMatriculacion(textFieldCurso.getText(), modoPago, fechaSQL, true);
+
+
+				
+				gm.realizarMatriculacion(textFieldCurso.getText(), textFieldId.getText(), modoPago,  fechaSQL, true);
+
 			} else {
 				lblError.setText("No se ha podido completar la matricula. Rellena todos los campos.");
 			}
-		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula.");
 		}
-	}
 
 	private boolean validarDatos() {
 		return !(textFieldFecha.getText().isEmpty() || textFieldCurso.getText().isEmpty() || textFieldId.getText().isEmpty());
