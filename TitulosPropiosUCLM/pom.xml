@@ -27,11 +27,6 @@
 	<scope>compile</scope>
   </dependency>
   <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
-    <version>8.0.26</version>
-  </dependency>
-  <dependency>
     <groupId>org.junit.platform</groupId>
     <artifactId>junit-platform-launcher</artifactId>
     <version>1.9.0-RC1</version>
@@ -59,8 +54,10 @@
 </build>
 
 <properties>
+  <sonar.projectkey>SONAR_TOKEN</sonar.projectkey>
   <sonar.organization>titlesoft</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  <sonar.login>8836f9f2d8485fe7275255d3b391b4823ec0c9e9</sonar.login>
 </properties>
 
 </project>

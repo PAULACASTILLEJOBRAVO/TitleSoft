@@ -1,5 +1,6 @@
 package negocio.controllers;
 
+import java.sql.SQLException;
 import java.util.*;
 
 
@@ -83,5 +84,9 @@ public class GestorConsultas {
 		
 	}
 
-	
+	public int idCurso(CursoPropio curso) throws SQLException {
+		
+		CursoPropioDAO cursoDAO = new CursoPropioDAO();
+		return cursoDAO.seleccinarID(curso);
+	}
 }
