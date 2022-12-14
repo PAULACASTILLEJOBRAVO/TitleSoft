@@ -1,52 +1,62 @@
 package persistencia;
 
+import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
 import java.util.Vector;
 
-import negocio.entities.CursoPropio;
-import negocio.entities.TipoUsuario;
-import negocio.entities.Usuario;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import negocio.controllers.GestorConsultas;
+import negocio.controllers.GestorProfesorUCLM;
+import negocio.entities.*;
+import org.apache.derby.jdbc.EmbeddedDriver;
 
 public class UsuarioDAO extends AbstractEntityDAO{
 
 	
-	@Override
 	public Object get(String id) throws Exception {
+		Usuario UsuarioReturn = null;
 		Vector<Object> resultado;
-		Usuario UsuarioReturn=null;
-		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
-
-		
+		//Vector<Object> aux = null;
+		String SelectSQL = "SELECT * FROM usuario WHERE idusuario = '"+id+"' ";
+		//Vector<Object> vectoradevolver=new Vector<Object>();
 		resultado = GestorBD.select(SelectSQL);
 		
 		if (resultado.isEmpty()==false) {
 			System.out.println("usuario seleccionado");
 			
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
-			
-			
-			if(aux[2].trim().equals("estudiante")) {
+			if(aux[1].trim().equals("estudiante")) {
+				System.out.println("SOY EL ESTUDIANTE");
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
-			}else if(aux[2].trim().equals("profesor")) {
+			}else if(aux[1].trim().equals("profesor")) {
+				System.out.println("SOY EL PROFESOR");
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
-			}else if (aux[2].trim().equals("vicerector")) {
+			}else if (aux[1].trim().equals("vicerector")) {
+				System.out.println("SOY EL VICERRECTOR");
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
 			}else if (aux[2].trim().equals("jefe")) {
+				System.out.println("SOY EL JEFE");
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			
 			}
-
+			
 		}else
 			System.err.println("Error al seleccionar usuario");
-
-		return UsuarioReturn ;
-
+		
+		return UsuarioReturn;
 	}
 
 	@Override
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String insertSQL = "INSERT INTO usuarios (idusuarios,password,tipo) "
+		String insertSQL = "INSERT INTO usuario (idusuario,password,tipo) "
 				+ "VALUES ( '"+usuario.getIdUsuario()+"', '"+usuario.getPassword()+"','"+usuario.getTipo()+"')";
 
 		resultado = GestorBD.insert(insertSQL); 
@@ -62,7 +72,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 	public Object update(Object entity) throws Exception {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String updateSQL = "UPDATE usuarios SET "
+		String updateSQL = "UPDATE usuario SET "
 				+  "idusuario='"+usuario.getIdUsuario()+"',"
 				+ " password='"+usuario.getPassword()+"',"
 				+ "tipo='"+usuario.getTipo()+"' ";
@@ -81,7 +91,7 @@ public class UsuarioDAO extends AbstractEntityDAO{
 	public int delete(Object entity) throws Exception {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String insertSQL = " DELETE FROM usuarios WHERE idusuario='"+usuario.getIdUsuario()+"' ";
+		String insertSQL = " DELETE FROM usuario WHERE idusuario='"+usuario.getIdUsuario()+"' ";
 
 		resultado = GestorBD.insert(insertSQL); 
 		if (resultado > 0) {

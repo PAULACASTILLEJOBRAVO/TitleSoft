@@ -16,7 +16,6 @@ public class GestorUsuarios {
 
 		try {
 			Usuario usuarioAux=(Usuario) usuarioDAO.get(usuario);
-
 			if(password.trim().equals(usuarioAux.getPassword().trim() )){
 				return true;
 			}else {
@@ -24,6 +23,7 @@ public class GestorUsuarios {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
 			return false;
 		}
