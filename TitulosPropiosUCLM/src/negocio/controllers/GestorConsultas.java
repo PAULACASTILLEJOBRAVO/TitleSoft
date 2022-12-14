@@ -34,11 +34,11 @@ public class GestorConsultas {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public Collection<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso) {
+	public Collection<CursoPropio> consultarCursosPropuestos(EstadoCurso estadoCurso) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
 		try {
-			estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso);
+			estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
 
@@ -47,6 +47,17 @@ public class GestorConsultas {
 		
 	}
 	
+	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) {
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		Collection<CursoPropio> ediciones = null;
+		try {
+			ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
+		} catch (Exception e) {
+			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
+
+		}
+		return ediciones;
+	}
 	
 	
 	/**
