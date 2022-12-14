@@ -54,6 +54,35 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 <p>		Corregir errores de Derby(Virginia)</p>
 <p>		Corregir errores de la funcionalides de Jefe Gabinete(Iván)</p>
 <p>		Terminar las funcionalides de Matriculacion(Paula)</p>
+<p>	***********Resultados******</p>
+<p>		Corregir errores de Derby. Completado </p>
+<p>		Corregir errores de la funcionalidad de Jefe Gabinete. Completado </p>
+<p>		Terminar las funcinalidades de Matriculacion. Completado </p>
+
+<p>Sprint 3, dia 3/12/2022</p>
+<p>	Lo deseado para la proxima semana dia 10/12/2022</p>
+<p>		Implementar la funcionalidad de crear cursos (Paula) </p>
+<p>			Nota: Se puede crear curso desde cero o modificar uno rechazado</p>
+<p>		Implementar la funcionalidad validar o rechazar cursos (Iván)</p>
+<p>			Nota: La funcionalidad esta creada en jefe, jefe solo muestra los cursos propuesta y rechazados</p>
+<p>		Inicializacion del testing (Virginia)</p>
+<p>	***********Resultados******</p>
+<p>		Implementar la funcionalidad de crear cursos. Incompleto,curso creado, falta añadir materias </p>
+<p>		Implementar la funcionalidad validar o rechazar cursos. Completado</p>
+<p>		Inicializacion del testing.Testing iniciado, creacion de algunos de los if controladores necesarios para el testing de los gestores.</p>
+
+<p>Sprint 4, dia 10/12/2022</p>
+<p>	Lo deseado para la proxima semana dia 17/12/2022</p>
+		<p>Terminar los if controladores para el testing y Creacion de las tablas de testing (Virginia) </p>
+			<p>Gestor Centro (Virginia) </p>
+			<p>Gestor Consultas (Virginia)</p>
+			<p>Gestor Matriculacion (Paula)</p>
+			<p>Gestor Profesor (Iván)</p>
+			<p>Gestor Propuestas Cursos (Paula)</p>
+			<p>Gestor Usuarios (Iván)</p>
+			<p>Gestor Materia (Paula)</p>
+		<p>Creacion de los report,jacoco,surefire,etc (Iván)</p>
+
 	
 <p>-------------------------------------------------------------------------------------------------------------------------------</p>
 <br>

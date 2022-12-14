@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.lang.*;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.*;
 
@@ -24,7 +25,7 @@ public class Main_testing extends JFrame{
 	
 	public final static String error ="Logs//Errores.log";
 	
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws NumberFormatException, ClassNotFoundException, SQLException {
 		
 		
 		Main_testing frame =new Main_testing();

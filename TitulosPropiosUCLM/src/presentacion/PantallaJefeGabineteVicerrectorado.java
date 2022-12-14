@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
@@ -28,6 +27,7 @@ import negocio.controllers.GestorConsultas;
 import negocio.entities.CursoPropio;
 import negocio.entities.EstadoCurso;
 import negocio.entities.Materia;
+import negocio.entities.Profesor;
 import negocio.entities.ProfesorUCLM;
 import negocio.entities.TipoCurso;
 import persistencia.*;
@@ -65,7 +65,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				JTextField textFieldTipo= new JTextField();
+				JTextField textFieldId= new JTextField();
 				JTextField textFieldFechaInicio= new JTextField();
 				JTextField textFieldFechaFinal= new JTextField();
 
@@ -79,91 +79,48 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				contentPane.setLayout(null);
 				contentPane.revalidate();
 
+				JLabel lblcurso = new JLabel("Id Curso:");
+				lblcurso.setBounds(100, 90, 200, 20);
+				add(lblcurso);
 
+
+				textFieldId.setBounds(250, 94, 132, 20);
+				add(textFieldId);
+				textFieldId.setColumns(10);
 
 				JLabel lblFechaInicio = new JLabel("Fecha inicio(yyyy-mm-dd):");
-				lblFechaInicio.setBounds(100, 100, 200, 20);
+				lblFechaInicio.setBounds(100, 150, 200, 20);
 				add(lblFechaInicio);
 
 
-				textFieldFechaInicio.setBounds(250, 100, 132, 20);
+				textFieldFechaInicio.setBounds(250, 154, 132, 20);
 				add(textFieldFechaInicio);
 				textFieldFechaInicio.setColumns(10);
 
 				JLabel lblFechaFinal = new JLabel("Fecha final(yyyy-mm-dd):");
-				lblFechaFinal.setBounds(100, 150, 200, 20);
+				lblFechaFinal.setBounds(100, 210, 200, 20);
 				add(lblFechaFinal);
 
 
-				textFieldFechaFinal.setBounds(250, 150, 132, 20);
+				textFieldFechaFinal.setBounds(250, 214, 132, 20);
 				add(textFieldFechaFinal);
 				textFieldFechaFinal.setColumns(10);
-
 
 				JButton btnConfirmar = new JButton("Confirmar");
 				btnConfirmar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-
-						Collection<CursoPropio> resultado;
-						try {
-							resultado = botonConfirmarCursos(textFieldFechaFinal,textFieldFechaInicio);
-							crearTabla(resultado);
-							
-							setTitle("Sesion: Jefe Gabinete-------Ingresos");
-							setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-							setBounds(300, 300, 520, 300);
-							contentPane = new JPanel();
-							contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-							setContentPane(contentPane);
-							contentPane.setLayout(null);
-							contentPane.revalidate();
-
-							JLabel lblcurso = new JLabel("Id Curso:");
-							lblcurso.setBounds(100, 90, 200, 20);
-							add(lblcurso);
-
-
-							textFieldTipo.setBounds(250, 94, 132, 20);
-							add(textFieldTipo);
-							textFieldTipo.setColumns(10);
-							contentPane.revalidate();
-
-
-							
+						double ingresos=botonConfirmarIngresos(textFieldFechaFinal,textFieldFechaInicio,textFieldId);
 						
-							
-							
-							JButton btnConfirmarId = new JButton("Confirmar");
-							btnConfirmarId.addActionListener(new ActionListener() {
-
-								@Override
-								public void actionPerformed(ActionEvent e) {
-
-									double ingresos=botonConfirmarIngresos(textFieldFechaFinal,textFieldFechaInicio,textFieldTipo);
-
-									JLabel lblingresos = new JLabel("Ingresos: "+ingresos+"");
-									lblingresos.setBounds(100, 150, 200,70);
-									add(lblingresos);
-									lblingresos.updateUI();
+						JLabel lblingresos = new JLabel("Ingresos: "+ingresos+"");
+						lblingresos.setBounds(100, 300, 200,70);
+						add(lblingresos);
 									
-								}});
-							btnConfirmarId.setBounds(201, 120, 100, 20);
-							add(btnConfirmarId);
-
-						} catch (ParseException e1) {
-
-							e1.printStackTrace();
-						}
-
-
-
-
-
+						
 					}
 				});
-				btnConfirmar.setBounds(201, 200, 100, 20);
+				btnConfirmar.setBounds(201, 274, 100, 20);
 				add(btnConfirmar);
 
 
@@ -192,8 +149,9 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				contentPane.setLayout(null);
 				contentPane.revalidate();
 
+
 				JLabel lblFechaInicioEdiciones = new JLabel("Fecha inicio(yyyy-mm-dd):");
-				lblFechaInicioEdiciones.setBounds(100, 90, 200, 20);
+				lblFechaInicioEdiciones.setBounds(100, 90, 79, 20);
 				add(lblFechaInicioEdiciones);
 
 
@@ -202,7 +160,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				textFieldFechaInicioEdiciones.setColumns(10);
 
 				JLabel lblFechaFinalEdicion = new JLabel("Fecha final(yyyy-mm-dd):");
-				lblFechaFinalEdicion.setBounds(100, 150, 200, 20);
+				lblFechaFinalEdicion.setBounds(100, 150, 79, 20);
 				add(lblFechaFinalEdicion);
 
 
@@ -219,7 +177,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 					}
 				});
-				btnConfirmar.setBounds(201, 200, 100, 20);
+				btnConfirmar.setBounds(201, 274, 100, 20);
 				add(btnConfirmar);
 
 
@@ -233,17 +191,15 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		btnListarEdiciones.setBounds(200, 150, 150, 20);
 		add(btnListarEdiciones);
 
-		JButton btnAprobarCursos = new JButton("Consular Cursos");
+		JButton btnAprobarCursos = new JButton("Aprobar Cursos");
 		btnAprobarCursos.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				JTextField TextIDcurso = new JTextField();
-				JTextField textFieldFechaInicioEdiciones = new JTextField();
-				JTextField textFieldFechaFinalEdiciones = new JTextField();
 
-				setTitle("Sesion: Jefe Gabinete-------Consultar Cursos");
+				setTitle("Sesion: Jefe Gabinete-------Aprobar Cursos");
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setBounds(300, 300, 520, 300);
 				contentPane = new JPanel();
@@ -253,49 +209,114 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				contentPane.revalidate();
 
 
-				JLabel lblFechaInicioEdiciones = new JLabel("Fecha inicio(yyyy-mm-dd):");
-				lblFechaInicioEdiciones.setBounds(100, 90, 200, 20);
-				add(lblFechaInicioEdiciones);
+
+				//mostrar informacion de los cursos propuestos
+				GestorConsultas gConsultas=new GestorConsultas();
+				Collection<CursoPropio> resultado=gConsultas.consultarEstadoCursos(EstadoCurso.PROPUESTO);
+
+				JFrame jFrame=new JFrame();
+				jFrame.setTitle("Propuestas Cursos");
+				DefaultTableModel tabla=new DefaultTableModel();
+				JTable jTabla = new JTable(tabla);
+				jTabla.setBounds(30,10,230,280);
+				tabla.addColumn("Id");
+				tabla.addColumn("Nombre del Curso");
+				tabla.addColumn("ECTS");
+				tabla.addColumn("Tasa Matricula");
+				tabla.addColumn("Edicion");
+				tabla.addColumn("Estado");
+				tabla.addColumn("Tipo Curso");
+				tabla.addColumn("Secretario");
+				tabla.addColumn("Director");
+				tabla.addColumn("Materia");
+
+				Iterator<CursoPropio> it=resultado.iterator();
+				while(it.hasNext()) {
+					CursoPropio cursoAux=it.next();
+					Object[] materiasCurso=cursoAux.getMaterias().toArray();
+					String datosMateriaNombres=" ";
+
+					for(int j=0;j<materiasCurso.length;j++) {
+
+						Materia materiaAux=(Materia)materiasCurso[j];
+						datosMateriaNombres=materiaAux.getNombre()+" ,"+datosMateriaNombres;
+					}
+					
+					
+					
+					tabla.addRow(new Object[] {
+							cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
+							cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
+							cursoAux.getSecretario().getNombre(),cursoAux.getDirector().getNombre(),datosMateriaNombres
+
+					});
+				}
+
+				JScrollPane jScrollPane = new JScrollPane(jTabla);
+				jFrame.add(jScrollPane);
+				jFrame.setSize(350, 300);
+				jFrame.setVisible(true);
+
+				//fin de la informacion de los cursos
+
+				JLabel lblIDcurso = new JLabel("Id del curso:");
+				lblIDcurso.setBounds(100, 90, 79, 20);
+				add(lblIDcurso);
 
 
-				textFieldFechaInicioEdiciones.setBounds(250, 94, 132, 20);
-				add(textFieldFechaInicioEdiciones);
-				textFieldFechaInicioEdiciones.setColumns(10);
-
-				JLabel lblFechaFinalEdicion = new JLabel("Fecha final(yyyy-mm-dd):");
-				lblFechaFinalEdicion.setBounds(100, 150, 200, 20);
-				add(lblFechaFinalEdicion);
+				TextIDcurso.setBounds(250, 94, 132, 20);
+				add(TextIDcurso);
+				TextIDcurso.setColumns(10);
 
 
-				textFieldFechaFinalEdiciones.setBounds(250, 154, 132, 20);
-				add(textFieldFechaFinalEdiciones);
-				textFieldFechaFinalEdiciones.setColumns(10);
-
-
-
-
-				JButton btnConfirmar = new JButton("Confirmar");
+				JButton btnConfirmar = new JButton("Aprobar");
 				btnConfirmar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-
 						try {
-							Collection<CursoPropio> resultado=botonConfirmarCursos(textFieldFechaFinalEdiciones,textFieldFechaInicioEdiciones);
-							crearTabla(resultado);
-							//fin de la informacion de los cursos
+							botonAprobarCurso(TextIDcurso);
+							JLabel lblCursoAprobado = new JLabel("Curso Aprobado correctamente");
+							lblCursoAprobado.setBounds(100, 120, 150, 20);
+							add(lblCursoAprobado);
+							
+							
+						} catch (Exception e1) {
 
-
-						} catch (ParseException e1) {
 							e1.printStackTrace();
 						}
 
+					}
+				});
+				btnConfirmar.setBounds(201, 150, 100, 20);
+				add(btnConfirmar);
+
+				JButton btnRechazar = new JButton("Rechazar");
+				btnRechazar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						try {
+							botonRechazarCurso(TextIDcurso);
+							
+							JLabel lblCursoRechazado = new JLabel("Curso rechazado correctamente");
+							lblCursoRechazado.setBounds(100, 120, 180, 20);
+							add(lblCursoRechazado);
+							
+							
+						} catch (Exception e1) {
+
+							e1.printStackTrace();
+						}
 
 					}
 				});
-				btnConfirmar.setBounds(201, 200, 100, 20);
-				add(btnConfirmar);
-				//mostrar informacion de los cursos propuestos
+				btnRechazar.setBounds(201, 170, 100, 20);
+				add(btnRechazar);
+
+
+
+
 
 			}
 		});
@@ -306,10 +327,10 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 	}
 
 
-	public double botonConfirmarIngresos(JTextField textFieldFechaFinal, JTextField textFieldFechaInicio, JTextField textFieldTipo) {
+	public double botonConfirmarIngresos(JTextField textFieldFechaFinal, JTextField textFieldFechaInicio, JTextField textFieldId) {
 		GestorConsultas gConsultas=new GestorConsultas();
 
-
+		
 
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -321,12 +342,12 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			Date fechaFinalAux=new java.sql.Date(fechaAux2.getTime());
 
 			System.out.println(fechaInicioAux);
-			CursoPropio curso=gConsultas.seleccionarCurso(textFieldTipo.getText().trim());
+			CursoPropio curso=gConsultas.seleccionarCurso(textFieldId.getText().trim());
 
 
 			return gConsultas.consultarIngresos(curso.getTipo(), fechaInicioAux, fechaFinalAux);
 
-
+			
 
 
 		} catch (Exception e1) {
@@ -334,7 +355,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			return 0;
 
 		}
-
+		
 
 
 	}
@@ -355,7 +376,54 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 			Collection<CursoPropio> cursosEncontrados=gConsultas.listarEdicionesCursos(fechaInicioSQL, fechaFinalSQL);
 
-			crearTabla(cursosEncontrados);
+			Object []aux= cursosEncontrados.toArray();				
+
+
+
+
+			JFrame jFrame=new JFrame();
+			jFrame.setTitle("Ediciones: Fecha inicial "+fechaInicioSQL+" .Fecha final "+fechaFinalSQL);
+			DefaultTableModel tabla=new DefaultTableModel();
+			JTable jTabla = new JTable(tabla);
+			jTabla.setBounds(30,10,230,280);
+			tabla.addColumn("Id");
+			tabla.addColumn("Nombre del Curso");
+			tabla.addColumn("ECTS");
+			tabla.addColumn("Tasa Matricula");
+			tabla.addColumn("Edicion");
+			tabla.addColumn("Estado");
+			tabla.addColumn("Tipo Curso");
+			tabla.addColumn("Secretario");
+			tabla.addColumn("Director");
+			tabla.addColumn("Materia");
+
+
+			for (int i=0; i< aux.length;i++) {
+				CursoPropio cursoAux=(CursoPropio)aux[i];
+				Profesor director=cursoAux.getDirector();
+				Profesor secretario=cursoAux.getSecretario();
+				Object[] materiasCurso=cursoAux.getMaterias().toArray();
+				String datosMateriaNombres="";
+
+				for(int j=0;j<materiasCurso.length;j++) {
+
+					Materia materiaAux=(Materia)materiasCurso[j];
+					datosMateriaNombres=materiaAux.getNombre()+","+datosMateriaNombres;
+				}
+
+
+				tabla.addRow(new Object[] {cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
+						cursoAux.getEdicion(),cursoAux.getEstado().toString(),cursoAux.getTipo().toString(),secretario.getNombre(),
+						director.getNombre(),datosMateriaNombres
+
+				});
+			}
+
+			JScrollPane jScrollPane = new JScrollPane(jTabla);
+			jFrame.add(jScrollPane);
+			jFrame.setSize(550, 500);
+			jFrame.setVisible(true);
+
 
 
 		}catch (Exception e1) {
@@ -366,26 +434,6 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 
 	}
-
-	public Collection<CursoPropio>  botonConfirmarCursos(JTextField textFieldFechaFinalEdiciones,JTextField textFieldFechaInicioEdiciones ) throws ParseException {
-
-		Collection<CursoPropio> resultado=new ArrayList<CursoPropio>();
-
-		GestorConsultas gConsultas=new GestorConsultas();
-
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-		Date fechaInicioAux = (Date) formato.parse(textFieldFechaInicioEdiciones.getText());
-		Date fechaFinalAux=(Date) formato.parse(textFieldFechaFinalEdiciones.getText());
-
-		java.sql.Date fechaInicioSQL= new java.sql.Date(fechaInicioAux.getTime());
-		java.sql.Date fechaFinalSQL= new java.sql.Date(fechaFinalAux.getTime());
-
-
-		resultado=gConsultas.listarCursosEstados( fechaInicioSQL,fechaFinalSQL );
-
-		return resultado;
-	}
-
 
 	public void botonAprobarCurso(JTextField textIDcurso) throws Exception {
 
@@ -410,59 +458,4 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		cursoRechazado=gConsultas.actualizarCurso(cursoRechazado);
 
 	}
-
-	public void crearTabla(Collection<CursoPropio> resultado) {
-
-
-
-
-		JFrame jFrame=new JFrame();
-		jFrame.setTitle("Propuestas Cursos");
-		DefaultTableModel tabla=new DefaultTableModel();
-		JTable jTabla = new JTable(tabla);
-		jTabla.setBounds(30,10,230,280);
-		tabla.addColumn("Id");
-		tabla.addColumn("Nombre del Curso");
-		tabla.addColumn("ECTS");
-		tabla.addColumn("Tasa Matricula");
-		tabla.addColumn("Edicion");
-		tabla.addColumn("Estado");
-		tabla.addColumn("Tipo Curso");
-		tabla.addColumn("Secretario");
-		tabla.addColumn("Director");
-		tabla.addColumn("Materia");
-
-		Iterator<CursoPropio> it=resultado.iterator();
-		while(it.hasNext()) {
-			CursoPropio cursoAux=it.next();
-			Object[] materiasCurso=cursoAux.getMaterias().toArray();
-			String datosMateriaNombres="Materias: ";
-
-			for(int j=0;j<materiasCurso.length;j++) {
-
-				Materia materiaAux=(Materia)materiasCurso[j];
-				datosMateriaNombres=datosMateriaNombres+", "+materiaAux.getNombre();
-			}
-
-
-
-			tabla.addRow(new Object[] {
-					cursoAux.getIdReal(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
-					cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
-					cursoAux.getSecretario().getDni(),cursoAux.getDirector().getDni(),cursoAux.getMaterias()
-
-			});
-		}
-
-		JScrollPane jScrollPane = new JScrollPane(jTabla);
-		jFrame.add(jScrollPane);
-		jFrame.setSize(350, 300);
-		jFrame.setVisible(true);
-		contentPane.revalidate();
-
-
-
-
-	}
-
 }

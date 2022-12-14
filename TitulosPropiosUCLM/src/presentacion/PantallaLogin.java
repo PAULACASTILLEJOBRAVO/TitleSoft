@@ -74,7 +74,11 @@ public class PantallaLogin extends JFrame {
 					Usuario usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
 					if(id==1) {
-						accionesEstudiante(gUsuario,usuario);
+						try {
+							accionesEstudiante(gUsuario,usuario);
+						} catch (Exception e1) {
+							Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
+						}
 					}else if (id==2) {
 						accionesVicerector(gUsuario,usuario);
 					}else if(id==3) {
@@ -159,7 +163,7 @@ public class PantallaLogin extends JFrame {
 
 	}
 
-	public void accionesEstudiante(GestorUsuarios gUsuario,Usuario usuario) {
+	public void accionesEstudiante(GestorUsuarios gUsuario,Usuario usuario) throws Exception {
 		
 		
 

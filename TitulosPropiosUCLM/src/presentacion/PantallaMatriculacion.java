@@ -1,10 +1,10 @@
 package presentacion;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -27,7 +27,7 @@ public class PantallaMatriculacion extends JFrame {
 	private JRadioButton rdbtnNewRadioButton_1;
 	private JPanel contentPane;
 
-	public PantallaMatriculacion() {
+	public PantallaMatriculacion() throws SQLException, ClassNotFoundException, NumberFormatException{
 		setTitle("Sesion: Estudiante");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 200, 820, 500);
@@ -70,7 +70,11 @@ public class PantallaMatriculacion extends JFrame {
 		JButton btnNewButton = new JButton("Aceptar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				validarDatosMatriculacion();
+				try {
+					validarDatosMatriculacion();
+				} catch (SQLException | NumberFormatException | ClassNotFoundException e1) {
+					Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
+				}
 			}
 		});
 		btnNewButton.setBounds(553, 432, 83, 21);
@@ -109,23 +113,18 @@ public class PantallaMatriculacion extends JFrame {
 		lblError.setText("");
 	}
 
-	private void validarDatosMatriculacion() {
-		try {
+	private void validarDatosMatriculacion() throws NumberFormatException, SQLException, ClassNotFoundException {
 			if (validarDatos()) {
 				lblError.setText("");
 				ModoPago modoPago = rdbtnNewRadioButton.isSelected() ? ModoPago.TRANSFERENCIA : ModoPago.TARJETA_CREDITO;
 				GestorMatriculacion gm = new GestorMatriculacion();
 				String fecha=textFieldFecha.getText();
-				java.sql.Date fechaSQL = java.sql.Date.valueOf(fecha);
+				Date fechaSQL = Date.valueOf(fecha);
 				
-				gm.realizarMatriculacion(textFieldId.getText(), modoPago, fechaSQL, true);
+				gm.realizarMatriculacion(textFieldCurso.getText(), textFieldId.getText(), modoPago,  fechaSQL, true);
 			} else {
 				lblError.setText("No se ha podido completar la matricula. Rellena todos los campos.");
 			}
-		}catch (Exception e) {
-			//Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula");
-			e.getStackTrace();
-		}
 	}
 
 	private boolean validarDatos() {
