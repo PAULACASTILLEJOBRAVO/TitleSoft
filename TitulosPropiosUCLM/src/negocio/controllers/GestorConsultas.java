@@ -27,22 +27,18 @@ public class GestorConsultas {
 		}
 		return ingresos;
 	}
-	
-	
-	
 
-	
 	/**
 	 * 
 	 * @param estadoCurso
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public Collection<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso) {
+	public Collection<CursoPropio> consultarCursosPropuestos(EstadoCurso estadoCurso) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
 		try {
-			estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso);
+			estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
 
@@ -62,6 +58,7 @@ public class GestorConsultas {
 		}
 		return ediciones;
 	}
+	
 	
 	/**
 	 * 

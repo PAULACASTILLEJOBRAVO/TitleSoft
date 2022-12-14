@@ -61,7 +61,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 
 				//mostrar informacion de los cursos propuestos
 				GestorConsultas gConsultas=new GestorConsultas();
-				Collection<CursoPropio> resultado=gConsultas.consultarEstadoCursos(EstadoCurso.PROPUESTO);
+				Collection<CursoPropio> resultado=gConsultas.consultarCursosPropuestos(EstadoCurso.PROPUESTO);
 
 				JFrame jFrame=new JFrame();
 				jFrame.setTitle("Propuestas Cursos");
