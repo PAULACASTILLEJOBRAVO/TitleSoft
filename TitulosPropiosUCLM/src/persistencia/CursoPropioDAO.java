@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.util.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -417,6 +418,35 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 			System.err.println("Error al seleccionar curso");
 
 		return cursosCentroReturn ;
+
+	}
+
+	public Collection<CursoPropio> listarsCursosEstados(Date fechaInicio, Date fechaFin) throws SQLException, Exception {
+		
+		
+		
+		Vector<Object> resultado;
+		Collection<CursoPropio> cursosEncontrados=new ArrayList<CursoPropio>();
+		String SelectSQLEdicion= "SELECT * FROM cursopropio"
+				+ " WHERE  fechaInicio = '"+fechaInicio+"'and fechaFin = '"+fechaFin+"' and (estado = 'validado' or estado= 'propuesta_rechazada') ";
+
+		resultado = GestorBD.select(SelectSQLEdicion);
+
+		if (resultado.isEmpty()==false) {
+			System.out.println("Ediciones encotradas");
+
+
+
+			for (int i = 0; i < resultado.size(); i++) {
+
+
+				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
+				cursosEncontrados.add(cursoAUX);
+			}
+
+		}else
+			System.err.println("Error encotrando ediciones");
+		return cursosEncontrados;
 
 	}
 

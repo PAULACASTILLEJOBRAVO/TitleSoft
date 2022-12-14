@@ -26,7 +26,11 @@ public class GestorConsultas {
 		}
 		return ingresos;
 	}
+	
+	
+	
 
+	
 	/**
 	 * 
 	 * @param estadoCurso
@@ -46,7 +50,17 @@ public class GestorConsultas {
 		
 	}
 	
-	
+	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) {
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		Collection<CursoPropio> ediciones = null;
+		try {
+			ediciones = cursoPropioDAO.listarsCursosEstados(fechaInicio, fechaFin);
+		} catch (Exception e) {
+			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
+
+		}
+		return ediciones;
+	}
 	
 	/**
 	 * 
