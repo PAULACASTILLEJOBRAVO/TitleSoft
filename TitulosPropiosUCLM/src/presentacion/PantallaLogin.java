@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.apache.derby.impl.sql.conn.SQLSessionContextImpl;
+
 import negocio.controllers.GestorUsuarios;
 import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
@@ -12,6 +14,7 @@ import persistencia.GestorBD;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,9 +28,6 @@ public class PantallaLogin extends JFrame {
 	 * Create the panel.
 	 */
 	public PantallaLogin(int id) {
-
-
-
 		setTitle("Log in");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 527, 305);
@@ -76,8 +76,8 @@ public class PantallaLogin extends JFrame {
 					if(id==1) {
 						try {
 							accionesEstudiante(gUsuario,usuario);
-						} catch (Exception e1) {
-							Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
+						} catch (NumberFormatException | ClassNotFoundException | SQLException e1) {
+							Main_testing.escribirLog(Main_testing.error,"Error a autentificatse");
 						}
 					}else if (id==2) {
 						accionesVicerector(gUsuario,usuario);
@@ -163,7 +163,7 @@ public class PantallaLogin extends JFrame {
 
 	}
 
-	public void accionesEstudiante(GestorUsuarios gUsuario,Usuario usuario) throws Exception {
+	public void accionesEstudiante(GestorUsuarios gUsuario,Usuario usuario) throws SQLException, NumberFormatException, ClassNotFoundException{
 		
 		
 
@@ -175,7 +175,7 @@ public class PantallaLogin extends JFrame {
 			usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
 			if(usuario.getTipo()==TipoUsuario.ESTUDIANTE) {
-				PantallaMatriculacion frame =new PantallaMatriculacion();
+				PantallaMatriculacion frame = new PantallaMatriculacion();
 				frame.setVisible(true);
 			}
 

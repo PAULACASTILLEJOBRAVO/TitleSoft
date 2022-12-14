@@ -33,5 +33,4 @@ public abstract class AbstractEntityDAO <E> {
 	 */
 	public abstract int delete(E entity) throws Exception;
 
-
 }

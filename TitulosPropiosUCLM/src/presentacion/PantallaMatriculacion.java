@@ -120,12 +120,16 @@ public class PantallaMatriculacion extends JFrame {
 				GestorMatriculacion gm = new GestorMatriculacion();
 				String fecha=textFieldFecha.getText();
 				Date fechaSQL = Date.valueOf(fecha);
+
+
+
 				
 				gm.realizarMatriculacion(textFieldCurso.getText(), textFieldId.getText(), modoPago,  fechaSQL, true);
+
 			} else {
 				lblError.setText("No se ha podido completar la matricula. Rellena todos los campos.");
 			}
-	}
+		}
 
 	private boolean validarDatos() {
 		return !(textFieldFecha.getText().isEmpty() || textFieldCurso.getText().isEmpty() || textFieldId.getText().isEmpty());

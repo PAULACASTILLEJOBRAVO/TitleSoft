@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Vector;
 
 import negocio.entities.CursoPropio;
 import negocio.entities.Materia;
@@ -19,6 +20,14 @@ public class GestorMateria {
 		MateriaDAO materiaDAO=new MateriaDAO();
 		
 		return materiaDAO.seleccionarMateria(id);
+		
+	}
+
+	
+	public Vector<Object> seleccionarMateriaCurso(String id) throws Exception{
+		
+		MateriaDAO materiaDAO=new MateriaDAO();
+		return materiaDAO.listarMateriaCurso(id);
 		
 	}
 	

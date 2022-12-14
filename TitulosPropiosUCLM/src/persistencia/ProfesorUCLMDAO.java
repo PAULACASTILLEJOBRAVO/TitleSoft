@@ -15,13 +15,13 @@ public class ProfesorUCLMDAO extends AbstractEntityDAO{
 
 		Vector<Object> resultado;
 		ProfesorUCLM profesorReturn=null;
-		String SelectSQL= "SELECT * FROM profesoruclm WHERE dni = '"+id.trim()+"' " ;
+		String SelectSQL= "SELECT * FROM profesoruclm WHERE dni LIKE '"+id+"' " ;
 
 
 		resultado = GestorBD.select(SelectSQL);
 
 		if (resultado.isEmpty()==false) {
-			System.out.println("ProfesorUCLM seleccionado");
+			System.out.println("Curso seleccionado");
 
 			String[] auxUCLM =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 
@@ -29,26 +29,28 @@ public class ProfesorUCLMDAO extends AbstractEntityDAO{
 			GestorProfesor gProfesor=new GestorProfesor();
 			Profesor profesorPadre=gProfesor.seleccionarProfesor(auxUCLM[0]);
 
-			
+			//centro
+			GestorCentro gCentro=new GestorCentro();
+			Centro centro=gCentro.seleccionarCentro(auxUCLM[2]);
 
 			//categorias
-			if(auxUCLM[3].trim().equals("asociado")) {
-				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.ASOCIADO);
+			if(auxUCLM[1].equals("asociado")) {
+				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.ASOCIADO, centro);
 
-			}else if (auxUCLM[3].trim().equals("ayudante")) {
-				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.AYUDANTE);
+			}else if (auxUCLM[1].equals("ayudante")) {
+				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.AYUDANTE, centro);
 			
-			}else if (auxUCLM[3].trim().equals("ayudante doctor")) {
-				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.AYUDANTE_DOCTOR);
+			}else if (auxUCLM[1].equals("ayudante doctor")) {
+				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.AYUDANTE_DOCTOR, centro);
 			
-			}else if (auxUCLM[3].trim().equals("catedratico")) {
-				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.CATEDRATICO);
+			}else if (auxUCLM[1].equals("catedratico")) {
+				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.CATEDRATICO, centro);
 			
-			}else if (auxUCLM[3].trim().equals("contratado doctor")) {
-				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.CONTRATADO_DOCTOR);
+			}else if (auxUCLM[1].equals("contratado doctor")) {
+				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.CONTRATADO_DOCTOR, centro);
 			
-			}else if (auxUCLM[3].trim().equals("titular universidad")) {
-				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.TITULAR_UNIVERSIDAD);
+			}else if (auxUCLM[1].equals("titular universidad")) {
+				profesorReturn=new ProfesorUCLM(profesorPadre.getDni(), profesorPadre.getNombre(), profesorPadre.getApellidos(), profesorPadre.isDoctor(), CategoriaProfesor.TITULAR_UNIVERSIDAD, centro);
 			
 			}
 			

@@ -1,10 +1,10 @@
 package persistencia;
 
-import java.util.Date;
+
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -20,7 +20,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 	}
 
 
-	public Materia seleccionarMateria(String id) throws SQLException, ParseException {
+	public Materia seleccionarMateria(String id) throws Exception {
 		return (Materia)get(id);
 
 	}
@@ -122,12 +122,10 @@ public class MateriaDAO extends AbstractEntityDAO {
 
 
 	@Override
-	public Object get(String id) throws SQLException, ParseException {
+	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		Materia materiaEncontrada=null;
-		String SelectSQL= "SELECT m.IDMATERIA, m.NOMBRE, m.HORAS, m.FECHAINICIO, m.FECHAFIN, m.DNIPROFESOR FROM MATERIA m, "
-		+ "RELACIONMATERIASCURSO r, CURSOPROPIO c WHERE c.IDCURSOPROPIO=r.CURSO AND m.IDMATERIA=r.MATERIA AND c.IDCURSOPROPIO="
-				+id;
+		String SelectSQL= "SELECT * FROM materia WHERE nombre = '"+id.trim()+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
@@ -140,17 +138,17 @@ public class MateriaDAO extends AbstractEntityDAO {
 			
 			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 			
-			Date fecha1=(Date) formato.parse(aux[3]);
+			Date fecha1=(Date) formato.parse(aux[2]);
 			java.sql.Date sqlDate1 = new java.sql.Date(fecha1.getTime());
-		
-			Date fecha2 = (Date) formato.parse(aux[3]);
+			
+			Date fecha2=(Date) formato.parse(aux[3]);
 			java.sql.Date sqlDate2 = new java.sql.Date(fecha2.getTime());
 			
 			GestorProfesor gProfesor=new GestorProfesor();
 			
-			Profesor responsable=gProfesor.seleccionarProfesor(aux[5]);
+			Profesor responsable=gProfesor.seleccionarProfesor(aux[4]);
 			
-			materiaEncontrada=new Materia(responsable, Integer.parseInt(aux[0]), aux[1], Double.parseDouble(aux[2]), sqlDate1, sqlDate2);
+			materiaEncontrada=new Materia(responsable, aux[0], Double.parseDouble(aux[1]), sqlDate1, sqlDate2);
 			
 			
 			

@@ -6,8 +6,8 @@ import java.util.Vector;
 
 import negocio.entities.*;
 public class ProfesorDAO extends AbstractEntityDAO {
-
-
+	
+	
 	public int crearProfesor(Profesor profe) throws Exception {
 		return insert(profe);
 
@@ -19,8 +19,8 @@ public class ProfesorDAO extends AbstractEntityDAO {
 	 */
 	public Profesor seleccionarProfesor(String id) throws Exception {
 		return (Profesor) get(id);
-
-
+		
+		
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class ProfesorDAO extends AbstractEntityDAO {
 	public int eliminarProfesor(Profesor profe) throws Exception {
 		return delete(profe);
 	}
-
+	
 	/**
 	 * 
 	 * @param estado
@@ -55,42 +55,29 @@ public class ProfesorDAO extends AbstractEntityDAO {
 			for (int i = 0; i < resultado.size(); i++) {
 				Profesor profeAux=(Profesor) resultado.get(i);
 				profesorEncontrados.add(profeAux);
-
+				
 			}
 
 		}else
 			System.err.println("Error encontrando cursos");
 
 		return profesorEncontrados;
-
-
+		
+		
 	}
 
 	@Override
 	public Object get(String id) throws Exception {
 		Vector<Object> resultado;
 		Profesor profesorEncontrado =null; 
-		String SelectSQL= "SELECT * FROM profesor WHERE dni = '"+id.trim()+"' ";
+		String SelectSQL= "SELECT * FROM profesor WHERE dni LIKE '"+id+"' ";
 
 
 		resultado = GestorBD.select(SelectSQL);
-
+		
 		if (resultado.isEmpty()==false) {
 			System.out.println("Profesor seleccionado");
-
-			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
-
-			boolean doctor=false;
-			if(aux[3].trim().equals("true")) {
-				doctor=true;
-			}else if(aux[3].trim().equals("false")) {
-				doctor=false;
-			}else{
-				System.out.println("Error en la entradad de la base de datos, valor para doctor no valido");
-				return profesorEncontrado ;
-				
-			}
-			profesorEncontrado=new Profesor(aux[0],aux[1],aux[2],doctor);
+			profesorEncontrado=(Profesor) resultado.get(0);
 		}else
 			System.err.println("Error al seleccionar profesor");
 
@@ -144,6 +131,6 @@ public class ProfesorDAO extends AbstractEntityDAO {
 		return resultado;
 	}
 
-
-
+	
+	
 }

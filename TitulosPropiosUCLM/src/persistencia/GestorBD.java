@@ -1,5 +1,4 @@
 package persistencia;
-
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -9,8 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-
-
 import org.apache.derby.jdbc.EmbeddedDriver;
 
 public class GestorBD {
@@ -18,13 +15,11 @@ public class GestorBD {
 	protected static GestorBD mInstancia = null;
 	// Conexion con la base de datos
 	protected static Connection mBD;
-
 	// Constructor
 	private GestorBD() throws Exception {
 		conectar();
-
 	}
-
+	
 	// Implementacion del patron singleton
 	// Este patron de diseño permite implementar clases de las cuales
 	// solo existir una instancia
@@ -189,6 +184,24 @@ public class GestorBD {
 		vectoradevolver.add(v); 
 		}
 		stmt.close();
+
+
+
+//		while (res.next()) {
+//			Vector<Object> v = new Vector<Object>();
+//			v.add(res.getObject(1));
+//			v.add(res.getObject(2));
+//			v.add(res.getObject(3));
+//			vectoradevolver.add(v);
+//		}
+//		stmt.close();
+		//desconectar();
+
+
+
+    
+          
+
 		
 		
 //		while (res.next()) {

@@ -1,4 +1,5 @@
 package persistencia;
+import java.util.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -114,10 +115,10 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			java.util.Date fecha= formato.parse(aux[3]);
 
 			
-			if(aux[5].equals("credito")) {
-				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]), aux[1],aux[2], ModoPago.TARJETA_CREDITO, fecha,Boolean.parseBoolean(aux[4]));
-			}else if(aux[5].equals("transferencia")){
-				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]),aux[1],aux[2], ModoPago.TRANSFERENCIA, fecha, Boolean.parseBoolean(aux[4]));
+			if(aux[3].trim().equals("credito")) {
+				matriculaEncontrada=new Matricula(aux[0], aux[1], ModoPago.TARJETA_CREDITO, fecha,Boolean.parseBoolean(aux[2]));
+			}else if(aux[3].trim().equals("transferencia")){
+				matriculaEncontrada=new Matricula( aux[0], aux[1], ModoPago.TRANSFERENCIA, fecha, Boolean.parseBoolean(aux[2]));
 			}
 			
 			
@@ -130,9 +131,11 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	}
 
 	@Override
+
 	public int insert(Object entity) throws ClassNotFoundException, SQLException {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
+
 		String insertSQL = "INSERT INTO matricula (curso,dni,fecha,pagado,modo) " 
 				+ "VALUES ( "+matricula.getTitulo()+" , '"+matricula.getDni()+"' , '"
 				+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";
@@ -170,7 +173,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	public int delete(Object entity) throws Exception {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
-		String insertSQL = "DELETE FROM matricula WHERE '"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
+		String insertSQL = "DELETE FROM matricula WHERE idMatricula='"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
 
 		resultado = GestorBD.insert(insertSQL);
 		if (resultado > 0) {
