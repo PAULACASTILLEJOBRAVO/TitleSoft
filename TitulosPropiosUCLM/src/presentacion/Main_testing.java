@@ -25,7 +25,7 @@ public class Main_testing extends JFrame{
 	
 	public final static String error ="Logs//Errores.log";
 	
-	public static void main(String[] args) throws NumberFormatException, ClassNotFoundException, SQLException {
+	public static void main(String[] args) throws Exception {
 		
 		
 		Main_testing frame =new Main_testing();

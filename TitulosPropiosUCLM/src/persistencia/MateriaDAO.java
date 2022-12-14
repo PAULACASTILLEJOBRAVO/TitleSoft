@@ -2,6 +2,7 @@ package persistencia;
 
 import java.util.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
@@ -19,7 +20,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 	}
 
 
-	public Materia seleccionarMateria(String id) throws Exception {
+	public Materia seleccionarMateria(String id) throws SQLException, ParseException {
 		return (Materia)get(id);
 
 	}
@@ -121,7 +122,7 @@ public class MateriaDAO extends AbstractEntityDAO {
 
 
 	@Override
-	public Object get(String id) throws Exception {
+	public Object get(String id) throws SQLException, ParseException {
 		Vector<Object> resultado;
 		Materia materiaEncontrada=null;
 		String SelectSQL= "SELECT m.IDMATERIA, m.NOMBRE, m.HORAS, m.FECHAINICIO, m.FECHAFIN, m.DNIPROFESOR FROM MATERIA m, "

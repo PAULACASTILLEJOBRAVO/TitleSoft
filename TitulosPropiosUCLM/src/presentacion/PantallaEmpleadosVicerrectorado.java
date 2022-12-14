@@ -94,7 +94,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 
 
 					tabla.addRow(new Object[] {
-							cursoAux.getIdControlador(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
+							cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
 							cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
 							cursoAux.getSecretario().getNombre(),cursoAux.getDirector().getNombre(),datosMateriaNombres
 

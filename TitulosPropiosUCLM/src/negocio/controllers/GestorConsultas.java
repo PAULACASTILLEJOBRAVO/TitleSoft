@@ -55,7 +55,7 @@ public class GestorConsultas {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
 		try {
-			ediciones = cursoPropioDAO.listarsCursosEstados(fechaInicio, fechaFin);
+			ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
 

@@ -37,7 +37,7 @@ public class GestorBD {
 	}
 
 	// Metodo para realizar la conexion a la base de datos
-	public static void conectar() throws Exception {
+	public static void conectar() {
 		PreparedStatement pstmt;
 		Statement stmt;
 		ResultSet rs = null;
@@ -124,12 +124,12 @@ public class GestorBD {
 //	}
 //
 	// Metodo para desconectar de la base de datos
-	public static void desconectar() throws Exception {
+	public static void desconectar() throws SQLException {
 		mBD.close();
 	}
 
 	// Metodo para realizar una insercion en la base de datos
-	public static int insert(String SQL) throws SQLException, Exception {
+	public static int insert(String SQL) throws SQLException {
 		conectar();
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
@@ -159,7 +159,7 @@ public class GestorBD {
 		return res;
 	}
 
-	public static Vector<Object> select(String SQL) throws SQLException, Exception {
+	public static Vector<Object> select(String SQL) throws SQLException {
 		/*
 		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
 		 * datos El mŽtodo select develve un vector de vectores, donde cada uno de los

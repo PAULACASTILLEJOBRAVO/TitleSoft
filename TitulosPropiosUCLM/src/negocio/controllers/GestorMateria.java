@@ -1,6 +1,7 @@
 package negocio.controllers;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -13,7 +14,7 @@ import presentacion.Main_testing;
 
 public class GestorMateria {
 
-	public Materia seleccionarMaterias(String id) throws Exception {
+	public Materia seleccionarMaterias(String id) throws SQLException, ParseException {
 		
 		MateriaDAO materiaDAO=new MateriaDAO();
 		
