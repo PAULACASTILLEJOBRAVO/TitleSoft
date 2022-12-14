@@ -15,7 +15,7 @@ import presentacion.Main_testing;
 
 public class GestorMateria {
 
-	public Materia seleccionarMaterias(String id) throws SQLException, ParseException {
+	public Materia seleccionarMaterias(String id) throws Exception {
 		
 		MateriaDAO materiaDAO=new MateriaDAO();
 		

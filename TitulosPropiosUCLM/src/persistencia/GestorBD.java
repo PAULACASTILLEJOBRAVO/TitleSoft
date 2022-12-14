@@ -1,4 +1,5 @@
 package persistencia;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -8,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+
+
 import org.apache.derby.jdbc.EmbeddedDriver;
 
 public class GestorBD {
@@ -15,11 +18,13 @@ public class GestorBD {
 	protected static GestorBD mInstancia = null;
 	// Conexion con la base de datos
 	protected static Connection mBD;
+
 	// Constructor
 	private GestorBD() throws Exception {
 		conectar();
+
 	}
-	
+
 	// Implementacion del patron singleton
 	// Este patron de diseño permite implementar clases de las cuales
 	// solo existir una instancia
@@ -32,7 +37,7 @@ public class GestorBD {
 	}
 
 	// Metodo para realizar la conexion a la base de datos
-	public static void conectar() {
+	public static void conectar() throws SQLException {
 		PreparedStatement pstmt;
 		Statement stmt;
 		ResultSet rs = null;
@@ -124,8 +129,12 @@ public class GestorBD {
 	}
 
 	// Metodo para realizar una insercion en la base de datos
-	public static int insert(String SQL) throws SQLException {
-		conectar();
+	public static int insert(String SQL) throws ClassNotFoundException, SQLException {
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
@@ -135,6 +144,11 @@ public class GestorBD {
 
 	// Metodo para realizar una eliminacion en la base de datos
 	public int delete(String SQL) throws SQLException, Exception {
+		Driver derbyEmbeddedDriver = new EmbeddedDriver();
+		DriverManager.registerDriver(derbyEmbeddedDriver);
+		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
@@ -147,6 +161,7 @@ public class GestorBD {
 		Driver derbyEmbeddedDriver = new EmbeddedDriver();
 		DriverManager.registerDriver(derbyEmbeddedDriver);
 		Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+		
 		PreparedStatement stmt = mBD.prepareStatement(SQL);
 		int res = stmt.executeUpdate();
 		stmt.close();
@@ -154,7 +169,7 @@ public class GestorBD {
 		return res;
 	}
 
-	public static Vector<Object> select(String SQL) throws SQLException {
+	public static Vector<Object> select(String SQL) throws SQLException  {
 		/*
 		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
 		 * datos El mŽtodo select develve un vector de vectores, donde cada uno de los
@@ -184,24 +199,6 @@ public class GestorBD {
 		vectoradevolver.add(v); 
 		}
 		stmt.close();
-
-
-
-//		while (res.next()) {
-//			Vector<Object> v = new Vector<Object>();
-//			v.add(res.getObject(1));
-//			v.add(res.getObject(2));
-//			v.add(res.getObject(3));
-//			vectoradevolver.add(v);
-//		}
-//		stmt.close();
-		//desconectar();
-
-
-
-    
-          
-
 		
 		
 //		while (res.next()) {
