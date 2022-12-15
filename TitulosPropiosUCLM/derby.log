@@ -1,4 +1,4 @@
-Wed Dec 14 23:40:47 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+Thu Dec 15 21:08:27 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Database 'GestorDB' not found.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
@@ -120,7 +120,7 @@ ERROR XJ004: Database 'GestorDB' not found.
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
 ============= end nested exception, level (1) ===========
 Cleanup action completed
-Wed Dec 14 23:40:47 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+Thu Dec 15 21:08:27 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Database 'GestorDB' not found.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
@@ -242,7 +242,7 @@ ERROR XJ004: Database 'GestorDB' not found.
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
 ============= end nested exception, level (1) ===========
 Cleanup action completed
-Wed Dec 14 23:40:47 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+Thu Dec 15 21:08:27 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Database 'GestorDB' not found.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)

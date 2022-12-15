@@ -5,7 +5,7 @@
   <version>1.2.1-SNAPSHOT</version>
   <name>Titesoft</name>
 <dependencies>
-  <dependency>
+ <dependency>
 	<groupId>org.apache.logging.log4j</groupId>
 	<artifactId>log4j-api</artifactId>
 	<version>2.19.0</version>
@@ -23,7 +23,7 @@
   <dependency>
   	<groupId>org.apache.derby</groupId>
   	<artifactId>derby</artifactId>
-  	<version>10.12.1.1</version>
+  	<version>10.14.2.0</version>
 	<scope>compile</scope>
   </dependency>
   <dependency>
@@ -51,45 +51,47 @@
       </configuration>
 	</plugin>
 	<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-site-plugin</artifactId>
-<version>3.9.1</version>
-</plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-site-plugin</artifactId>
+		<version>3.9.1</version>
+	</plugin>
   </plugins>
 </build>
+
 <reporting>
-<plugins>
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-project-info-reports-plugin</artifactId>
-</plugin>
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-surefire-report-plugin</artifactId>
-<version>3.0.0-M5</version>
-<configuration>
-<skipEmptyReport>false</skipEmptyReport>
-</configuration>
-</plugin>
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-jxr-plugin</artifactId>
-<version>3.0.0</version>
-</plugin>
-<plugin>
-<groupId>org.jacoco</groupId>
-<artifactId>jacoco-maven-plugin</artifactId>
-<version>0.8.6</version>
-<reportSets>
-<reportSet>
-<reports>
-<report>report</report>
-</reports>
-</reportSet>
-</reportSets>
-</plugin>
-</plugins>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-project-info-reports-plugin</artifactId>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-report-plugin</artifactId>
+			<version>3.0.0-M5</version>
+			<configuration>
+				<skipEmptyReport>false</skipEmptyReport>
+			</configuration>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jxr-plugin</artifactId>
+			<version>3.0.0</version>
+		</plugin>
+		<plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.6</version>
+			<reportSets>
+				<reportSet>
+					<reports>
+						<report>report</report>
+					</reports>
+				</reportSet>
+			</reportSets>
+		</plugin>
+	</plugins>
 </reporting>
+
 <properties>
   <sonar.projectkey>SONAR_TOKEN</sonar.projectkey>
   <sonar.organization>titlesoft</sonar.organization>
