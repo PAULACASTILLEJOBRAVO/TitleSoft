@@ -7,9 +7,7 @@ import java.util.*;
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
 import presentacion.Main_testing;
-import negocio.entities.*;
 public class GestorConsultas {
-	private CursoPropioDAO cursoPropioDAO;
 	/**
 	 * 
 	 * @param tipo
