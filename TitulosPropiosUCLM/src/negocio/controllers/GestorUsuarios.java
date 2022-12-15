@@ -23,7 +23,6 @@ public class GestorUsuarios {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
 			return false;
 		}
