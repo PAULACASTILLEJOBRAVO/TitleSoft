@@ -8,13 +8,13 @@ import presentacion.Main_testing;
 
 public class GestorPropuestasCursos {
 
-	public CursoPropio realizarPropuestaCurso(String nombre, Date fechaInicio, Date fechaFin, int ECTS, double tasaMatricula, int edicion,  String dniDirector, String dniSecretario, EstadoCurso estado, TipoCurso tipo, String centro) {
+	public CursoPropio realizarPropuestaCurso(String nombre, Date fechaInicio, Date fechaFin, int eCTS, double tasaMatricula, int edicion,  String dniDirector, String dniSecretario, EstadoCurso estado, TipoCurso tipo, String centro) {
 		
 		GestorProfesor gestorProfesor = new GestorProfesor();
 		Profesor director = gestorProfesor.seleccionarProfesor(dniDirector);
 		Profesor secretario = gestorProfesor.seleccionarProfesor(dniSecretario);
 		
-		CursoPropio nuevoCurso = new CursoPropio(nombre, fechaInicio, fechaFin, ECTS, tasaMatricula, edicion, director, secretario, estado, tipo, centro);
+		CursoPropio nuevoCurso = new CursoPropio(nombre, fechaInicio, fechaFin, eCTS, tasaMatricula, edicion, director, secretario, estado, tipo, centro);
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		
 		try {

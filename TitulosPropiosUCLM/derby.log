@@ -1,12 +1,12 @@
 ----------------------------------------------------------------
-Thu Dec 15 21:44:10 CET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0185-1787-bfd9-0000012b28a8 
-on database directory C:\Users\virgi\git\TitleSoft\TitulosPropiosUCLM\BaseDeDatos with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243 
-Loaded from file:/C:/Users/virgi/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+Thu Dec 15 22:45:43 CET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0185-17c0-19c0-000001bc1940 
+on database directory C:\Users\paula\TitlesoftGit\TitlesoftRepository\TitleSoft\TitulosPropiosUCLM\BaseDeDatos with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca 
+Loaded from file:/C:/Users/paula/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Eclipse Adoptium
-java.runtime.version=18.0.2.1+1
-user.dir=C:\Users\virgi\git\TitleSoft\TitulosPropiosUCLM
-os.name=Windows 11
+java.runtime.version=17.0.1+12
+user.dir=C:\Users\paula\TitlesoftGit\TitlesoftRepository\TitleSoft\TitulosPropiosUCLM
+os.name=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=null
