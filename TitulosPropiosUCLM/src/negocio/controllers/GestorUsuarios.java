@@ -1,16 +1,13 @@
 package negocio.controllers;
 
-import java.util.*;
-
 import negocio.entities.*;
-import persistencia.EstudianteDAO;
 import persistencia.UsuarioDAO;
 import presentacion.Main_testing;
 
 public class GestorUsuarios {
 
 
-	public boolean ComprobarUsuario(String usuario,String password) {
+	public boolean comprobarUsuario(String usuario,String password) {
 
 		UsuarioDAO usuarioDAO=new UsuarioDAO();
 

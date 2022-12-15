@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Vector;
 
 import negocio.controllers.GestorConsultas;
-import negocio.controllers.GestorProfesorUCLM;
+import negocio.controllers.GestorProfesor;
 import negocio.entities.*;
 
 public class CentroDAO extends AbstractEntityDAO {
@@ -68,14 +68,14 @@ public class CentroDAO extends AbstractEntityDAO {
 			Vector<Object> resultadosNombreCentro= listarNombreCentro(aux[1]);
 			
 			//collecion de ProfesoresUCLM
-			Collection<ProfesorUCLM> profesoresCollection=null;
-			GestorProfesorUCLM gProfesorUCLM= new GestorProfesorUCLM();
+			Collection<Profesor> profesoresCollection=null;
+			GestorProfesor gProfesor= new GestorProfesor();
 			
 			for(int i=0;i<resultadosNombreCentro.size();i++) {
 
 				String[] auxProfesores =  (resultadosNombreCentro.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 
-				profesoresCollection.add(gProfesorUCLM.seleccionarProfesor(auxProfesores[4]));
+				profesoresCollection.add(gProfesor.seleccionarProfesor(auxProfesores[4]));
 			}
 			
 			//collection de cursosPropios 

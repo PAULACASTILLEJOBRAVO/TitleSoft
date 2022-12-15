@@ -1,13 +1,11 @@
 package negocio.controllers;
 
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.Date;
 
 import negocio.entities.CursoPropio;
 import negocio.entities.Materia;
 import negocio.entities.Profesor;
-import persistencia.CursoPropioDAO;
 import persistencia.MateriaDAO;
 import presentacion.Main_testing;
 
@@ -32,9 +30,9 @@ public class GestorMateria {
 		
 		try {
 			materiaDAO.crearMateria(materiaNueva);
-			int Idcurso = gestorConsultas.idCurso(curso);
-			int IdMateria = idMateria(materiaNueva);
-			materiaDAO.vincularCursoMateria(IdMateria, Idcurso);
+			int idcurso = gestorConsultas.idCurso(curso);
+			int idMateria = idMateria(materiaNueva);
+			materiaDAO.vincularCursoMateria(idMateria, idcurso);
 		}catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al realizar propuesta");
 		}	

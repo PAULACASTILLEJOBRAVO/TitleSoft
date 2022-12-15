@@ -67,7 +67,7 @@ public class PantallaLogin extends JFrame {
 
 				GestorUsuarios gUsuario=new GestorUsuarios();
 
-				if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+				if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 					System.out.println("Sesion iniciada");
 
@@ -109,7 +109,7 @@ public class PantallaLogin extends JFrame {
 	}
 
 	public void accionesProfesores(GestorUsuarios gUsuario,Usuario usuario) {
-		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
 
@@ -139,7 +139,7 @@ public class PantallaLogin extends JFrame {
 	public void accionesVicerector(GestorUsuarios gUsuario,Usuario usuario) {
 
 
-		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
 
@@ -167,7 +167,7 @@ public class PantallaLogin extends JFrame {
 		
 		
 
-		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
 
@@ -192,7 +192,7 @@ public class PantallaLogin extends JFrame {
 
 	public void accionesJefe(GestorUsuarios gUsuario,Usuario usuario) {
 		
-		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
 

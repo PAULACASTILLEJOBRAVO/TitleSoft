@@ -6,14 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
 
-import negocio.controllers.GestorCentro;
 import negocio.controllers.GestorMateria;
 import negocio.controllers.GestorMatriculacion;
 import negocio.controllers.GestorProfesor;
-import negocio.controllers.GestorProfesorUCLM;
 import negocio.entities.*;
 //el bueno
 public class CursoPropioDAO extends AbstractEntityDAO {

@@ -35,53 +35,12 @@ public class GestorMatriculacion {
 		MatriculaDAO matriculaDAO=new MatriculaDAO();
 
 		try {
-			return (Matricula) matriculaDAO.seleccionarMatricula(id);
+			return matriculaDAO.seleccionarMatricula(id);
 
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al seleccionar matricula");
 			return null;
 		}
 		
-
 	}
-
-	
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante, int id) {
-		
-		Matricula matricula = new Matricula(id,null, null, null, null, false);
-		
-		if(matricula.isPagado()) {
-			realizarPagoTarjeta(curso, estudiante);
-		
-			realizarPagoTransferencia(curso, estudiante);
-		
-			
-		}
-	}
-
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	private String realizarPagoTarjeta(CursoPropio curso, Estudiante estudiante) {
-		ModoPago targetaCredito = ModoPago.TARJETA_CREDITO;
-		return targetaCredito.name();
-	}
-
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	private String realizarPagoTransferencia(CursoPropio curso, Estudiante estudiante) {
-		ModoPago trasferencia = ModoPago.TRANSFERENCIA;
-		return trasferencia.name();
-	}
-
 }

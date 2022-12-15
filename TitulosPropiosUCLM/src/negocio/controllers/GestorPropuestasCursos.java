@@ -1,11 +1,9 @@
 package negocio.controllers;
 
-import java.sql.SQLException;
 import java.util.Date;
 
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
-import persistencia.MateriaDAO;
 import presentacion.Main_testing;
 
 public class GestorPropuestasCursos {
