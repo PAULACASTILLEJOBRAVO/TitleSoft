@@ -9,13 +9,10 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import negocio.controllers.GestorMateria;
-import negocio.controllers.GestorMatriculacion;
 import negocio.controllers.GestorPropuestasCursos;
 import negocio.entities.CursoPropio;
 import negocio.entities.EstadoCurso;
-import negocio.entities.ModoPago;
 import negocio.entities.TipoCurso;
-import persistencia.CursoPropioDAO;
 public class PantallaDireccionCursos extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldFechaInicio;
@@ -51,7 +48,6 @@ public class PantallaDireccionCursos extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
 		
 		JLabel lblFechaInicio = new JLabel("Fecha de inicio del curso (yyyy-mm-dd):");
 		lblFechaInicio.setBounds(416, 170, 287, 40);
@@ -138,7 +134,6 @@ public class PantallaDireccionCursos extends JFrame {
 		add(textFieldSecretario);
 		textFieldSecretario.setColumns(10);
 		
-		
 		JButton btnNewButtonAceptar = new JButton("Aceptar");
 		btnNewButtonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -155,8 +150,8 @@ public class PantallaDireccionCursos extends JFrame {
 					contentPane.revalidate();
 					
 					JLabel lblFechaInicioMateria = new JLabel("Fecha de inicio de la materia (yyyy-mm-dd):");
-					lblFechaInicio.setBounds(416, 170, 300, 40);
-					add(lblFechaInicio);
+					lblFechaInicioMateria.setBounds(416, 170, 300, 40);
+					add(lblFechaInicioMateria);
 					
 					textFieldFechaInicioMateria = new JTextField();
 					textFieldFechaInicioMateria.setBounds(416, 205, 76, 19);
@@ -209,7 +204,6 @@ public class PantallaDireccionCursos extends JFrame {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							validarDatosMateriaPorCurso();
-
 						}
 					});
 					btnAceptar.setBounds(200, 432, 100, 20);
@@ -224,8 +218,8 @@ public class PantallaDireccionCursos extends JFrame {
 					btnNewButtonCancelar.setBounds(400, 432, 95, 21);
 					add(btnNewButtonCancelar);
 					
-				} catch (SQLException | NumberFormatException | ClassNotFoundException e1) {
-					Main_testing.escribirLog(Main_testing.ERROR,"Error a realizar propuesta del curso");
+				} catch (NumberFormatException | ClassNotFoundException e1) {
+					MainTesting.escribirLog(MainTesting.ERROR,"Error a realizar propuesta del curso");
 				}
 			}
 		});
@@ -289,13 +283,8 @@ public class PantallaDireccionCursos extends JFrame {
 		add(lblError);
 		lblError.setText("");
 	}
-
-
-	public void edicionCurso() {
-		throw new UnsupportedOperationException();
-	}
 	
-	private void validarDatosPropuestaCurso() throws NumberFormatException, SQLException, ClassNotFoundException {
+	private void validarDatosPropuestaCurso() throws NumberFormatException, ClassNotFoundException {
 			if (validarDatosCurso()) {
 				lblError.setText("");
 				TipoCurso tipoCurso = null;

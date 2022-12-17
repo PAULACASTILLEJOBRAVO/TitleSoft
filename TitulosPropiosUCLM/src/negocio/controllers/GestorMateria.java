@@ -7,7 +7,7 @@ import negocio.entities.CursoPropio;
 import negocio.entities.Materia;
 import negocio.entities.Profesor;
 import persistencia.MateriaDAO;
-import presentacion.Main_testing;
+import presentacion.MainTesting;
 
 public class GestorMateria {
 
@@ -38,7 +38,7 @@ public class GestorMateria {
 			int idMateria = idMateria(materiaNueva);
 			materiaDAO.vincularCursoMateria(idMateria, idcurso);
 		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar propuesta");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al realizar propuesta");
 		}	
 		
 		return materiaNueva;

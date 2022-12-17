@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import negocio.entities.*;
 import persistencia.*;
-import presentacion.Main_testing;
+import presentacion.MainTesting;
 
 public class GestorMatriculacion {
 
@@ -24,9 +24,9 @@ public class GestorMatriculacion {
 		try {
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
 		} catch (SQLException e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar matricula");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al realizar matricula");
 		}catch (ClassNotFoundException e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al no encontrar la clase en el sistema");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al no encontrar la clase en el sistema");
 		}
 	}
 
@@ -45,7 +45,7 @@ public class GestorMatriculacion {
 				return matriculaDAO.seleccionarMatricula(id);
 			}
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al seleccionar matricula");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al seleccionar matricula");
 			return null;
 		}
 		return null;

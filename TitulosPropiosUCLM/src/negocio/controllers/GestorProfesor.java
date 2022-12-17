@@ -2,7 +2,7 @@ package negocio.controllers;
 
 import negocio.entities.*;
 import persistencia.*;
-import presentacion.Main_testing;
+import presentacion.MainTesting;
 
 public class GestorProfesor {
 
@@ -12,7 +12,7 @@ public Profesor seleccionarProfesor(String dni) {
 		try {
 			return profesorDAO.seleccionarProfesor(dni);
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al seleccionar Profesor");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al seleccionar Profesor");
 			return null;
 		}
 	}

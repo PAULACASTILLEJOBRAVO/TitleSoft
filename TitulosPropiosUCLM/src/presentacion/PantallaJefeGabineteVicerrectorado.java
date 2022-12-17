@@ -1,13 +1,14 @@
 package presentacion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
-
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,83 +22,63 @@ import javax.swing.table.DefaultTableModel;
 
 import negocio.controllers.GestorConsultas;
 import negocio.entities.CursoPropio;
-import negocio.entities.EstadoCurso;
 import negocio.entities.Materia;
 
-
 public class PantallaJefeGabineteVicerrectorado extends JFrame{
-	//private static final long serialVersionUID = 1L;  no se que es
-
 	private JPanel contentPane;
-	private static final String formatoFechaInicio = "Fecha inicio(yyyy-mm-dd):";
-	private static final String formatoFechaFin = "Fecha final(yyyy-mm-dd):";
+	private static final String FORMATOFECHAINICIO = "Fecha inicio(yyyy-mm-dd):";
+	private static final String FORMATOFECHAFIN = "Fecha final(yyyy-mm-dd):";
+	private static final String CONFIRMAR = "Confirmar";
+	private static final String FORMATOFECHASIMPLE = "yyyy-MM-dd";
 	
 	public PantallaJefeGabineteVicerrectorado() {
-
-
 		setTitle("Sesion: Jefe Gabinete");
-		setDefaultCloseOperation(PantallaJefeGabineteVicerrectorado.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 520, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-
-
-		//consultar ingresos
-		//listar ediciones
-		//observacion de cursos propuestos
-
-
-
-
 		JButton btnConsultarIngresos = new JButton("Consultar Ingresos");
 		btnConsultarIngresos.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				JTextField textFieldTipo= new JTextField();
+				JTextField textFieldIdCurso= new JTextField();
 				JTextField textFieldFechaInicio= new JTextField();
 				JTextField textFieldFechaFinal= new JTextField();
 
-
 				setTitle("Sesion: Jefe Gabinete-------Consultar Ingresos");
-				setDefaultCloseOperation(PantallaJefeGabineteVicerrectorado.DISPOSE_ON_CLOSE);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setBounds(300, 300, 520, 300);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				setContentPane(contentPane);
 				contentPane.setLayout(null);
 				contentPane.revalidate();
-
 				
-				JLabel lblFechaInicio = new JLabel(formatoFechaInicio);
+				JLabel lblFechaInicio = new JLabel(FORMATOFECHAINICIO);
 				lblFechaInicio.setBounds(100, 100, 200, 20);
 				add(lblFechaInicio);
-
 
 				textFieldFechaInicio.setBounds(250, 100, 132, 20);
 				add(textFieldFechaInicio);
 				textFieldFechaInicio.setColumns(10);
-
-				JLabel lblFechaFinal = new JLabel(formatoFechaFin);
+				
+				JLabel lblFechaFinal = new JLabel(FORMATOFECHAFIN);
 				lblFechaFinal.setBounds(100, 150, 200, 20);
 				add(lblFechaFinal);
-
 
 				textFieldFechaFinal.setBounds(250, 150, 132, 20);
 				add(textFieldFechaFinal);
 				textFieldFechaFinal.setColumns(10);
 
-
-				JButton btnConfirmar = new JButton("Confirmar");
+				JButton btnConfirmar = new JButton(CONFIRMAR);
 				btnConfirmar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-
 						Collection<CursoPropio> resultado;
 						try {
 							resultado = botonConfirmarCursos(textFieldFechaFinal,textFieldFechaInicio);
@@ -111,55 +92,41 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 							setContentPane(contentPane);
 							contentPane.setLayout(null);
 							contentPane.revalidate();
-
+							
 							JLabel lblcurso = new JLabel("Id Curso:");
 							lblcurso.setBounds(100, 90, 200, 20);
 							add(lblcurso);
 
-
-							textFieldTipo.setBounds(250, 94, 132, 20);
-							add(textFieldTipo);
-							textFieldTipo.setColumns(10);
-							contentPane.revalidate();
+							textFieldIdCurso.setBounds(250, 94, 132, 20);
+							add(textFieldIdCurso);
+							textFieldIdCurso.setColumns(10);
+							contentPane.revalidate();							
 							
-							JButton btnConfirmarId = new JButton("Confirmar");
+							JButton btnConfirmarId = new JButton(CONFIRMAR);
 							btnConfirmarId.addActionListener(new ActionListener() {
 
 								@Override
 								public void actionPerformed(ActionEvent e) {
-
-									double ingresos=botonConfirmarIngresos(textFieldFechaFinal,textFieldFechaInicio,textFieldTipo);
+									double ingresos=botonConfirmarIngresos(textFieldFechaFinal,textFieldFechaInicio,textFieldIdCurso);
 
 									JLabel lblingresos = new JLabel("Ingresos: "+ingresos+"");
 									lblingresos.setBounds(100, 150, 200,70);
 									add(lblingresos);
 									lblingresos.updateUI();
-									
 								}});
 							btnConfirmarId.setBounds(201, 120, 100, 20);
 							add(btnConfirmarId);
-
 						} catch (ParseException e1) {
-
-							e1.printStackTrace();
+							MainTesting.escribirLog(MainTesting.ERROR, "Error inesperado durante el analisis");
 						}
-
-
-
-
-
 					}
 				});
 				btnConfirmar.setBounds(201, 200, 100, 20);
 				add(btnConfirmar);
-
-
 			}
 		});
 		btnConsultarIngresos.setBounds(200, 100, 150, 20);
 		add(btnConsultarIngresos);
-
-
 
 		JButton btnListarEdiciones = new JButton("Listar Ediciones");
 		btnListarEdiciones.addActionListener(new ActionListener(){
@@ -171,7 +138,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				JTextField textFieldFechaFinalEdiciones = new JTextField();
 
 				setTitle("Sesion: Jefe Gabinete-------Listar Ediciones");
-				setDefaultCloseOperation(PantallaJefeGabineteVicerrectorado.DISPOSE_ON_CLOSE);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setBounds(300, 300, 520, 300);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -179,31 +146,28 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				contentPane.setLayout(null);
 				contentPane.revalidate();
 
-				JLabel lblFechaInicioEdiciones = new JLabel(formatoFechaInicio);
+				JLabel lblFechaInicioEdiciones = new JLabel(FORMATOFECHAINICIO);
 				lblFechaInicioEdiciones.setBounds(100, 90, 200, 20);
 				add(lblFechaInicioEdiciones);
-
 
 				textFieldFechaInicioEdiciones.setBounds(250, 94, 132, 20);
 				add(textFieldFechaInicioEdiciones);
 				textFieldFechaInicioEdiciones.setColumns(10);
 
-				JLabel lblFechaFinalEdicion = new JLabel(formatoFechaFin);
+				JLabel lblFechaFinalEdicion = new JLabel(FORMATOFECHAFIN);
 				lblFechaFinalEdicion.setBounds(100, 150, 200, 20);
 				add(lblFechaFinalEdicion);
-
 
 				textFieldFechaFinalEdiciones.setBounds(250, 154, 132, 20);
 				add(textFieldFechaFinalEdiciones);
 				textFieldFechaFinalEdiciones.setColumns(10);
 
-				JButton btnConfirmar = new JButton("Confirmar");
+				JButton btnConfirmar = new JButton(CONFIRMAR);
 				btnConfirmar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						botonConfirmarEdiciones(textFieldFechaFinalEdiciones,textFieldFechaInicioEdiciones);
-
 					}
 				});
 				btnConfirmar.setBounds(201, 200, 100, 20);
@@ -218,12 +182,11 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				JTextField textFieldFechaInicioEdiciones = new JTextField();
 				JTextField textFieldFechaFinalEdiciones = new JTextField();
 
 				setTitle("Sesion: Jefe Gabinete-------Consultar Cursos");
-				setDefaultCloseOperation(PantallaJefeGabineteVicerrectorado.DISPOSE_ON_CLOSE);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setBounds(300, 300, 520, 300);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -231,61 +194,47 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 				contentPane.setLayout(null);
 				contentPane.revalidate();
 
-
-				JLabel lblFechaInicioEdiciones = new JLabel(formatoFechaInicio);
+				JLabel lblFechaInicioEdiciones = new JLabel(FORMATOFECHAINICIO);
 				lblFechaInicioEdiciones.setBounds(100, 90, 200, 20);
 				add(lblFechaInicioEdiciones);
-
 
 				textFieldFechaInicioEdiciones.setBounds(250, 94, 132, 20);
 				add(textFieldFechaInicioEdiciones);
 				textFieldFechaInicioEdiciones.setColumns(10);
 
-				JLabel lblFechaFinalEdicion = new JLabel(formatoFechaFin);
+				JLabel lblFechaFinalEdicion = new JLabel(FORMATOFECHAFIN);
 				lblFechaFinalEdicion.setBounds(100, 150, 200, 20);
 				add(lblFechaFinalEdicion);
-
 
 				textFieldFechaFinalEdiciones.setBounds(250, 154, 132, 20);
 				add(textFieldFechaFinalEdiciones);
 				textFieldFechaFinalEdiciones.setColumns(10);
-
 				
-				JButton btnConfirmar = new JButton("Confirmar");
+				JButton btnConfirmar = new JButton(CONFIRMAR);
 				btnConfirmar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-
 						try {
 							Collection<CursoPropio> resultado=botonConfirmarCursos(textFieldFechaFinalEdiciones,textFieldFechaInicioEdiciones);
 							crearTabla(resultado);
-							//fin de la informacion de los cursos
 						} catch (ParseException e1) {
-							e1.printStackTrace();
+							MainTesting.escribirLog(MainTesting.ERROR, "Error inesperado durante el analisis");
 						}
-
-
 					}
 				});
 				btnConfirmar.setBounds(201, 200, 100, 20);
 				add(btnConfirmar);
-				//mostrar informacion de los cursos propuestos
-
 			}
 		});
 		btnAprobarCursos.setBounds(200, 200, 150, 20);
 		add(btnAprobarCursos);
-
-
 	}
-
 
 	public double botonConfirmarIngresos(JTextField textFieldFechaFinal, JTextField textFieldFechaInicio, JTextField textFieldTipo) {
 		GestorConsultas gConsultas=new GestorConsultas();
-
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-
+		SimpleDateFormat formato = new SimpleDateFormat(FORMATOFECHASIMPLE);
+		
 		try {
 			Date fechaAux1 = formato.parse(textFieldFechaInicio.getText());
 			Date fechaAux2= formato.parse(textFieldFechaFinal.getText());
@@ -296,14 +245,13 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 			return gConsultas.consultarIngresos(curso.getTipo(), fechaInicioAux, fechaFinalAux);
 		} catch (Exception e1) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al consultar ingresos");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al consultar ingresos");
 			return 0;
 		}
 	}
 
 	public void botonConfirmarEdiciones(JTextField textFieldFechaFinalEdiciones, JTextField textFieldFechaInicioEdiciones) {
-
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formato = new SimpleDateFormat(FORMATOFECHASIMPLE);
 
 		try {
 			Date fechaInicioAux = formato.parse(textFieldFechaInicioEdiciones.getText());
@@ -315,7 +263,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			Collection<CursoPropio> cursosEncontrados=gConsultas.listarEdicionesCursos(fechaInicioSQL, fechaFinalSQL);
 			crearTabla(cursosEncontrados);
 		}catch (Exception e1) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al consultar cursos por ediciones");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al consultar cursos por ediciones");
 		}
 	}
 
@@ -325,7 +273,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 
 		GestorConsultas gConsultas=new GestorConsultas();
 
-		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formato = new SimpleDateFormat(FORMATOFECHASIMPLE);
 		Date fechaInicioAux = formato.parse(textFieldFechaInicioEdiciones.getText());
 		Date fechaFinalAux= formato.parse(textFieldFechaFinalEdiciones.getText());
 		java.sql.Date fechaInicioSQL= new java.sql.Date(fechaInicioAux.getTime());
@@ -361,7 +309,6 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			StringBuilder datosMateriaNombres= new StringBuilder();
 
 			for(int j=0;j<materiasCurso.length;j++) {
-
 				Materia materiaAux=(Materia)materiasCurso[j];
 				datosMateriaNombres.append(materiaAux.getNombre());
 			}

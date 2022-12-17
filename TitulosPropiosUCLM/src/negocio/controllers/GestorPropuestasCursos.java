@@ -4,7 +4,7 @@ import java.util.Date;
 
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
-import presentacion.Main_testing;
+import presentacion.MainTesting;
 
 public class GestorPropuestasCursos {
 
@@ -20,7 +20,7 @@ public class GestorPropuestasCursos {
 		try {
 			cursoPropioDAO.crearNuevoCurso(nuevoCurso);
 		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar propuesta");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al realizar propuesta");
 		}
 		
 		return nuevoCurso;
@@ -38,7 +38,7 @@ public class GestorPropuestasCursos {
 		try {
 			cursoPropioDAO.editarCurso(curso);
 		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al editar curso");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al editar curso");
 
 		}
 		
