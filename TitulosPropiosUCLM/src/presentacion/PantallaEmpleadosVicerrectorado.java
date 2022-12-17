@@ -16,14 +16,12 @@ import negocio.entities.Materia;
 
 public class PantallaEmpleadosVicerrectorado extends JFrame {
 
-	private JTextField textFieldUsuario= new JTextField();;
-	private JTextField textFieldPassword= new JTextField();
 	private JPanel contentPane;
 
 	public PantallaEmpleadosVicerrectorado() {
 
 		setTitle("Sesion:Vicerrector");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(PantallaEmpleadosVicerrectorado.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 520, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,10 +35,10 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				JTextField TextIDcurso = new JTextField();
+				JTextField textIDcurso = new JTextField();
 
 				setTitle("Sesion: Jefe Gabinete-------Aprobar Cursos");
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				setDefaultCloseOperation(PantallaEmpleadosVicerrectorado.DISPOSE_ON_CLOSE);
 				setBounds(300, 300, 520, 300);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,9 +52,9 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 				add(lblIDcurso);
 
 
-				TextIDcurso.setBounds(250, 94, 132, 20);
-				add(TextIDcurso);
-				TextIDcurso.setColumns(10);
+				textIDcurso.setBounds(250, 94, 132, 20);
+				add(textIDcurso);
+				textIDcurso.setColumns(10);
 
 
 				//mostrar informacion de los cursos propuestos
@@ -83,20 +81,20 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 				while(it.hasNext()) {
 					CursoPropio cursoAux=it.next();
 					Object[] materiasCurso=cursoAux.getMaterias().toArray();
-					String datosMateriaNombres=" ";
+					StringBuilder datosMateriaNombres =new StringBuilder();
 
 					for(int j=0;j<materiasCurso.length;j++) {
 
 						Materia materiaAux=(Materia)materiasCurso[j];
-						datosMateriaNombres=materiaAux.getNombre()+" ,"+datosMateriaNombres;
+						datosMateriaNombres.append(materiaAux.getNombre());
 					}
-
+					String datosMateria = datosMateriaNombres.toString();
 
 
 					tabla.addRow(new Object[] {
 							cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
 							cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
-							cursoAux.getSecretario().getNombre(),cursoAux.getDirector().getNombre(),datosMateriaNombres
+							cursoAux.getSecretario().getNombre(),cursoAux.getDirector().getNombre(),datosMateria
 
 					});
 				}
@@ -115,7 +113,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						try {
-							botonAprobarCurso(TextIDcurso);
+							botonAprobarCurso(textIDcurso);
 							JLabel lblCursoAprobado = new JLabel("Curso Aprobado correctamente");
 							lblCursoAprobado.setBounds(100, 120, 150, 20);
 							add(lblCursoAprobado);
@@ -123,9 +121,8 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 
 						} catch (Exception e1) {
 
-							e1.printStackTrace();
+							Main_testing.escribirLog(Main_testing.ERROR,"Error a aprobar curso");
 						}
-
 					}
 				});
 				btnConfirmar.setBounds(201, 150, 100, 20);
@@ -137,33 +134,23 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						try {
-							botonRechazarCurso(TextIDcurso);
+							botonRechazarCurso(textIDcurso);
 
 							JLabel lblCursoRechazado = new JLabel("Curso rechazado correctamente");
 							lblCursoRechazado.setBounds(100, 120, 180, 20);
 							add(lblCursoRechazado);
 							lblCursoRechazado.updateUI();
-
 						} catch (Exception e1) {
-
-							e1.printStackTrace();
+							Main_testing.escribirLog(Main_testing.ERROR,"Error a rechazar curso");
 						}
-
 					}
 				});
 				btnRechazar.setBounds(201, 170, 100, 20);
 				add(btnRechazar);
-
-
-
-
-
 			}
 		});
 		btnAprobarCursos.setBounds(200, 100, 150, 20);
 		add(btnAprobarCursos);
-
-
 	}
 
 
@@ -173,11 +160,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 		CursoPropio cursoAprobado= gConsultas.seleccionarCurso(textIDcurso.getText());
 
 		cursoAprobado.setEstado(EstadoCurso.VALIDADO);
-
-		cursoAprobado=gConsultas.actualizarCurso(cursoAprobado);
-
-
-
+		gConsultas.actualizarCurso(cursoAprobado);
 	}	
 
 	public void botonRechazarCurso(JTextField textIDcurso) throws Exception {
@@ -186,16 +169,6 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 		CursoPropio cursoRechazado= gConsultas.seleccionarCurso(textIDcurso.getText());
 
 		cursoRechazado.setEstado(EstadoCurso.PROPUESTA_RECHAZADA);
-
-		cursoRechazado=gConsultas.actualizarCurso(cursoRechazado);
-
+		gConsultas.actualizarCurso(cursoRechazado);
 	}
-
-
-
-
-
-
-
-
 }

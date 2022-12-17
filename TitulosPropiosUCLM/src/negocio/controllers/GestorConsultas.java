@@ -20,7 +20,7 @@ public class GestorConsultas {
 		 try {
 			ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al consulatar ingresos");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al consulatar ingresos");
 
 		}
 		return ingresos;
@@ -38,7 +38,7 @@ public class GestorConsultas {
 		try {
 			estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al consular por estados");
 
 		}
 		return estados; 
@@ -51,7 +51,7 @@ public class GestorConsultas {
 		try {
 			ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al consultar por ediciones");
 
 		}
 		return ediciones;
@@ -69,7 +69,7 @@ public class GestorConsultas {
 		try {
 			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al consultar por ediciones");
 
 		}
 		return ediciones;

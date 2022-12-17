@@ -34,7 +34,7 @@ public class GestorMateria {
 			int idMateria = idMateria(materiaNueva);
 			materiaDAO.vincularCursoMateria(idMateria, idcurso);
 		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al realizar propuesta");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar propuesta");
 		}	
 		
 		return materiaNueva;

@@ -24,9 +24,9 @@ public class GestorMatriculacion {
 		try {
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
 		} catch (SQLException e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar matricula");
 		}catch (ClassNotFoundException e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al no encontrar la clase en el sistema");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al no encontrar la clase en el sistema");
 		}
 	}
 
@@ -38,7 +38,7 @@ public class GestorMatriculacion {
 			return matriculaDAO.seleccionarMatricula(id);
 
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al seleccionar matricula");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al seleccionar matricula");
 			return null;
 		}
 		

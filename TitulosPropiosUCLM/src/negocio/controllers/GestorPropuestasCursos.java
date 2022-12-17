@@ -20,7 +20,7 @@ public class GestorPropuestasCursos {
 		try {
 			cursoPropioDAO.crearNuevoCurso(nuevoCurso);
 		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al realizar propuesta");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar propuesta");
 		}
 		
 		return nuevoCurso;
@@ -38,7 +38,7 @@ public class GestorPropuestasCursos {
 		try {
 			cursoPropioDAO.editarCurso(curso);
 		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al editar curso");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al editar curso");
 
 		}
 		

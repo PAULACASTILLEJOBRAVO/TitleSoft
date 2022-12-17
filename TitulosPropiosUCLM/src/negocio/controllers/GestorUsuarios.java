@@ -17,7 +17,7 @@ public class GestorUsuarios {
 				return false;
 			}
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al encontrar usuario");
 			return false;
 		}
 	}
@@ -28,7 +28,7 @@ public class GestorUsuarios {
 		try {
 			return (Usuario) usuarioDAO.get(usuario);
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al encontrar usuario");
 			return null;
 		}
 	}

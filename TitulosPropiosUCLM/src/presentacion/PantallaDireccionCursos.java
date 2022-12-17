@@ -225,7 +225,7 @@ public class PantallaDireccionCursos extends JFrame {
 					add(btnNewButtonCancelar);
 					
 				} catch (SQLException | NumberFormatException | ClassNotFoundException e1) {
-					Main_testing.escribirLog(Main_testing.error,"Error a realizar propuesta del curso");
+					Main_testing.escribirLog(Main_testing.ERROR,"Error a realizar propuesta del curso");
 				}
 			}
 		});
