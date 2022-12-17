@@ -110,8 +110,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	 * @param tipo
 	 * @param fechaInicio
 	 * @param fechaFin
+	 * @throws SQLException 
 	 */
-	public double listarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) throws Exception {
+	public double listarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) throws SQLException  {
 		// TODO - implement CursoPropioDAO.listarIngresos
 		Vector<Object> resultado;
 		double ingresos=0.0;
