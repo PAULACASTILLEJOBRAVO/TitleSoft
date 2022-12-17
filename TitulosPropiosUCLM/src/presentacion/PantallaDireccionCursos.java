@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.sql.SQLException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -137,7 +136,6 @@ public class PantallaDireccionCursos extends JFrame {
 		JButton btnNewButtonAceptar = new JButton("Aceptar");
 		btnNewButtonAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
 					validarDatosPropuestaCurso();
 					
 					setTitle("Sesion:Direccion");
@@ -217,10 +215,6 @@ public class PantallaDireccionCursos extends JFrame {
 					});
 					btnNewButtonCancelar.setBounds(400, 432, 95, 21);
 					add(btnNewButtonCancelar);
-					
-				} catch (NumberFormatException | ClassNotFoundException e1) {
-					MainTesting.escribirLog(MainTesting.ERROR,"Error a realizar propuesta del curso");
-				}
 			}
 		});
 		btnNewButtonAceptar.setBounds(553, 432, 83, 21);
@@ -284,7 +278,7 @@ public class PantallaDireccionCursos extends JFrame {
 		lblError.setText("");
 	}
 	
-	private void validarDatosPropuestaCurso() throws NumberFormatException, ClassNotFoundException {
+	private void validarDatosPropuestaCurso(){
 			if (validarDatosCurso()) {
 				lblError.setText("");
 				TipoCurso tipoCurso = null;

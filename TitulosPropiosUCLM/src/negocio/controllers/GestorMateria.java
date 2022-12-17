@@ -1,6 +1,5 @@
 package negocio.controllers;
 
-import java.sql.SQLException;
 import java.util.Date;
 
 import negocio.entities.CursoPropio;
@@ -11,20 +10,16 @@ import presentacion.MainTesting;
 
 public class GestorMateria {
 
-	public Materia seleccionarMaterias(String id) throws Exception {
-		
+	public Materia seleccionarMaterias(String id) {
 		MateriaDAO materiaDAO=new MateriaDAO();
 		int n = Integer.parseInt(id);
 		if(n<0) {
 			System.out.println("id introducido no válido para la selección del curso");
 		}
-		
 		return materiaDAO.seleccionarMateria(id);
-		
 	}
 	
 	public Materia realizarMateria(String dniProfesorResponsable, String nombre, double horas, Date fechaInicio, Date fechaFin, CursoPropio curso) {
-		
 		GestorProfesor gestorProfesor = new GestorProfesor();
 		Profesor profesorResponsable  = gestorProfesor.seleccionarProfesor(dniProfesorResponsable);
 		GestorConsultas gestorConsultas = new GestorConsultas();
@@ -32,21 +27,14 @@ public class GestorMateria {
 		Materia materiaNueva = new Materia(profesorResponsable, nombre, horas, fechaInicio, fechaFin);
 		MateriaDAO materiaDAO = new MateriaDAO();
 		
-		try {
-			materiaDAO.crearMateria(materiaNueva);
-			int idcurso = gestorConsultas.idCurso(curso);
-			int idMateria = idMateria(materiaNueva);
-			materiaDAO.vincularCursoMateria(idMateria, idcurso);
-		}catch (Exception e) {
-			MainTesting.escribirLog(MainTesting.ERROR,"Error al realizar propuesta");
-		}	
-		
+		materiaDAO.crearMateria(materiaNueva);
+		int idcurso = gestorConsultas.idCurso(curso);
+		int idMateria = idMateria(materiaNueva);
+		materiaDAO.vincularCursoMateria(idMateria, idcurso);
 		return materiaNueva;
-		
 	}
 
-	public int idMateria(Materia materia) throws SQLException {
-		
+	public int idMateria(Materia materia) {
 		MateriaDAO materiaDAO = new MateriaDAO();
 		return materiaDAO.seleccionarId(materia);
 	}

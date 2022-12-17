@@ -1,47 +1,34 @@
 package persistencia;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
 import negocio.entities.*;
+import presentacion.MainTesting;
 
 
 public class MatriculaDAO extends AbstractEntityDAO {
 
-	public int crearMatricula(Matricula matricula) throws ClassNotFoundException, SQLException {
+	public int crearMatricula(Matricula matricula) {
 		return insert(matricula);
-
 	}
 
-	/**
-	 * 
-	 * @param curso
-	 */
-	public Matricula seleccionarMatricula(String id) throws Exception {
+	public Matricula seleccionarMatricula(String id){
 		return (Matricula)get(id);
-		//error por el tipo de return
 	}
 
-	/**
-	 * 
-	 * @param curso
-	 */
-	public Matricula editarMatricula(Matricula matricula) throws Exception {
+	public Matricula editarMatricula(Matricula matricula) {
 		return (Matricula)update(matricula);
 	}
 
-	public int eliminarrMatricula(Matricula matricula) throws Exception {
+	public int eliminarrMatricula(Matricula matricula)  {
 		return delete(matricula);
 	}
-	/**
-	 * 
-	 * @param estado
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-	public Collection<Matricula> listarMatriculaTitulacion(String titulacion) throws Exception {
+
+	public Collection<Matricula> listarMatriculaTitulacion(String titulacion)  {
 		Vector<Object> resultado;
 		Collection<Matricula> matriculasEncontradas=null;
 		String SelectSQLEdicion= "SELECT * FROM matricula"
@@ -57,20 +44,10 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			}
 		}else
 			System.err.println("Error encontrando matricula");
-
 		return matriculasEncontradas;
-
-		
 	}
-
-	/**
-	 * 
-	 * @param tipo
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-
-	public Collection<Matricula> listarMatriculaCurso(int curso) throws Exception {
+	
+	public Collection<Matricula> listarMatriculaCurso(int curso) {
 		Vector<Object> resultado;
 		Collection<Matricula> matriculasEncontradas=null;
 
@@ -85,22 +62,17 @@ public class MatriculaDAO extends AbstractEntityDAO {
 				Matricula matriculaAux=(Matricula)resultado.get(i);
 				matriculasEncontradas.add(matriculaAux);
 			}
-
 		}else
 			System.err.println("Error encontrando matriculas");
-
 		return matriculasEncontradas;
-
-		
 	}
 
 	@Override
-	public Object get(String id) throws Exception {
+	public Object get(String id){
 		Vector<Object> resultado;
 		Matricula matriculaEncontrada=null;
 		
 		String SelectSQL= "SELECT * FROM matricula WHERE idMatricula = "+id+" ";
-
 
 		resultado = GestorBD.select(SelectSQL);
 
@@ -109,28 +81,25 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			
-			
-			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-			java.util.Date fecha= formato.parse(aux[3]);
-
-			
-			if(aux[5].equals("credito")) {
-				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]), aux[1],aux[2], ModoPago.TARJETA_CREDITO, fecha,Boolean.parseBoolean(aux[4]));
-			}else if(aux[5].equals("transferencia")){
-				matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]),aux[1],aux[2], ModoPago.TRANSFERENCIA, fecha, Boolean.parseBoolean(aux[4]));
+			try {
+				SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date fecha= formato.parse(aux[3]);
+				
+				if(aux[5].equals("credito")) {
+					matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]), aux[1],aux[2], ModoPago.TARJETA_CREDITO, fecha,Boolean.parseBoolean(aux[4]));
+				}else if(aux[5].equals("transferencia")){
+					matriculaEncontrada=new Matricula(Integer.getInteger(aux[0]),aux[1],aux[2], ModoPago.TRANSFERENCIA, fecha, Boolean.parseBoolean(aux[4]));
+				}
+			}catch (ParseException e) {
+				MainTesting.escribirLog(MainTesting.ERROR,"Error en la conversión de String a entero");
 			}
-			
-			
-			
 		}else
 			System.err.println("Error al seleccionar la matricula");
-
-		return matriculaEncontrada ;
-
+		return matriculaEncontrada;
 	}
 
 	@Override
-	public int insert(Object entity) throws ClassNotFoundException, SQLException {
+	public int insert(Object entity){
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
 		String insertSQL = "INSERT INTO matricula (curso,dni,fecha,pagado,modo) " 
@@ -142,13 +111,11 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			System.out.println("Matricula nueva creada.");
 		}else
 			System.err.println("Error creando matricula nueva.");
-
 		return resultado;
 	}
 
 	@Override
-	public Object update(Object entity) throws Exception {
-		
+	public Object update(Object entity) {
 		int resultado=0;
 		Matricula matricula=(Matricula)entity;
 		String updateSQL = "UPDATE matricula SET"
@@ -162,12 +129,11 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			System.out.println("Matricula modificado");
 		}else
 			System.err.println("Error modificando matricula ");
-
 		return matricula;
 	}
 
 	@Override
-	public int delete(Object entity) throws Exception {
+	public int delete(Object entity) {
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
 		String insertSQL = "DELETE FROM matricula WHERE '"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
@@ -177,13 +143,6 @@ public class MatriculaDAO extends AbstractEntityDAO {
 			System.out.println("Matricula nueva creado");
 		}else
 			System.err.println("Error creando matricula nueva ");
-
 		return resultado;
 	}
-
-
-
-
-
-
 }

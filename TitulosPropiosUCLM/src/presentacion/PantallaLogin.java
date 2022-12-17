@@ -3,6 +3,7 @@ package presentacion;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import negocio.controllers.GestorUsuarios;
@@ -22,7 +23,7 @@ public class PantallaLogin extends JFrame {
 
 	public PantallaLogin(int id) {
 		setTitle("Log in");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 527, 305);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

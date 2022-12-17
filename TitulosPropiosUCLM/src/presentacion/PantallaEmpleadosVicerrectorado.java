@@ -102,15 +102,11 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						try {
-							botonAprobarCurso(textIDcurso);
-							JLabel lblCursoAprobado = new JLabel("Curso Aprobado correctamente");
-							lblCursoAprobado.setBounds(100, 120, 150, 20);
-							add(lblCursoAprobado);
-							lblCursoAprobado.updateUI();
-						} catch (Exception e1) {
-							MainTesting.escribirLog(MainTesting.ERROR,"Error a aprobar curso");
-						}
+						botonAprobarCurso(textIDcurso);
+						JLabel lblCursoAprobado = new JLabel("Curso Aprobado correctamente");
+						lblCursoAprobado.setBounds(100, 120, 150, 20);
+						add(lblCursoAprobado);
+						lblCursoAprobado.updateUI();
 					}
 				});
 				btnConfirmar.setBounds(201, 150, 100, 20);
@@ -141,7 +137,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 		add(btnAprobarCursos);
 	}
 
-	public void botonAprobarCurso(JTextField textIDcurso) throws Exception {
+	public void botonAprobarCurso(JTextField textIDcurso) {
 		GestorConsultas gConsultas= new GestorConsultas();
 		CursoPropio cursoAprobado= gConsultas.seleccionarCurso(textIDcurso.getText());
 
@@ -149,7 +145,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 		gConsultas.actualizarCurso(cursoAprobado);
 	}	
 
-	public void botonRechazarCurso(JTextField textIDcurso) throws Exception {
+	public void botonRechazarCurso(JTextField textIDcurso){
 		GestorConsultas gConsultas= new GestorConsultas();
 		CursoPropio cursoRechazado= gConsultas.seleccionarCurso(textIDcurso.getText());
 
