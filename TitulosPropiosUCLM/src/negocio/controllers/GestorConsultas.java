@@ -1,14 +1,14 @@
 package negocio.controllers;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
 import presentacion.Main_testing;
-import negocio.entities.*;
 public class GestorConsultas {
-	private CursoPropioDAO cursoPropioDAO;
 	/**
 	 * 
 	 * @param tipo
@@ -19,7 +19,25 @@ public class GestorConsultas {
 		double ingresos = 0;
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		 try {
-			 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+			 
+			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+		     
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
+		     Date fechaActual = new Date();
+		     String anioActual = getYearFormat.format(fechaActual);
+		     
+		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
+		    		 && Integer.parseInt(mesInicio) != 6 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 6 && Integer.parseInt(mesFin) != 7){
+		    	 
+		    	 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+		     }
+			
+			 
+			 
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consulatar ingresos");
 
@@ -37,9 +55,10 @@ public class GestorConsultas {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
 		try {
-			
+			if(estadoCurso != null) {
 				estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso);
 				System.out.println("Error al introducir los datos para consultar los estados de los cursos");
+			}
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
 
@@ -59,8 +78,24 @@ public class GestorConsultas {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
 		try {
-			//filtro para poner fechas realistas
+			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm");
+			 
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+		     
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
+		     
+		     Date fechaActual = new Date();
+		     String anioActual = getYearFormat.format(fechaActual);
+		     
+		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
+		    		 && Integer.parseInt(mesInicio) != 6 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 6 && Integer.parseInt(mesFin) != 7){
+		    	 
 			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
+			}
 		} catch (Exception e) {
 			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
 
@@ -80,8 +115,12 @@ public class GestorConsultas {
 	
 	public CursoPropio actualizarCurso(CursoPropio curso) throws Exception {
 		//si está vacío o no
+		if(curso !=null) {
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		return cursoDAO.editarCurso(curso);
+		}
+		return null;
+		
 	}
 	
 	public Collection<CursoPropio> cursosPorCentro(String id) throws Exception{
