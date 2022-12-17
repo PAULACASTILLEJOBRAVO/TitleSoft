@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Centro {
 	Collection<CursoPropio> cursoPropios;
-	Collection<ProfesorUCLM> plantilla;
+	Collection<Profesor> plantilla;
 	private String nombre;
 	private String localizacion;
 	private int idReal;
@@ -14,10 +14,10 @@ public class Centro {
 	public void setCursoPropios(Collection<CursoPropio> cursoPropios) {
 		this.cursoPropios = cursoPropios;
 	}
-	public Collection<ProfesorUCLM> getPlantilla() {
+	public Collection<Profesor> getPlantilla() {
 		return plantilla;
 	}
-	public void setPlantilla(Collection<ProfesorUCLM> plantilla) {
+	public void setPlantilla(Collection<Profesor> plantilla) {
 		this.plantilla = plantilla;
 	}
 	public String getNombre() {
@@ -38,7 +38,7 @@ public class Centro {
 	public void setAttribute(int attribute) {
 		this.idReal = attribute;
 	}
-	public Centro(Collection<CursoPropio> cursoPropios, Collection<ProfesorUCLM> plantilla, String nombre,
+	public Centro(Collection<CursoPropio> cursoPropios, Collection<Profesor> plantilla, String nombre,
 			String localizacion, int idReal) {
 		super();
 		this.cursoPropios = cursoPropios;

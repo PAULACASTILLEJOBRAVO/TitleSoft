@@ -2,10 +2,11 @@ package presentacion;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.io.IOException;
-import java.lang.*;
+
 import java.sql.SQLException;
-import java.util.*;
+
 import java.util.logging.*;
 
 import javax.swing.JButton;
@@ -13,37 +14,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import negocio.controllers.GestorUsuarios;
-import negocio.entities.TipoUsuario;
-import negocio.entities.Usuario;
 import persistencia.*;
-import negocio.controllers.*;
 
-public class Main_testing extends JFrame{
-
-	
+public class MainTesting extends JFrame{
 	private JPanel contentPane;
+	public static final String ERROR ="Logs//Errores.log";
 	
-	public final static String error ="Logs//Errores.log";
-	
-	public static void main(String[] args) throws NumberFormatException, ClassNotFoundException, SQLException {
-		
-		
-		Main_testing frame =new Main_testing();
+	public static void main(String[] args) throws NumberFormatException, SQLException {
+		MainTesting frame =new MainTesting();
 		frame.setVisible(true);
-
-		
-		GestorBD.conectar();
-		
-		GestorMatriculacion.seleccionarMatricula("-1");
-
+		GestorBD.conectar();	 
 	}
 
-	
-	public Main_testing() {
-
-		
-
+	public MainTesting() {
 		setTitle("Gestion Titulaciones");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 670, 400);
@@ -51,9 +34,6 @@ public class Main_testing extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
-		
 		
 		JButton btnConsultar = new JButton("Consultar Curso");
 		btnConsultar.addActionListener(new ActionListener() {
@@ -68,7 +48,7 @@ public class Main_testing extends JFrame{
 		add(btnConsultar);
 		
 		JButton btnMatriculas = new JButton("Realizar Matriculas");
-		 btnMatriculas.addActionListener(new ActionListener() {
+		btnMatriculas.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -76,7 +56,7 @@ public class Main_testing extends JFrame{
 				frame.setVisible(true);
 			}
 		});
-		 btnMatriculas.setBounds(89, 144, 223, 21);
+		btnMatriculas.setBounds(89, 144, 223, 21);
 		add( btnMatriculas);
 		
 		JButton btnEvaluar = new JButton("Evaluar Cursos");
@@ -88,7 +68,7 @@ public class Main_testing extends JFrame{
 				frame.setVisible(true);
 			}
 		});
-		 btnEvaluar.setBounds(89, 204, 223, 21);
+		btnEvaluar.setBounds(89, 204, 223, 21);
 		add( btnEvaluar);
 		
 		JButton btnCursos = new JButton("Gestionar Cursos");
@@ -102,37 +82,23 @@ public class Main_testing extends JFrame{
 		});
 		btnCursos.setBounds(400, 84, 223, 21);
 		add( btnCursos);
-		
-		
-		
 	}
 	
-	
 	public static void escribirLog(String rutaArchivo, String mensaje) {
-
         Logger logger = Logger.getLogger("errores");
         FileHandler fh;
 
         try {
-
             fh = new FileHandler(rutaArchivo, true);
             logger.addHandler(fh);
-
             SimpleFormatter formatter = new SimpleFormatter();
-
             fh.setFormatter(formatter);
-
             logger.info(mensaje);
-
             fh.close();
-
         } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+           escribirLog(MainTesting.ERROR, "Error de seguridad");
+        } catch(IOException e) {
+           escribirLog(MainTesting.ERROR, "Error de entrada/salida");
         }
     }
-	
-	
-	
 }

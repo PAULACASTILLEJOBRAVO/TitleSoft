@@ -1,13 +1,13 @@
 package negocio.controllers;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.sql.SQLException;
 import java.util.*;
 
 
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
-import presentacion.Main_testing;
+import presentacion.MainTesting;
 public class GestorConsultas {
 	/**
 	 * 
@@ -39,7 +39,7 @@ public class GestorConsultas {
 			 
 			 
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al consulatar ingresos");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al consulatar ingresos");
 
 		}
 		return ingresos;
@@ -51,22 +51,34 @@ public class GestorConsultas {
 	 * @param fechaInicio
 	 * @param fechaFin
 	 */
-	public Collection<CursoPropio> consultarEstadoCursos(EstadoCurso estadoCurso) {
+	public Collection<CursoPropio> consultarCursosPropuestos(EstadoCurso estadoCurso) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
 		try {
 			if(estadoCurso != null) {
-				estados = cursoPropioDAO.listarCursosPorEstado(estadoCurso);
+				estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
 				System.out.println("Error al introducir los datos para consultar los estados de los cursos");
 			}
+			estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al consular por estados");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al consular por estados");
 
 		}
 		return estados; 
 		
 	}
 	
+	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) {
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		Collection<CursoPropio> ediciones = null;
+		try {
+			ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
+		} catch (Exception e) {
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al consultar por ediciones");
+
+		}
+		return ediciones;
+	}
 	
 	
 	/**
@@ -97,7 +109,7 @@ public class GestorConsultas {
 			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
 			}
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al consultar por ediciones");
+			MainTesting.escribirLog(MainTesting.ERROR,"Error al consultar por ediciones");
 
 		}
 		return ediciones;
@@ -116,6 +128,7 @@ public class GestorConsultas {
 	public CursoPropio actualizarCurso(CursoPropio curso) throws Exception {
 		//si está vacío o no
 		if(curso !=null) {
+
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		return cursoDAO.editarCurso(curso);
 		}
@@ -133,5 +146,12 @@ public class GestorConsultas {
 		
 	}
 
-	
+	public int idCurso(CursoPropio curso) throws SQLException {
+		if(curso !=null) {
+		CursoPropioDAO cursoDAO = new CursoPropioDAO();
+		return cursoDAO.seleccinarID(curso);
+		}
+		return -1;
+		
+	}
 }

@@ -5,20 +5,13 @@ import persistencia.CentroDAO;
 
 public class GestorCentro {
 
-	
-	
 	public Centro seleccionarCentro(String id) throws Exception {
 		
 		int n = Integer.parseInt(id);
 		if(n >=0) {
 			CentroDAO centroDAO= new CentroDAO();	
-			return (Centro) centroDAO.seleccionarCentro(id);
+			return centroDAO.seleccionarCentro(id);
 		}
 		return null;
-		
 	}
-	
-	
-	
-	
 }

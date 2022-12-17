@@ -1,4 +1,4 @@
-package negocio.controllers;
+package Testing;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +16,6 @@ import org.junit.Test;
 
 import negocio.entities.CursoPropio;
 import persistencia.CursoPropioDAO;
-import presentacion.Main_testing;
 
 public class GestorConsultasTest {
 

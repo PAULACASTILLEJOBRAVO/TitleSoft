@@ -169,7 +169,7 @@ public class GestorBD {
 		return res;
 	}
 
-	public static Vector<Object> select(String SQL) throws SQLException, Exception {
+	public static Vector<Object> select(String SQL) throws SQLException  {
 		/*
 		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
 		 * datos El mŽtodo select develve un vector de vectores, donde cada uno de los
