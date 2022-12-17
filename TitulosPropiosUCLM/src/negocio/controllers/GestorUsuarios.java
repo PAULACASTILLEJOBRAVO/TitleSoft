@@ -11,7 +11,7 @@ public class GestorUsuarios {
 
 		try {
 			Usuario usuarioAux=(Usuario) usuarioDAO.get(usuario);
-			if(contraseñaCorrectaLoging(usuarioAux, password)){
+			if(contrasenCorrectaLoging(usuarioAux, password)){
 				return true;
 			}else {
 				return false;
@@ -33,7 +33,7 @@ public class GestorUsuarios {
 		}
 	}
 
-	public boolean contraseñaCorrectaLoging(Usuario usuarioAux, String password) {
+	public boolean contrasenCorrectaLoging(Usuario usuarioAux, String password) {
 		return password.trim().equals(usuarioAux.getPassword().trim());
 	}	
 }
