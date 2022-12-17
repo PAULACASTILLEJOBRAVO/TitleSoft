@@ -3,9 +3,7 @@ package presentacion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.lang.*;
 import java.sql.SQLException;
-import java.util.*;
 import java.util.logging.*;
 
 import javax.swing.JButton;
@@ -13,46 +11,30 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import negocio.controllers.GestorUsuarios;
-import negocio.entities.TipoUsuario;
-import negocio.entities.Usuario;
 import persistencia.*;
-import negocio.controllers.*;
 
 public class Main_testing extends JFrame{
 
-	
 	private JPanel contentPane;
+	public static final String ERROR ="Logs//Errores.log";
 	
-	public final static String error ="Logs//Errores.log";
-	
-	public static void main(String[] args) throws NumberFormatException, ClassNotFoundException, SQLException {
-		
-		
+	public static void main(String[] args) throws NumberFormatException, SQLException {
+				
 		Main_testing frame =new Main_testing();
 		frame.setVisible(true);
 
-		
-		GestorBD.conectar();
-		
-		GestorMatriculacion.seleccionarMatricula("-1");
-
+		GestorBD.conectar();	 
 	}
 
-	
 	public Main_testing() {
 
-		
-
 		setTitle("Gestion Titulaciones");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(Main_testing.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 670, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
 		
 		
 		JButton btnConsultar = new JButton("Consultar Curso");

@@ -1,21 +1,26 @@
 package negocio.controllers;
 
+import java.util.Date;
+
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
 import presentacion.Main_testing;
 
 public class GestorPropuestasCursos {
 
-	public CursoPropio realizarPropuestaCurso() {
+	public CursoPropio realizarPropuestaCurso(String nombre, Date fechaInicio, Date fechaFin, int eCTS, double tasaMatricula, int edicion,  String dniDirector, String dniSecretario, EstadoCurso estado, TipoCurso tipo, String centro) {
 		
-		CursoPropio nuevoCurso = new CursoPropio(null, null, null, null, null, null, null, null, null, null, 0, null, null, 0, 0);
+		GestorProfesor gestorProfesor = new GestorProfesor();
+		Profesor director = gestorProfesor.seleccionarProfesor(dniDirector);
+		Profesor secretario = gestorProfesor.seleccionarProfesor(dniSecretario);
+		
+		CursoPropio nuevoCurso = new CursoPropio(nombre, fechaInicio, fechaFin, eCTS, tasaMatricula, edicion, director, secretario, estado, tipo, centro);
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		
 		try {
 			cursoPropioDAO.crearNuevoCurso(nuevoCurso);
 		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al realizar propuesta");
-
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar propuesta");
 		}
 		
 		return nuevoCurso;
@@ -33,7 +38,7 @@ public class GestorPropuestasCursos {
 		try {
 			cursoPropioDAO.editarCurso(curso);
 		}catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al editar curso");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al editar curso");
 
 		}
 		
@@ -61,14 +66,6 @@ public class GestorPropuestasCursos {
 		return estado;
 	}
 
-	/**
-	 * 
-	 * @param curso
-	 */
-	public void altaCursoAprobado(CursoPropio curso) {
-		if(curso.getEstado().equals(EstadoCurso.VALIDADO)) {
-			
-		}
-	}
 
+	
 }

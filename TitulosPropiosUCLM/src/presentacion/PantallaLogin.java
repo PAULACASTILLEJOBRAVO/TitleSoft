@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import negocio.controllers.GestorUsuarios;
 import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
-import persistencia.GestorBD;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class PantallaLogin extends JFrame {
-	private JTextField textFieldUsuario= new JTextField();;
+	private JTextField textFieldUsuario= new JTextField();
 	private JTextField textFieldPassword= new JTextField();
 	private JPanel contentPane;
 
@@ -29,7 +28,7 @@ public class PantallaLogin extends JFrame {
 
 
 		setTitle("Log in");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(PantallaLogin.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 527, 305);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,28 +36,26 @@ public class PantallaLogin extends JFrame {
 		contentPane.setLayout(null);
 
 
-
-
 		JLabel lblusuario = new JLabel("Usuario:");
 		lblusuario.setBounds(80, 94, 79, 13);
 		getContentPane().add(lblusuario);
 
+
+		textFieldUsuario.setBounds(145, 91, 132, 19);
+		getContentPane().add(textFieldUsuario);
+		textFieldUsuario.setColumns(10);
+		
 
 		JLabel lblcontrasena1 = new JLabel("Contrase\u00F1a:");
 		lblcontrasena1.setBounds(80, 157, 76, 13);
 		getContentPane().add(lblcontrasena1);
 
 
-
-		textFieldUsuario.setBounds(145, 91, 132, 19);
-		getContentPane().add(textFieldUsuario);
-		textFieldUsuario.setColumns(10);
-
-
 		textFieldPassword.setBounds(145, 154, 132, 19);
 		getContentPane().add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 
+		
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 
@@ -67,7 +64,7 @@ public class PantallaLogin extends JFrame {
 
 				GestorUsuarios gUsuario=new GestorUsuarios();
 
-				if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+				if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 					System.out.println("Sesion iniciada");
 
@@ -77,7 +74,7 @@ public class PantallaLogin extends JFrame {
 						try {
 							accionesEstudiante(gUsuario,usuario);
 						} catch (Exception e1) {
-							Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
+							Main_testing.escribirLog(Main_testing.ERROR,"Error a realizar matricula");
 						}
 					}else if (id==2) {
 						accionesVicerector(gUsuario,usuario);
@@ -109,7 +106,7 @@ public class PantallaLogin extends JFrame {
 	}
 
 	public void accionesProfesores(GestorUsuarios gUsuario,Usuario usuario) {
-		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
 
@@ -139,7 +136,7 @@ public class PantallaLogin extends JFrame {
 	public void accionesVicerector(GestorUsuarios gUsuario,Usuario usuario) {
 
 
-		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
 
@@ -167,7 +164,7 @@ public class PantallaLogin extends JFrame {
 		
 		
 
-		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
 
@@ -192,7 +189,7 @@ public class PantallaLogin extends JFrame {
 
 	public void accionesJefe(GestorUsuarios gUsuario,Usuario usuario) {
 		
-		if(gUsuario.ComprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
 
 			System.out.println("Sesion iniciada");
 

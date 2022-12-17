@@ -73,7 +73,7 @@ public class PantallaMatriculacion extends JFrame {
 				try {
 					validarDatosMatriculacion();
 				} catch (SQLException | NumberFormatException | ClassNotFoundException e1) {
-					Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
+					Main_testing.escribirLog(Main_testing.ERROR,"Error a realizar matricula");
 				}
 			}
 		});

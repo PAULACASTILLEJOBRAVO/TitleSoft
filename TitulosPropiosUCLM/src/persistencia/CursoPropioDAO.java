@@ -1,18 +1,16 @@
 package persistencia;
 
 import java.util.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
 
-import negocio.controllers.GestorCentro;
 import negocio.controllers.GestorMateria;
 import negocio.controllers.GestorMatriculacion;
 import negocio.controllers.GestorProfesor;
-import negocio.controllers.GestorProfesorUCLM;
 import negocio.entities.*;
 //el bueno
 public class CursoPropioDAO extends AbstractEntityDAO {
@@ -50,7 +48,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	 * 
 	 * @param estado
 	 */
-	public Collection<CursoPropio> listarCursosPorEstado(EstadoCurso estado) throws Exception {
+	public Collection<CursoPropio> listarCursosEstadoPropuesto(EstadoCurso estado) throws Exception {
 
 		/*
 		 * Se puede poner en el metodo Date fechainicial,Date fechafinal para poner prioridad y para que se pueda buscar en un rango de fecha en concreto
@@ -62,29 +60,29 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		if(estado.toString().trim().equals("PROPUESTO")) {
 
 			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesto' ";
-		
+
 		}else if (estado.toString().trim().equals("VALIDADO")) {
 
 			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'validado' ";
-		
+
 		}else if (estado.toString().trim().equals("PROPUESTA_RECHAZADA")) {
 
 			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesta_rechazada' ";
-		
+
 		}else if (estado.toString().trim().equals("EN_MATRICULACION")) {
 
 			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_matriculacion' ";
-		
+
 		}else if (estado.toString().trim().equals("EN_IMPARTIZICION")) {
 
 			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_imparticion' ";
-		
+
 		}else if (estado.toString().trim().equals("TERMINADO")) {
 
 			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'terminado' ";
 		}
-		
-		
+
+
 		resultado = GestorBD.select(SelectSQLEdicion);
 
 		if (resultado.isEmpty()==false) {
@@ -94,7 +92,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 			for (int i = 0; i < resultado.size(); i++) {
 
-				
+
 				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
 				cursosEncontrados.add(cursoAUX);
 			}
@@ -232,10 +230,8 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		if (resultado.isEmpty()==false) {
 			System.out.println("Curso seleccionado");
 
-
 			cursoReturn= crearObjetoCursoPropio(resultado.toString());
 
-			//			
 		}else
 			System.err.println("Error al seleccionar curso");
 
@@ -247,11 +243,10 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	public int insert(Object entity) throws Exception {
 		int resultado=0;
 		CursoPropio curso =(CursoPropio) entity;
-		String insertSQL = "INSERT INTO cursopropio (nombre,ECTS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,tipoCurso,Centro,secretario,director) "
-				+ "VALUES ( '"+curso.getNombre()+"' , '"+curso.getECTS()+"' ,"
-				+ " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , '"+curso.getTasaMatricula()+"' , "
-				+ " '"+curso.getEdicion()+"' , '"+curso.getEstado()+"', "
-				+ "  '"+curso.getSecretario()+"' , '"+curso.getDirector()+"' , '"+curso.getTipo()+"'+ )";
+		String insertSQL = "INSERT INTO cursopropio (nombre,ETCS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,centro,secretario,director,tipoCurso) "
+				+ "VALUES ( '"+curso.getNombre()+"' , "+curso.getECTS()+" ," + " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , "
+				+ curso.getTasaMatricula()+" , "+curso.getEdicion()+" , '"+curso.getEstado()+"', '"+curso.getCentro()+"' , '"
+				+ curso.getSecretario().getDni()+"' , '"+curso.getDirector().getDni()+"' , '"+curso.getTipo()+"' )";
 
 		resultado = GestorBD.insert(insertSQL); 
 		if (resultado > 0) {
@@ -278,7 +273,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 				+ "tipoCurso='"+curso.getTipo().toString().toLowerCase()+"',"
 				+ "secretario='"+curso.getSecretario().getDni()+"',"
 				+ "director= '"+curso.getDirector().getDni()+"'"
-						+ " WHERE idCursoPropio= "+curso.getIdCursoPropio()+" ";
+				+ " WHERE idCursoPropio= "+curso.getIdCursoPropio()+" ";
 
 		resultado = GestorBD.update(updateSQL);
 		if (resultado > 0) {
@@ -304,6 +299,26 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		return resultado;
 	}
 
+	public int seleccinarID(CursoPropio curso) throws SQLException {
+		int idCurso=0;
+		Vector<Object> resultado;
+
+		String insertSQL = "SELECT IdCursoPropio FROM cursopropio WHERE estado = '"+curso.getEstado()+"' AND nombre = '"+curso.getNombre()
+		+"' AND fechaInicio = '"+curso.getFechaInicio()+"'  AND fechaFin = '"+curso.getFechaFin()+"' AND tasaMatricula = "+curso.getTasaMatricula()
+		+" AND edicion = "+curso.getEdicion()+" AND centro = '"+curso.getCentro()+"' AND secretario = '"+curso.getSecretario().getDni()+"' AND director = '"+curso.getDirector().getDni()
+		+"'AND tipoCurso = '"+curso.getTipo()+"' AND ETCS = "+curso.getECTS()+" ";
+
+		resultado = GestorBD.select(insertSQL); 
+		if (resultado.isEmpty()==false) {
+			System.out.println("Identificador de curso encontrado");
+			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
+
+			idCurso=Integer.parseInt(aux[0]);
+		}else
+			System.err.println("Error al buscar el identificador del curso");
+
+		return idCurso;
+	}
 
 	public CursoPropio crearObjetoCursoPropio(String cursoSplit) throws Exception {
 		CursoPropio cursoReturn=null;
@@ -418,5 +433,33 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 	}
 
+	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) throws SQLException, Exception {
+
+
+
+		Vector<Object> resultado;
+		Collection<CursoPropio> cursosEncontrados=new ArrayList<CursoPropio>();
+		String SelectSQLEdicion= "SELECT * FROM cursopropio"
+				+ " WHERE  fechaInicio = '"+fechaInicio+"'and fechaFin = '"+fechaFin+"' and (estado = 'validado' or estado= 'propuesta_rechazada') ";
+
+		resultado = GestorBD.select(SelectSQLEdicion);
+
+		if (resultado.isEmpty()==false) {
+			System.out.println("Ediciones encotradas");
+
+
+
+			for (int i = 0; i < resultado.size(); i++) {
+
+
+				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
+				cursosEncontrados.add(cursoAUX);
+			}
+
+		}else
+			System.err.println("Error encotrando ediciones");
+		return cursosEncontrados;
+
+	}
 
 }

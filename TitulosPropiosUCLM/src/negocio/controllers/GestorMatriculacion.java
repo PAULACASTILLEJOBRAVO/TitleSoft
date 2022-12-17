@@ -24,9 +24,9 @@ public class GestorMatriculacion {
 		try {
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
 		} catch (SQLException e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al realizar matricula");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar matricula");
 		}catch (ClassNotFoundException e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al no encontrar la clase en el sistema");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al no encontrar la clase en el sistema");
 		}
 	}
 
@@ -41,55 +41,14 @@ public class GestorMatriculacion {
 			}
 			
 			else {
-				System.out.println("entra opr el if");
-				return (Matricula) matriculaDAO.seleccionarMatricula(id);
+				System.out.println("entra por el if");
+				return matriculaDAO.seleccionarMatricula(id);
 			}
 		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al seleccionar matricula");
+			Main_testing.escribirLog(Main_testing.ERROR,"Error al seleccionar matricula");
 			return null;
 		}
 		return null;
 		
-
 	}
-
-	
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante, int id) {
-		
-		Matricula matricula = new Matricula(id,null, null, null, null, false);
-		
-		if(matricula.isPagado()) {
-			realizarPagoTarjeta(curso, estudiante);
-		
-			realizarPagoTransferencia(curso, estudiante);
-		
-			
-		}
-	}
-
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	private String realizarPagoTarjeta(CursoPropio curso, Estudiante estudiante) {
-		ModoPago targetaCredito = ModoPago.TARJETA_CREDITO;
-		return targetaCredito.name();
-	}
-
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	private String realizarPagoTransferencia(CursoPropio curso, Estudiante estudiante) {
-		ModoPago trasferencia = ModoPago.TRANSFERENCIA;
-		return trasferencia.name();
-	}
-
 }
