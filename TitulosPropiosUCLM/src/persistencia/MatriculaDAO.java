@@ -1,16 +1,16 @@
 package persistencia;
-import java.sql.SQLException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.util.Collection;
-import java.util.List;
-import java.util.Vector;
+import java.util.LinkedList;
 
 import negocio.entities.*;
 import presentacion.MainTesting;
 
 
-public class MatriculaDAO extends AbstractEntityDAO {
+public class MatriculaDAO implements AbstractEntityDAO  <Object> {
 
 	public int crearMatricula(Matricula matricula) {
 		return insert(matricula);
@@ -29,56 +29,52 @@ public class MatriculaDAO extends AbstractEntityDAO {
 	}
 
 	public Collection<Matricula> listarMatriculaTitulacion(String titulacion)  {
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 		Collection<Matricula> matriculasEncontradas=null;
-		String SelectSQLEdicion= "SELECT * FROM matricula"
+		String selectSQLEdicion= "SELECT * FROM matricula"
 				+ "WHERE titulacion = '"+titulacion+"' ";
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Matricula encontrados");
+		if (!resultado.isEmpty()) {
 			for (int i = 0; i < resultado.size(); i++) {
 				Matricula matriculaAux=(Matricula)resultado.get(i);
 				matriculasEncontradas.add(matriculaAux);
 			}
 		}else
-			System.err.println("Error encontrando matricula");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando matricula");
 		return matriculasEncontradas;
 	}
 	
 	public Collection<Matricula> listarMatriculaCurso(int curso) {
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 		Collection<Matricula> matriculasEncontradas=null;
 
-		String SelectSQLEdicion= "SELECT * FROM matricula"
+		String selectSQLEdicion= "SELECT * FROM matricula"
 				+ "WHERE Curso = '"+curso+"' ";
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Matricula encontradas");
+		if (!resultado.isEmpty()) {
 			for (int i = 0; i < resultado.size(); i++) {
 				Matricula matriculaAux=(Matricula)resultado.get(i);
 				matriculasEncontradas.add(matriculaAux);
 			}
 		}else
-			System.err.println("Error encontrando matriculas");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando matriculas");
 		return matriculasEncontradas;
 	}
 
 	@Override
 	public Object get(String id){
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 		Matricula matriculaEncontrada=null;
 		
-		String SelectSQL= "SELECT * FROM matricula WHERE idMatricula = "+id+" ";
+		String selectSQL= "SELECT * FROM matricula WHERE idMatricula = "+id+" ";
 
-		resultado = GestorBD.select(SelectSQL);
+		resultado = GestorBD.select(selectSQL);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Matricula seleccionada");
-			
+		if (!resultado.isEmpty()) {
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			
 			try {
@@ -94,7 +90,7 @@ public class MatriculaDAO extends AbstractEntityDAO {
 				MainTesting.escribirLog(MainTesting.ERROR,"Error en la conversión de String a entero");
 			}
 		}else
-			System.err.println("Error al seleccionar la matricula");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar la matricula");
 		return matriculaEncontrada;
 	}
 
@@ -107,10 +103,8 @@ public class MatriculaDAO extends AbstractEntityDAO {
 				+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Matricula nueva creada.");
-		}else
-			System.err.println("Error creando matricula nueva.");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error creando matricula nueva.");
 		return resultado;
 	}
 
@@ -125,10 +119,8 @@ public class MatriculaDAO extends AbstractEntityDAO {
 				+ "Modo= '"+matricula.getTipoPago()+"',";
 				
 		resultado = GestorBD.update(updateSQL);
-		if (resultado > 0) {
-			System.out.println("Matricula modificado");
-		}else
-			System.err.println("Error modificando matricula ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando matricula ");
 		return matricula;
 	}
 
@@ -139,10 +131,8 @@ public class MatriculaDAO extends AbstractEntityDAO {
 		String insertSQL = "DELETE FROM matricula WHERE '"+matricula.getTitulo()+"' )";//faltan el pagado que es un boolean y el curso, el identificativo que lo enlaza, lo puse asi en la tabla
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Matricula nueva creado");
-		}else
-			System.err.println("Error creando matricula nueva ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error creando matricula nueva ");
 		return resultado;
 	}
 }

@@ -11,6 +11,7 @@ public class GestorConsultas {
 		double ingresos = 0;
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 
+
 			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
 			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
 		     String anioInicio = getYearFormat.format(fechaInicio);
@@ -26,7 +27,7 @@ public class GestorConsultas {
 
 		    	 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
 		     }
-		return ingresos;
+				return ingresos;
 	}
 
 	public Collection<CursoPropio> consultarCursosPropuestos(EstadoCurso estadoCurso) {
@@ -36,7 +37,7 @@ public class GestorConsultas {
 		estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
 		return estados; 
 	}
-	
+
 	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
@@ -58,7 +59,7 @@ public class GestorConsultas {
 		     }
 		return ediciones;
 	}
-	
+
 	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
@@ -84,26 +85,26 @@ public class GestorConsultas {
 		return ediciones;
 	}
 
-	
+
 	public CursoPropio seleccionarCurso(String id) {
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		int n = Integer.parseInt(id);
 		if(n<0) {
-			System.out.println("id introducido no válido para la selección del curso");
+			MainTesting.escribirLog(MainTesting.ERROR, "id introducido no válido para la selección del curso");
 		}
 		return cursoDAO.seleccionarCurso(id);
 	}
-	
+
 	public CursoPropio actualizarCurso(CursoPropio curso) {	
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		return cursoDAO.editarCurso(curso);
 	}
-	
+
 	public Collection<CursoPropio> cursosPorCentro(String id) {
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		int n = Integer.parseInt(id);
 		if(n<0) {
-			System.out.println("id introducido no válido para la selección del curso por centro");
+			MainTesting.escribirLog(MainTesting.ERROR,"id introducido no válido para la selección del curso por centro");
 		}
 		return cursoDAO.cursosPorCentro(id);
 	}

@@ -1,4 +1,4 @@
-package Testing;
+package testing;
 
 import static org.junit.Assert.*;
 
@@ -14,22 +14,22 @@ import org.junit.Test;
 public class GestorConsultasTest {
 
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() {
 		System.out.println("@BeforeClass");
 	}
 
 	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
+	public static void tearDownAfterClass() {
 		System.out.println("@AfterClass");
 	}
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		System.out.println("@Before -> How many times do i appear?");
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		System.out.println("@After -> How many times do i appear?");
 	}
 	@Test

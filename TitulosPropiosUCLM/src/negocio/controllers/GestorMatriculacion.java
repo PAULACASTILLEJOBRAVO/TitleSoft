@@ -1,7 +1,6 @@
 package negocio.controllers;
 
 import java.sql.Date;
-import java.sql.SQLException;
 
 import negocio.entities.*;
 import persistencia.*;
@@ -21,11 +20,8 @@ public class GestorMatriculacion {
 
 		int n = Integer.parseInt(id);
 		if(n <0) {
-			System.out.println("id no valido");
-		}else {
-			System.out.println("entra por el if");
-			return matriculaDAO.seleccionarMatricula(id);
+			MainTesting.escribirLog(MainTesting.ERROR,"id no valido");
 		}
-		return null;
+		return matriculaDAO.seleccionarMatricula(id);
 	}
 }

@@ -6,7 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.LinkedList;
+import java.util.List;
 
 import negocio.controllers.GestorMateria;
 import negocio.controllers.GestorMatriculacion;
@@ -14,7 +15,11 @@ import negocio.controllers.GestorProfesor;
 import negocio.entities.*;
 import presentacion.MainTesting;
 
-public class CursoPropioDAO extends AbstractEntityDAO {
+public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
+	private static final String SQLCOMPARARFECHAFIN = "' AND FechaFin '"; 
+	private static final String SQLSEPARADORNUMERICO = ", ";
+	private static final String SQLSEPARADORSTRING = "', '";
+	
 	public int crearNuevoCurso(CursoPropio curso) {
 		return insert(curso);
 	}
@@ -32,123 +37,110 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 	}
 
 	public Collection<CursoPropio> listarCursosEstadoPropuesto(EstadoCurso estado) {
-		Vector<Object> resultado;
-		Collection<CursoPropio> cursosEncontrados = new ArrayList<CursoPropio>();
-		String SelectSQLEdicion="";
+		LinkedList<Object> resultado;
+		Collection<CursoPropio> cursosEncontrados = new ArrayList<>();
+		String selectSQLEdicion="";
 		
 		if(estado.toString().trim().equals("PROPUESTO")) {
-			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesto' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesto' ";
 		}else if (estado.toString().trim().equals("VALIDADO")) {
-			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'validado' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'validado' ";
 		}else if (estado.toString().trim().equals("PROPUESTA_RECHAZADA")) {
-			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesta_rechazada' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesta_rechazada' ";
 		}else if (estado.toString().trim().equals("EN_MATRICULACION")) {
-			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_matriculacion' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_matriculacion' ";
 		}else if (estado.toString().trim().equals("EN_IMPARTIZICION")) {
-			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_imparticion' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_imparticion' ";
 		}else if (estado.toString().trim().equals("TERMINADO")) {
-			SelectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'terminado' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'terminado' ";
 		}
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Cursos encontrados");
-
+		if (!resultado.isEmpty()) {
 			for (int i = 0; i < resultado.size(); i++) {
 				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
 				cursosEncontrados.add(cursoAUX);
 			}
 		}else
-			System.err.println("Error encontrando cursos");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando cursos");
 		return cursosEncontrados;
 	}
 
 	public double listarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 		double ingresos=0.0;
-		String SelectSQLEdicion="";
+		String selectSQLEdicion="";
+		TipoCurso tipoCurso = null;
 
 		if(tipo.toString().equals("MASTER")) {
-			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
-					+ " WHERE tipoCurso = 'master' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+			tipoCurso = TipoCurso.MASTER;
 		}else if(tipo.toString().equals("EXPERTO")) {
-			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
-					+ " WHERE tipoCurso = 'experto' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+			tipoCurso = TipoCurso.EXPERTO;
 		}else if(tipo.toString().equals("ESPECIALISTA")) {
-			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
-					+ " WHERE tipoCurso = 'especialista' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+			tipoCurso = TipoCurso.ESPECIALISTA;
 		}else if(tipo.toString().equals("FORMACION_AVANZADA")) {
-			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
-					+ " WHERE tipoCurso = 'formacion_avanzada' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+			tipoCurso = TipoCurso.FORMACION_AVANZADA;
 		}else if(tipo.toString().equals("FORMACION_CONTINUA")) {
-			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
-					+ " WHERE tipoCurso = 'formacion_continua' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+			tipoCurso = TipoCurso.FORMACION_CONTINUA;
 		}else if(tipo.toString().equals("MICROCREDENCIALES")) {
-			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
-					+ " WHERE tipoCurso = 'microcredenciales' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+			tipoCurso = TipoCurso.MICROCREDENCIALES;
 		}else if(tipo.toString().equals("CORTA_DURACION")) {
-			SelectSQLEdicion= "SELECT sum(tasaMatricula) as Ingresos FROM cursopropio"
-					+ " WHERE tipoCurso = 'corta_duracion' and fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
+			tipoCurso = TipoCurso.CORTA_DURACION;
 		}
+		
+		selectSQLEdicion="SELECT sum(tasaMatricula) as Ingresos FROM cursopropio WHERE tipoCurso='"+tipoCurso+"' and fechaInicio= '"+fechaInicio+SQLCOMPARARFECHAFIN+fechaFin+"' ";
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Ingresos Calculados");
+		if (!resultado.isEmpty()) {
 			ingresos=Double.parseDouble(resultado.get(0).toString().trim().replace("[", "").replace("]", ""));
 		}else
-			System.err.println("Error calculando ingresos");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error calculando ingresos");
 		return ingresos;
 	}
 
 	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
-		Vector<Object> resultado;
-		Collection<CursoPropio> cursosEncontrados=new ArrayList<CursoPropio>();
-		String SelectSQLEdicion= "SELECT * FROM cursopropio"
-				+ " WHERE  fechaInicio = '"+fechaInicio+"'and fechaFin = '"+fechaFin+"' ";
+		LinkedList<Object> resultado;
+		Collection<CursoPropio> cursosEncontrados=new ArrayList<>();
+		String selectSQLEdicion= "SELECT * FROM cursopropio"
+				+ " WHERE  fechaInicio = '"+fechaInicio+SQLCOMPARARFECHAFIN+fechaFin+"' ";
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Ediciones encotradas");
-
+		if (!resultado.isEmpty()) {
 			for (int i = 0; i < resultado.size(); i++) {
 				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
 				cursosEncontrados.add(cursoAUX);
 			}
 		}else
-			System.err.println("Error encotrando ediciones");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encotrando ediciones");
 		return cursosEncontrados;
 	}
 
-	public Vector<Object> listarIdCursoPropio(String idCursoPropio) {
-		Vector<Object> resultado;
-		String SelectSQLEdicion= "SELECT * FROM cursopropio WHERE idCursoPropio = "+idCursoPropio+" ";
-		resultado = GestorBD.select(SelectSQLEdicion);
+	public List<Object> listarIdCursoPropio(String idCursoPropio) {
+		LinkedList<Object> resultado;
+		String selectSQLEdicion= "SELECT * FROM cursopropio WHERE idCursoPropio = "+idCursoPropio+" ";
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Cursos encotradas");
-		}else
-			System.err.println("Error encontrando cursos");
+		if (resultado.isEmpty()) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando cursos");
 		return resultado;
 	}
 
 
 	@Override
 	public Object get(String id) {
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 		CursoPropio cursoReturn=null;
-		String SelectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = "+id+" " ;
+		String selectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = "+id+" " ;
 
-		resultado = GestorBD.select(SelectSQL);
+		resultado = GestorBD.select(selectSQL);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Curso seleccionado");
-
+		if (!resultado.isEmpty()) {
 			cursoReturn= crearObjetoCursoPropio(resultado.toString());
 		}else
-			System.err.println("Error al seleccionar curso");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar curso");
 		return cursoReturn ;
 	}
 
@@ -157,15 +149,13 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		int resultado=0;
 		CursoPropio curso =(CursoPropio) entity;
 		String insertSQL = "INSERT INTO cursopropio (nombre,ETCS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,centro,secretario,director,tipoCurso) "
-				+ "VALUES ( '"+curso.getNombre()+"' , "+curso.getECTS()+" ," + " '"+curso.getFechaInicio()+"' , '"+curso.getFechaFin()+"' , "
-				+ curso.getTasaMatricula()+" , "+curso.getEdicion()+" , '"+curso.getEstado()+"', '"+curso.getCentro()+"' , '"
-				+ curso.getSecretario().getDni()+"' , '"+curso.getDirector().getDni()+"' , '"+curso.getTipo()+"' )";
+				+ "VALUES ( '"+curso.getNombre()+"' , "+curso.getECTS()+SQLSEPARADORNUMERICO+" '"+curso.getFechaInicio()+SQLSEPARADORSTRING+curso.getFechaFin()+"' , "
+				+ curso.getTasaMatricula()+SQLSEPARADORNUMERICO+curso.getEdicion()+" , '"+curso.getEstado()+SQLSEPARADORSTRING+curso.getCentro()+"' , '"
+				+ curso.getSecretario().getDni()+SQLSEPARADORSTRING+curso.getDirector().getDni()+SQLSEPARADORSTRING+curso.getTipo()+"' )";
 
 		resultado = GestorBD.insert(insertSQL); 
-		if (resultado > 0) {
-			System.out.println("Curso nuevo creado");
-		}else
-			System.err.println("Error creando curso nuevo ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error creando curso nuevo ");
 		return resultado;
 	}
 
@@ -187,11 +177,8 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 				+ " WHERE idCursoPropio= "+curso.getIdCursoPropio()+" ";
 
 		resultado = GestorBD.update(updateSQL);
-		if (resultado > 0) {
-			System.out.println("Curso modificado");
-		}else
-			System.err.println("Error modificando curso ");
-
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando curso ");
 		return curso;
 	}
 
@@ -202,30 +189,27 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		String insertSQL = "DELETE FROM cursopropio WHERE id= '"+curso.getIdCursoPropio()+"' ";
 
 		resultado = GestorBD.insert(insertSQL); 
-		if (resultado > 0) {
-			System.out.println("Curso eleminado");
-		}else
-			System.err.println("Error eleminando curso ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error eleminando curso ");
 		return resultado;
 	}
 
 	public int seleccinarID(CursoPropio curso) {
 		int idCurso=0;
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 
 		String insertSQL = "SELECT IdCursoPropio FROM cursopropio WHERE estado = '"+curso.getEstado()+"' AND nombre = '"+curso.getNombre()
-		+"' AND fechaInicio = '"+curso.getFechaInicio()+"'  AND fechaFin = '"+curso.getFechaFin()+"' AND tasaMatricula = "+curso.getTasaMatricula()
+		+"' AND fechaInicio = '"+curso.getFechaInicio()+SQLCOMPARARFECHAFIN+curso.getFechaFin()+"' AND tasaMatricula = "+curso.getTasaMatricula()
 		+" AND edicion = "+curso.getEdicion()+" AND centro = '"+curso.getCentro()+"' AND secretario = '"+curso.getSecretario().getDni()+"' AND director = '"+curso.getDirector().getDni()
 		+"'AND tipoCurso = '"+curso.getTipo()+"' AND ETCS = "+curso.getECTS()+" ";
 
 		resultado = GestorBD.select(insertSQL); 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Identificador de curso encontrado");
+		if (!resultado.isEmpty()) {
 			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
 
 			idCurso=Integer.parseInt(aux[0]);
 		}else
-			System.err.println("Error al buscar el identificador del curso");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al buscar el identificador del curso");
 		return idCurso;
 	}
 
@@ -235,10 +219,9 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 
 		String[] aux =  (cursoSplit.trim().replace("[", "").replace("]", "")).split(",") ;
 		//Coleccion de matriculas y materias
-		Vector<Object> listaCursosIdCursoPropio= listarIdCursoPropio(aux[0].trim());
-		Collection<Matricula> matriculas = new ArrayList<Matricula>();
-		Collection<Materia> materias= new ArrayList<Materia>();
-		GestorMatriculacion gMatriculas=new GestorMatriculacion();
+		List<Object> listaCursosIdCursoPropio= listarIdCursoPropio(aux[0].trim());
+		Collection<Matricula> matriculas = new ArrayList<>();
+		Collection<Materia> materias= new ArrayList<>();
 		GestorMateria gMateria=new GestorMateria();
 
 		//ProfesorUCLM Director y secretario
@@ -250,7 +233,7 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		for(int i=0;i<listaCursosIdCursoPropio.size();i++) {
 
 			String[] auxMatriculas =  (listaCursosIdCursoPropio.get(i).toString().trim().replace("[", "").replace("]", "")).split(",") ;
-			Matricula matriculaAux=gMatriculas.seleccionarMatricula(auxMatriculas[0]);
+			Matricula matriculaAux=GestorMatriculacion.seleccionarMatricula(auxMatriculas[0]);
 			matriculas.add(matriculaAux);
 			materias.add(gMateria.seleccionarMaterias(aux[0]));
 		}
@@ -292,14 +275,15 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		try {
 			//fecha
 			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-			Date fechaInicialAux=(Date) formato.parse(aux[3]);
-			Date fechFinalAux=(Date) formato.parse(aux[4]);
+			Date fechaInicialAux= formato.parse(aux[3]);
+			Date fechFinalAux= formato.parse(aux[4]);
 			java.sql.Date fechaInicial = new java.sql.Date(fechaInicialAux.getTime());
 			java.sql.Date fechaFinal = new java.sql.Date(fechFinalAux.getTime());
 			
-			return cursoReturn= new CursoPropio(matriculas, director, secretario, materias, 
+			cursoReturn= new CursoPropio(matriculas, director, secretario, materias, 
 					estado, tipo, cursoDAO, Integer.parseInt(aux[0]), aux[1],Integer.parseInt(aux[2].trim()), 
 					fechaInicial, fechaFinal, Double.parseDouble(aux[5].trim()), Integer.parseInt(aux[6].trim()));
+			return cursoReturn;
 		}catch (ParseException e) {
 			MainTesting.escribirLog(MainTesting.ERROR,"Error en la conversión de fecha SQL a fecha java");
 			return cursoReturn;
@@ -310,40 +294,35 @@ public class CursoPropioDAO extends AbstractEntityDAO {
 		Collection<Object> resultado=null;
 		Collection<CursoPropio> cursosCentroReturn=null;
 		CursoPropio cursoReturn=null;
-		String SelectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = '"+Integer.getInteger(id)+"' " ;
+		String selectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = '"+Integer.getInteger(id)+"' " ;
 
-		resultado = GestorBD.select(SelectSQL);
+		resultado = GestorBD.select(selectSQL);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Curso seleccionado");
+		if (resultado.isEmpty()) {
 			Iterator<Object> it=resultado.iterator();
-			while(it.hasNext())
-				System.out.println(it.next().toString());
 		
 			cursoReturn= crearObjetoCursoPropio(it.next().toString());
 			cursosCentroReturn.add(cursoReturn);
 		}else
-			System.err.println("Error al seleccionar curso");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar curso");
 		return cursosCentroReturn;
 	}
 
 	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin)  {
-		Vector<Object> resultado;
-		Collection<CursoPropio> cursosEncontrados=new ArrayList<CursoPropio>();
-		String SelectSQLEdicion= "SELECT * FROM cursopropio"
+		LinkedList<Object> resultado;
+		Collection<CursoPropio> cursosEncontrados=new ArrayList<>();
+		String selectSQLEdicion= "SELECT * FROM cursopropio"
 				+ " WHERE  fechaInicio = '"+fechaInicio+"'and fechaFin = '"+fechaFin+"' and (estado = 'validado' or estado= 'propuesta_rechazada') ";
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Ediciones encotradas");
-
+		if (resultado.isEmpty()) {
 			for (int i = 0; i < resultado.size(); i++) {
 				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
 				cursosEncontrados.add(cursoAUX);
 			}
 		}else
-			System.err.println("Error encotrando ediciones");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encotrando ediciones");
 		return cursosEncontrados;
 	}
 }

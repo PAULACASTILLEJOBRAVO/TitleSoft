@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.Vector;
 
 
@@ -144,7 +145,7 @@ public class GestorBD {
 		}
 	}
 
-	public static Vector<Object> select(String SQL) {
+	public static LinkedList<Object> select(String SQL) {
 		/*
 		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
 		 * datos El mŽtodo select develve un vector de vectores, donde cada uno de los
@@ -157,7 +158,7 @@ public class GestorBD {
 			DriverManager.registerDriver(derbyEmbeddedDriver);
 			Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
 			
-			Vector<Object> vectoradevolver = new Vector<Object>();
+			LinkedList<Object> vectoradevolver = new LinkedList<Object>();
 			Statement stmt = mBD.createStatement();
 			ResultSet res = stmt.executeQuery(SQL);
 

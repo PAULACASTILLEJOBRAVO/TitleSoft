@@ -4,7 +4,6 @@ import java.util.Date;
 
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
-import presentacion.MainTesting;
 
 public class GestorPropuestasCursos {
 
