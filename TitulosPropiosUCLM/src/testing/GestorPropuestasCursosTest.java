@@ -36,7 +36,7 @@ public class GestorPropuestasCursosTest {
 	
 	@Test
 	public void realizarPropuestaCurso(){
-		String nombre = null;
+		String nombre ="";
 		Date fechaInicio;
 		Date fechaFin;
 		int eCTS = 0;
@@ -44,8 +44,6 @@ public class GestorPropuestasCursosTest {
 		int edicion = 0;
 		String dniDirector="";
 		String dniSecretario="";
-		EstadoCurso estado;
-		TipoCurso tipo;
 		String centro="";
 		
 		assertTrue( !((nombre.equals("")) ||
