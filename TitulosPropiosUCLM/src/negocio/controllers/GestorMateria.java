@@ -15,13 +15,14 @@ public class GestorMateria {
 		MateriaDAO materiaDAO=new MateriaDAO();
 		int n = Integer.parseInt(id);
 		if(n<0) {
-			MainTesting.escribirLog(MainTesting.ERROR,"id introducido no válido para la selección del curso");
+			MainTesting.escribirLog(MainTesting.ERROR,"id introducido no valido para la seleccion del curso");
 		}
 
 		return materiaDAO.seleccionarMateria(id);
 	}
 	
 	public Materia realizarMateria(String dniProfesorResponsable, String nombre, double horas, Date fechaInicio, Date fechaFin, CursoPropio curso) {
+		
 		GestorProfesor gestorProfesor = new GestorProfesor();
 		Profesor profesorResponsable  = gestorProfesor.seleccionarProfesor(dniProfesorResponsable);
 		GestorConsultas gestorConsultas = new GestorConsultas();
