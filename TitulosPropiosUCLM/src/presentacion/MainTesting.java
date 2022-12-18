@@ -1,11 +1,6 @@
 package presentacion;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import java.io.IOException;
-
-import java.sql.SQLException;
 
 import java.util.logging.*;
 
@@ -37,50 +32,42 @@ public class MainTesting extends JFrame{
 		contentPane.setLayout(null);
 		
 		JButton btnConsultar = new JButton("Consultar Curso");
-		btnConsultar.addActionListener(new ActionListener() {
+		btnConsultar.addActionListener(e -> {
+
+			PantallaLogin frame =new PantallaLogin(0);
+			frame.setVisible(true);
 			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				PantallaLogin frame =new PantallaLogin(0);
-				frame.setVisible(true);
-			}
 		});
 		btnConsultar.setBounds(89, 84, 223, 21);
 		add(btnConsultar);
 		
 		JButton btnMatriculas = new JButton("Realizar Matriculas");
 				
-		btnMatriculas.addActionListener(new ActionListener() {
+		btnMatriculas.addActionListener(e -> {
 			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				PantallaLogin frame = new PantallaLogin(1);
-				frame.setVisible(true);
-			}
+			PantallaLogin frame = new PantallaLogin(1);
+			frame.setVisible(true);
+			
 		});
 		btnMatriculas.setBounds(89, 144, 223, 21);
 		add(btnMatriculas);
 		
 		JButton btnEvaluar = new JButton("Evaluar Cursos");
-		btnEvaluar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				PantallaLogin frame =new PantallaLogin(2);
-				frame.setVisible(true);
-			}
+		btnEvaluar.addActionListener(e -> {
+		
+			PantallaLogin frame =new PantallaLogin(2);
+			frame.setVisible(true);
+
 		});
 		btnEvaluar.setBounds(89, 204, 223, 21);
 		add( btnEvaluar);
 		
 		JButton btnCursos = new JButton("Gestionar Cursos");
-		btnCursos.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				PantallaLogin frame =new PantallaLogin(3);
-				frame.setVisible(true);
-			}
+		btnCursos.addActionListener(e -> {
+
+			PantallaLogin frame =new PantallaLogin(3);
+			frame.setVisible(true);
+
 		});
 		btnCursos.setBounds(400, 84, 223, 21);
 		add( btnCursos);

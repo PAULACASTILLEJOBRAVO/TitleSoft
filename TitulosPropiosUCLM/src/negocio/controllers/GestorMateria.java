@@ -14,7 +14,7 @@ public class GestorMateria {
 		MateriaDAO materiaDAO=new MateriaDAO();
 		int n = Integer.parseInt(id);
 		if(n<0) {
-			System.out.println("id introducido no válido para la selección del curso");
+			MainTesting.escribirLog(MainTesting.ERROR,"id introducido no válido para la selección del curso");
 		}
 		return materiaDAO.seleccionarMateria(id);
 	}

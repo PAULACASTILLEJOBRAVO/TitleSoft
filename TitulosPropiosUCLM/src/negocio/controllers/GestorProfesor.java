@@ -2,7 +2,6 @@ package negocio.controllers;
 
 import negocio.entities.*;
 import persistencia.*;
-import presentacion.MainTesting;
 
 public class GestorProfesor {
 

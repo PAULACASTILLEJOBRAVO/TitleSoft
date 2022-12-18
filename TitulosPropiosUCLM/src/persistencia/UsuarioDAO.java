@@ -1,37 +1,32 @@
 package persistencia;
 
-import java.util.Vector;
+import java.util.LinkedList;
 
 import negocio.entities.*;
+import presentacion.MainTesting;
 
-public class UsuarioDAO extends AbstractEntityDAO{
+public class UsuarioDAO implements AbstractEntityDAO  <Object> {
 
 	public Object get(String id){
-		Usuario UsuarioReturn = null;
-		Vector<Object> resultado;
-		String SelectSQL = "SELECT * FROM usuario WHERE idusuario = '"+id+"' ";
-		resultado = GestorBD.select(SelectSQL);
+		Usuario usuarioReturn = null;
+		LinkedList<Object> resultado;
+		String selectSQL = "SELECT * FROM usuario WHERE idusuario = '"+id+"' ";
+		resultado = GestorBD.select(selectSQL);
 		
-		if (resultado.isEmpty()==false) {
-			System.out.println("usuario seleccionado");
-			
+		if (!resultado.isEmpty()) {
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
 			if(aux[1].trim().equals("estudiante")) {
-				System.out.println("SOY EL ESTUDIANTE");
-				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
+				usuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
 			}else if(aux[1].trim().equals("profesor")) {
-				System.out.println("SOY EL PROFESOR");
-				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
+				usuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
 			}else if (aux[1].trim().equals("vicerector")) {
-				System.out.println("SOY EL VICERRECTOR");
-				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
+				usuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
 			}else if (aux[2].trim().equals("jefe")) {
-				System.out.println("SOY EL JEFE");
-				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
+				usuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			}
 		}else
-			System.err.println("Error al seleccionar usuario");
-		return UsuarioReturn;
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar usuario");
+		return usuarioReturn;
 	}
 
 	@Override
@@ -42,10 +37,8 @@ public class UsuarioDAO extends AbstractEntityDAO{
 				+ "VALUES ( '"+usuario.getIdUsuario()+"', '"+usuario.getPassword()+"','"+usuario.getTipo()+"')";
 
 		resultado = GestorBD.insert(insertSQL); 
-		if (resultado > 0) {
-			System.out.println("Usuario nuevo creado");
-		}else
-			System.err.println("Error creando usuario nuevo ");
+		if (resultado < 0)
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar usuario");
 		return resultado;
 	}
 
@@ -59,10 +52,8 @@ public class UsuarioDAO extends AbstractEntityDAO{
 				+ "tipo='"+usuario.getTipo()+"' ";
 		resultado = GestorBD.update(updateSQL);
 		
-		if (resultado > 0) {
-			System.out.println("usuario modificado");
-		}else
-			System.err.println("Error modificando usuario ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando usuario ");
 		return usuario;
 	}
 
@@ -73,10 +64,8 @@ public class UsuarioDAO extends AbstractEntityDAO{
 		String insertSQL = " DELETE FROM usuario WHERE idusuario='"+usuario.getIdUsuario()+"' ";
 
 		resultado = GestorBD.insert(insertSQL); 
-		if (resultado > 0) {
-			System.out.println("Eliminado usuario");
-		}else
-			System.err.println("Error eliminando usuario  ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR,"Error eliminando usuario  ");
 		return resultado;
 	}
 }

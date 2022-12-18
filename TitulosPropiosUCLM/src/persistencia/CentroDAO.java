@@ -1,13 +1,15 @@
 package persistencia;
 
 import java.util.Collection;
-import java.util.Vector;
+import java.util.LinkedList;
+import java.util.List;
 
 import negocio.controllers.GestorConsultas;
 import negocio.controllers.GestorProfesor;
 import negocio.entities.*;
+import presentacion.MainTesting;
 
-public class CentroDAO extends AbstractEntityDAO {
+public class CentroDAO implements AbstractEntityDAO  <Object> {
 
 	public int crearCentro(Centro centro) {
 		return insert(centro);
@@ -25,34 +27,30 @@ public class CentroDAO extends AbstractEntityDAO {
 		return delete (centro.getNombre()) ;
 	}
 
-	public Vector<Object> listarNombreCentro(String nombre){		
-		Vector<Object> resultado;
-		String SelectSQLEdicion= "SELECT * FROM centro WHERE nombre = '"+nombre.trim()+"' ";
-		resultado = GestorBD.select(SelectSQLEdicion);
+	public List<Object> listarNombreCentro(String nombre){		
+		LinkedList<Object> resultado;
+		String selectSQLEdicion= "SELECT * FROM centro WHERE nombre = '"+nombre.trim()+"' ";
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Centro encotrado");
-		}else
-			System.err.println("Error encontrando centro");
+		if (resultado.isEmpty()) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando centro");
 		return resultado;
 	}
 	
 	
 	@Override
 	public Object get(String id) {
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 		Centro centroEncontrado=null;
 		
-		String SelectSQL= "SELECT * FROM centro WHERE nombre = '"+id.trim()+"' ";
+		String selectSQL= "SELECT * FROM centro WHERE nombre = '"+id.trim()+"' ";
 
-		resultado = GestorBD.select(SelectSQL);
+		resultado = GestorBD.select(selectSQL);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Centro seleccionado");
-			
+		if (!resultado.isEmpty()) {
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			
-			Vector<Object> resultadosNombreCentro= listarNombreCentro(aux[1]);
+			List<Object> resultadosNombreCentro= listarNombreCentro(aux[1]);
 			
 			//collecion de Profesores
 			Collection<Profesor> profesoresCollection=null;
@@ -71,7 +69,7 @@ public class CentroDAO extends AbstractEntityDAO {
 			
 			centroEncontrado = new Centro(cursosCentro, profesoresCollection, aux[1], aux[2], Integer.parseInt(aux[0]));
 		}else
-			System.err.println("Error al seleccionar centro");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar centro");
 		return centroEncontrado ;
 	}
 
@@ -84,10 +82,8 @@ public class CentroDAO extends AbstractEntityDAO {
 				+ "VALUES ('"+centro.getNombre()+"', '"+centro.getLocalizacion()+"')";
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Centro nuevo creado");
-		}else
-			System.err.println("Error creando centro nuevo ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error creando centro nuevo ");
 		return resultado;
 	}
 
@@ -100,10 +96,8 @@ public class CentroDAO extends AbstractEntityDAO {
 		String updateSQL = "UPDATE centro SET" + " nombre = '"+centro.getNombre()+"'," + "localizacion = '"+centro.getLocalizacion()+"' ";
 		
 		resultado = GestorBD.update(updateSQL);
-		if (resultado > 0) {
-			System.out.println("centro modificado");
-		}else
-			System.err.println("Error modificando centro ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando centro ");
 		return centroReturn;
 	}
 
@@ -114,10 +108,8 @@ public class CentroDAO extends AbstractEntityDAO {
 		String insertSQL = "DELETE FROM centro WHERE nombre= '"+centro.getNombre()+"' ";
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Centro eliminiado");
-		}else
-			System.err.println("Error eliminando centro  ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error eliminando centro  ");
 		return resultado;
 	}
 }

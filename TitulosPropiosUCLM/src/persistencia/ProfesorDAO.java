@@ -1,10 +1,11 @@
 package persistencia;
 
 import java.util.Collection;
-import java.util.Vector;
+import java.util.LinkedList;
 
 import negocio.entities.*;
-public class ProfesorDAO extends AbstractEntityDAO {
+import presentacion.MainTesting;
+public class ProfesorDAO implements AbstractEntityDAO <Object>  {
 
 	public int crearProfesor(Profesor profe) {
 		return insert(profe);
@@ -23,35 +24,33 @@ public class ProfesorDAO extends AbstractEntityDAO {
 	}
 
 	public Collection<Profesor> listarProfesorPorDoctor(boolean doctor) {
-		Vector<Object> resultado;
-		Collection<Profesor> profesorEncontrados=null;
-		String SelectSQLEdicion= "SELECT * FROM profesor"
+		LinkedList<Object> resultado;
+
+		Collection<Profesor> profesorEncontrados = null;
+		String selectSQLEdicion= "SELECT * FROM profesor"
 				+ "WHERE doctor = '"+doctor+"' ";
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Cursos encontrados");
+		if (!resultado.isEmpty()) {
 			for (int i = 0; i < resultado.size(); i++) {
 				Profesor profeAux=(Profesor) resultado.get(i);
 				profesorEncontrados.add(profeAux);
 			}
 		}else
-			System.err.println("Error encontrando cursos");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando cursos");
 		return profesorEncontrados;
 	}
 
 	@Override
 	public Object get(String id) {
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 		Profesor profesorEncontrado =null; 
-		String SelectSQL= "SELECT * FROM profesor WHERE dni = '"+id.trim()+"' ";
+		String selectSQL= "SELECT * FROM profesor WHERE dni = '"+id.trim()+"' ";
 
-		resultado = GestorBD.select(SelectSQL);
+		resultado = GestorBD.select(selectSQL);
 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Profesor seleccionado");
-
+		if (!resultado.isEmpty()) {
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 
 			boolean doctor=false;
@@ -60,12 +59,12 @@ public class ProfesorDAO extends AbstractEntityDAO {
 			}else if(aux[3].trim().equals("false")) {
 				doctor=false;
 			}else{
-				System.out.println("Error en la entradad de la base de datos, valor para doctor no valido");
-				return profesorEncontrado ;
+				MainTesting.escribirLog(MainTesting.ERROR, "Error en la entradad de la base de datos, valor para doctor no valido");
+				return profesorEncontrado;
 			}
 			profesorEncontrado=new Profesor(aux[0],aux[1],aux[2],doctor);
 		}else
-			System.err.println("Error al seleccionar profesor");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar profesor");
 		return profesorEncontrado;
 	}
 
@@ -77,10 +76,8 @@ public class ProfesorDAO extends AbstractEntityDAO {
 				+ "VALUES ( '"+profesores.getDni()+"', '"+profesores.getNombre()+"' , '"+profesores.getApellidos()+"', '"+profesores.isDoctor()+"'  )";
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Profesor nuevo creado");
-		}else
-			System.err.println("Error creando profesor nuevo ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR,"Error creando profesor nuevo ");
 		return resultado;
 	}
 
@@ -92,10 +89,8 @@ public class ProfesorDAO extends AbstractEntityDAO {
 				+ " ";
 
 		resultado = GestorBD.update(updateSQL);
-		if (resultado > 0) {
-			System.out.println("Profesor modificado");
-		}else
-			System.err.println("Error modificando profesor ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando profesor ");
 		return profesor;
 	}
 
@@ -106,10 +101,8 @@ public class ProfesorDAO extends AbstractEntityDAO {
 		String insertSQL = "DELETE FROM profesor WHERE dni= '"+profesor.getDni()+"'  )";
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Profesor eliminado");
-		}else
-			System.err.println("Error eliminando profesor ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR,"Error eliminando profesor ");
 		return resultado;
 	}
 }

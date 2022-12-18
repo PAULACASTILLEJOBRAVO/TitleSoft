@@ -3,8 +3,9 @@ package persistencia;
 import java.util.*;
 
 import negocio.entities.*;
+import presentacion.MainTesting;
 
-public class EstudianteDAO extends AbstractEntityDAO{
+public class EstudianteDAO implements AbstractEntityDAO <Object> {
 	public int crearEstudiante(Estudiante alumno) {
 		return insert(alumno);
 	}
@@ -22,56 +23,53 @@ public class EstudianteDAO extends AbstractEntityDAO{
 	}
 	
 	public Collection<Estudiante> listarEstudianteTitulacion(String titulacion) {
-		Vector<Object> resultado;
-		Collection alumnosEncontrados=null;
-		String SelectSQLEdicion= "SELECT * FROM estudiante"
+		LinkedList<Object> resultado;
+		Collection<Estudiante> alumnosEncontrados=null;
+		String selectSQLEdicion= "SELECT * FROM estudiante"
 				+ "WHERE titulacion = '"+titulacion+"'  ";
 
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 	
-		if (resultado.isEmpty()==false) {
-			System.out.println("Estudiantes encontrados");
+		if (!resultado.isEmpty()) {
 			for (int i = 0; i <resultado.size(); i++) {
 				Estudiante alumnoAux=(Estudiante) resultado.get(i);
 				alumnosEncontrados.add(alumnoAux);
 			}
 		}else
-			System.err.println("Error encontrando estudiantes");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando estudiantes");
 		return alumnosEncontrados;
 	}
 
 	public Collection<Estudiante> listarCalificacion(double calificacion){
-		Vector<Object> resultado;
-		Collection alumnosEncontrados=null;
+		LinkedList<Object> resultado;
+		Collection<Estudiante> alumnosEncontrados=null;
 	
-		String SelectSQLEdicion= "SELECT * FROM estudiante"
+		String selectSQLEdicion= "SELECT * FROM estudiante"
 				+ "WHERE calificacion = '"+calificacion+"' ";
-		resultado = GestorBD.select(SelectSQLEdicion);
+		resultado = GestorBD.select(selectSQLEdicion);
 		
-		if (resultado.isEmpty()==false) {
-			System.out.println("Estudiantes encontrados");
+		if (!resultado.isEmpty()) {
 			for (int i = 0; i < resultado.size(); i++) {
 				Estudiante alumnoAux=(Estudiante)resultado.get(i);
 				alumnosEncontrados.add(alumnoAux);
 			}
 		}else
-			System.err.println("Error encontrando estudiantes");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando estudiantes");
 		return alumnosEncontrados;
 	}
 
 	@Override
 	public Object get(String id) {
-		Vector<Object> resultado;
+		LinkedList<Object> resultado;
 		Estudiante alumnoEncontrado=null;
-		String SelectSQL= "SELECT * FROM estudiante WHERE id = '"+id+"' ";
+		String selectSQL= "SELECT * FROM estudiante WHERE id = '"+id+"' ";
 
-		resultado = GestorBD.select(SelectSQL);
+		resultado = GestorBD.select(selectSQL);
 		
-		if (resultado.isEmpty()==false) {
-			System.out.println("Estudiante seleccionado");
+		if (!resultado.isEmpty()) {
 			alumnoEncontrado=(Estudiante)resultado.get(0);
 		}else
-			System.err.println("Error al seleccionar estudiante");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar estudiante");
 		return alumnoEncontrado ;
 	}
 
@@ -83,10 +81,8 @@ public class EstudianteDAO extends AbstractEntityDAO{
 				+ "VALUES ( '"+alumno.getIdEstudiante()+"','"+alumno.getDni()+", '"+alumno.getNombre()+"'', '"+alumno.getApellidos()+"', '"+alumno.getTitulacion()+"', '"+alumno.getCualificacion()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Estudiante nuevo creado");
-		}else
-			System.err.println("Error creando curso estudiante ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error creando curso estudiante ");
 		return resultado;
 	}
 
@@ -103,10 +99,8 @@ public class EstudianteDAO extends AbstractEntityDAO{
 				+ "calificacion= '"+alumno.getCualificacion()+"";
 
 		resultado = GestorBD.update(updateSQL);
-		if (resultado > 0) {
-			System.out.println("Estudiante modificado");
-		}else
-			System.err.println("Error modificando estudiante ");
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando estudiante ");
 		return alumno;
 	}
 
@@ -117,10 +111,8 @@ public class EstudianteDAO extends AbstractEntityDAO{
 		String insertSQL = " DELETE FROM estudiante WHERE dni= '"+alumno.getDni()+"'   ";
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Estudiante nuevo eliminado");
-		}else
-			System.err.println("Error eliminando estudiante ");
+		if (resultado < 0)
+			MainTesting.escribirLog(MainTesting.ERROR, "Error eliminando estudiante ");
 		return resultado;
 	}	
 }
