@@ -94,7 +94,7 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 		 <p>Nota: Sonar (Paula). Empezado</p>
 		<p>Creacion de los report,jacoco,surefire,etc (Iván). Completado</p>
 <p>Sprint 6, dia 17/12/2022</p>
-	<p>Lo deseado para la proxima semana dia 18/12/2022 </p>
+	<p>Lo deseado para el dia 18/12/2022 </p>
 		 <p>Continuar el sonar y el testing</p>
 			<p>Sonar (Paula)</p>
 			<p>Gestor Centro (Virginia).</p>
@@ -104,7 +104,26 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 			<p>Gestor Propuestas Cursos (Iván)</p>
 			<p>Gestor Usuarios (Iván)</p>
 			<p>Gestor Materia (Iván)</p>
-	
+<p>	***********Resultados******</p>
+			<p>Sonar (Paula). Gran mejora en la correccion de errores</p>
+			<p>Gestor Centro (Virginia). Controladores inicializados</p>
+			<p>Gestor Consultas (Virginia). Controladores inicializados</p>
+			<p>Gestor Matriculacion (Virginia). Controladores inicializados</p>
+			<p>Gestor Profesor (Iván). Controladores inicializados</p>
+			<p>Gestor Propuestas Cursos (Iván). Controladores inicializados</p>
+			<p>Gestor Usuarios (Iván). Controladores inicializados</p>
+			<p>Gestor Materia (Iván). Controladores inicializados</p>
+<p>Sprint 7, dia 18/12/2022</p>
+	<p>Lo deseado para el dia 19/12/2022 </p>
+		 <p>Continuar el sonar y el testing</p>
+			<p>Sonar (Paula)</p>
+			<p>Gestor Centro (Virginia).</p>
+			<p>Gestor Consultas (Virginia)</p>
+			<p>Gestor Matriculacion (Virginia)</p>
+			<p>Gestor Profesor (Iván)</p>
+			<p>Gestor Propuestas Cursos (Iván)</p>
+			<p>Gestor Usuarios (Iván)</p>
+			<p>Gestor Materia (Iván)</p>
 <p>-------------------------------------------------------------------------------------------------------------------------------</p>
 <br>
 <H2>2. Memoria del Proyecto:
