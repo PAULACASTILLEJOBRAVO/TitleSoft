@@ -40,8 +40,8 @@ public class GestorConsultas {
 	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
-
-			SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			
+		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
 			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
 		     String anioInicio = getYearFormat.format(fechaInicio);
 		     String mesInicio = getMonthFormat.format(fechaInicio);

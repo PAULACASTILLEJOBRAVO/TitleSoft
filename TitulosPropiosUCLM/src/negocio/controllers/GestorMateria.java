@@ -7,7 +7,6 @@ import negocio.entities.CursoPropio;
 import negocio.entities.Materia;
 import negocio.entities.Profesor;
 import persistencia.MateriaDAO;
-import presentacion.MainTesting;
 
 public class GestorMateria {
 
@@ -29,7 +28,7 @@ public class GestorMateria {
 		Materia materiaNueva = new Materia(profesorResponsable, nombre, horas, fechaInicio, fechaFin);
 		MateriaDAO materiaDAO = new MateriaDAO();
 		
-	
+		
 			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
 			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm");
 
