@@ -1,11 +1,7 @@
 package testing;
 
-import org.apache.derby.impl.sql.execute.CurrentDatetime;
-import org.junit.*;
 
-import negocio.entities.CursoPropio;
-import negocio.entities.EstadoCurso;
-import negocio.entities.TipoCurso;
+import org.junit.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -14,7 +10,7 @@ import java.util.Date;
 public class GestorPropuestasCursosTest {
 	
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() {
 		System.out.println("@BeforeClass");
 	}
 
