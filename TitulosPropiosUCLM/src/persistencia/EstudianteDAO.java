@@ -1,51 +1,27 @@
 package persistencia;
 
-import java.sql.Date;
 import java.util.*;
 
 import negocio.entities.*;
 
 public class EstudianteDAO extends AbstractEntityDAO{
-	
-	/*
-	 * falta ver los select expecificos
-	 */
-	
-	
-	public int crearEstudiante(Estudiante alumno) throws Exception {
+	public int crearEstudiante(Estudiante alumno) {
 		return insert(alumno);
-
 	}
 
-	/**
-	 * 
-	 * @param curso
-	 */
-	public Estudiante seleccionarEstudiante(Estudiante alumno) throws Exception {
+	public Estudiante seleccionarEstudiante(Estudiante alumno) {
 		return (Estudiante)get(alumno.getDni());
-		
 	}
-
-	/**
-	 * 
-	 * @param curso
-	 */
-	public Estudiante editarEstudiante(Estudiante alumno) throws Exception {
-		// TODO - implement CursoPropioDAO.editarCurso
+	
+	public Estudiante editarEstudiante(Estudiante alumno)  {
 		return (Estudiante) update(alumno);
 	}
 
-	public int eliminarEstudiante(Estudiante alumno) throws Exception{
+	public int eliminarEstudiante(Estudiante alumno) {
 		return delete(alumno);
 	}
 	
-	/**
-	 * 
-	 * @param estado
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-	public Collection<Estudiante> listarEstudianteTitulacion(String titulacion) throws Exception {
+	public Collection<Estudiante> listarEstudianteTitulacion(String titulacion) {
 		Vector<Object> resultado;
 		Collection alumnosEncontrados=null;
 		String SelectSQLEdicion= "SELECT * FROM estudiante"
@@ -53,29 +29,18 @@ public class EstudianteDAO extends AbstractEntityDAO{
 
 		resultado = GestorBD.select(SelectSQLEdicion);
 	
-
 		if (resultado.isEmpty()==false) {
 			System.out.println("Estudiantes encontrados");
 			for (int i = 0; i <resultado.size(); i++) {
 				Estudiante alumnoAux=(Estudiante) resultado.get(i);
 				alumnosEncontrados.add(alumnoAux);
-
 			}
 		}else
 			System.err.println("Error encontrando estudiantes");
-
 		return alumnosEncontrados;
-		
 	}
 
-	/**
-	 * 
-	 * @param tipo
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-	public Collection<Estudiante> listarCalificacion(double calificacion) throws Exception { //he cambiado el return como una coleccion, estaba como double,devuelve los almnos con esa nota
-		// TODO - implement CursoPropioDAO.listarIngresos
+	public Collection<Estudiante> listarCalificacion(double calificacion){
 		Vector<Object> resultado;
 		Collection alumnosEncontrados=null;
 	
@@ -89,22 +54,16 @@ public class EstudianteDAO extends AbstractEntityDAO{
 				Estudiante alumnoAux=(Estudiante)resultado.get(i);
 				alumnosEncontrados.add(alumnoAux);
 			}
-
 		}else
 			System.err.println("Error encontrando estudiantes");
-
 		return alumnosEncontrados;
-		
-
-		
 	}
 
 	@Override
-	public Object get(String id) throws Exception {
+	public Object get(String id) {
 		Vector<Object> resultado;
 		Estudiante alumnoEncontrado=null;
 		String SelectSQL= "SELECT * FROM estudiante WHERE id = '"+id+"' ";
-
 
 		resultado = GestorBD.select(SelectSQL);
 		
@@ -113,13 +72,11 @@ public class EstudianteDAO extends AbstractEntityDAO{
 			alumnoEncontrado=(Estudiante)resultado.get(0);
 		}else
 			System.err.println("Error al seleccionar estudiante");
-
 		return alumnoEncontrado ;
-		
 	}
 
 	@Override
-	public int insert(Object entity) throws Exception {
+	public int insert(Object entity) {
 		int resultado=0;
 		Estudiante alumno=(Estudiante)entity;
 		String insertSQL = "INSERT INTO estudiante (idEstudiante,dni,nombre,apellidos,titulacion,calificacion)"
@@ -130,12 +87,11 @@ public class EstudianteDAO extends AbstractEntityDAO{
 			System.out.println("Estudiante nuevo creado");
 		}else
 			System.err.println("Error creando curso estudiante ");
-
 		return resultado;
 	}
 
 	@Override
-	public Object update(Object entity) throws Exception {
+	public Object update(Object entity){
 		int resultado=0;
 		Estudiante alumno=(Estudiante) entity;
 		String updateSQL = "UPDATE estudiante SET "
@@ -151,12 +107,11 @@ public class EstudianteDAO extends AbstractEntityDAO{
 			System.out.println("Estudiante modificado");
 		}else
 			System.err.println("Error modificando estudiante ");
-
 		return alumno;
 	}
 
 	@Override
-	public int delete(Object entity) throws Exception {
+	public int delete(Object entity) {
 		int resultado=0;
 		Estudiante alumno=(Estudiante)entity;
 		String insertSQL = " DELETE FROM estudiante WHERE dni= '"+alumno.getDni()+"'   ";
@@ -166,9 +121,6 @@ public class EstudianteDAO extends AbstractEntityDAO{
 			System.out.println("Estudiante nuevo eliminado");
 		}else
 			System.err.println("Error eliminando estudiante ");
-
 		return resultado;
-	}
-
-	
+	}	
 }

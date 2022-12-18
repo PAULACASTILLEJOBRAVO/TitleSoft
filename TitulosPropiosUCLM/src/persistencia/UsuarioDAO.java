@@ -6,13 +6,10 @@ import negocio.entities.*;
 
 public class UsuarioDAO extends AbstractEntityDAO{
 
-	
-	public Object get(String id) throws Exception {
+	public Object get(String id){
 		Usuario UsuarioReturn = null;
 		Vector<Object> resultado;
-		//Vector<Object> aux = null;
 		String SelectSQL = "SELECT * FROM usuario WHERE idusuario = '"+id+"' ";
-		//Vector<Object> vectoradevolver=new Vector<Object>();
 		resultado = GestorBD.select(SelectSQL);
 		
 		if (resultado.isEmpty()==false) {
@@ -31,17 +28,14 @@ public class UsuarioDAO extends AbstractEntityDAO{
 			}else if (aux[2].trim().equals("jefe")) {
 				System.out.println("SOY EL JEFE");
 				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
-			
 			}
-			
 		}else
 			System.err.println("Error al seleccionar usuario");
-		
 		return UsuarioReturn;
 	}
 
 	@Override
-	public int insert(Object entity) throws Exception {
+	public int insert(Object entity) {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
 		String insertSQL = "INSERT INTO usuario (idusuario,password,tipo) "
@@ -52,12 +46,11 @@ public class UsuarioDAO extends AbstractEntityDAO{
 			System.out.println("Usuario nuevo creado");
 		}else
 			System.err.println("Error creando usuario nuevo ");
-
 		return resultado;
 	}
 
 	@Override
-	public Object update(Object entity) throws Exception {
+	public Object update(Object entity) {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
 		String updateSQL = "UPDATE usuario SET "
@@ -66,17 +59,15 @@ public class UsuarioDAO extends AbstractEntityDAO{
 				+ "tipo='"+usuario.getTipo()+"' ";
 		resultado = GestorBD.update(updateSQL);
 		
-		
 		if (resultado > 0) {
 			System.out.println("usuario modificado");
 		}else
 			System.err.println("Error modificando usuario ");
-
 		return usuario;
 	}
 
 	@Override
-	public int delete(Object entity) throws Exception {
+	public int delete(Object entity)  {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
 		String insertSQL = " DELETE FROM usuario WHERE idusuario='"+usuario.getIdUsuario()+"' ";
@@ -86,11 +77,6 @@ public class UsuarioDAO extends AbstractEntityDAO{
 			System.out.println("Eliminado usuario");
 		}else
 			System.err.println("Error eliminando usuario  ");
-
 		return resultado;
 	}
-
-
-
-
 }

@@ -8,12 +8,6 @@ public class GestorProfesor {
 
 public Profesor seleccionarProfesor(String dni) {	
 		ProfesorDAO profesorDAO= new ProfesorDAO();
-
-		try {
-			return profesorDAO.seleccionarProfesor(dni);
-		} catch (Exception e) {
-			MainTesting.escribirLog(MainTesting.ERROR,"Error al seleccionar Profesor");
-			return null;
-		}
+		return profesorDAO.seleccionarProfesor(dni);
 	}
 }

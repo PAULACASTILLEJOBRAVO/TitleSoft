@@ -12,6 +12,7 @@ import java.util.logging.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import persistencia.*;
@@ -20,7 +21,7 @@ public class MainTesting extends JFrame{
 	private JPanel contentPane;
 	public static final String ERROR ="Logs//Errores.log";
 	
-	public static void main(String[] args) throws NumberFormatException, SQLException {
+	public static void main(String[] args)  {
 		MainTesting frame =new MainTesting();
 		frame.setVisible(true);
 		GestorBD.conectar();	 
@@ -28,7 +29,7 @@ public class MainTesting extends JFrame{
 
 	public MainTesting() {
 		setTitle("Gestion Titulaciones");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 670, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -48,16 +49,17 @@ public class MainTesting extends JFrame{
 		add(btnConsultar);
 		
 		JButton btnMatriculas = new JButton("Realizar Matriculas");
+				
 		btnMatriculas.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PantallaLogin frame =new PantallaLogin(1);
+				PantallaLogin frame = new PantallaLogin(1);
 				frame.setVisible(true);
 			}
 		});
 		btnMatriculas.setBounds(89, 144, 223, 21);
-		add( btnMatriculas);
+		add(btnMatriculas);
 		
 		JButton btnEvaluar = new JButton("Evaluar Cursos");
 		btnEvaluar.addActionListener(new ActionListener() {
