@@ -15,12 +15,10 @@ public class GestorMateria {
 		
 		MateriaDAO materiaDAO=new MateriaDAO();
 		int n = Integer.parseInt(id);
-		if(n<0) {
-			System.out.println("id introducido no válido para la selección del curso");
+		if(n>0) {
+			return materiaDAO.seleccionarMateria(id);
 		}
-		
-		return materiaDAO.seleccionarMateria(id);
-		
+		return null;
 	}
 	
 	public Materia realizarMateria(String dniProfesorResponsable, String nombre, double horas, Date fechaInicio, Date fechaFin, CursoPropio curso) {
@@ -33,7 +31,8 @@ public class GestorMateria {
 		MateriaDAO materiaDAO = new MateriaDAO();
 		
 		try {
-			materiaDAO.crearMateria(materiaNueva);
+			if(dniProfesorResponsable.length() == 9 && nombre.length() <= 20 )
+			materiaDAO.crearMateria(materiaNueva);//////////////////////////////////////////////////////////////////////////////////////
 			int idcurso = gestorConsultas.idCurso(curso);
 			int idMateria = idMateria(materiaNueva);
 			materiaDAO.vincularCursoMateria(idMateria, idcurso);
