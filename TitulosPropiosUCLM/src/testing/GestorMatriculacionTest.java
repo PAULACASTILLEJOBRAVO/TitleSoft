@@ -1,10 +1,9 @@
 package testing;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Date;
-import java.sql.SQLException;
+
 
 import org.junit.After;
 import org.junit.AfterClass;
