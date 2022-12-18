@@ -2,7 +2,7 @@ package negocio.controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+import presentacion.MainTesting;
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
 public class GestorConsultas {
