@@ -1,5 +1,6 @@
 package negocio.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import negocio.entities.*;
@@ -10,7 +11,21 @@ public class GestorConsultas {
 		double ingresos = 0;
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 
-		ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
+		     Date fechaActual = new Date();
+		     String anioActual = getYearFormat.format(fechaActual);
+
+		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
+		    		 && Integer.parseInt(mesInicio) != 6 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 6 && Integer.parseInt(mesFin) != 7){
+
+		    	 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+		     }
 		return ingresos;
 	}
 
@@ -25,8 +40,22 @@ public class GestorConsultas {
 	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
-		
-		ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
+
+			SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
+		     Date fechaActual = new Date();
+		     String anioActual = getYearFormat.format(fechaActual);
+
+		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
+		    		 && Integer.parseInt(mesInicio) != 6 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 6 && Integer.parseInt(mesFin) != 7){
+
+			ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
+		     }
 		return ediciones;
 	}
 	
@@ -34,7 +63,24 @@ public class GestorConsultas {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
 		
-		ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
+			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm");
+
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
+
+		     Date fechaActual = new Date();
+		     String anioActual = getYearFormat.format(fechaActual);
+
+		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
+		    		 && Integer.parseInt(mesInicio) != 6 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 6 && Integer.parseInt(mesFin) != 7){
+
+			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
+			}
 		return ediciones;
 	}
 
