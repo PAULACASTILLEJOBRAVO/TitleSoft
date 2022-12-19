@@ -20,38 +20,47 @@ public class GestorMateria {
 
 		return materiaDAO.seleccionarMateria(id);
 	}
-	
+
 	public Materia realizarMateria(String dniProfesorResponsable, String nombre, double horas, Date fechaInicio, Date fechaFin, CursoPropio curso) {
-		
+
 		GestorProfesor gestorProfesor = new GestorProfesor();
 		Profesor profesorResponsable  = gestorProfesor.seleccionarProfesor(dniProfesorResponsable);
 		GestorConsultas gestorConsultas = new GestorConsultas();
-		
+
 		Materia materiaNueva = new Materia(profesorResponsable, nombre, horas, fechaInicio, fechaFin);
 		MateriaDAO materiaDAO = new MateriaDAO();
 
-		
-			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
-			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm");
 
-		     String anioInicio = getYearFormat.format(fechaInicio);
-		     String mesInicio = getMonthFormat.format(fechaInicio);
+		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+		SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
+
+		String anioInicio = getYearFormat.format(fechaInicio);
+		String mesInicio = getMonthFormat.format(fechaInicio);
 
 
-		     String anioFin = getYearFormat.format(fechaFin);
-		     String mesFin = getMonthFormat.format(fechaInicio);
+		String anioFin = getYearFormat.format(fechaFin);
+		String mesFin = getMonthFormat.format(fechaFin);
 
-		     Date fechaActual = new Date();
-		     String anioActual = getYearFormat.format(fechaActual);
+		Date fechaActual = new Date();
+		String anioActual = getYearFormat.format(fechaActual);
+		System.out.println("año inicio:"+anioInicio+ " mes inicio: "+mesInicio);
+		System.out.println("año inicio:"+anioFin+ " mes inicio: "+mesFin);
+		System.out.println("fecha inicio :"+fechaInicio+ " fecha fin: "+fechaFin);
+		System.out.println("fecha actual :"+fechaActual);
+		/*
+		 * El controlador Integer.parseInt(anioFin)< Integer.parseInt(anioActual) no lo pondria ya que el año fin puede ser a futuro
+		 * puede ser el año que viene
+		 */
+		if(dniProfesorResponsable.length()> 9 || nombre.length() > 20 || Integer.parseInt(anioInicio)> Integer.parseInt(anioActual) ||Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
+				|| Integer.parseInt(mesInicio) == 6 || Integer.parseInt(mesInicio) == 7 || Integer.parseInt(mesFin) == 6 || Integer.parseInt(mesFin) == 7) {
+			return null;
+		}
+		materiaDAO.crearMateria(materiaNueva);
+		int idcurso = gestorConsultas.idCurso(curso);
+		int idMateria = idMateria(materiaNueva);
+		materiaDAO.vincularCursoMateria(idMateria, idcurso);
 
-			if(dniProfesorResponsable.length() == 9 && nombre.length() <= 20 && Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
-		    		 && Integer.parseInt(mesInicio) != 6 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 6 && Integer.parseInt(mesFin) != 7)
-			materiaDAO.crearMateria(materiaNueva);
-			int idcurso = gestorConsultas.idCurso(curso);
-			int idMateria = idMateria(materiaNueva);
-			materiaDAO.vincularCursoMateria(idMateria, idcurso);
-					
-	return materiaNueva;
+		return materiaNueva;
 	}
 
 	public int idMateria(Materia materia) {
