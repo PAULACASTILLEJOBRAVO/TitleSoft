@@ -2,6 +2,7 @@ package persistencia;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import negocio.entities.*;
 import presentacion.MainTesting;
@@ -24,9 +25,9 @@ public class ProfesorDAO implements AbstractEntityDAO <Object>  {
 	}
 
 	public Collection<Profesor> listarProfesorPorDoctor(boolean doctor) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 
-		Collection<Profesor> profesorEncontrados = null;
+		Collection<Profesor> profesorEncontrados = new LinkedList<>();
 		String selectSQLEdicion= "SELECT * FROM profesor"
 				+ "WHERE doctor = '"+doctor+"' ";
 
@@ -44,7 +45,7 @@ public class ProfesorDAO implements AbstractEntityDAO <Object>  {
 
 	@Override
 	public Object get(String id) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		Profesor profesorEncontrado =null; 
 		String selectSQL= "SELECT * FROM profesor WHERE dni = '"+id.trim()+"' ";
 

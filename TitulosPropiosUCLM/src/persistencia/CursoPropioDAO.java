@@ -16,7 +16,7 @@ import negocio.entities.*;
 import presentacion.MainTesting;
 
 public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
-	private static final String SQLCOMPARARFECHAFIN = "' AND FechaFin '"; 
+	private static final String SQLCOMPARARFECHAFIN = "' AND FechaFin ='"; 
 	private static final String SQLSEPARADORNUMERICO = ", ";
 	private static final String SQLSEPARADORSTRING = "', '";
 	
@@ -37,22 +37,22 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 	}
 
 	public Collection<CursoPropio> listarCursosEstadoPropuesto(EstadoCurso estado) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		Collection<CursoPropio> cursosEncontrados = new ArrayList<>();
 		String selectSQLEdicion="";
 		
 		if(estado.toString().trim().equals("PROPUESTO")) {
-			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesto' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'PROPUESTO' ";
 		}else if (estado.toString().trim().equals("VALIDADO")) {
-			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'validado' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'VALIDO' ";
 		}else if (estado.toString().trim().equals("PROPUESTA_RECHAZADA")) {
-			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'propuesta_rechazada' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'PROPUESTA_RECHAZADA' ";
 		}else if (estado.toString().trim().equals("EN_MATRICULACION")) {
-			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_matriculacion' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'EN_MATRICULACION' ";
 		}else if (estado.toString().trim().equals("EN_IMPARTIZICION")) {
-			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'en_imparticion' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'EN_IMPARTIZICION' ";
 		}else if (estado.toString().trim().equals("TERMINADO")) {
-			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'terminado' ";
+			selectSQLEdicion= "SELECT * FROM cursopropio WHERE estado = 'TERMINADO' ";
 		}
 
 		resultado = GestorBD.select(selectSQLEdicion);
@@ -68,7 +68,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 	}
 
 	public double listarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		double ingresos=0.0;
 		String selectSQLEdicion="";
 		TipoCurso tipoCurso = null;
@@ -101,7 +101,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 	}
 
 	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		Collection<CursoPropio> cursosEncontrados=new ArrayList<>();
 		String selectSQLEdicion= "SELECT * FROM cursopropio"
 				+ " WHERE  fechaInicio = '"+fechaInicio+SQLCOMPARARFECHAFIN+fechaFin+"' ";
@@ -119,7 +119,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 	}
 
 	public List<Object> listarIdCursoPropio(String idCursoPropio) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		String selectSQLEdicion= "SELECT * FROM cursopropio WHERE idCursoPropio = "+idCursoPropio+" ";
 		resultado = GestorBD.select(selectSQLEdicion);
 
@@ -131,7 +131,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 
 	@Override
 	public Object get(String id) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		CursoPropio cursoReturn=null;
 		String selectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = "+id+" " ;
 
@@ -196,7 +196,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 
 	public int seleccinarID(CursoPropio curso) {
 		int idCurso=0;
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 
 		String insertSQL = "SELECT IdCursoPropio FROM cursopropio WHERE estado = '"+curso.getEstado()+"' AND nombre = '"+curso.getNombre()
 		+"' AND fechaInicio = '"+curso.getFechaInicio()+SQLCOMPARARFECHAFIN+curso.getFechaFin()+"' AND tasaMatricula = "+curso.getTasaMatricula()
@@ -241,34 +241,34 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		EstadoCurso estado=null;
 		TipoCurso tipo=null;
 		//estado
-		if(aux[7].trim().equals("imparticion")) {
-			estado=EstadoCurso.EN_IMPARTIZICION;
-		}else if (aux[7].trim().equals("matriculacion")) {
+		if(aux[7].trim().equals("IMPARTICION")) {
+			estado=EstadoCurso.EN_IMPARTICION;
+		}else if (aux[7].trim().equals("MATRICULACION")) {
 			estado=EstadoCurso.EN_MATRICULACION;
-		}else if (aux[7].trim().equals("propuesta_rechazada")) {
+		}else if (aux[7].trim().equals("PROPUESTA_RECHAZADA")) {
 			estado=EstadoCurso.PROPUESTA_RECHAZADA;
-		}else if (aux[7].trim().equals("propuesto")) {
+		}else if (aux[7].trim().equals("PROPUESTO")) {
 			estado=EstadoCurso.PROPUESTO;
-		}else if (aux[7].trim().equals("terminado")) {
+		}else if (aux[7].trim().equals("TERMINADO")) {
 			estado=EstadoCurso.TERMINADO;
-		}else if (aux[7].trim().equals("validado")) {
+		}else if (aux[7].trim().equals("VALIDADO")) {
 			estado=EstadoCurso.VALIDADO;
 		}
 
 		//tipoCurso
-		if(aux[11].trim().equals("corta_duracion")) {
+		if(aux[11].trim().equals("CORTA_DURACION")) {
 			tipo=TipoCurso.CORTA_DURACION;
-		}else if (aux[11].trim().equals("especialista")) {
+		}else if (aux[11].trim().equals("ESPECIALISTA")) {
 			tipo=TipoCurso.ESPECIALISTA;
-		}else if (aux[11].trim().equals("experto")) {
+		}else if (aux[11].trim().equals("EXPERTO")) {
 			tipo=TipoCurso.EXPERTO;
-		}else if (aux[11].trim().equals("formacion_avanzada")) {
+		}else if (aux[11].trim().equals("FORMACION_AVANZADA")) {
 			tipo=TipoCurso.FORMACION_AVANZADA;
-		}else if (aux[11].trim().equals("formacion_continua")) {
+		}else if (aux[11].trim().equals("FORMACION_CONTINUA")) {
 			tipo=TipoCurso.FORMACION_CONTINUA;
-		}else if (aux[11].trim().equals("master")) {
+		}else if (aux[11].trim().equals("MASTER")) {
 			tipo=TipoCurso.MASTER;
-		}else if (aux[11].trim().equals("microcredenciles")) {
+		}else if (aux[11].trim().equals("MICROCREDENCIALES")) {
 			tipo=TipoCurso.MICROCREDENCIALES;
 		}
 
@@ -292,7 +292,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 
 	public Collection<CursoPropio> cursosPorCentro(String id){
 		Collection<Object> resultado=null;
-		Collection<CursoPropio> cursosCentroReturn=null;
+		Collection<CursoPropio> cursosCentroReturn=new LinkedList<>();
 		CursoPropio cursoReturn=null;
 		String selectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = '"+Integer.getInteger(id)+"' " ;
 
@@ -309,7 +309,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 	}
 
 	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin)  {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		Collection<CursoPropio> cursosEncontrados=new ArrayList<>();
 		String selectSQLEdicion= "SELECT * FROM cursopropio"
 				+ " WHERE  fechaInicio = '"+fechaInicio+"'and fechaFin = '"+fechaFin+"' and (estado = 'validado' or estado= 'propuesta_rechazada') ";

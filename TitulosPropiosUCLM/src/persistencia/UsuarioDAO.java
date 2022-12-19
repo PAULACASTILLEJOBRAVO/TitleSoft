@@ -1,6 +1,6 @@
 package persistencia;
 
-import java.util.LinkedList;
+import java.util.List;
 
 import negocio.entities.*;
 import presentacion.MainTesting;
@@ -9,7 +9,7 @@ public class UsuarioDAO implements AbstractEntityDAO  <Object> {
 
 	public Object get(String id){
 		Usuario usuarioReturn = null;
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		String selectSQL = "SELECT * FROM usuario WHERE idusuario = '"+id+"' ";
 		resultado = GestorBD.select(selectSQL);
 		

@@ -11,12 +11,14 @@ import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class PantallaLogin extends JFrame {
+	private static final String ERRORINICIOSESION =  "Error iniciando sesion";
+	private static final String ERRORUSUARIOSINPERMISOS =  "Ususario no permitido";
+	
 	private JTextField textFieldUsuario= new JTextField();
 	private JTextField textFieldPassword= new JTextField();
 	private JPanel contentPane;
@@ -47,31 +49,22 @@ public class PantallaLogin extends JFrame {
 		textFieldPassword.setColumns(10);
 
 		JButton botonLogin = new JButton("Login");
-		botonLogin.addActionListener(new ActionListener() {
+		botonLogin.addActionListener((ActionEvent e) -> {
+			GestorUsuarios gUsuario=new GestorUsuarios();
+			if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+				Usuario usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				GestorUsuarios gUsuario=new GestorUsuarios();
-				if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
-					System.out.println("Sesion iniciada");
-					Usuario usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
-
-					if(id==1) {
-						try {
-							accionesEstudiante(gUsuario, usuario);
-						} catch (Exception e1) {
-							MainTesting.escribirLog(MainTesting.ERROR,"Error a realizar matricula");
-						}
-					}else if (id==2) {
-						accionesVicerector(gUsuario, usuario);
-					}else if(id==3) {
-						accionesProfesores(gUsuario, usuario);
-					}else if(id==0) {
-						accionesJefe(gUsuario, usuario);
-					}
-				}else {
-					System.out.println("Error iniciando sesion");
+				if(id==1) {
+					accionesEstudiante(gUsuario, usuario);
+				}else if (id==2) {
+					accionesVicerector(gUsuario, usuario);
+				}else if(id==3) {
+					accionesProfesores(gUsuario, usuario);
+				}else if(id==0) {
+					accionesJefe(gUsuario, usuario);
 				}
+			}else {
+				MainTesting.escribirLog(MainTesting.ERROR, ERRORINICIOSESION);
 			}
 		});
 		botonLogin.setBounds(89, 224, 83, 21);
@@ -88,53 +81,45 @@ public class PantallaLogin extends JFrame {
 
 	public void accionesProfesores(GestorUsuarios gUsuario, Usuario usuario) {
 		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
-			System.out.println("Sesion iniciada");
-			
 			if(usuario.getTipo()==TipoUsuario.PROFESOR) {
 				PantallaDireccionCursos frame =new PantallaDireccionCursos();
 				frame.setVisible(true);
 			}
 		}else {
-			System.out.println("Ususario no permitido");
+			MainTesting.escribirLog(MainTesting.ERROR,ERRORINICIOSESION);
 		}
 	}
 
 	public void accionesVicerector(GestorUsuarios gUsuario, Usuario usuario) {
 		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
-			System.out.println("Sesion iniciada");
-
 			if(usuario.getTipo()==TipoUsuario.VICERECTOR) {
 				PantallaEmpleadosVicerrectorado frame =new PantallaEmpleadosVicerrectorado();
 				frame.setVisible(true);
 			}
 		}else {
-			System.out.println("Ususario no permitido");
+			MainTesting.escribirLog(MainTesting.ERROR,ERRORUSUARIOSINPERMISOS);
 		}
 	}
 
-	public void accionesEstudiante(GestorUsuarios gUsuario, Usuario usuario) throws Exception {		
+	public void accionesEstudiante(GestorUsuarios gUsuario, Usuario usuario) {		
 		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
-			System.out.println("Sesion iniciada");
-
 			if(usuario.getTipo()==TipoUsuario.ESTUDIANTE) {
 				PantallaMatriculacion frame =new PantallaMatriculacion();
 				frame.setVisible(true);
 			}
 		}else {
-			System.out.println("Ususario no permitido");
+			MainTesting.escribirLog(MainTesting.ERROR,ERRORUSUARIOSINPERMISOS);
 		}
 	}
 
 	public void accionesJefe(GestorUsuarios gUsuario, Usuario usuario) {
 		if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
-			System.out.println("Sesion iniciada");
-			
 			if(usuario.getTipo()==TipoUsuario.JEFE) {
 				PantallaJefeGabineteVicerrectorado frame =new PantallaJefeGabineteVicerrectorado();
 				frame.setVisible(true);
 			}
 		}else {
-			System.out.println("Ususario no permitido");
+			MainTesting.escribirLog(MainTesting.ERROR, ERRORUSUARIOSINPERMISOS);
 		}
 	}
 }

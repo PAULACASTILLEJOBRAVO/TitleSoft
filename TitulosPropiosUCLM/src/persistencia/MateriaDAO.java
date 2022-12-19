@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
-import java.util.LinkedList;
+import java.util.List;
 
 import negocio.controllers.GestorProfesor;
 import negocio.entities.*;
@@ -30,7 +30,7 @@ public class MateriaDAO implements AbstractEntityDAO <Object>  {
 	
 	@Override
 	public Object get(String id) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		Materia materiaEncontrada=null;
 		String selectSQL= "SELECT m.IDMATERIA, m.NOMBRE, m.HORAS, m.FECHAINICIO, m.FECHAFIN, m.DNIPROFESOR FROM MATERIA m, "
 		+ "RELACIONMATERIASCURSO r, CURSOPROPIO c WHERE c.IDCURSOPROPIO=r.CURSO AND m.IDMATERIA=r.MATERIA AND c.IDCURSOPROPIO="
@@ -122,7 +122,7 @@ public class MateriaDAO implements AbstractEntityDAO <Object>  {
 	public int seleccionarId(Materia materia) {
 		int idMateria=0;
 		
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		
 		String insertSQL = "SELECT idmateria FROM materia WHERE nombre = '"+materia.getNombre()
 				+"' AND fechaInicio = '"+materia.getFechaInicio()+"'  AND fechaFin = '"+materia.getFechaFin()

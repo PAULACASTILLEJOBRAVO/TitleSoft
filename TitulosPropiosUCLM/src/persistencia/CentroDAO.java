@@ -28,7 +28,7 @@ public class CentroDAO implements AbstractEntityDAO  <Object> {
 	}
 
 	public List<Object> listarNombreCentro(String nombre){		
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		String selectSQLEdicion= "SELECT * FROM centro WHERE nombre = '"+nombre.trim()+"' ";
 		resultado = GestorBD.select(selectSQLEdicion);
 
@@ -40,7 +40,7 @@ public class CentroDAO implements AbstractEntityDAO  <Object> {
 	
 	@Override
 	public Object get(String id) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		Centro centroEncontrado=null;
 		
 		String selectSQL= "SELECT * FROM centro WHERE nombre = '"+id.trim()+"' ";
@@ -53,7 +53,7 @@ public class CentroDAO implements AbstractEntityDAO  <Object> {
 			List<Object> resultadosNombreCentro= listarNombreCentro(aux[1]);
 			
 			//collecion de Profesores
-			Collection<Profesor> profesoresCollection=null;
+			Collection<Profesor> profesoresCollection = new LinkedList<>();
 			GestorProfesor gProfesor= new GestorProfesor();
 			
 			for(int i=0;i<resultadosNombreCentro.size();i++) {

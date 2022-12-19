@@ -23,8 +23,8 @@ public class EstudianteDAO implements AbstractEntityDAO <Object> {
 	}
 	
 	public Collection<Estudiante> listarEstudianteTitulacion(String titulacion) {
-		LinkedList<Object> resultado;
-		Collection<Estudiante> alumnosEncontrados=null;
+		List<Object> resultado;
+		Collection<Estudiante> alumnosEncontrados=new LinkedList<>();
 		String selectSQLEdicion= "SELECT * FROM estudiante"
 				+ "WHERE titulacion = '"+titulacion+"'  ";
 
@@ -41,8 +41,8 @@ public class EstudianteDAO implements AbstractEntityDAO <Object> {
 	}
 
 	public Collection<Estudiante> listarCalificacion(double calificacion){
-		LinkedList<Object> resultado;
-		Collection<Estudiante> alumnosEncontrados=null;
+		List<Object> resultado;
+		Collection<Estudiante> alumnosEncontrados=new LinkedList<>();
 	
 		String selectSQLEdicion= "SELECT * FROM estudiante"
 				+ "WHERE calificacion = '"+calificacion+"' ";
@@ -60,7 +60,7 @@ public class EstudianteDAO implements AbstractEntityDAO <Object> {
 
 	@Override
 	public Object get(String id) {
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		Estudiante alumnoEncontrado=null;
 		String selectSQL= "SELECT * FROM estudiante WHERE id = '"+id+"' ";
 

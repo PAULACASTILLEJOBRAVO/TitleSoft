@@ -1,7 +1,6 @@
 package presentacion;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -21,7 +20,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 
 	public PantallaEmpleadosVicerrectorado() {
 		setTitle("Sesion:Vicerrector");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 520, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -29,109 +28,94 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton btnAprobarCursos = new JButton("Aprobar Cursos");
-		btnAprobarCursos.addActionListener(new ActionListener(){
+		btnAprobarCursos.addActionListener((ActionEvent e) -> {
+			JTextField textIDcurso = new JTextField();
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JTextField textIDcurso = new JTextField();
+			setTitle("Sesion: Jefe Gabinete-------Aprobar Cursos");
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			setBounds(300, 300, 520, 300);
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);
+			contentPane.revalidate();
 
-				setTitle("Sesion: Jefe Gabinete-------Aprobar Cursos");
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				setBounds(300, 300, 520, 300);
-				contentPane = new JPanel();
-				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-				setContentPane(contentPane);
-				contentPane.setLayout(null);
-				contentPane.revalidate();
+			JLabel lblIDcurso = new JLabel("Id del curso:");
+			lblIDcurso.setBounds(100, 90, 79, 20);
+			add(lblIDcurso);
 
-				JLabel lblIDcurso = new JLabel("Id del curso:");
-				lblIDcurso.setBounds(100, 90, 79, 20);
-				add(lblIDcurso);
+			textIDcurso.setBounds(250, 94, 132, 20);
+			add(textIDcurso);
+			textIDcurso.setColumns(10);
 
-				textIDcurso.setBounds(250, 94, 132, 20);
-				add(textIDcurso);
-				textIDcurso.setColumns(10);
+			GestorConsultas gConsultas=new GestorConsultas();
+			Collection<CursoPropio> resultado=gConsultas.consultarCursosPropuestos(EstadoCurso.PROPUESTO);
 
-				GestorConsultas gConsultas=new GestorConsultas();
-				Collection<CursoPropio> resultado=gConsultas.consultarCursosPropuestos(EstadoCurso.PROPUESTO);
+			JFrame jFrame=new JFrame();
+			jFrame.setTitle("Propuestas Cursos");
+			DefaultTableModel tabla=new DefaultTableModel();
+			JTable jTabla = new JTable(tabla);
+			jTabla.setBounds(30,10,230,280);
+			tabla.addColumn("Id");
+			tabla.addColumn("Nombre del Curso");
+			tabla.addColumn("ECTS");
+			tabla.addColumn("Tasa Matricula");
+			tabla.addColumn("Edicion");
+			tabla.addColumn("Estado");
+			tabla.addColumn("Tipo Curso");
+			tabla.addColumn("Secretario");
+			tabla.addColumn("Director");
+			tabla.addColumn("Materia");
 
-				JFrame jFrame=new JFrame();
-				jFrame.setTitle("Propuestas Cursos");
-				DefaultTableModel tabla=new DefaultTableModel();
-				JTable jTabla = new JTable(tabla);
-				jTabla.setBounds(30,10,230,280);
-				tabla.addColumn("Id");
-				tabla.addColumn("Nombre del Curso");
-				tabla.addColumn("ECTS");
-				tabla.addColumn("Tasa Matricula");
-				tabla.addColumn("Edicion");
-				tabla.addColumn("Estado");
-				tabla.addColumn("Tipo Curso");
-				tabla.addColumn("Secretario");
-				tabla.addColumn("Director");
-				tabla.addColumn("Materia");
+			Iterator<CursoPropio> it=resultado.iterator();
+			while(it.hasNext()) {
+				CursoPropio cursoAux=it.next();
+				Object[] materiasCurso=cursoAux.getMaterias().toArray();
+				StringBuilder datosMateriaNombres =new StringBuilder();
 
-				Iterator<CursoPropio> it=resultado.iterator();
-				while(it.hasNext()) {
-					CursoPropio cursoAux=it.next();
-					Object[] materiasCurso=cursoAux.getMaterias().toArray();
-					StringBuilder datosMateriaNombres =new StringBuilder();
-
-					for(int j=0;j<materiasCurso.length;j++) {
-						Materia materiaAux=(Materia)materiasCurso[j];
-						datosMateriaNombres.append(materiaAux.getNombre());
-					}
-					
-					String datosMateria = datosMateriaNombres.toString();
-
-					tabla.addRow(new Object[] {
-							cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
-							cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
-							cursoAux.getSecretario().getNombre(),cursoAux.getDirector().getNombre(),datosMateria
-					});
+				for(int j=0;j<materiasCurso.length;j++) {
+					Materia materiaAux=(Materia)materiasCurso[j];
+					datosMateriaNombres.append(materiaAux.getNombre());
 				}
 
-				JScrollPane jScrollPane = new JScrollPane(jTabla);
-				jFrame.add(jScrollPane);
-				jFrame.setSize(350, 300);
-				jFrame.setVisible(true);
-				contentPane.revalidate();
+				String datosMateria = datosMateriaNombres.toString();
 
-				JButton btnConfirmar = new JButton("Aprobar");
-				btnConfirmar.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						botonAprobarCurso(textIDcurso);
-						JLabel lblCursoAprobado = new JLabel("Curso Aprobado correctamente");
-						lblCursoAprobado.setBounds(100, 120, 150, 20);
-						add(lblCursoAprobado);
-						lblCursoAprobado.updateUI();
-					}
+				tabla.addRow(new Object[] {
+						cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
+						cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
+						cursoAux.getSecretario().getNombre(),cursoAux.getDirector().getNombre(),datosMateria
 				});
-				btnConfirmar.setBounds(201, 150, 100, 20);
-				add(btnConfirmar);
-
-				JButton btnRechazar = new JButton("Rechazar");
-				btnRechazar.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						try {
-							botonRechazarCurso(textIDcurso);
-
-							JLabel lblCursoRechazado = new JLabel("Curso rechazado correctamente");
-							lblCursoRechazado.setBounds(100, 120, 180, 20);
-							add(lblCursoRechazado);
-							lblCursoRechazado.updateUI();
-						} catch (Exception e1) {
-							MainTesting.escribirLog(MainTesting.ERROR,"Error a rechazar curso");
-						}
-					}
-				});
-				btnRechazar.setBounds(201, 170, 100, 20);
-				add(btnRechazar);
 			}
+
+			JScrollPane jScrollPane = new JScrollPane(jTabla);
+			jFrame.add(jScrollPane);
+			jFrame.setSize(350, 300);
+			jFrame.setVisible(true);
+			contentPane.revalidate();
+
+			JButton btnConfirmar = new JButton("Aprobar");
+			btnConfirmar.addActionListener((ActionEvent e1) -> {
+				botonAprobarCurso(textIDcurso);
+				JLabel lblCursoAprobado = new JLabel("Curso Aprobado correctamente");
+				lblCursoAprobado.setBounds(100, 120, 150, 20);
+				add(lblCursoAprobado);
+				lblCursoAprobado.updateUI();
+			});
+			btnConfirmar.setBounds(201, 150, 100, 20);
+			add(btnConfirmar);
+
+			JButton btnRechazar = new JButton("Rechazar");
+			btnRechazar.addActionListener((ActionEvent e1) -> {
+
+				botonRechazarCurso(textIDcurso);
+
+				JLabel lblCursoRechazado = new JLabel("Curso rechazado correctamente");
+				lblCursoRechazado.setBounds(100, 120, 180, 20);
+				add(lblCursoRechazado);
+				lblCursoRechazado.updateUI();
+			});
+			btnRechazar.setBounds(201, 170, 100, 20);
+			add(btnRechazar);
 		});
 		btnAprobarCursos.setBounds(200, 100, 150, 20);
 		add(btnAprobarCursos);

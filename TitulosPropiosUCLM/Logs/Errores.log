@@ -202,3 +202,329 @@ dic 15, 2022 10:47:58 P. M. presentacion.Main_testing escribirLog
 INFORMACIÓN: Error al consultar cursos por ediciones
 dic 18, 2022 3:26:43 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:51:34 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:51:34 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:51:39 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:51:39 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:51:39 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:51:39 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 10:52:24 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:52:24 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:52:24 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:52:24 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 10:52:37 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:52:37 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:52:40 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:52:40 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:52:40 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:52:40 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 10:53:14 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:53:14 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:53:43 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:53:43 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:53:43 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:53:44 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 10:54:01 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:54:01 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:54:47 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:54:47 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:54:48 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:54:48 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 10:55:36 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:55:36 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:55:45 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:55:45 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:56:16 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:56:27 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:56:34 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:59:15 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:59:15 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:59:19 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:59:19 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 10:59:19 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 10:59:19 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 11:01:55 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:01:55 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 11:07:03 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 11:07:03 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:07:03 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 11:07:13 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:07:13 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 11:13:17 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 11:13:18 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:13:18 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 11:15:35 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:15:35 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 11:17:07 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:17:07 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 11:34:50 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:34:50 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 11:42:21 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:42:21 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 11:43:05 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 11:43:05 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:43:05 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 11:44:00 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 11:44:00 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:44:00 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 11:50:51 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 11:50:51 A. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 12:05:08 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 12:05:08 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:05:08 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:15:48 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 12:15:48 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:15:48 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:20:02 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 12:20:02 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:20:02 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:29:27 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 12:29:27 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:29:27 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:29:30 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 12:29:30 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:29:30 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:30:16 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:30:16 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:30:18 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:30:18 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby did not shut down normally
+dic 19, 2022 12:30:18 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: org.apache.derby.jdbc.EmbeddedDriver is not registered with the JDBC driver manager
+dic 19, 2022 12:30:20 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:30:20 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 12:31:14 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:31:14 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:40:20 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 12:40:20 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:40:20 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:48:23 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 12:49:53 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 12:49:53 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:49:53 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:57:01 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 12:57:01 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:57:01 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 12:57:25 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 12:58:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 12:58:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 12:58:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:01:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:05:26 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:05:27 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:06:17 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 19, 2022 1:06:19 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 19, 2022 1:16:20 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 1:16:20 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 1:16:20 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 1:19:45 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 1:19:45 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 1:19:45 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 1:25:29 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 1:25:29 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error encotrando ediciones
+dic 19, 2022 1:27:13 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 1:44:30 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 1:44:30 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 1:44:30 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 1:47:49 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error encotrando ediciones
+dic 19, 2022 1:48:00 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error encotrando ediciones
+dic 19, 2022 1:49:02 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 1:49:02 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 1:49:02 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 4:51:43 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar usuario

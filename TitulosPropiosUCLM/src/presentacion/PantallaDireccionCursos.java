@@ -1,7 +1,6 @@
 package presentacion;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Date;
 
 import javax.swing.*;
@@ -36,12 +35,11 @@ public class PantallaDireccionCursos extends JFrame {
 	private JRadioButton rdbtnNewRadioButtonMicrocredenciales;
 	private JRadioButton rdbtnNewRadioButtonFormacionContinua;
 	private JRadioButton rdbtnNewRadioButtonFormacionAvanzada;
-	CursoPropio cursoNuevo;
 	
 	public PantallaDireccionCursos() {
 		
 		setTitle("Sesion:Direccion");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 520, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -134,12 +132,11 @@ public class PantallaDireccionCursos extends JFrame {
 		textFieldSecretario.setColumns(10);
 		
 		JButton btnNewButtonAceptar = new JButton("Aceptar");
-		btnNewButtonAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					validarDatosPropuestaCurso();
+		btnNewButtonAceptar.addActionListener(e -> {
+					CursoPropio curso=validarDatosPropuestaCurso();
 					
 					setTitle("Sesion:Direccion");
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 					setBounds(300, 300, 520, 300);
 					contentPane = new JPanel();
 					contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -197,35 +194,20 @@ public class PantallaDireccionCursos extends JFrame {
 					add(lblNewLabel);
 					
 					JButton btnAceptar = new JButton("Aceptar");
-					btnAceptar.addActionListener(new ActionListener() {
-
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							validarDatosMateriaPorCurso();
-						}
-					});
+					btnAceptar.addActionListener((ActionEvent e1) -> validarDatosMateriaPorCurso(curso));
 					btnAceptar.setBounds(200, 432, 100, 20);
 					add(btnAceptar);
 					
 					JButton btnNewButtonCancelar = new JButton("Cancelar");
-					btnNewButtonCancelar.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							limpiarFormulario();
-						}
-					});
+					btnNewButtonCancelar.addActionListener((ActionEvent e1) -> limpiarFormulario());
 					btnNewButtonCancelar.setBounds(400, 432, 95, 21);
 					add(btnNewButtonCancelar);
-			}
 		});
 		btnNewButtonAceptar.setBounds(553, 432, 83, 21);
 		add(btnNewButtonAceptar);
 
 		JButton btnNewButtonCancelar = new JButton("Cancelar");
-		btnNewButtonCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpiarFormulario();
-			}
-		});
+		btnNewButtonCancelar.addActionListener((ActionEvent e) -> limpiarFormulario());
 		btnNewButtonCancelar.setBounds(658, 432, 83, 21);
 		add(btnNewButtonCancelar);
 
@@ -278,9 +260,9 @@ public class PantallaDireccionCursos extends JFrame {
 		lblError.setText("");
 	}
 	
-	private void validarDatosPropuestaCurso(){
-			if (validarDatosCurso()) {
-				lblError.setText("");
+	private CursoPropio validarDatosPropuestaCurso(){
+		CursoPropio cursoPropuesto=null;	
+		if (validarDatosCurso()) {
 				TipoCurso tipoCurso = null;
 				
 				if(rdbtnNewRadioButtonCortaDuracion.isSelected()) {
@@ -308,16 +290,15 @@ public class PantallaDireccionCursos extends JFrame {
 				
 				double tasaMatricula = Integer.parseInt(textFieldTasaMatricula.getText()) + 0.0;
 				
-				cursoNuevo = gestorPropuestaCurso.realizarPropuestaCurso(textFieldCurso.getText(), fechaSQLInicio, fechaSQLFin, Integer.parseInt(textFieldEtcs.getText()), tasaMatricula, Integer.parseInt(textFieldEdicion.getText()), textFieldDirector.getText(), textFieldSecretario.getText(), EstadoCurso.PROPUESTO, tipoCurso, textFieldCentro.getText());
+				cursoPropuesto = gestorPropuestaCurso.realizarPropuestaCurso(textFieldCurso.getText(), fechaSQLInicio, fechaSQLFin, Integer.parseInt(textFieldEtcs.getText()), tasaMatricula, Integer.parseInt(textFieldEdicion.getText()), textFieldDirector.getText(), textFieldSecretario.getText(), EstadoCurso.PROPUESTO, tipoCurso, textFieldCentro.getText());
 			} else {
 				lblError.setText("No se ha podido completar el curso. Rellena todos los campos.");
 			}
+			return cursoPropuesto;
 	}
 	
-	public void validarDatosMateriaPorCurso() {
+	public void validarDatosMateriaPorCurso(CursoPropio cursoNuevo) {
 		if (validarDatosMateria()) {
-			lblError.setText("");
-			
 			GestorMateria gestorMateria = new GestorMateria();
 			String fechaInicio=textFieldFechaInicioMateria.getText();
 			Date fechaSQLInicio = Date.valueOf(fechaInicio);

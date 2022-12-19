@@ -1,10 +1,8 @@
 package presentacion;
 
 import java.sql.Date;
-import java.sql.SQLException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -13,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import negocio.controllers.GestorMatriculacion;
@@ -27,9 +26,9 @@ public class PantallaMatriculacion extends JFrame {
 	private JRadioButton rdbtnTarjetaCredito;
 	private JPanel contentPane;
 
-	public PantallaMatriculacion() throws SQLException, ClassNotFoundException, NumberFormatException{
+	public PantallaMatriculacion() {
 		setTitle("Sesion: Estudiante");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(300, 200, 820, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,24 +67,12 @@ public class PantallaMatriculacion extends JFrame {
 		add(lblestudiante);
 
 		JButton botonAceptar= new JButton("Aceptar");
-		botonAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					validarDatosMatriculacion();
-				} catch (SQLException | NumberFormatException | ClassNotFoundException e1) {
-					MainTesting.escribirLog(MainTesting.ERROR,"Error a realizar matricula");
-				}
-			}
-		});
+		botonAceptar.addActionListener((ActionEvent e) -> validarDatosMatriculacion());
 		botonAceptar.setBounds(553, 432, 83, 21);
 		add(botonAceptar);
 
 		JButton botonCancelar = new JButton("Cancelar");
-		botonCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpiarFormulario();
-			}
-		});
+		botonCancelar.addActionListener((ActionEvent e) -> limpiarFormulario());
 		botonCancelar.setBounds(658, 432, 83, 21);
 		add(botonCancelar);
 
@@ -113,7 +100,7 @@ public class PantallaMatriculacion extends JFrame {
 		lblError.setText("");
 	}
 
-	private void validarDatosMatriculacion() throws NumberFormatException, SQLException, ClassNotFoundException {
+	private void validarDatosMatriculacion() {
 			if (validarDatos()) {
 				lblError.setText("");
 				ModoPago modoPago = rdbtnTransferencia.isSelected() ? ModoPago.TRANSFERENCIA : ModoPago.TARJETA_CREDITO;

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import negocio.entities.*;
 import presentacion.MainTesting;
@@ -29,8 +30,8 @@ public class MatriculaDAO implements AbstractEntityDAO  <Object> {
 	}
 
 	public Collection<Matricula> listarMatriculaTitulacion(String titulacion)  {
-		LinkedList<Object> resultado;
-		Collection<Matricula> matriculasEncontradas=null;
+		List<Object> resultado;
+		Collection<Matricula> matriculasEncontradas=new LinkedList<>();
 		String selectSQLEdicion= "SELECT * FROM matricula"
 				+ "WHERE titulacion = '"+titulacion+"' ";
 
@@ -47,8 +48,8 @@ public class MatriculaDAO implements AbstractEntityDAO  <Object> {
 	}
 	
 	public Collection<Matricula> listarMatriculaCurso(int curso) {
-		LinkedList<Object> resultado;
-		Collection<Matricula> matriculasEncontradas=null;
+		List<Object> resultado;
+		Collection<Matricula> matriculasEncontradas=new LinkedList<>();
 
 		String selectSQLEdicion= "SELECT * FROM matricula"
 				+ "WHERE Curso = '"+curso+"' ";
@@ -67,7 +68,7 @@ public class MatriculaDAO implements AbstractEntityDAO  <Object> {
 
 	@Override
 	public Object get(String id){
-		LinkedList<Object> resultado;
+		List<Object> resultado;
 		Matricula matriculaEncontrada=null;
 		
 		String selectSQL= "SELECT * FROM matricula WHERE idMatricula = "+id+" ";
@@ -98,7 +99,7 @@ public class MatriculaDAO implements AbstractEntityDAO  <Object> {
 	public int insert(Object entity){
 		int resultado=0;
 		Matricula matricula= (Matricula)entity;
-		String insertSQL = "INSERT INTO matricula (curso,dni,fecha,pagado,modo) " 
+		String insertSQL = "INSERT INTO admin.matricula (curso,dni,fecha,pagado,modo) " 
 				+ "VALUES ( "+matricula.getTitulo()+" , '"+matricula.getDni()+"' , '"
 				+matricula.getFecha()+"', '"+matricula.isPagado()+"' , '"+matricula.getTipoPago()+"' )";
 

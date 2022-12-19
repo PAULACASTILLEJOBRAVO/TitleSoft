@@ -7,10 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.LinkedList;
-import java.util.Vector;
-
-
+import java.util.List;
 
 import org.apache.derby.jdbc.EmbeddedDriver;
 
@@ -19,9 +18,8 @@ import presentacion.MainTesting;
 public class GestorBD {
 	// instancia del agente
 	protected static GestorBD mInstancia = null;
-	// Conexion con la base de datos
-	protected static Connection mBD;
-	private static ResultSet rs;
+	
+	private static final String MENSAJEERROR="Error al conectar con la base de datos";
 
 	// Constructor
 	private GestorBD() {
@@ -40,145 +38,118 @@ public class GestorBD {
 	}
 
 	// Metodo para realizar la conexion a la base de datos
-	public static void conectar()  {
-		PreparedStatement pstmt;
-		Statement stmt;
-		String createSQL = "create table usuario (idusuario varchar(30) not null, contrasenia varchar(30) not null, constraint primary_key primary key (idusuario))";
-
+	public static Connection conectar()  {
 		try {
 			Driver derbyEmbeddedDriver = new EmbeddedDriver();
 			DriverManager.registerDriver(derbyEmbeddedDriver);
-			mBD = DriverManager.getConnection(ConstantesBD.CONNECTION_STRING, ConstantesBD.DBUSER, ConstantesBD.DBPASS);
-			mBD.setAutoCommit(false);
-			stmt = mBD.createStatement();
-			stmt.execute(createSQL);
-
-			pstmt = mBD.prepareStatement("insert into usuario (idusuario, contrasenia) values(?,?)");
-			pstmt.setString(1, "alumno");
-			pstmt.setString(2, "alumno");
-			pstmt.executeUpdate();
-
-			while (rs.next()) {
-				System.out.printf("%s - pass: %s\n", rs.getString(1), rs.getString(2));
-			}
-
-			mBD.commit();
-
+			return DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=true", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
 		} catch (SQLException ex) {
-			System.out.println("in connection" + ex);
+			MainTesting.escribirLog(MainTesting.ERROR, "in connection" + ex);
 		}
-		
 		try {
 			DriverManager.getConnection("jdbc:derby:;shutdown=true");
 		} catch (SQLException ex) {
+			MainTesting.escribirLog(MainTesting.ERROR, MENSAJEERROR);
 			if (((ex.getErrorCode() == 50000) && ("XJ015".equals(ex.getSQLState())))) {
-				System.out.println("Derby shut down normally");
+				MainTesting.escribirLog(MainTesting.ERROR,"Derby shut down normally");
 			} else {
-				System.err.println("Derby did not shut down normally");
-				System.err.println(ex.getMessage());
+				MainTesting.escribirLog(MainTesting.ERROR,"Derby did not shut down normally");
+				MainTesting.escribirLog(MainTesting.ERROR,ex.getMessage());
 			}
 		}
+		return null;
 	}
 
 	// Metodo para desconectar de la base de datos
-	public static void desconectar() {
+	public static void desconectar(Connection mBD) {
 		try {
 			mBD.close();
 		}catch (SQLException e) {
-			MainTesting.escribirLog(MainTesting.ERROR,"Error al conectar con la base de datos");
+			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
 		}
 	}
 
 	// Metodo para realizar una insercion en la base de datos
-	public static int insert(String SQL) {
+	public static int insert(String sql) {
 		try {
-			Driver derbyEmbeddedDriver = new EmbeddedDriver();
-			DriverManager.registerDriver(derbyEmbeddedDriver);
-			Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
-			
-			PreparedStatement stmt = mBD.prepareStatement(SQL);
+			Connection mBD=conectar();
+
+			PreparedStatement stmt = mBD.prepareStatement(sql);
 			int res = stmt.executeUpdate();
 			stmt.close();
-			
-			desconectar();
+
+			desconectar(mBD);
 			return res;
 		}catch (SQLException e) {
-			MainTesting.escribirLog(MainTesting.ERROR,"Error al conectar con la base de datos");
+			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
 			return -1;
 		}
 	}
 
 	// Metodo para realizar una eliminacion en la base de datos
-	public int delete(String SQL) {
+	public int delete(String sql) {
 		try {
-			Driver derbyEmbeddedDriver = new EmbeddedDriver();
-			DriverManager.registerDriver(derbyEmbeddedDriver);
-			Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+			Connection mBD=conectar();
 
-
-			PreparedStatement stmt = mBD.prepareStatement(SQL);
+			PreparedStatement stmt = mBD.prepareStatement(sql);
 			int res = stmt.executeUpdate();
 			stmt.close();
-			desconectar();
+			desconectar(mBD);
 			return res;
 		}catch (SQLException e) {
-			MainTesting.escribirLog(MainTesting.ERROR,"Error al conectar con la base de datos");
+			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
 			return -1;
 		}
 	}
 
 	// Metodo para realizar una eliminacion en la base de datos
-	public static int update(String SQL) {
+	public static int update(String sql) {
 		try {
-			Driver derbyEmbeddedDriver = new EmbeddedDriver();
-			DriverManager.registerDriver(derbyEmbeddedDriver);
-			Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
+			Connection mBD=conectar();
 
-			PreparedStatement stmt = mBD.prepareStatement(SQL);
+			PreparedStatement stmt = mBD.prepareStatement(sql);
 			int res = stmt.executeUpdate();
 			stmt.close();
-			desconectar();
+			desconectar(mBD);
 			return res;
 		}catch (SQLException e) {
-			MainTesting.escribirLog(MainTesting.ERROR,"Error al conectar con la base de datos");
+			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
 			return -1;
 		}
 	}
 
-	public static LinkedList<Object> select(String SQL) {
+	public static List<Object> select(String sql) {
 		/*
 		 * Metodo para realizar una busqueda o seleccion de informacion enla base de
 		 * datos El mŽtodo select develve un vector de vectores, donde cada uno de los
 		 * vectores que contiene el vector principal representa los registros que se
 		 * recuperan de la base de datos.
 		 */
-
+		LinkedList<Object> vectoradevolver = new LinkedList<>();
 		try {
-			Driver derbyEmbeddedDriver = new EmbeddedDriver();
-			DriverManager.registerDriver(derbyEmbeddedDriver);
-			Connection mBD = DriverManager.getConnection(""+ConstantesBD.DRIVER+":"+ConstantesBD.DBNAME+";create=false", ConstantesBD.DBUSER, ConstantesBD.DBPASS);
-			
-			LinkedList<Object> vectoradevolver = new LinkedList<Object>();
-			Statement stmt = mBD.createStatement();
-			ResultSet res = stmt.executeQuery(SQL);
+			Connection mBD=conectar();
 
-			while (res.next()) { Vector<Object> v = new
-					Vector<Object>(); 
-			for(int i=1; i<20; i++) {
-				try	{ 
-					v.add(res.getObject(i)); 
-				} catch(SQLException ex) { 
-					continue; 
-				} 
-			} 
-			vectoradevolver.add(v); 
+			Statement stmt = mBD.createStatement();
+			ResultSet res = stmt.executeQuery(sql);
+			
+			while (res.next()) { 
+				LinkedList<Object> v = new	LinkedList<>();
+				
+				for(int i = 1; i<20; i++) {
+					try	{ 
+						v.add(res.getObject(i)); 
+					} catch(SQLException ex) { 
+						continue; 
+					} 
+				}
+				vectoradevolver.add(v); 
 			}
 			stmt.close();
 
 			return vectoradevolver;	
 		}catch (SQLException e) {
-			MainTesting.escribirLog(MainTesting.ERROR,"Error al conectar con la base de datos");
-			return null;
+			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
+			return vectoradevolver;
 		}
 	}
 }
