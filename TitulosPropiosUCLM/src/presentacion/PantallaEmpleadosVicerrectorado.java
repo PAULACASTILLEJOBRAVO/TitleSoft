@@ -3,17 +3,14 @@ package presentacion;
 import java.awt.event.ActionEvent;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import negocio.controllers.GestorConsultas;
 
 import negocio.entities.CursoPropio;
 import negocio.entities.EstadoCurso;
-import negocio.entities.Materia;
 
 public class PantallaEmpleadosVicerrectorado extends JFrame {
 	private JPanel contentPane;
@@ -51,46 +48,7 @@ public class PantallaEmpleadosVicerrectorado extends JFrame {
 			GestorConsultas gConsultas=new GestorConsultas();
 			Collection<CursoPropio> resultado=gConsultas.consultarCursosPropuestos(EstadoCurso.PROPUESTO);
 
-			JFrame jFrame=new JFrame();
-			jFrame.setTitle("Propuestas Cursos");
-			DefaultTableModel tabla=new DefaultTableModel();
-			JTable jTabla = new JTable(tabla);
-			jTabla.setBounds(30,10,230,280);
-			tabla.addColumn("Id");
-			tabla.addColumn("Nombre del Curso");
-			tabla.addColumn("ECTS");
-			tabla.addColumn("Tasa Matricula");
-			tabla.addColumn("Edicion");
-			tabla.addColumn("Estado");
-			tabla.addColumn("Tipo Curso");
-			tabla.addColumn("Secretario");
-			tabla.addColumn("Director");
-			tabla.addColumn("Materia");
-
-			Iterator<CursoPropio> it=resultado.iterator();
-			while(it.hasNext()) {
-				CursoPropio cursoAux=it.next();
-				Object[] materiasCurso=cursoAux.getMaterias().toArray();
-				StringBuilder datosMateriaNombres =new StringBuilder();
-
-				for(int j=0;j<materiasCurso.length;j++) {
-					Materia materiaAux=(Materia)materiasCurso[j];
-					datosMateriaNombres.append(materiaAux.getNombre());
-				}
-
-				String datosMateria = datosMateriaNombres.toString();
-
-				tabla.addRow(new Object[] {
-						cursoAux.getIdCursoPropio(),cursoAux.getNombre(),cursoAux.getECTS(),cursoAux.getTasaMatricula(),
-						cursoAux.getEdicion(),cursoAux.getEstado(),cursoAux.getTipo(),
-						cursoAux.getSecretario().getNombre(),cursoAux.getDirector().getNombre(),datosMateria
-				});
-			}
-
-			JScrollPane jScrollPane = new JScrollPane(jTabla);
-			jFrame.add(jScrollPane);
-			jFrame.setSize(350, 300);
-			jFrame.setVisible(true);
+			PantallaJefeGabineteVicerrectorado.crearTabla(resultado);
 			contentPane.revalidate();
 
 			JButton btnConfirmar = new JButton("Aprobar");

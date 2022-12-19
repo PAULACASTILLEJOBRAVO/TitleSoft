@@ -305,9 +305,9 @@ public class PantallaDireccionCursos extends JFrame {
 	}
 
 	private boolean validarDatosCurso() {
-		return !(textFieldFechaInicio.getText().isEmpty() || textFieldCurso.getText().isEmpty() || textFieldFechaFin.getText().isEmpty()
-				|| textFieldCurso.getText().isEmpty() || textFieldDirector.getText().isEmpty()
-				|| textFieldEdicion.getText().isEmpty() || textFieldSecretario.getText().isEmpty() || textFieldTasaMatricula.getText().isEmpty());
+		return !(textFieldFechaInicio.getText().isEmpty() || textFieldFechaFin.getText().isEmpty() || textFieldCentro.getText().isEmpty()
+				|| textFieldCurso.getText().isEmpty() || textFieldDirector.getText().isEmpty() || textFieldSecretario.getText().isEmpty() 
+				|| textFieldEdicion.getText().isEmpty() || textFieldTasaMatricula.getText().isEmpty());
 	}
 	
 	private boolean validarDatosMateria() {

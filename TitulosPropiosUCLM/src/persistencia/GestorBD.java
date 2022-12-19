@@ -71,51 +71,17 @@ public class GestorBD {
 
 	// Metodo para realizar una insercion en la base de datos
 	public static int insert(String sql) {
-		try {
-			Connection mBD=conectar();
-
-			PreparedStatement stmt = mBD.prepareStatement(sql);
-			int res = stmt.executeUpdate();
-			stmt.close();
-
-			desconectar(mBD);
-			return res;
-		}catch (SQLException e) {
-			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
-			return -1;
-		}
+		return tratamientoSEntenciaSQL(sql);
 	}
 
 	// Metodo para realizar una eliminacion en la base de datos
 	public int delete(String sql) {
-		try {
-			Connection mBD=conectar();
-
-			PreparedStatement stmt = mBD.prepareStatement(sql);
-			int res = stmt.executeUpdate();
-			stmt.close();
-			desconectar(mBD);
-			return res;
-		}catch (SQLException e) {
-			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
-			return -1;
-		}
+		return tratamientoSEntenciaSQL(sql);
 	}
 
 	// Metodo para realizar una eliminacion en la base de datos
 	public static int update(String sql) {
-		try {
-			Connection mBD=conectar();
-
-			PreparedStatement stmt = mBD.prepareStatement(sql);
-			int res = stmt.executeUpdate();
-			stmt.close();
-			desconectar(mBD);
-			return res;
-		}catch (SQLException e) {
-			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
-			return -1;
-		}
+		return tratamientoSEntenciaSQL(sql);
 	}
 
 	public static List<Object> select(String sql) {
@@ -150,6 +116,21 @@ public class GestorBD {
 		}catch (SQLException e) {
 			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
 			return vectoradevolver;
+		}
+	}
+	
+	public static int tratamientoSEntenciaSQL(String sql) {
+		try {
+			Connection mBD=conectar();
+
+			PreparedStatement stmt = mBD.prepareStatement(sql);
+			int res = stmt.executeUpdate();
+			stmt.close();
+			desconectar(mBD);
+			return res;
+		}catch (SQLException e) {
+			MainTesting.escribirLog(MainTesting.ERROR,MENSAJEERROR);
+			return -1;
 		}
 	}
 }

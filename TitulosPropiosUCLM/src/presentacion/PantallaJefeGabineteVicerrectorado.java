@@ -76,6 +76,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 						Collection<CursoPropio> resultado;
 						resultado = botonConfirmarCursos(textFieldFechaFinal,textFieldFechaInicio);
 						crearTabla(resultado);
+						contentPane.revalidate();
 
 						setTitle("Sesion: Jefe Gabinete-------Ingresos");
 						setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -114,83 +115,14 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		add(btnConsultarIngresos);
 
 		JButton btnListarEdiciones = new JButton("Listar Ediciones");
-		btnListarEdiciones.addActionListener((ActionEvent e) -> {
-
-				JTextField textFieldFechaInicioEdiciones = new JTextField();
-				JTextField textFieldFechaFinalEdiciones = new JTextField();
-
-				setTitle("Sesion: Jefe Gabinete-------Listar Ediciones");
-				setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-				setBounds(300, 300, 520, 300);
-				contentPane = new JPanel();
-				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-				setContentPane(contentPane);
-				contentPane.setLayout(null);
-				contentPane.revalidate();
-
-				JLabel lblFechaInicioEdiciones = new JLabel(FORMATOFECHAINICIO);
-				lblFechaInicioEdiciones.setBounds(100, 90, 200, 20);
-				add(lblFechaInicioEdiciones);
-
-				textFieldFechaInicioEdiciones.setBounds(250, 94, 132, 20);
-				add(textFieldFechaInicioEdiciones);
-				textFieldFechaInicioEdiciones.setColumns(10);
-
-				JLabel lblFechaFinalEdicion = new JLabel(FORMATOFECHAFIN);
-				lblFechaFinalEdicion.setBounds(100, 150, 200, 20);
-				add(lblFechaFinalEdicion);
-
-				textFieldFechaFinalEdiciones.setBounds(250, 154, 132, 20);
-				add(textFieldFechaFinalEdiciones);
-				textFieldFechaFinalEdiciones.setColumns(10);
-
-				JButton btnConfirmar = new JButton(CONFIRMAR);
-				btnConfirmar.addActionListener((ActionEvent e1) -> 
-						botonConfirmarEdiciones(textFieldFechaFinalEdiciones,textFieldFechaInicioEdiciones));
-				btnConfirmar.setBounds(201, 200, 100, 20);
-				add(btnConfirmar);
-		});
+		btnListarEdiciones.addActionListener((ActionEvent e) -> 
+				recogidaParametros("Sesion: Jefe Gabinete-------Listar Ediciones"));
 		btnListarEdiciones.setBounds(200, 150, 150, 20);
 		add(btnListarEdiciones);
 
 		JButton btnAprobarCursos = new JButton("Consular Cursos");
-		btnAprobarCursos.addActionListener((ActionEvent e) -> {
-				JTextField textFieldFechaInicioEdiciones = new JTextField();
-				JTextField textFieldFechaFinalEdiciones = new JTextField();
-
-				setTitle("Sesion: Jefe Gabinete-------Consultar Cursos");
-				setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-				setBounds(300, 300, 520, 300);
-				contentPane = new JPanel();
-				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-				setContentPane(contentPane);
-				contentPane.setLayout(null);
-				contentPane.revalidate();
-
-				JLabel lblFechaInicioEdiciones = new JLabel(FORMATOFECHAINICIO);
-				lblFechaInicioEdiciones.setBounds(100, 90, 200, 20);
-				add(lblFechaInicioEdiciones);
-
-				textFieldFechaInicioEdiciones.setBounds(250, 94, 132, 20);
-				add(textFieldFechaInicioEdiciones);
-				textFieldFechaInicioEdiciones.setColumns(10);
-
-				JLabel lblFechaFinalEdicion = new JLabel(FORMATOFECHAFIN);
-				lblFechaFinalEdicion.setBounds(100, 150, 200, 20);
-				add(lblFechaFinalEdicion);
-
-				textFieldFechaFinalEdiciones.setBounds(250, 154, 132, 20);
-				add(textFieldFechaFinalEdiciones);
-				textFieldFechaFinalEdiciones.setColumns(10);
-
-				JButton btnConfirmar = new JButton(CONFIRMAR);
-				btnConfirmar.addActionListener((ActionEvent e1) -> {
-							Collection<CursoPropio> resultado=botonConfirmarCursos(textFieldFechaFinalEdiciones,textFieldFechaInicioEdiciones);
-							crearTabla(resultado);
-				});
-				btnConfirmar.setBounds(201, 200, 100, 20);
-				add(btnConfirmar);
-		});
+		btnAprobarCursos.addActionListener((ActionEvent e) ->
+				recogidaParametros("Sesion: Jefe Gabinete-------Consultar Cursos"));
 		btnAprobarCursos.setBounds(200, 200, 150, 20);
 		add(btnAprobarCursos);
 	}
@@ -251,7 +183,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		return resultado;
 	}
 
-	public void crearTabla(Collection<CursoPropio> resultado) {
+	public static void crearTabla(Collection<CursoPropio> resultado) {
 
 		JFrame jFrame=new JFrame();
 		jFrame.setTitle("Propuestas Cursos");
@@ -293,6 +225,47 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		jFrame.add(jScrollPane);
 		jFrame.setSize(350, 300);
 		jFrame.setVisible(true);
+	}
+	
+	public void recogidaParametros(String nombreSesion) {
+		JTextField textFieldFechaInicioEdiciones = new JTextField();
+		JTextField textFieldFechaFinalEdiciones = new JTextField();
+
+		setTitle(nombreSesion);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setBounds(300, 300, 520, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		contentPane.revalidate();
+
+		JLabel lblFechaInicioEdiciones = new JLabel(FORMATOFECHAINICIO);
+		lblFechaInicioEdiciones.setBounds(100, 90, 200, 20);
+		add(lblFechaInicioEdiciones);
+
+		textFieldFechaInicioEdiciones.setBounds(250, 94, 132, 20);
+		add(textFieldFechaInicioEdiciones);
+		textFieldFechaInicioEdiciones.setColumns(10);
+
+		JLabel lblFechaFinalEdicion = new JLabel(FORMATOFECHAFIN);
+		lblFechaFinalEdicion.setBounds(100, 150, 200, 20);
+		add(lblFechaFinalEdicion);
+
+		textFieldFechaFinalEdiciones.setBounds(250, 154, 132, 20);
+		add(textFieldFechaFinalEdiciones);
+		textFieldFechaFinalEdiciones.setColumns(10);
+		
+		JButton btnConfirmar = new JButton(CONFIRMAR);
+		btnConfirmar.addActionListener((ActionEvent e1) -> {
+			if(nombreSesion.equals("Sesion: Jefe Gabinete-------Listar Ediciones")) {
+				botonConfirmarEdiciones(textFieldFechaFinalEdiciones,textFieldFechaInicioEdiciones);
+			}else if(nombreSesion.equals("Sesion: Jefe Gabinete-------Consultar Cursos")){
+				Collection<CursoPropio> resultado=botonConfirmarCursos(textFieldFechaFinalEdiciones,textFieldFechaInicioEdiciones);
+				crearTabla(resultado);
+			}
+		});
+		btnConfirmar.setBounds(201, 200, 100, 20);
+		add(btnConfirmar);
 	}
 }
