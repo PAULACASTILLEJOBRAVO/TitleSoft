@@ -10,6 +10,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import negocio.entities.EstadoCurso;
+import negocio.entities.TipoCurso;
+
 
 public class GestorConsultasTest {
 
@@ -34,65 +37,110 @@ public class GestorConsultasTest {
 	}
 	@Test
 	public void seleccionarCurso0() {
-		assertTrue(seleccionarCurso(1));
+		assertTrue(comprobarId(1));
 	}
 	@Test
 	public void seleccionarCurso1() {
-		assertFalse(seleccionarCurso(-1));
+		assertFalse(comprobarId(-1));
 	}
 	@Test
 	public void seleccionarCurso2() {
-		assertTrue(seleccionarCurso(0));
+		assertTrue(comprobarId(0));
 	}
 	@Test
 	public void cursosPorCentro() {
-		assertTrue(seleccionarCurso(2));
+		assertTrue(comprobarId(2));
 	}
 	@Test
 	public void cursosPorCentro1() {
-		int id = -1;
-		//assertFalse();
+		assertFalse(comprobarId(-1));
 	}
 	@Test
 	public void cursosPorCentro2() {
-		int id = 0;
-		assertTrue(id>=0);
+		assertTrue(comprobarId(0));
 	}
 	@Test
 	public void consultarIngresos0() {		
-		assertTrue(consultarIngresos(2023, 2039, 4, 5));
+		assertTrue(consultarIngresos(TipoCurso.CORTA_DURACION, 2023, 2039, 4, 5));
 		
 	}
 	@Test
 	public void consultarIngresos1() {
-		assertFalse(consultarIngresos(2024, 1999, 6, 11));
+		assertFalse(consultarIngresos(TipoCurso.ESPECIALISTA, 2024, 1999, 7, 11));
 		
 	}
 	@Test
 	public void consultarIngresos2() {
-		assertFalse(consultarIngresos(1987, 2023, 12, 7));
+		assertFalse(consultarIngresos(TipoCurso.FORMACION_AVANZADA, 1987, 2023, 12, 8));
 		
 }
 	@Test
 	public void consultarIngresos3() {
-		assertTrue(consultarIngresos(2067, 2024, 2, 9));
+		assertTrue(consultarIngresos(TipoCurso.FORMACION_CONTINUA, 2067, 2024, 2, 9));
 		
 }
+	@Test
+	public void consultarIngresos4() {		
+		assertTrue(consultarIngresos(TipoCurso.MASTER, 2023, 2039, 4, 5));
+		
+	}
+	@Test
+	public void consultarIngresos5() {
+		assertFalse(consultarIngresos(TipoCurso.MICROCREDENCIALES, 2024, 1999, 7, 11));
+		
+	}
+	
+	@Test
+	public void consultarCursosPropuestos0() {
+		assertTrue(consultarCursosPropuestos(EstadoCurso.EN_IMPARTICION));
+	}
+	
+	@Test
+	public void consultarCursosPropuestos1() {
+		assertTrue(consultarCursosPropuestos(EstadoCurso.EN_MATRICULACION));
+	}
+	@Test
+	public void consultarCursosPropuestos2() {
+		assertTrue(consultarCursosPropuestos(EstadoCurso.PROPUESTA_RECHAZADA));
+	}
+	@Test
+	public void consultarCursosPropuestos3() {
+		assertTrue(consultarCursosPropuestos(EstadoCurso.PROPUESTO));
+	}
+	@Test
+	public void consultarCursosPropuestos4() {
+		assertTrue(consultarCursosPropuestos(EstadoCurso.TERMINADO));
+	}
+	@Test
+	public void consultarCursosPropuestos5() {
+		assertTrue(consultarCursosPropuestos(EstadoCurso.VALIDADO));
+	}
+	
+	public boolean consultarCursosPropuestos(EstadoCurso estadoCurso) {
+		boolean valor = false;
+		
+		valor = (estadoCurso == EstadoCurso.EN_IMPARTICION || estadoCurso == EstadoCurso.EN_MATRICULACION || estadoCurso == EstadoCurso.PROPUESTA_RECHAZADA || estadoCurso == EstadoCurso.PROPUESTO || estadoCurso == EstadoCurso.TERMINADO || estadoCurso == EstadoCurso.VALIDADO);
 
-	public boolean consultarIngresos(int anioInicio, int anioFin, int mesInicio, int mesFin) {
+		return valor;
+		
+	}
+
+	public boolean consultarIngresos(TipoCurso tipo, int anioInicio, int anioFin, int mesInicio, int mesFin) {
 		boolean valor = false;
 		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");	     
 	     Date fechaActual = new Date();
 	     String anioActual = getYearFormat.format(fechaActual);
 		valor = (anioInicio>= Integer.parseInt(anioActual) && anioFin>= Integer.parseInt(anioActual)
-	    		 && mesInicio != 6 && mesInicio != 7 && mesFin != 6 && mesFin != 7 && mesInicio <= 12 && mesFin <= 12);
+	    		 && mesInicio != 8 && mesInicio != 7 && mesFin != 7 && mesFin != 8 && mesInicio <= 12 && mesFin <= 12 &&
+			    		 (tipo == TipoCurso.CORTA_DURACION || tipo == TipoCurso.ESPECIALISTA || tipo == TipoCurso.EXPERTO || tipo == TipoCurso.FORMACION_AVANZADA || tipo == TipoCurso.FORMACION_CONTINUA || tipo == TipoCurso.MASTER || tipo == TipoCurso.MICROCREDENCIALES));
 		return valor;
 		
 	}
-	public boolean seleccionarCurso(int id) {
+	public boolean comprobarId(int id) {
 		boolean valor = false;
-		assertTrue(id>=0);
+		valor= (id>=0);
 		return valor;
 	}
+	
 
 }
