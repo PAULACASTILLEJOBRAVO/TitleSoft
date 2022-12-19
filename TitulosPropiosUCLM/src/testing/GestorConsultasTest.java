@@ -33,29 +33,25 @@ public class GestorConsultasTest {
 		System.out.println("@After -> How many times do i appear?");
 	}
 	@Test
-	public void seleccionarCurso() {
-		int id = 1;
-		assertTrue(id>=0);
+	public void seleccionarCurso0() {
+		assertTrue(seleccionarCurso(1));
 	}
 	@Test
 	public void seleccionarCurso1() {
-		int id = -1;
-		assertFalse(id>=0);
+		assertFalse(seleccionarCurso(-1));
 	}
 	@Test
 	public void seleccionarCurso2() {
-		int id = 0;
-		assertTrue(id>=0);
+		assertTrue(seleccionarCurso(0));
 	}
 	@Test
 	public void cursosPorCentro() {
-		int id = 1;
-		assertTrue(id>=0);
+		assertTrue(seleccionarCurso(2));
 	}
 	@Test
 	public void cursosPorCentro1() {
 		int id = -1;
-		assertFalse(id>=0);
+		//assertFalse();
 	}
 	@Test
 	public void cursosPorCentro2() {
@@ -63,61 +59,40 @@ public class GestorConsultasTest {
 		assertTrue(id>=0);
 	}
 	@Test
-	public void consultarIngresos() {
-		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");	     
-	     Date fechaActual = new Date();
-	     String anioActual = getYearFormat.format(fechaActual);
-	     int anioInicio = 2023;
-	     int anioFin = 2039;
-	     int mesInicio = 4;
-	     int mesFin = 5;
-		assertTrue(anioInicio>= Integer.parseInt(anioActual) && anioFin>= Integer.parseInt(anioActual)
-	    		 && mesInicio != 6 && mesInicio != 7 && mesFin != 6 && mesFin != 7 && mesInicio <= 12 && mesFin <= 12);
+	public void consultarIngresos0() {		
+		assertTrue(consultarIngresos(2023, 2039, 4, 5));
 		
 	}
 	@Test
 	public void consultarIngresos1() {
-		 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");	     
-	     Date fechaActual = new Date();
-	     String anioActual = getYearFormat.format(fechaActual);
-	     int anioInicio = 2024;
-	     int anioFin = 1999;
-	     int mesInicio = 6;
-	     int mesFin = 11;
-		assertFalse(anioInicio>= Integer.parseInt(anioActual) && anioFin>= Integer.parseInt(anioActual)
-	    		 && mesInicio != 6 && mesInicio != 7 && mesFin != 6 && mesFin != 7 && mesInicio <= 12 && mesFin <= 12);
+		assertFalse(consultarIngresos(2024, 1999, 6, 11));
 		
 	}
 	@Test
 	public void consultarIngresos2() {
-	
-		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");	     
-	     Date fechaActual = new Date();
-	     String anioActual = getYearFormat.format(fechaActual);
-	     int anioInicio = 1987;
-	     int anioFin = 2023;
-	     int mesInicio = 12;
-	     int mesFin = 7;
-		assertFalse(anioInicio>= Integer.parseInt(anioActual) && anioFin>= Integer.parseInt(anioActual)
-	    		 && mesInicio != 6 && mesInicio != 7 && mesFin != 6 && mesFin != 7 && mesInicio <= 12 && mesFin <= 12);
+		assertFalse(consultarIngresos(1987, 2023, 12, 7));
 		
 }
 	@Test
 	public void consultarIngresos3() {
-	
+		assertTrue(consultarIngresos(2067, 2024, 2, 9));
+		
+}
+
+	public boolean consultarIngresos(int anioInicio, int anioFin, int mesInicio, int mesFin) {
+		boolean valor = false;
 		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");	     
 	     Date fechaActual = new Date();
 	     String anioActual = getYearFormat.format(fechaActual);
-	     int anioInicio = 2067;
-	     int anioFin = 2024;
-	     int mesInicio = 2;
-	     int mesFin = 9;
-		assertTrue(anioInicio>= Integer.parseInt(anioActual) && anioFin>= Integer.parseInt(anioActual)
+		valor = (anioInicio>= Integer.parseInt(anioActual) && anioFin>= Integer.parseInt(anioActual)
 	    		 && mesInicio != 6 && mesInicio != 7 && mesFin != 6 && mesFin != 7 && mesInicio <= 12 && mesFin <= 12);
-		
-}
-	@Test
-	public void listarCursosEstados() {
+		return valor;
 		
 	}
+	public boolean seleccionarCurso(int id) {
+		boolean valor = false;
+		assertTrue(id>=0);
+		return valor;
+	}
+
 }
