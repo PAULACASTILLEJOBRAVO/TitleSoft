@@ -8,13 +8,27 @@ import presentacion.MainTesting;
 
 public class GestorPropuestasCursos {
 
-	public CursoPropio realizarPropuestaCurso(String nombre, Date fechaInicio, Date fechaFin, int eCTS, double tasaMatricula, int edicion,  String dniDirector, String dniSecretario, EstadoCurso estado, TipoCurso tipo, String centro) {
+	public CursoPropio realizarPropuestaCurso(String nombre, Date fechaInicio, Date fechaFin, double tasaMatricula, int edicion,  String dniDirector, String dniSecretario, EstadoCurso estado, TipoCurso tipo, String centro) {
 
 		/*
 		 * no se que controlador mete para las fechas y para el enunm
 		 */
+		
+		//hacer los credenciales
+		int eCTS=0;
+		int rand = (int)(Math.random()*3);
+		
+		if(tipo == TipoCurso.MASTER && rand == 0) {
+			eCTS = 60;
+			
+		}
+		else if(tipo == TipoCurso.MASTER && rand == 1) {
+			eCTS = 90;
+		}
+		else if(tipo == TipoCurso.MASTER && rand == 1) {
+			eCTS = 120;
+		}
 		if(  (nombre.equals("")) ||
-				( eCTS<0) ||
 				(tasaMatricula<0) ||
 				(edicion<0) ||
 				(dniDirector.equals("") || dniDirector.length()>9) ||
