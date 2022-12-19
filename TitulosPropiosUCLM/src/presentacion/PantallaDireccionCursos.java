@@ -16,7 +16,6 @@ public class PantallaDireccionCursos extends JFrame {
 	private JTextField textFieldFechaInicio;
 	private JTextField textFieldCurso;
 	private JTextField textFieldFechaFin;
-	private JTextField textFieldEtcs;
 	private JTextField textFieldTasaMatricula;
 	private JTextField textFieldEdicion;
 	private JTextField textFieldCentro;
@@ -46,6 +45,42 @@ public class PantallaDireccionCursos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblCurso = new JLabel("Nombre del curso:");
+		lblCurso.setBounds(90, 190, 125, 13);
+		add(lblCurso);
+
+		textFieldCurso = new JTextField();
+		textFieldCurso.setBounds(90, 205, 76, 19);
+		add(textFieldCurso);
+		textFieldCurso.setColumns(10);
+		
+		JLabel lblEdicion = new JLabel("Edición:");
+		lblEdicion.setBounds(90, 235, 105, 13);
+		add(lblEdicion);
+		
+		textFieldEdicion = new JTextField();
+		textFieldEdicion.setBounds(90, 255, 76, 19);
+		add(textFieldEdicion);
+		textFieldEdicion.setColumns(10);
+		
+		JLabel lblTasaMatricula = new JLabel("Tasa de la matricula:");
+		lblTasaMatricula.setBounds(90, 290, 135, 13);
+		add(lblTasaMatricula);
+		
+		textFieldTasaMatricula = new JTextField();
+		textFieldTasaMatricula.setBounds(90, 310, 76, 19);
+		add(textFieldTasaMatricula);
+		textFieldTasaMatricula.setColumns(10);
+		
+		JLabel lblCentro = new JLabel("Nombre del centro:");
+		lblCentro.setBounds(90, 340, 125, 13);
+		add(lblCentro);
+		
+		textFieldCentro = new JTextField();
+		textFieldCentro.setBounds(90, 360, 76, 19);
+		add(textFieldCentro);
+		textFieldCentro.setColumns(10);
+		
 		JLabel lblFechaInicio = new JLabel("Fecha de inicio del curso (yyyy-mm-dd):");
 		lblFechaInicio.setBounds(416, 170, 287, 40);
 		add(lblFechaInicio);
@@ -64,55 +99,6 @@ public class PantallaDireccionCursos extends JFrame {
 		add(textFieldFechaFin);
 		textFieldFechaFin.setColumns(10);
 		
-		JLabel lblCurso = new JLabel("Nombre del curso:");
-		lblCurso.setBounds(90, 190, 125, 13);
-		add(lblCurso);
-
-		textFieldCurso = new JTextField();
-		textFieldCurso.setBounds(90, 205, 76, 19);
-		add(textFieldCurso);
-		textFieldCurso.setColumns(10);
-		
-		JLabel lblTipoCurso = new JLabel("Tipo de curso:");
-		lblTipoCurso.setBounds(900, 180, 105, 13);
-		add(lblTipoCurso);
-		
-		JLabel lblETC = new JLabel("Número de ETCS:");
-		lblETC.setBounds(90, 240, 105, 13);
-		add(lblETC);
-		
-		textFieldEtcs = new JTextField();
-		textFieldEtcs.setBounds(90, 255, 76, 19);
-		add(textFieldEtcs);
-		textFieldEtcs.setColumns(10);
-		
-		JLabel lblEdicion = new JLabel("Edición:");
-		lblEdicion.setBounds(90, 280, 105, 13);
-		add(lblEdicion);
-		
-		textFieldEdicion = new JTextField();
-		textFieldEdicion.setBounds(90, 295, 76, 19);
-		add(textFieldEdicion);
-		textFieldEdicion.setColumns(10);
-		
-		JLabel lblTasaMatricula = new JLabel("Tasa de la matricula:");
-		lblTasaMatricula.setBounds(90, 320, 135, 13);
-		add(lblTasaMatricula);
-		
-		textFieldTasaMatricula = new JTextField();
-		textFieldTasaMatricula.setBounds(90, 335, 76, 19);
-		add(textFieldTasaMatricula);
-		textFieldTasaMatricula.setColumns(10);
-		
-		JLabel lblCentro = new JLabel("Nombre del centro:");
-		lblCentro.setBounds(90, 360, 125, 13);
-		add(lblCentro);
-		
-		textFieldCentro = new JTextField();
-		textFieldCentro.setBounds(90, 375, 76, 19);
-		add(textFieldCentro);
-		textFieldCentro.setColumns(10);
-		
 		JLabel lblDirector = new JLabel("DNI del director del curso:");
 		lblDirector.setBounds(416, 300, 190, 13);
 		add(lblDirector);
@@ -130,6 +116,10 @@ public class PantallaDireccionCursos extends JFrame {
 		textFieldSecretario.setBounds(416, 370, 76, 19);
 		add(textFieldSecretario);
 		textFieldSecretario.setColumns(10);
+		
+		JLabel lblTipoCurso = new JLabel("Tipo de curso:");
+		lblTipoCurso.setBounds(900, 180, 105, 13);
+		add(lblTipoCurso);
 		
 		JButton btnNewButtonAceptar = new JButton("Aceptar");
 		btnNewButtonAceptar.addActionListener(e -> {
@@ -290,7 +280,7 @@ public class PantallaDireccionCursos extends JFrame {
 				
 				double tasaMatricula = Integer.parseInt(textFieldTasaMatricula.getText()) + 0.0;
 				
-				cursoPropuesto = gestorPropuestaCurso.realizarPropuestaCurso(textFieldCurso.getText(), fechaSQLInicio, fechaSQLFin, Integer.parseInt(textFieldEtcs.getText()), tasaMatricula, Integer.parseInt(textFieldEdicion.getText()), textFieldDirector.getText(), textFieldSecretario.getText(), EstadoCurso.PROPUESTO, tipoCurso, textFieldCentro.getText());
+				cursoPropuesto = gestorPropuestaCurso.realizarPropuestaCurso(textFieldCurso.getText(), fechaSQLInicio, fechaSQLFin, tasaMatricula,  Integer.parseInt(textFieldEdicion.getText()), textFieldDirector.getText(), textFieldSecretario.getText(), EstadoCurso.PROPUESTO, tipoCurso, textFieldCentro.getText());
 			} else {
 				lblError.setText("No se ha podido completar el curso. Rellena todos los campos.");
 			}
@@ -316,7 +306,7 @@ public class PantallaDireccionCursos extends JFrame {
 
 	private boolean validarDatosCurso() {
 		return !(textFieldFechaInicio.getText().isEmpty() || textFieldCurso.getText().isEmpty() || textFieldFechaFin.getText().isEmpty()
-				|| textFieldCurso.getText().isEmpty() || textFieldEtcs.getText().isEmpty() || textFieldDirector.getText().isEmpty()
+				|| textFieldCurso.getText().isEmpty() || textFieldDirector.getText().isEmpty()
 				|| textFieldEdicion.getText().isEmpty() || textFieldSecretario.getText().isEmpty() || textFieldTasaMatricula.getText().isEmpty());
 	}
 	
@@ -331,7 +321,6 @@ public class PantallaDireccionCursos extends JFrame {
 		textFieldFechaFin.setText("");
 		textFieldEdicion.setText("");
 		textFieldCentro.setText("");
-		textFieldEtcs.setText("");
 		textFieldSecretario.setText("");
 		textFieldTasaMatricula.setText("");
 	}

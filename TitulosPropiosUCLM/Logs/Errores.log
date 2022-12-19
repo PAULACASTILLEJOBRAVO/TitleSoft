@@ -528,3 +528,27 @@ dic 19, 2022 1:49:02 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: Derby shut down normally
 dic 19, 2022 4:51:43 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: Error al seleccionar usuario
+dic 19, 2022 5:17:23 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
+dic 19, 2022 5:17:23 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 5:17:23 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 7:22:48 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 7:22:48 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 7:22:48 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 7:33:40 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 7:33:40 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 7:33:40 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 19, 2022 7:33:47 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 19, 2022 7:33:47 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 19, 2022 7:33:47 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally

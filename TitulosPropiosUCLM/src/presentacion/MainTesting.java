@@ -59,10 +59,10 @@ public class MainTesting extends JFrame{
 			frame.setVisible(true);
 
 		});
-		btnEvaluar.setBounds(89, 204, 223, 21);
+		btnEvaluar.setBounds(400, 144, 223, 21);
 		add( btnEvaluar);
 		
-		JButton btnCursos = new JButton("Gestionar Cursos");
+		JButton btnCursos = new JButton("Proponer Curso");
 		btnCursos.addActionListener(e -> {
 
 			PantallaLogin frame =new PantallaLogin(3);

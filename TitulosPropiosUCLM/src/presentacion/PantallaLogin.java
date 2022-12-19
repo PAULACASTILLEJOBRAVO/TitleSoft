@@ -6,6 +6,9 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
 import negocio.controllers.GestorUsuarios;
 import negocio.entities.TipoUsuario;
 import negocio.entities.Usuario;
@@ -52,6 +55,8 @@ public class PantallaLogin extends JFrame {
 		botonLogin.addActionListener((ActionEvent e) -> {
 			GestorUsuarios gUsuario=new GestorUsuarios();
 			if(gUsuario.comprobarUsuario(textFieldUsuario.getText(), textFieldPassword.getText())) {
+				Logger loger = Logger.getLogger(PantallaLogin.class.getName());
+				loger.log(Level.INFO,"Sesicon iniciada");
 				Usuario usuario=gUsuario.seleccionarUsuario(textFieldUsuario.getText().trim());
 
 				if(id==1) {
