@@ -59,6 +59,28 @@ public class GestorConsultas {
 		     }
 		return ediciones;
 	}
+	
+	public Collection<CursoPropio> listarCursosRechazadosYPropuestos(Date fechaInicio, Date fechaFin) {
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		Collection<CursoPropio> ediciones = null;
+			
+		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
+		     Date fechaActual = new Date();
+		     String anioActual = getYearFormat.format(fechaActual);
+
+		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
+		    		 && Integer.parseInt(mesInicio) != 6 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 6 && Integer.parseInt(mesFin) != 7){
+
+			ediciones = cursoPropioDAO.listarCursosRechazadosYPropuestos(fechaInicio, fechaFin);
+		     }
+		return ediciones;
+	}
 
 	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
@@ -98,15 +120,6 @@ public class GestorConsultas {
 	public CursoPropio actualizarCurso(CursoPropio curso) {	
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		return cursoDAO.editarCurso(curso);
-	}
-
-	public Collection<CursoPropio> cursosPorCentro(String id) {
-		CursoPropioDAO cursoDAO=new CursoPropioDAO();
-		int n = Integer.parseInt(id);
-		if(n<0) {
-			MainTesting.escribirLog(MainTesting.ERROR,"id introducido no válido para la selección del curso por centro");
-		}
-		return cursoDAO.cursosPorCentro(id);
 	}
 
 	public int idCurso(CursoPropio curso) {

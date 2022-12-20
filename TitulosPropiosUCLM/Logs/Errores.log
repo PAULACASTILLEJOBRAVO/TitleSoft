@@ -1611,3 +1611,15 @@ INFORMACIÓN: Error al conectar con la base de datos
 Dec 20, 2022 12:51:10 PM presentacion.MainTesting escribirLog
 INFORMACIÓN: Error calculando ingresos
 >>>>>>> branch 'testing' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
+dic 20, 2022 2:17:24 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 20, 2022 2:17:24 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 20, 2022 2:17:24 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 20, 2022 2:17:27 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 20, 2022 2:17:27 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 20, 2022 2:17:27 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
