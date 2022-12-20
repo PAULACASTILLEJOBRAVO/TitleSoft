@@ -21,8 +21,9 @@ public class GestorMatriculacion {
 	     
 	     String anioActual = getYearFormat.format(fechaActual);
 
-		if(curso.length() < 20 && curso.length() > 0 && alumno.length() < 20 && alumno.length() > 0 && Integer.parseInt(anio)> Integer.parseInt(anioActual)
-	    		 && Integer.parseInt(mes) != 7 && Integer.parseInt(mes) != 8) {
+		if(curso.length() < 20 && curso.length() > 0 && alumno.length() < 20 && alumno.length() > 0 && Integer.parseInt(anio)>= 2000 
+	    		 && Integer.parseInt(mes) != 7 && Integer.parseInt(mes) != 8
+	    		 && Integer.parseInt(mes)<= 12) {
 		matriculaDAO.crearMatricula(matriculaNuevoIngreso);
 		}
 	}

@@ -71,10 +71,9 @@ public class GestorPropuestasCursos {
 				(dniDirector.equals("") || dniDirector.length()>9) ||
 				(dniSecretario.equals("") || dniSecretario.length()>9 ) ||
 				centro.equals("") ||
-				(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual)) ||
-				(Integer.parseInt(anioFin)> Integer.parseInt(anioActual)) ||
-				(Integer.parseInt(mesInicio) == 8 || Integer.parseInt(mesInicio) == 7) || 
-				(Integer.parseInt(mesFin) == 8 || Integer.parseInt(mesFin) == 7) ) {
+				(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
+	    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+	    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12) ) {
 
 							return null;
 						}

@@ -20,13 +20,14 @@ public class GestorConsultas {
 		     String anioFin = getYearFormat.format(fechaFin);
 		     String mesFin = getMonthFormat.format(fechaInicio);
 		    
-		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
 		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
 		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
 		    	 	
 		    	 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+
 		    	 System.out.println("11111111111111111111111111111111111111111 ingresos: "+ ingresos);
-		     } 
+		     }
 				return ingresos;
 	}
 
@@ -48,12 +49,10 @@ public class GestorConsultas {
 
 		     String anioFin = getYearFormat.format(fechaFin);
 		     String mesFin = getMonthFormat.format(fechaInicio);
-		     Date fechaActual = new Date();
-		     String anioActual = getYearFormat.format(fechaActual);
 
-		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
-		    		 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7){
-
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
+		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
 			ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
 		     }
 		return ediciones;
@@ -70,10 +69,8 @@ public class GestorConsultas {
 
 		     String anioFin = getYearFormat.format(fechaFin);
 		     String mesFin = getMonthFormat.format(fechaInicio);
-		     Date fechaActual = new Date();
-		     String anioActual = getYearFormat.format(fechaActual);
 
-		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
 		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
 		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
 
@@ -96,11 +93,9 @@ public class GestorConsultas {
 		     String anioFin = getYearFormat.format(fechaFin);
 		     String mesFin = getMonthFormat.format(fechaFin);
 
-		     Date fechaActual = new Date();
-		     String anioActual = getYearFormat.format(fechaActual);
-
-		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
-		    		 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7){
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 &&  Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
+		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
 
 			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
 			}
