@@ -41,15 +41,15 @@ public class GestorMatriculacionTest {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date fecha=null;
 		try {
-			fecha = format.parse("2022-02-02");
+			fecha = format.parse("2022-05-05");
 		} catch (Exception e) {
 			MainTesting.escribirLog("Errores.log", "Error en la creacion de las fechas para los test ");	
 		}
-		assertFalse(realizarMatriculacion( 1, "123", ModoPago.TARJETA_CREDITO, fecha, true));
+		assertTrue(realizarMatriculacion( "1", "123", ModoPago.TRANSFERENCIA, fecha, true));
 	}
 	
 	@Test
-	public void realizarMatriculacion1() {
+	public void realizarMatriculacion1() { 
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date fecha=null;
 		try {
@@ -57,10 +57,10 @@ public class GestorMatriculacionTest {
 		} catch (Exception e) {
 			MainTesting.escribirLog("Errores.log", "Error en la creacion de las fechas para los test ");	
 		}
-		assertFalse(realizarMatriculacion(86, "pepe", ModoPago.TRANSFERENCIA, fecha, false));
+		assertFalse(realizarMatriculacion("86", "pepe", ModoPago.TRANSFERENCIA, fecha, false));
 	}
 	
-	public boolean realizarMatriculacion(int curso, String alumno, ModoPago tipo,Date fecha,boolean pagado) {
+	public boolean realizarMatriculacion(String curso, String alumno, ModoPago tipo,Date fecha,boolean pagado) {
 		boolean value = false;
 		
 		java.sql.Date fecha1 = (java.sql.Date) fecha;
