@@ -60,7 +60,8 @@ public class GestorUsuariosTest {
 		Usuario usuario=new Usuario("", "", TipoUsuario.JEFE);
 		
 		String password="";
-		assertTrue( comprobarContraseña(usuario, password));
+		assertFalse(! ( usuario.getPassword().equals("") ||
+				password.equals("")));
 		
 	}
 	@Test
@@ -68,26 +69,28 @@ public class GestorUsuariosTest {
 		Usuario usuario=new Usuario("jefe", "jefe", TipoUsuario.JEFE);
 		
 		String password="jefe";
-		assertFalse(comprobarContraseña(usuario, password));
+		assertTrue(! ( usuario.getPassword().equals("") ||
+				password.equals("")));
 	}
 	
-	public boolean comprobarContraseña(Usuario usuario, String password) {
-		if(password.equals("")) {
-			if(usuario.getPassword().equals("")) {
-				return true;
-			}
-		}
-			
-		return false;
-	}
+//	public boolean contrasenaCorrectaLoging(Usuario usuario, String password) {
+//		if(password.equals("")) {
+//			if(usuario.getPassword().equals("")) {
+//				return true;
+//			}
+//		}
+//			
+//		return false;
+//	}
 	
-	public boolean comprobarUsuario(String usuario, String password) {
-		if(password.equals("")) {
-			if(usuario.equals("")) {
-				return true;
-			}
-		}
-			
-		return false;
-	}
+//	public boolean comprobarUsuario(String usuario, String password) {
+//		
+//		if(password.equals("")) {
+//			if(usuario.equals("")) {
+//				return true;
+//			}
+//		}
+//			
+//		return false;
+//	}
 }

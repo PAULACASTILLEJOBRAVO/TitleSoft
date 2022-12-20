@@ -59,7 +59,7 @@ public class GestorConsultasTest {
 	}
 	@Test
 	public void consultarIngresos1() {
-		assertTrue(consultarIngresos(TipoCurso.MASTER, 2022, 2023, 11, 01));
+		assertTrue(consultarIngresos(TipoCurso.MASTER, 2022, 2023, 11, 6));
 		
 	}
 

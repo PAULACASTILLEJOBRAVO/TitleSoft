@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.*;
 
+import negocio.controllers.GestorProfesor;
+import negocio.entities.Profesor;
 import presentacion.MainTesting;
 
 public class GestorProfesorTest {
@@ -41,4 +43,12 @@ public class GestorProfesorTest {
 		assertTrue(! (dni.equals("") || dni.length()>9 ) );
 	}
 	
+	@Test
+	public boolean seleccionarProfesor0() {
+		String dni="";
+		boolean valor;
+		GestorProfesor gProfesor= new GestorProfesor();
+		Profesor resultadoProfesor=gProfesor.seleccionarProfesor(dni);
+		valor
+	}
 }

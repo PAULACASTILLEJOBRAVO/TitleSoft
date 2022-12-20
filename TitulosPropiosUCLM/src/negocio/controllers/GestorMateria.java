@@ -48,8 +48,8 @@ public class GestorMateria {
 		 * El controlador Integer.parseInt(anioFin)< Integer.parseInt(anioActual) no lo pondria ya que el a�o fin puede ser a futuro
 		 * puede ser el a�o que viene
 		 */
-		if(dniProfesorResponsable.length()> 9 || nombre.length() > 20 || Integer.parseInt(anioInicio)> Integer.parseInt(anioActual) ||Integer.parseInt(anioFin)> Integer.parseInt(anioActual)
-				|| Integer.parseInt(mesInicio) == 8 || Integer.parseInt(mesInicio) == 7 || Integer.parseInt(mesFin) == 8 || Integer.parseInt(mesFin) == 7) {
+		if(dniProfesorResponsable.length()> 9 || nombre.length() > 20 || Integer.parseInt(anioInicio)> Integer.parseInt(anioActual) || Integer.parseInt(anioFin)> Integer.parseInt(anioActual)
+				|| Integer.parseInt(mesInicio) == 8 || Integer.parseInt(mesInicio) == 7 || Integer.parseInt(mesFin) == 8 || Integer.parseInt(mesFin) == 7 || Integer.parseInt(mesFin)>12 ) {
 			return null;
 		}
 		materiaDAO.crearMateria(materiaNueva);

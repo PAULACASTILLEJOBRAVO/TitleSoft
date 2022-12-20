@@ -13,7 +13,7 @@ public class GestorConsultas {
 
 
 			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
-			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM"); 
 		     String anioInicio = getYearFormat.format(fechaInicio);
 		     String mesInicio = getMonthFormat.format(fechaInicio);
 
@@ -42,7 +42,7 @@ public class GestorConsultas {
 		Collection<CursoPropio> ediciones = null;
 			
 		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
-			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM"); 
 		     String anioInicio = getYearFormat.format(fechaInicio);
 		     String mesInicio = getMonthFormat.format(fechaInicio);
 
@@ -64,7 +64,7 @@ public class GestorConsultas {
 		Collection<CursoPropio> ediciones = null;
 			
 		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
-			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm"); 
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM"); 
 		     String anioInicio = getYearFormat.format(fechaInicio);
 		     String mesInicio = getMonthFormat.format(fechaInicio);
 
@@ -73,8 +73,9 @@ public class GestorConsultas {
 		     Date fechaActual = new Date();
 		     String anioActual = getYearFormat.format(fechaActual);
 
-		     if(Integer.parseInt(anioInicio)< Integer.parseInt(anioActual) && Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
-		    		 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7){
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000
+		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
 
 			ediciones = cursoPropioDAO.listarCursosRechazadosYPropuestos(fechaInicio, fechaFin);
 		     }
@@ -86,7 +87,7 @@ public class GestorConsultas {
 		Collection<CursoPropio> ediciones = null;
 		
 			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
-			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("mm");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
 
 		     String anioInicio = getYearFormat.format(fechaInicio);
 		     String mesInicio = getMonthFormat.format(fechaInicio);
