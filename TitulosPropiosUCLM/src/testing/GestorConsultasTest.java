@@ -122,6 +122,7 @@ public class GestorConsultasTest {
 		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");	     
 	     Date fechaActual = new Date();
 	     String anioActual = getYearFormat.format(fechaActual);
+	     
 		valor = (anioInicio>= Integer.parseInt(anioActual) && anioFin>= Integer.parseInt(anioActual)
 	    		 && mesInicio != 8 && mesInicio != 7 && mesFin != 7 && mesFin != 8 && mesInicio <= 12 && mesFin <= 12);
 		return valor;
