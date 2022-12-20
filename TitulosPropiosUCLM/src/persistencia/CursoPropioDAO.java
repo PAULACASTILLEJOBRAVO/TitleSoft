@@ -5,8 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import negocio.controllers.GestorMateria;
@@ -179,34 +177,34 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		EstadoCurso estado=null;
 		TipoCurso tipo=null;
 		//estado
-		if(aux[7].trim().toUpperCase().equals("IMPARTICION")) {
+		if(aux[7].trim().equalsIgnoreCase("IMPARTICION")) {
 			estado=EstadoCurso.EN_IMPARTICION;
-		}else if (aux[7].trim().toUpperCase().equals("MATRICULACION")) {
+		}else if (aux[7].trim().equalsIgnoreCase("MATRICULACION")) {
 			estado=EstadoCurso.EN_MATRICULACION;
-		}else if (aux[7].trim().toUpperCase().equals("PROPUESTA_RECHAZADA")) {
+		}else if (aux[7].trim().equalsIgnoreCase("PROPUESTA_RECHAZADA")) {
 			estado=EstadoCurso.PROPUESTA_RECHAZADA;
-		}else if (aux[7].trim().toUpperCase().equals("PROPUESTO")) {
+		}else if (aux[7].trim().equalsIgnoreCase("PROPUESTO")) {
 			estado=EstadoCurso.PROPUESTO;
-		}else if (aux[7].trim().toUpperCase().equals("TERMINADO")) {
+		}else if (aux[7].trim().equalsIgnoreCase("TERMINADO")) {
 			estado=EstadoCurso.TERMINADO;
-		}else if (aux[7].trim().toUpperCase().equals("VALIDADO")) {
+		}else if (aux[7].trim().equalsIgnoreCase("VALIDADO")) {
 			estado=EstadoCurso.VALIDADO;
 		}
 
 		//tipoCurso
-		if(aux[11].trim().toUpperCase().equals("CORTA_DURACION")) {
+		if(aux[11].trim().equalsIgnoreCase("CORTA_DURACION")) {
 			tipo=TipoCurso.CORTA_DURACION;
-		}else if (aux[11].toUpperCase().trim().equals("ESPECIALISTA")) {
+		}else if (aux[11].equalsIgnoreCase("ESPECIALISTA")) {
 			tipo=TipoCurso.ESPECIALISTA;
-		}else if (aux[11].toUpperCase().trim().equals("EXPERTO")) {
+		}else if (aux[11].equalsIgnoreCase("EXPERTO")) {
 			tipo=TipoCurso.EXPERTO;
-		}else if (aux[11].toUpperCase().trim().equals("FORMACION_AVANZADA")) {
+		}else if (aux[11].equalsIgnoreCase("FORMACION_AVANZADA")) {
 			tipo=TipoCurso.FORMACION_AVANZADA;
-		}else if (aux[11].toUpperCase().trim().equals("FORMACION_CONTINUA")) {
+		}else if (aux[11].equalsIgnoreCase("FORMACION_CONTINUA")) {
 			tipo=TipoCurso.FORMACION_CONTINUA;
-		}else if (aux[11].toUpperCase().trim().equals("MASTER")) {
+		}else if (aux[11].equalsIgnoreCase("MASTER")) {
 			tipo=TipoCurso.MASTER;
-		}else if (aux[11].toUpperCase().trim().equals("MICROCREDENCIALES")) {
+		}else if (aux[11].equalsIgnoreCase("MICROCREDENCIALES")) {
 			tipo=TipoCurso.MICROCREDENCIALES;
 		}
 
