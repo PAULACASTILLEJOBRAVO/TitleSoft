@@ -116,7 +116,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		if (!resultado.isEmpty()) {
 			for (int i = 0; i < resultado.size(); i++) {
 				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
-				cursosEncontrados.add(cursoAUX);
+				cursosEncontrados.add(cursoAUX); 
 			}
 		}else
 			MainTesting.escribirLog(MainTesting.ERROR, "Error encotrando ediciones");

@@ -2713,3 +2713,39 @@ dic 20, 2022 5:55:27 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: Error al conectar con la base de datos
 dic 20, 2022 5:55:27 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: Derby shut down normally
+dic 20, 2022 6:25:39 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6d5380c2, see the next exception for details.
+dic 20, 2022 6:25:39 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 20, 2022 6:25:39 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 20, 2022 6:26:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 20, 2022 6:26:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 20, 2022 6:27:57 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 20, 2022 6:27:58 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 20, 2022 6:32:13 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 20, 2022 6:32:13 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 20, 2022 6:36:05 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6d5380c2, see the next exception for details.
+dic 20, 2022 6:36:05 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 20, 2022 6:36:05 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 20, 2022 6:36:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6d5380c2, see the next exception for details.
+dic 20, 2022 6:36:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 20, 2022 6:36:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 20, 2022 6:36:49 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
+dic 20, 2022 6:36:49 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 20, 2022 6:39:45 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar la matricula
