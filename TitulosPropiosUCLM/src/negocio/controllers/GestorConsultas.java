@@ -5,9 +5,9 @@ import java.util.*;
 import presentacion.MainTesting;
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
-public class GestorConsultas {
+public class GestorConsultas { 
 
-	public double consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
+	public static double consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
 		double ingresos = 0;
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 
@@ -23,10 +23,9 @@ public class GestorConsultas {
 		     String anioActual = getYearFormat.format(fechaActual);
 
 		     if(Integer.parseInt(anioInicio)>= Integer.parseInt(anioActual) && Integer.parseInt(anioFin)>= Integer.parseInt(anioActual)
-		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 6 && Integer.parseInt(mesFin) != 7
-		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12 &&
-		    		 (tipo == TipoCurso.CORTA_DURACION || tipo == TipoCurso.ESPECIALISTA || tipo == TipoCurso.EXPERTO || tipo == TipoCurso.FORMACION_AVANZADA || tipo == TipoCurso.FORMACION_CONTINUA || tipo == TipoCurso.MASTER || tipo == TipoCurso.MICROCREDENCIALES)){
-
+		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
+		    	 	
 		    	 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
 		     }
 				return ingresos;
@@ -35,9 +34,7 @@ public class GestorConsultas {
 	public Collection<CursoPropio> consultarCursosPropuestos(EstadoCurso estadoCurso) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
-		if(estadoCurso == EstadoCurso.EN_IMPARTICION || estadoCurso == EstadoCurso.EN_MATRICULACION || estadoCurso == EstadoCurso.PROPUESTA_RECHAZADA || estadoCurso == EstadoCurso.PROPUESTO || estadoCurso == EstadoCurso.TERMINADO || estadoCurso == EstadoCurso.VALIDADO) {
 		estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
-		}
 		return estados; 
 	}
 
