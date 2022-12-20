@@ -59,7 +59,7 @@ public class GestorConsultasTest {
 	}
 	@Test
 	public void consultarIngresos1() {
-		assertTrue(consultarIngresos(TipoCurso.CORTA_DURACION, 2024, 2025, 4, 3));
+		assertTrue(consultarIngresos(TipoCurso.MASTER, 2022, 2023, 11, 01));
 		
 	}
 
@@ -128,6 +128,8 @@ public class GestorConsultasTest {
 		Date fechaFin=null;
 		String fecha1 =  anioInicio + "-" + mesInicio + "-" + "1";
 		String fecha2 =  anioFin + "-" + mesFin + "-" + "1";
+		System.out.println("++++++++++++++++++++++++++++++++++++fecha inicio: " + fecha1);
+		System.out.println("************************************** fecha fin: " + fecha2);
 		
 		try {
 			fechaInicio = format.parse(fecha1);
