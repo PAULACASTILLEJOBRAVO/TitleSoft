@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Tue Dec 20 18:42:22 CET 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0185-30a1-1802-00000ea0ccd8 
-on database directory C:\Users\virgi\git\TitleSoft\TitulosPropiosUCLM\BaseDeDatos with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243 
+Tue Dec 20 18:49:18 CET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0185-30a7-7311-000000fbeca8 
+on database directory C:\Users\virgi\git\TitleSoft\TitulosPropiosUCLM\BaseDeDatos with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af 
 Loaded from file:/C:/Users/virgi/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Eclipse Adoptium
 java.runtime.version=18.0.2.1+1

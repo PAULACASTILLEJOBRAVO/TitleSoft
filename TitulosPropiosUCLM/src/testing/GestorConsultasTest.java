@@ -70,7 +70,7 @@ public class GestorConsultasTest {
 	}
 	@Test
 	public void listarCursosEstados1() {
-		assertTrue(listarCursosEstados(2023, 2024, 11, 6));
+		assertTrue(listarCursosEstados(2022, 2024, 12, 01));
 	}
 	public boolean comprobarId(int id) {
 		boolean valor = false;
@@ -106,7 +106,7 @@ public class GestorConsultasTest {
 	public boolean listarCursosEstados(int anioInicio, int anioFin, int mesInicio, int mesFin) {
 		boolean valor = false;
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Collection<CursoPropio> ediciones = null;
+		Collection<CursoPropio> ediciones;
 	     Date fechaInicio=null;
 		Date fechaFin=null;
 		String fecha1 =  anioInicio + "-" + mesInicio + "-" + "1";

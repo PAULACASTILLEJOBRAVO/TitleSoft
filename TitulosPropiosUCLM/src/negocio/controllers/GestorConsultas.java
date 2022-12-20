@@ -26,7 +26,6 @@ public class GestorConsultas {
 		    	 	
 		    	 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
 
-		    	 System.out.println("11111111111111111111111111111111111111111 ingresos: "+ ingresos);
 		     }
 				return ingresos;
 	}
