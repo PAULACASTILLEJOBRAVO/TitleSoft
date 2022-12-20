@@ -1,5 +1,5 @@
-Tue Dec 20 12:06:38 CET 2022 Thread[main,5,main] Cleanup action starting
-java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Tue Dec 20 12:10:45 CET 2022 Thread[main,5,main] Cleanup action starting
+java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
@@ -18,7 +18,7 @@ java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader 
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -64,7 +64,7 @@ java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader 
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
-Caused by: ERROR XJ040: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Caused by: ERROR XJ040: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
 	... 64 more
@@ -135,7 +135,7 @@ java.sql.SQLException: Another instance of Derby may have already booted the dat
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -293,7 +293,7 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -341,8 +341,8 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
 ============= end nested exception, level (2) ===========
 Cleanup action completed
-Tue Dec 20 12:06:38 CET 2022 Thread[main,5,main] Cleanup action starting
-java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Tue Dec 20 12:10:45 CET 2022 Thread[main,5,main] Cleanup action starting
+java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
@@ -361,7 +361,7 @@ java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader 
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -407,7 +407,7 @@ java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader 
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
-Caused by: ERROR XJ040: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Caused by: ERROR XJ040: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
 	... 64 more
@@ -478,7 +478,7 @@ java.sql.SQLException: Another instance of Derby may have already booted the dat
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -636,7 +636,7 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -684,8 +684,8 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
 ============= end nested exception, level (2) ===========
 Cleanup action completed
-Tue Dec 20 12:06:38 CET 2022 Thread[main,5,main] Cleanup action starting
-java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Tue Dec 20 12:10:45 CET 2022 Thread[main,5,main] Cleanup action starting
+java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
@@ -704,7 +704,7 @@ java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader 
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -750,7 +750,7 @@ java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader 
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
-Caused by: ERROR XJ040: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Caused by: ERROR XJ040: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
 	... 64 more
@@ -821,7 +821,7 @@ java.sql.SQLException: Another instance of Derby may have already booted the dat
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -979,7 +979,7 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 	at persistencia.GestorBD.select(GestorBD.java:96)
 	at persistencia.CentroDAO.get(CentroDAO.java:48)
 	at persistencia.CentroDAO.seleccionarCentro(CentroDAO.java:19)
-	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:13)
+	at negocio.controllers.GestorCentro.seleccionarCentro(GestorCentro.java:12)
 	at testing.GestorCentroTest.comprobarId(GestorCentroTest.java:54)
 	at testing.GestorCentroTest.testSeleccionarCentro(GestorCentroTest.java:37)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
@@ -1028,5 +1028,5 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 ============= end nested exception, level (2) ===========
 Cleanup action completed
 ----------------------------------------------------------------
-Tue Dec 20 12:06:38 CET 2022: Shutting down Derby engine
+Tue Dec 20 12:10:45 CET 2022: Shutting down Derby engine
 ----------------------------------------------------------------
