@@ -55,7 +55,7 @@ public class GestorConsultasTest {
 	}
 	@Test
 	public void listarCursosEstados1() {
-		assertTrue(listarCursosEstados(2022, 2024, 12, 1));
+		assertTrue(listarCursosEstados(2022, 2024, 12, 01));
 	}
 	
 	
@@ -181,7 +181,7 @@ public class GestorConsultasTest {
 			ediciones=null;
 		}
 	    
-		valor = (ediciones != null);
+		valor = (!ediciones.isEmpty());
 		return valor;
 	}
 	

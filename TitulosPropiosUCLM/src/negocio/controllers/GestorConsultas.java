@@ -47,7 +47,7 @@ public class GestorConsultas {
 		     String mesInicio = getMonthFormat.format(fechaInicio);
 
 		     String anioFin = getYearFormat.format(fechaFin);
-		     String mesFin = getMonthFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
 
 		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
 		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
@@ -67,7 +67,7 @@ public class GestorConsultas {
 		     String mesInicio = getMonthFormat.format(fechaInicio);
 
 		     String anioFin = getYearFormat.format(fechaFin);
-		     String mesFin = getMonthFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
 
 		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
 		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7

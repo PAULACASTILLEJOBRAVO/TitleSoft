@@ -2719,5 +2719,20 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 ============= end nested exception, level (2) ===========
 Cleanup action completed
 ----------------------------------------------------------------
+<<<<<<< HEAD
 Tue Dec 20 21:26:15 CET 2022: Shutting down Derby engine
 ----------------------------------------------------------------
+=======
+Tue Dec 20 20:42:13 CET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0185-310e-d1b3-00000143dd88 
+on database directory C:\Users\orteg\git\TitleSoft\TitulosPropiosUCLM\BaseDeDatos with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6bc168e5 
+Loaded from file:/C:/Users/orteg/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=17.0.2+8
+user.dir=C:\Users\orteg\git\TitleSoft\TitulosPropiosUCLM
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+>>>>>>> branch 'testing' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git

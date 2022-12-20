@@ -35,20 +35,22 @@ public class GestorProfesorTest {
 	@Test
 	public void seleccionarProfesor() {
 		String dni="";
-		assertFalse(! (dni.equals("") || dni.length()>9 ) );
+		assertFalse(seleccionarProfesor0(dni));
 	}
 	@Test
 	public void seleccionarProfesor2() {
-		String dni="12345678A";
-		assertTrue(! (dni.equals("") || dni.length()>9 ) );
+		String dni="789";
+		assertTrue(seleccionarProfesor0(dni) );
 	}
 	
-	@Test
-	public boolean seleccionarProfesor0() {
-		String dni="";
-		boolean valor;
+	
+	public boolean seleccionarProfesor0(String dni) {
+		
 		GestorProfesor gProfesor= new GestorProfesor();
 		Profesor resultadoProfesor=gProfesor.seleccionarProfesor(dni);
-		valor
+		if(resultadoProfesor==null) {
+			return false;
+		}
+		return true;
 	}
 }
