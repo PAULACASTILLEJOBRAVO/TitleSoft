@@ -5027,3 +5027,377 @@ Dec 20, 2022 6:49:19 PM presentacion.MainTesting escribirLog
 INFORMACIÓN: @After -> How many times do i appear?
 Dec 20, 2022 6:49:19 PM presentacion.MainTesting escribirLog
 INFORMACIÓN: @AfterClass
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:20 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 6:56:31 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:15 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:25:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:22 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:23 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:29:49 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:50 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+Dec 20, 2022 7:34:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass

@@ -70,7 +70,7 @@ public class GestorConsultasTest {
 	}
 	@Test
 	public void listarCursosEstados1() {
-		assertTrue(listarCursosEstados(2022, 2024, 12, 01));
+		assertTrue(listarCursosEstados(2022, 2024, 12, 1));
 	}
 	public boolean comprobarId(int id) {
 		boolean valor = false;
@@ -124,7 +124,7 @@ public class GestorConsultasTest {
 			ediciones=null;
 		}
 	    
-		valor = (!ediciones.isEmpty());
+		valor = (ediciones != null);
 		return valor;
 	}
 	
