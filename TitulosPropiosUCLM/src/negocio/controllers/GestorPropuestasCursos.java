@@ -9,16 +9,16 @@ import persistencia.CursoPropioDAO;
 
 public class GestorPropuestasCursos {
 
-	@SuppressWarnings("deprecation")
+
 	public CursoPropio realizarPropuestaCurso(String nombre, Date fechaInicio, Date fechaFin, double tasaMatricula, int edicion,  String dniDirector, String dniSecretario, EstadoCurso estado, TipoCurso tipo, String centro) {
 
 		/*
 		 * no se que controlador mete para las fechas y para el enunm
 		 */
-		
+
 		//hacer los credenciales
 		int eCTS=0;
-		
+
 		SecureRandom random = new SecureRandom();
 		int numeroAleatorioMaster = random.nextInt(3);
 		int numeroAleatorioEspecialista = random.nextInt(2);
@@ -26,7 +26,7 @@ public class GestorPropuestasCursos {
 		int numeroAleatorioFormacioAvanzada = random.nextInt(15,30);
 		int numeroAleatorioFormacioContinua = random.nextInt(3,14);
 		int numeroAleatorioMicrocredenciales = random.nextInt(2,14);
-		
+
 		if(tipo == TipoCurso.MASTER && numeroAleatorioMaster == 0) {
 			eCTS = 60;
 		}else if(tipo == TipoCurso.MASTER && numeroAleatorioMaster == 1) {
@@ -50,27 +50,45 @@ public class GestorPropuestasCursos {
 		}else if(tipo == TipoCurso.CORTA_DURACION && 2<=numeroAleatorioExperto) {
 			eCTS=numeroAleatorioExperto;
 		}
-		
+
+
+		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+		SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
+
+		String anioInicio = getYearFormat.format(fechaInicio);
+		String mesInicio = getMonthFormat.format(fechaInicio);
+
+
+		String anioFin = getYearFormat.format(fechaFin);
+		String mesFin = getMonthFormat.format(fechaFin);
+
+		Date fechaActual = new Date();
+		String anioActual = getYearFormat.format(fechaActual);
+
 		if(  (nombre.equals("")) ||
 				(tasaMatricula<0) ||
 				(edicion<0) ||
 				(dniDirector.equals("") || dniDirector.length()>9) ||
 				(dniSecretario.equals("") || dniSecretario.length()>9 ) ||
-				(centro.equals(""))) {
+				(centro.equals("") ||
+				(Integer.parseInt(anioInicio)> Integer.parseInt(anioActual)) ||
+				(Integer.parseInt(anioFin)> Integer.parseInt(anioActual)) ||
+				(Integer.parseInt(mesInicio) == 6) || (Integer.parseInt(mesInicio)) == 7 || 
+				(Integer.parseInt(mesFin) == 6) || (Integer.parseInt(mesFin) == 7))) {
 
-			return null;
-		}
+							return null;
+						}
 
 
-		GestorProfesor gestorProfesor = new GestorProfesor();
-		Profesor director = gestorProfesor.seleccionarProfesor(dniDirector);
-		Profesor secretario = gestorProfesor.seleccionarProfesor(dniSecretario);
+						GestorProfesor gestorProfesor = new GestorProfesor();
+						Profesor director = gestorProfesor.seleccionarProfesor(dniDirector);
+						Profesor secretario = gestorProfesor.seleccionarProfesor(dniSecretario);
 
-		CursoPropio nuevoCurso = new CursoPropio(nombre, fechaInicio, fechaFin, eCTS, tasaMatricula, edicion, director, secretario, estado, tipo, centro);
-		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();	
+						CursoPropio nuevoCurso = new CursoPropio(nombre, fechaInicio, fechaFin, eCTS, tasaMatricula, edicion, director, secretario, estado, tipo, centro);
+						CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();	
 
-		cursoPropioDAO.crearNuevoCurso(nuevoCurso);
-		return nuevoCurso;
+						cursoPropioDAO.crearNuevoCurso(nuevoCurso);
+						return nuevoCurso;
 
 	}
 
@@ -80,5 +98,5 @@ public class GestorPropuestasCursos {
 		cursoPropioDAO.editarCurso(curso);		
 
 	}
-	
+
 }

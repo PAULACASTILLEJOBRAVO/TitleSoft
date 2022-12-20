@@ -1,7 +1,5 @@
 package persistencia;
 
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import negocio.entities.*;
@@ -22,25 +20,6 @@ public class ProfesorDAO implements AbstractEntityDAO <Object>  {
 
 	public int eliminarProfesor(Profesor profe) {
 		return delete(profe);
-	}
-
-	public Collection<Profesor> listarProfesorPorDoctor(boolean doctor) {
-		List<Object> resultado;
-
-		Collection<Profesor> profesorEncontrados = new LinkedList<>();
-		String selectSQLEdicion= "SELECT * FROM profesor"
-				+ "WHERE doctor = '"+doctor+"' ";
-
-		resultado = GestorBD.select(selectSQLEdicion);
-
-		if (!resultado.isEmpty()) {
-			for (int i = 0; i < resultado.size(); i++) {
-				Profesor profeAux=(Profesor) resultado.get(i);
-				profesorEncontrados.add(profeAux);
-			}
-		}else
-			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando cursos");
-		return profesorEncontrados;
 	}
 
 	@Override

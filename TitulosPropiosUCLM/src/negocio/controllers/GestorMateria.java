@@ -43,15 +43,12 @@ public class GestorMateria {
 
 		Date fechaActual = new Date();
 		String anioActual = getYearFormat.format(fechaActual);
-		System.out.println("año inicio:"+anioInicio+ " mes inicio: "+mesInicio);
-		System.out.println("año inicio:"+anioFin+ " mes inicio: "+mesFin);
-		System.out.println("fecha inicio :"+fechaInicio+ " fecha fin: "+fechaFin);
-		System.out.println("fecha actual :"+fechaActual);
+	
 		/*
 		 * El controlador Integer.parseInt(anioFin)< Integer.parseInt(anioActual) no lo pondria ya que el año fin puede ser a futuro
 		 * puede ser el año que viene
 		 */
-		if(dniProfesorResponsable.length()> 9 || nombre.length() > 20 || Integer.parseInt(anioInicio)> Integer.parseInt(anioActual) ||Integer.parseInt(anioFin)< Integer.parseInt(anioActual)
+		if(dniProfesorResponsable.length()> 9 || nombre.length() > 20 || Integer.parseInt(anioInicio)> Integer.parseInt(anioActual) ||Integer.parseInt(anioFin)> Integer.parseInt(anioActual)
 				|| Integer.parseInt(mesInicio) == 6 || Integer.parseInt(mesInicio) == 7 || Integer.parseInt(mesFin) == 6 || Integer.parseInt(mesFin) == 7) {
 			return null;
 		}
