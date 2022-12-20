@@ -154,7 +154,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 
 	public CursoPropio crearObjetoCursoPropio(String cursoSplit) {
 		CursoPropio cursoReturn=null;
-		CursoPropioDAO cursoDAO=new CursoPropioDAO();
+		CursoPropioDAO cursoDAO=new CursoPropioDAO(); 
 
 		String[] aux =  (cursoSplit.trim().replace("[", "").replace("]", "")).split(",") ;
 		//Coleccion de matriculas y materias
@@ -221,7 +221,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 			
 			cursoReturn= new CursoPropio(matriculas, director, secretario, materias, 
 					estado, tipo, cursoDAO, Integer.parseInt(aux[0]), aux[1],Integer.parseInt(aux[2].trim()), 
-					fechaInicial, fechaFinal, Double.parseDouble(aux[5].trim()), Integer.parseInt(aux[6].trim()));
+					fechaInicial, fechaFinal, Double.parseDouble(aux[5].trim()), Integer.parseInt(aux[6].trim()),aux[8]);
 			return cursoReturn;
 		}catch (ParseException e) {
 			MainTesting.escribirLog(MainTesting.ERROR,"Error en la conversión de fecha SQL a fecha java");
