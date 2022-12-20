@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import negocio.entities.CursoPropio;
 import negocio.entities.TipoCurso;
 
 public class GestorConsultasTest {
@@ -54,71 +56,28 @@ public class GestorConsultasTest {
 	
 	@Test
 	public void consultarIngresos0() {		
-		assertFalse(consultarIngresos(TipoCurso.ESPECIALISTA, -2023, -2098, -3, -8));
+		assertFalse(consultarIngresos(TipoCurso.ESPECIALISTA, 2022, 2023, 11, -8));
 		
 	}
 	@Test
 	public void consultarIngresos1() {
-		assertTrue(consultarIngresos(TipoCurso.MASTER, 2022, 2023, 11, 01));
+		assertTrue(consultarIngresos(TipoCurso.MASTER, 2022, 2023, 11, 6));
 		
 	}
-
-	
-//	@Test
-//	public void listarEdicionesCursos0() {
-//		assertFalse(comprobarFecha(-2023, -2098, -3, -8));
-//	}
-//	
-//	@Test
-//	public void listarEdicionesCursos1() {
-//		assertTrue(comprobarFecha(2024, 2025, 4, 3));
-//	}
-//	
-//	@Test
-//	public void listarCursosEstado0() {
-//		assertFalse(comprobarFecha(-2023, 2023, 9, 6));
-//	}
-//	@Test
-//	public void listarCursosEstado1() {
-//		assertTrue(comprobarFecha(2024, 2025, 4, 3)); 
-//	}
-//	@Test
-//	public void listarCursosEstado2() {
-//		assertFalse(comprobarFecha(2024, 2025, 7, 3)); 
-//	}
-//	@Test
-//	public void listarCursosEstado3() {
-//		assertFalse(comprobarFecha(2024, 2025, 2, 8)); 
-//	}
-//	
-//	@Test
-//	public void listarCursosEstado4() {
-//		assertFalse(comprobarFecha(2024, 2025, 3, 7)); 
-//	}
-//	@Test
-//	public void listarCursosEstado5() {
-//		assertFalse(comprobarFecha(2024, 2025, 8, 2)); 
-//	}
-//	@Test
-//	public void listarCursosEstado6() {
-//		assertFalse(comprobarFecha(2024, -2025, 8, 2)); 
-//	}
-//
-//	@Test
-//	public void listarCursosEstado7() {
-//		assertFalse(comprobarFecha(2024, 2025, 4, 33)); 
-//	}
-//	
-//	@Test
-//	public void listarCursosEstado8() {
-//		assertFalse(comprobarFecha(2024, 2025, 44, 3)); 
-//	}
-	
+	@Test
+	public void listarCursosEstados0() {
+		assertFalse(listarCursosEstados(2022, 2023, 11, 8));
+	}
+	@Test
+	public void listarCursosEstados1() {
+		assertTrue(listarCursosEstados(2023, 2024, 11, 6));
+	}
 	public boolean comprobarId(int id) {
 		boolean valor = false;
 		valor= (id>=0);
 		return valor;
 	}
+	
 	
 	public boolean consultarIngresos(TipoCurso tipo, int anioInicio, int anioFin, int mesInicio, int mesFin) {
 		boolean valor = false;
@@ -128,21 +87,47 @@ public class GestorConsultasTest {
 		Date fechaFin=null;
 		String fecha1 =  anioInicio + "-" + mesInicio + "-" + "1";
 		String fecha2 =  anioFin + "-" + mesFin + "-" + "1";
-		System.out.println("++++++++++++++++++++++++++++++++++++fecha inicio: " + fecha1);
-		System.out.println("************************************** fecha fin: " + fecha2);
 		
 		try {
 			fechaInicio = format.parse(fecha1);
 			fechaFin=format.parse(fecha2);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    consulta = (negocio.controllers.GestorConsultas.consultarIngresos(tipo, fechaInicio, fechaFin));
-	    System.out.println("---------------------- " + consulta); 
+		try {
+			consulta = (negocio.controllers.GestorConsultas.consultarIngresos(tipo, fechaInicio, fechaFin));
+		}catch(Exception e) {
+			consulta=0;
+		}
+	    
 		valor = (consulta > 0);
 		return valor;
 	}
+	public boolean listarCursosEstados(int anioInicio, int anioFin, int mesInicio, int mesFin) {
+		boolean valor = false;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Collection<CursoPropio> ediciones = null;
+	     Date fechaInicio=null;
+		Date fechaFin=null;
+		String fecha1 =  anioInicio + "-" + mesInicio + "-" + "1";
+		String fecha2 =  anioFin + "-" + mesFin + "-" + "1";
+		
+		try {
+			fechaInicio = format.parse(fecha1);
+			fechaFin=format.parse(fecha2);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		try {
+			ediciones = (negocio.controllers.GestorConsultas.listarCursosEstados(fechaInicio, fechaFin));
+		}catch(Exception e) {
+			ediciones=null;
+		}
+	    
+		valor = (!ediciones.isEmpty());
+		return valor;
+	}
+	
 	
 
 }

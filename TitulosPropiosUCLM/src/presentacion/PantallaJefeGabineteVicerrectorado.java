@@ -35,8 +35,13 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		setTitle("Sesion: Jefe Gabinete");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 520, 300);
+
 		contentPane = new JPanel(); 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5)); 
+////////////////////////////////////
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
