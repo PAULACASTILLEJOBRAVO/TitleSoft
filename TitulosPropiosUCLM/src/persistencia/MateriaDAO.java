@@ -28,6 +28,36 @@ public class MateriaDAO implements AbstractEntityDAO <Object>  {
 		return delete(materia);
 	}
 	
+	public int vincularCursoMateria(int idMateria, int idCurso) {
+		int resultado=0;
+		String insertSQL = "INSERT INTO RELACIONMATERIASCURSO (materia,curso) "
+				+ "VALUES ("+idMateria+" , "+idCurso+") ";
+		
+		resultado = GestorBD.insert(insertSQL);
+		if (resultado < 0)
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al vincular materia con su curso correspondiente");
+		return resultado;
+	}
+
+	public int seleccionarId(Materia materia) {
+		int idMateria=0;
+		
+		List<Object> resultado;
+		
+		String insertSQL = "SELECT idmateria FROM materia WHERE nombre = '"+materia.getNombre()
+				+"' AND fechaInicio = '"+materia.getFechaInicio()+"'  AND fechaFin = '"+materia.getFechaFin()
+				+"' AND dniProfesor = '"+materia.getResponsable().getDni()+"' AND horas = "+materia.getHoras()+" ";
+		
+		resultado = GestorBD.select(insertSQL); 
+		if (!resultado.isEmpty()) {
+			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			
+			idMateria=Integer.parseInt(aux[0]);
+		}else
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar materia");
+		return idMateria;
+	}
+	
 	@Override
 	public Object get(String id) {
 		List<Object> resultado;
@@ -106,35 +136,5 @@ public class MateriaDAO implements AbstractEntityDAO <Object>  {
 		if (resultado < 0)
 			MainTesting.escribirLog(MainTesting.ERROR, "Error al eliminar materia");
 		return resultado;
-	}
-	
-	public int vincularCursoMateria(int idMateria, int idCurso) {
-		int resultado=0;
-		String insertSQL = "INSERT INTO RELACIONMATERIASCURSO (materia,curso) "
-				+ "VALUES ("+idMateria+" , "+idCurso+") ";
-		
-		resultado = GestorBD.insert(insertSQL);
-		if (resultado < 0)
-			MainTesting.escribirLog(MainTesting.ERROR, "Error al vincular materia con su curso correspondiente");
-		return resultado;
-	}
-
-	public int seleccionarId(Materia materia) {
-		int idMateria=0;
-		
-		List<Object> resultado;
-		
-		String insertSQL = "SELECT idmateria FROM materia WHERE nombre = '"+materia.getNombre()
-				+"' AND fechaInicio = '"+materia.getFechaInicio()+"'  AND fechaFin = '"+materia.getFechaFin()
-				+"' AND dniProfesor = '"+materia.getResponsable().getDni()+"' AND horas = "+materia.getHoras()+" ";
-		
-		resultado = GestorBD.select(insertSQL); 
-		if (!resultado.isEmpty()) {
-			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
-			
-			idMateria=Integer.parseInt(aux[0]);
-		}else
-			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar materia");
-		return idMateria;
 	}
 }

@@ -3,8 +3,6 @@ package persistencia;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import negocio.entities.*;
@@ -28,44 +26,7 @@ public class MatriculaDAO implements AbstractEntityDAO  <Object> {
 	public int eliminarrMatricula(Matricula matricula)  {
 		return delete(matricula);
 	}
-
-	public Collection<Matricula> listarMatriculaTitulacion(String titulacion)  {
-		List<Object> resultado;
-		Collection<Matricula> matriculasEncontradas=new LinkedList<>();
-		String selectSQLEdicion= "SELECT * FROM matricula"
-				+ "WHERE titulacion = '"+titulacion+"' ";
-
-		resultado = GestorBD.select(selectSQLEdicion);
-
-		if (!resultado.isEmpty()) {
-			for (int i = 0; i < resultado.size(); i++) {
-				Matricula matriculaAux=(Matricula)resultado.get(i);
-				matriculasEncontradas.add(matriculaAux);
-			}
-		}else
-			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando matricula");
-		return matriculasEncontradas;
-	}
 	
-	public Collection<Matricula> listarMatriculaCurso(int curso) {
-		List<Object> resultado;
-		Collection<Matricula> matriculasEncontradas=new LinkedList<>();
-
-		String selectSQLEdicion= "SELECT * FROM matricula"
-				+ "WHERE Curso = '"+curso+"' ";
-
-		resultado = GestorBD.select(selectSQLEdicion);
-
-		if (!resultado.isEmpty()) {
-			for (int i = 0; i < resultado.size(); i++) {
-				Matricula matriculaAux=(Matricula)resultado.get(i);
-				matriculasEncontradas.add(matriculaAux);
-			}
-		}else
-			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando matriculas");
-		return matriculasEncontradas;
-	}
-
 	@Override
 	public Object get(String id){
 		List<Object> resultado;

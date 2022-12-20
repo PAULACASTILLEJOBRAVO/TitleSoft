@@ -21,42 +21,6 @@ public class EstudianteDAO implements AbstractEntityDAO <Object> {
 	public int eliminarEstudiante(Estudiante alumno) {
 		return delete(alumno);
 	}
-	
-	public Collection<Estudiante> listarEstudianteTitulacion(String titulacion) {
-		List<Object> resultado;
-		Collection<Estudiante> alumnosEncontrados=new LinkedList<>();
-		String selectSQLEdicion= "SELECT * FROM estudiante"
-				+ "WHERE titulacion = '"+titulacion+"'  ";
-
-		resultado = GestorBD.select(selectSQLEdicion);
-	
-		if (!resultado.isEmpty()) {
-			for (int i = 0; i <resultado.size(); i++) {
-				Estudiante alumnoAux=(Estudiante) resultado.get(i);
-				alumnosEncontrados.add(alumnoAux);
-			}
-		}else
-			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando estudiantes");
-		return alumnosEncontrados;
-	}
-
-	public Collection<Estudiante> listarCalificacion(double calificacion){
-		List<Object> resultado;
-		Collection<Estudiante> alumnosEncontrados=new LinkedList<>();
-	
-		String selectSQLEdicion= "SELECT * FROM estudiante"
-				+ "WHERE calificacion = '"+calificacion+"' ";
-		resultado = GestorBD.select(selectSQLEdicion);
-		
-		if (!resultado.isEmpty()) {
-			for (int i = 0; i < resultado.size(); i++) {
-				Estudiante alumnoAux=(Estudiante)resultado.get(i);
-				alumnosEncontrados.add(alumnoAux);
-			}
-		}else
-			MainTesting.escribirLog(MainTesting.ERROR, "Error encontrando estudiantes");
-		return alumnosEncontrados;
-	}
 
 	@Override
 	public Object get(String id) {

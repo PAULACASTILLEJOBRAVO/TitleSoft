@@ -72,15 +72,6 @@ public class PantallaDireccionCursos extends JFrame {
 		add(textFieldTasaMatricula);
 		textFieldTasaMatricula.setColumns(10);
 		
-		JLabel lblCentro = new JLabel("Nombre del centro:");
-		lblCentro.setBounds(90, 340, 125, 13);
-		add(lblCentro);
-		
-		textFieldCentro = new JTextField();
-		textFieldCentro.setBounds(90, 360, 76, 19);
-		add(textFieldCentro);
-		textFieldCentro.setColumns(10);
-		
 		JLabel lblFechaInicio = new JLabel("Fecha de inicio del curso (yyyy-mm-dd):");
 		lblFechaInicio.setBounds(416, 170, 287, 40);
 		add(lblFechaInicio);
@@ -280,7 +271,7 @@ public class PantallaDireccionCursos extends JFrame {
 				
 				double tasaMatricula = Integer.parseInt(textFieldTasaMatricula.getText()) + 0.0;
 				
-				cursoPropuesto = gestorPropuestaCurso.realizarPropuestaCurso(textFieldCurso.getText(), fechaSQLInicio, fechaSQLFin, tasaMatricula,  Integer.parseInt(textFieldEdicion.getText()), textFieldDirector.getText(), textFieldSecretario.getText(), EstadoCurso.PROPUESTO, tipoCurso, textFieldCentro.getText());
+				cursoPropuesto = gestorPropuestaCurso.realizarPropuestaCurso(textFieldCurso.getText(), fechaSQLInicio, fechaSQLFin, tasaMatricula,  Integer.parseInt(textFieldEdicion.getText()), textFieldDirector.getText(), textFieldSecretario.getText(), EstadoCurso.PROPUESTO, tipoCurso, "UCLM");
 			} else {
 				lblError.setText("No se ha podido completar el curso. Rellena todos los campos.");
 			}
@@ -305,9 +296,9 @@ public class PantallaDireccionCursos extends JFrame {
 	}
 
 	private boolean validarDatosCurso() {
-		return !(textFieldFechaInicio.getText().isEmpty() || textFieldFechaFin.getText().isEmpty() || textFieldCentro.getText().isEmpty()
-				|| textFieldCurso.getText().isEmpty() || textFieldDirector.getText().isEmpty() || textFieldSecretario.getText().isEmpty() 
-				|| textFieldEdicion.getText().isEmpty() || textFieldTasaMatricula.getText().isEmpty());
+		return !(textFieldFechaInicio.getText().isEmpty() || textFieldFechaFin.getText().isEmpty() || textFieldCurso.getText().isEmpty() || 
+				textFieldDirector.getText().isEmpty() || textFieldSecretario.getText().isEmpty() || textFieldEdicion.getText().isEmpty() || 
+				textFieldTasaMatricula.getText().isEmpty());
 	}
 	
 	private boolean validarDatosMateria() {
