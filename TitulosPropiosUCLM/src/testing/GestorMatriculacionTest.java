@@ -1,13 +1,18 @@
 package testing;
 
 import static org.junit.Assert.*;
+
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import negocio.entities.ModoPago;
+import presentacion.MainTesting;
 
 public class GestorMatriculacionTest {
 
@@ -33,50 +38,35 @@ public class GestorMatriculacionTest {
 	
 	@Test
 	public void realizarMatriculacion0() {
-		assertFalse(realizarMatriculacion("", "Pepe", -2023, -3));
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date fecha=null;
+		try {
+			fecha = format.parse("2022-02-02");
+		} catch (Exception e) {
+			MainTesting.escribirLog("Errores.log", "Error en la creacion de las fechas para los test ");	
+		}
+		assertFalse(realizarMatriculacion( 1, "123", ModoPago.TARJETA_CREDITO, fecha, true));
 	}
 	
 	@Test
 	public void realizarMatriculacion1() {
-		assertTrue(realizarMatriculacion("curso01 verano", "Ana", 2024, 4));
-	}
-	@Test
-	public void realizarMatriculacion2() {
-		assertFalse(realizarMatriculacion("curso01wertyuiolkjhgdfsavbnmk", "", 2024, 4));
-	}
-	
-	@Test
-	public void realizarMatriculacion3() {
-		assertFalse(realizarMatriculacion("curso02", "", 2024, 4));
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date fecha=null;
+		try {
+			fecha = format.parse("2022-05-05");
+		} catch (Exception e) {
+			MainTesting.escribirLog("Errores.log", "Error en la creacion de las fechas para los test ");	
+		}
+		assertFalse(realizarMatriculacion(86, "pepe", ModoPago.TRANSFERENCIA, fecha, false));
 	}
 	
-	@Test
-	public void realizarMatriculacion4() {
-		assertFalse(realizarMatriculacion("curso verano", "uijhgtrfgvbngfdewsqjks", -2024, 4));
-	}
-	@Test
-	public void realizarMatriculacion5() {
-		assertFalse(realizarMatriculacion("curso01 verano", "Ana", -2024, 4));
-	}
-	
-	@Test
-	public void realizarMatriculacion6() {
-		assertFalse(realizarMatriculacion("curso01 verano", "Ana", 2024, 7));
-	}
-	@Test
-	public void realizarMatriculacion7() {
-		assertFalse(realizarMatriculacion("curso01 verano", "Ana", 2024, 8));
-	}
-	
-	public boolean realizarMatriculacion(String curso, String alumno, int anio, int mes) {
+	public boolean realizarMatriculacion(int curso, String alumno, ModoPago tipo,Date fecha,boolean pagado) {
 		boolean value = false;
-		java.util.Date fechaActual = new java.util.Date();
-		 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
-	     
-	     String anioActual = getYearFormat.format(fechaActual);
-		value = (curso.length() < 20 && curso.length() > 0 && alumno.length() < 20 && alumno.length() > 0 
-				&& anio> Integer.parseInt(anioActual) && mes != 7 && mes != 8);
+		
+		java.sql.Date fecha1 = (java.sql.Date) fecha;
 
+			value = (negocio.controllers.GestorMatriculacion.realizarMatriculacion(curso, alumno, tipo, fecha1, pagado));
+		
 		return value;
 	}
 	

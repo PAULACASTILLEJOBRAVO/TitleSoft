@@ -5,7 +5,7 @@ import java.util.*;
 public class Matricula {
 	
 	int idMatricula;
-	String titulo;
+	int titulo;
 	String dni;
 	ModoPago tipoPago;
 	private Date fecha;
@@ -23,10 +23,10 @@ public class Matricula {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	public String getTitulo() {
+	public int getTitulo() {
 		return titulo;
 	}
-	public void setTitulo(String titulo) {
+	public void setTitulo(int titulo) {
 		this.titulo = titulo;
 	}
 	public ModoPago getTipoPago() {
@@ -47,7 +47,7 @@ public class Matricula {
 	public void setPagado(boolean pagado) {
 		this.pagado = pagado;
 	}
-	public Matricula(String titulo, String dni, ModoPago tipoPago, Date fecha, boolean pagado) {
+	public Matricula(int titulo, String dni, ModoPago tipoPago, Date fecha, boolean pagado) {
 		super();
 		this.titulo = titulo;
 		this.dni = dni;
@@ -55,7 +55,7 @@ public class Matricula {
 		this.fecha = fecha;
 		this.pagado = pagado;
 	}
-	public Matricula(int idMatricula,String titulo, String dni, ModoPago tipoPago, Date fecha, boolean pagado) {
+	public Matricula(int idMatricula,int titulo, String dni, ModoPago tipoPago, Date fecha, boolean pagado) {
 		super();
 		this.idMatricula=idMatricula;
 		this.titulo = titulo;

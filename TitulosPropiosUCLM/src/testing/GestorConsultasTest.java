@@ -14,6 +14,8 @@ import org.junit.Test;
 
 import negocio.entities.CursoPropio;
 import negocio.entities.TipoCurso;
+import persistencia.CursoPropioDAO;
+import presentacion.MainTesting;
 
 public class GestorConsultasTest {
 
@@ -36,23 +38,6 @@ public class GestorConsultasTest {
 	public void tearDown() {
 		System.out.println("@After -> How many times do i appear?");
 	}
-	@Test
-	public void seleccionarCurso0() {
-		assertTrue(comprobarId(1));
-	}
-	@Test
-	public void seleccionarCurso1() {
-		assertFalse(comprobarId(-1));
-	}
-
-	@Test
-	public void cursosPorCentro() {
-		assertTrue(comprobarId(2));
-	}
-	@Test
-	public void cursosPorCentro1() {
-		assertFalse(comprobarId(-1));
-	}
 	
 	@Test
 	public void consultarIngresos0() {		
@@ -72,11 +57,39 @@ public class GestorConsultasTest {
 	public void listarCursosEstados1() {
 		assertTrue(listarCursosEstados(2022, 2024, 12, 1));
 	}
-	public boolean comprobarId(int id) {
-		boolean valor = false;
-		valor= (id>=0);
-		return valor;
+	
+	
+	@Test
+	public void listarCursosRechazadosYPropuestos0() {
+		assertTrue(listarCursosRechazadosYPropuestos(2022, 2024, 12, 1));
 	}
+	
+	@Test
+	public void listarCursosRechazadosYPropuestos1() {
+		assertFalse(listarCursosRechazadosYPropuestos(2022, 2023, 11, 8));
+	}
+	
+	@Test
+	public void listarEdicionesCursos0() {
+		assertTrue(listarEdicionesCursos(2022, 2024, 12, 1));
+	}
+	
+	@Test
+	public void listarEdicionesCursos1() {
+		assertFalse(listarEdicionesCursos(2022, 2023, 11, 8));
+	}
+	
+	@Test
+	public void seleccionarCurso0() {
+		assertTrue(seleccionarCurso(1));
+	}
+	
+	@Test
+	public void seleccionarCurso1() {
+		assertFalse(seleccionarCurso(2));
+	}
+	
+
 	
 	
 	public boolean consultarIngresos(TipoCurso tipo, int anioInicio, int anioFin, int mesInicio, int mesFin) {
@@ -92,8 +105,7 @@ public class GestorConsultasTest {
 			fechaInicio = format.parse(fecha1);
 			fechaFin=format.parse(fecha2);
 		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+			MainTesting.escribirLog(MainTesting.ERROR, "Error en la creacion de las fechas para los test ");		}
 		try {
 			consulta = (negocio.controllers.GestorConsultas.consultarIngresos(tipo, fechaInicio, fechaFin));
 		}catch(Exception e) {
@@ -101,6 +113,29 @@ public class GestorConsultasTest {
 		}
 	    
 		valor = (consulta > 0);
+		return valor;
+	}
+	public boolean listarCursosRechazadosYPropuestos(int anioInicio, int anioFin, int mesInicio, int mesFin) {
+		boolean valor = false;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Collection<CursoPropio> ediciones;
+	     Date fechaInicio=null;
+		Date fechaFin=null;
+		String fecha1 =  anioInicio + "-" + mesInicio + "-" + "1";
+		String fecha2 =  anioFin + "-" + mesFin + "-" + "1";
+		
+		try {
+			fechaInicio = format.parse(fecha1);
+			fechaFin=format.parse(fecha2);
+		} catch (ParseException e) {
+			MainTesting.escribirLog(MainTesting.ERROR, "Error en la creacion de las fechas para los test ");		}
+		try {
+			ediciones = (negocio.controllers.GestorConsultas.listarCursosEstados(fechaInicio, fechaFin));
+		}catch(Exception e) {
+			ediciones=null;
+		}
+	    
+		valor = (ediciones != null);
 		return valor;
 	}
 	public boolean listarCursosEstados(int anioInicio, int anioFin, int mesInicio, int mesFin) {
@@ -116,10 +151,32 @@ public class GestorConsultasTest {
 			fechaInicio = format.parse(fecha1);
 			fechaFin=format.parse(fecha2);
 		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+			MainTesting.escribirLog(MainTesting.ERROR, "Error en la creacion de las fechas para los test ");		}
 		try {
-			ediciones = (negocio.controllers.GestorConsultas.listarCursosEstados(fechaInicio, fechaFin));
+			ediciones = (negocio.controllers.GestorConsultas.listarCursosRechazadosYPropuestos(fechaInicio, fechaFin));
+		}catch(Exception e) {
+			ediciones=null;
+		}
+	    
+		valor = (ediciones != null);
+		return valor;
+	}
+	public boolean listarEdicionesCursos(int anioInicio, int anioFin, int mesInicio, int mesFin) {
+		boolean valor = false;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Collection<CursoPropio> ediciones;
+	     Date fechaInicio=null;
+		Date fechaFin=null;
+		String fecha1 =  anioInicio + "-" + mesInicio + "-" + "1";
+		String fecha2 =  anioFin + "-" + mesFin + "-" + "1";
+		
+		try {
+			fechaInicio = format.parse(fecha1);
+			fechaFin=format.parse(fecha2);
+		} catch (ParseException e) {
+			MainTesting.escribirLog(MainTesting.ERROR, "Error en la creacion de las fechas para los test ");		}
+		try {
+			ediciones = (negocio.controllers.GestorConsultas.listarEdicionesCursos(fechaInicio, fechaFin));
 		}catch(Exception e) {
 			ediciones=null;
 		}
@@ -128,6 +185,17 @@ public class GestorConsultasTest {
 		return valor;
 	}
 	
-	
+	public boolean seleccionarCurso(int id) {
+		boolean valor = false;
+		CursoPropio curso=null;
+		String ident  = id + "";
+		try {
+		curso = (negocio.controllers.GestorConsultas.seleccionarCurso(ident));
+		}catch(Exception e ) {
+			curso = null;
+		}
+		valor = (curso!= null);
+		return valor;
+	}
 
 }

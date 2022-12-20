@@ -57,7 +57,7 @@ public class GestorConsultas {
 		return ediciones;
 	}
 	
-	public Collection<CursoPropio> listarCursosRechazadosYPropuestos(Date fechaInicio, Date fechaFin) {
+	public static Collection<CursoPropio> listarCursosRechazadosYPropuestos(Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
 			
@@ -78,7 +78,7 @@ public class GestorConsultas {
 		return ediciones;
 	}
 
-	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
+	public static Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> ediciones = null;
 		
@@ -102,7 +102,7 @@ public class GestorConsultas {
 	}
 
 
-	public CursoPropio seleccionarCurso(String id) {
+	public static CursoPropio seleccionarCurso(String id) {
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		int n = Integer.parseInt(id);
 		if(n<0) {
