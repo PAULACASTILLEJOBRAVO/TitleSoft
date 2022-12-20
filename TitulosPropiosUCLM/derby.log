@@ -1,4 +1,4 @@
-Tue Dec 20 15:50:19 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+Tue Dec 20 16:31:49 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
@@ -311,7 +311,7 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
 ============= end nested exception, level (2) ===========
 Cleanup action completed
-Tue Dec 20 15:50:19 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+Tue Dec 20 16:31:49 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
@@ -624,7 +624,7 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
 ============= end nested exception, level (2) ===========
 Cleanup action completed
-Tue Dec 20 15:50:19 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
+Tue Dec 20 16:31:50 CET 2022 Thread[AWT-EventQueue-0,6,main] Cleanup action starting
 java.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
@@ -938,5 +938,5 @@ ERROR XSDB6: Another instance of Derby may have already booted the database C:\U
 ============= end nested exception, level (2) ===========
 Cleanup action completed
 ----------------------------------------------------------------
-Tue Dec 20 15:50:19 CET 2022: Shutting down Derby engine
+Tue Dec 20 16:31:50 CET 2022: Shutting down Derby engine
 ----------------------------------------------------------------

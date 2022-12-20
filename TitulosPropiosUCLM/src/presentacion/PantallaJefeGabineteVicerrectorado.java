@@ -35,7 +35,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 		setTitle("Sesion: Jefe Gabinete");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 520, 300);
-		contentPane = new JPanel();
+		contentPane = new JPanel(); 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -100,7 +100,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 						btnConfirmarId.addActionListener((ActionEvent e2) -> {
 								double ingresos=botonConfirmarIngresos(textFieldFechaFinal,textFieldFechaInicio,textFieldIdCurso);
 
-								JLabel lblingresos = new JLabel("Ingresos: "+ingresos+"");
+ 							JLabel lblingresos = new JLabel("Ingresos: "+ingresos+"");
 								lblingresos.setBounds(100, 150, 200,70);
 								add(lblingresos);
 								lblingresos.updateUI();

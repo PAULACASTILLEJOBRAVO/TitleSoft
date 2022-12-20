@@ -139,7 +139,7 @@ public class GestorConsultasTest {
 			e.printStackTrace();
 		}
 	    consulta = (negocio.controllers.GestorConsultas.consultarIngresos(tipo, fechaInicio, fechaFin));
-	    System.out.println("---------------------- " + consulta);
+	    System.out.println("---------------------- " + consulta); 
 		valor = (consulta > 0);
 		return valor;
 	}

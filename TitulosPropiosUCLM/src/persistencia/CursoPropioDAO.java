@@ -89,8 +89,11 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 			tipoCurso = TipoCurso.CORTA_DURACION;
 		}
 		
-		selectSQLEdicion="SELECT sum(tasaMatricula) as Ingresos FROM cursopropio WHERE tipoCurso='"+tipoCurso+"' and fechaInicio= '"+
-		fechaInicio+SQLCOMPARARFECHAFIN+fechaFin+"' ";
+		java.sql.Date fechaInicioSQL= new java.sql.Date(fechaInicio.getTime());
+		java.sql.Date fechaFinSQL= new java.sql.Date(fechaFin.getTime());
+
+		selectSQLEdicion="SELECT sum(tasaMatricula) as Ingresos FROM cursopropio WHERE tipoCurso='"+tipoCurso.toString()+"' and fechaInicio= '"+
+		fechaInicioSQL+SQLCOMPARARFECHAFIN+fechaFinSQL+"' ";
 
 		resultado = GestorBD.select(selectSQLEdicion);
 
