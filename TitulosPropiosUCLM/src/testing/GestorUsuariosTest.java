@@ -11,7 +11,7 @@ import negocio.entities.Usuario;
 import presentacion.MainTesting;
 public class GestorUsuariosTest {
 
-
+	GestorUsuarios gUsuario=new GestorUsuarios();
 
 	@BeforeClass
 	public static void setUpBeforeClass(){
@@ -37,31 +37,38 @@ public class GestorUsuariosTest {
 	public void comprobarUsuario() {
 		String usuario="";
 		String password="";
-		assertTrue( (usuario.equals("")|| password.equals("")) ); 
+		assertFalse( gUsuario.comprobarUsuario(usuario, password) ); 
 	}
 	@Test
 	public void comprobarUsuario2() {
 		String usuario="jefe";
 		String password="jefe";
-		assertFalse( (usuario.equals("")|| password.equals("")) ); 
+		assertTrue( gUsuario.comprobarUsuario(usuario, password)); 
 	}
 	@Test
 	public void seleccionarUsuario() {
 		String usuario="";
-		assertTrue( (usuario.equals("")) );
+		assertFalse( seleccionarUsuario0(usuario) );
 	}
 	@Test
 	public void seleccionarUsuario2() {
 		String usuario="jefe";
-		assertFalse( (usuario.equals("")) );
+		assertTrue( seleccionarUsuario0(usuario));
 	}
+	
+	public boolean seleccionarUsuario0(String usuario) {
+		if(gUsuario.seleccionarUsuario(usuario)==null) {
+			return false;
+		}
+		return true;
+	}
+	
 	@Test
 	public void contrasenaCorrectaLoging() {
 		Usuario usuario=new Usuario("", "", TipoUsuario.JEFE);
 		
 		String password="";
-		assertFalse(! ( usuario.getPassword().equals("") ||
-				password.equals("")));
+		assertFalse(gUsuario.contrasenaCorrectaLoging(usuario, password));
 		
 	}
 	@Test
@@ -69,28 +76,8 @@ public class GestorUsuariosTest {
 		Usuario usuario=new Usuario("jefe", "jefe", TipoUsuario.JEFE);
 		
 		String password="jefe";
-		assertTrue(! ( usuario.getPassword().equals("") ||
-				password.equals("")));
+		assertTrue( gUsuario.contrasenaCorrectaLoging(usuario, password));
 	}
 	
-//	public boolean contrasenaCorrectaLoging(Usuario usuario, String password) {
-//		if(password.equals("")) {
-//			if(usuario.getPassword().equals("")) {
-//				return true;
-//			}
-//		}
-//			
-//		return false;
-//	}
 	
-//	public boolean comprobarUsuario(String usuario, String password) {
-//		
-//		if(password.equals("")) {
-//			if(usuario.equals("")) {
-//				return true;
-//			}
-//		}
-//			
-//		return false;
-//	}
 }

@@ -11,12 +11,6 @@ public class GestorPropuestasCursos {
 
 
 	public CursoPropio realizarPropuestaCurso(String nombre, Date fechaInicio, Date fechaFin, double tasaMatricula, int edicion,  String dniDirector, String dniSecretario, EstadoCurso estado, TipoCurso tipo, String centro) {
-
-		/*
-		 * no se que controlador mete para las fechas y para el enunm
-		 */
-
-		//hacer los credenciales
 		int eCTS=0;
 
 		SecureRandom random = new SecureRandom();

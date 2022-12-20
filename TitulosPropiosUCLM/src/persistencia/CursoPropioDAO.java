@@ -69,23 +69,6 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		List<Object> resultado;
 		double ingresos=0.0;
 		String selectSQLEdicion="";
-//		TipoCurso tipoCurso = null;
-//
-//		if(tipo.toString().equals("MASTER")) {
-//			tipoCurso = TipoCurso.MASTER;
-//		}else if(tipo.toString().equals("EXPERTO")) {
-//			tipoCurso = TipoCurso.EXPERTO;
-//		}else if(tipo.toString().equals("ESPECIALISTA")) {
-//			tipoCurso = TipoCurso.ESPECIALISTA;
-//		}else if(tipo.toString().equals("FORMACION_AVANZADA")) {
-//			tipoCurso = TipoCurso.FORMACION_AVANZADA;
-//		}else if(tipo.toString().equals("FORMACION_CONTINUA")) {
-//			tipoCurso = TipoCurso.FORMACION_CONTINUA;
-//		}else if(tipo.toString().equals("MICROCREDENCIALES")) {
-//			tipoCurso = TipoCurso.MICROCREDENCIALES;
-//		}else if(tipo.toString().equals("CORTA_DURACION")) {
-//			tipoCurso = TipoCurso.CORTA_DURACION;
-//		}
 		
 		java.sql.Date fechaInicioSQL= new java.sql.Date(fechaInicio.getTime());
 		java.sql.Date fechaFinSQL= new java.sql.Date(fechaFin.getTime());
@@ -317,7 +300,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 
 		resultado = GestorBD.update(updateSQL);
 		if (resultado < 0) 
-			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando curso ");
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando curso "); 
 		return curso;
 	}
 

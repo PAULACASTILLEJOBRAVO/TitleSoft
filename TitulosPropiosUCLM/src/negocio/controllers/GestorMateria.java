@@ -16,6 +16,7 @@ public class GestorMateria {
 		int n = Integer.parseInt(id);
 		if(n<0) {
 			MainTesting.escribirLog(MainTesting.ERROR,"id introducido no valido para la seleccion del curso");
+			return null;
 		}
 
 		return materiaDAO.seleccionarMateria(id);
@@ -27,7 +28,7 @@ public class GestorMateria {
 		Profesor profesorResponsable  = gestorProfesor.seleccionarProfesor(dniProfesorResponsable);
 		GestorConsultas gestorConsultas = new GestorConsultas();
 
-		Materia materiaNueva = new Materia(profesorResponsable, nombre, horas, fechaInicio, fechaFin);
+		Materia materiaNueva = null;
 		MateriaDAO materiaDAO = new MateriaDAO();
 
 
@@ -44,18 +45,16 @@ public class GestorMateria {
 		Date fechaActual = new Date();
 		String anioActual = getYearFormat.format(fechaActual);
 
-		/*
-		 * El controlador Integer.parseInt(anioFin)< Integer.parseInt(anioActual) no lo pondria ya que el a�o fin puede ser a futuro
-		 * puede ser el a�o que viene
-		 */
-		if(dniProfesorResponsable.length()== 9 && nombre.length() < 20 && Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
+		
+		if(dniProfesorResponsable.length()<= 9 && nombre.length() < 20 && Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
 				&& Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
 				&& Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
-
+			materiaNueva = new Materia(profesorResponsable, nombre, horas, fechaInicio, fechaFin);
 			materiaDAO.crearMateria(materiaNueva);
 			int idcurso = gestorConsultas.idCurso(curso);
 			int idMateria = idMateria(materiaNueva);
 			materiaDAO.vincularCursoMateria(idMateria, idcurso);
+			return materiaNueva;
 		}
 
 
