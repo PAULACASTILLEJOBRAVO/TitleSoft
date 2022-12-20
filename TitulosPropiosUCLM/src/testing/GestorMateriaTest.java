@@ -1,5 +1,6 @@
 package testing;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.ParseException;
@@ -37,7 +38,7 @@ public class GestorMateriaTest {
 	@Test
 	public void seleccionarMaterias1() {
 		int id=-5;
-		assertTrue(id>0);
+		assertFalse(id>0);
 
 	}
 	public void seleccionarMaterias2() {

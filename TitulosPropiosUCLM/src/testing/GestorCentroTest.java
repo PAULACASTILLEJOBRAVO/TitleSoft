@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import negocio.entities.Centro;
+import persistencia.CentroDAO;
 public class GestorCentroTest {
 
 	@BeforeClass
@@ -30,18 +32,27 @@ public class GestorCentroTest {
 		System.out.println("@After -> How many times do i appear?");
 	}
 	@Test
-	public void seleccionarCentro() {
-		int id = -1;
-		assertTrue(id>=0);
+	public void testSeleccionarCentro() {
+		String id = "UCLM";
+		assertTrue(comprobarId(id));
 	}
 	@Test
-	public void seleccionarCentro1() {
-		int id = 1;
-		assertTrue(id>=0);
+	public void testSeleccionarCentro1() {
+		String id = "UCM";
+		assertTrue(comprobarId(id));
 	}
 	@Test
-	public void seleccionarCentro2() {
-		int id = 0;
-		assertTrue(id>=0);
+	public void testSeleccionarCentro2() {
+		String id = "dnsnsj";
+		assertFalse(comprobarId(id));
+	}
+
+	
+	public boolean comprobarId(String id) {
+		boolean valor = false;
+	Centro centro= null;	
+	centro = (negocio.controllers.GestorCentro.seleccionarCentro(id));
+		valor = (centro != null);
+		return valor;
 	}
 }

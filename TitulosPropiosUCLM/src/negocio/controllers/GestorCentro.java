@@ -5,12 +5,15 @@ import persistencia.CentroDAO;
 
 public class GestorCentro {
 
-	public Centro seleccionarCentro(String id){
-		int n = Integer.parseInt(id);
-		if(n >=0) {
-			CentroDAO centroDAO= new CentroDAO();	
-			return centroDAO.seleccionarCentro(id);
+
+	public static Centro seleccionarCentro(String id){
+		Centro centro = null;
+		if(id == "UCLM" || id == "UCM") {
+			CentroDAO centroDAO= new CentroDAO();
+			centro = centroDAO.seleccionarCentro(id);
+			System.out.println(centro);
+			return centro;
 		}
-		return null;
+		return null;  
 	}
 }

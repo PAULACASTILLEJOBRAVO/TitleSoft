@@ -10,10 +10,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import negocio.entities.EstadoCurso;
-import negocio.entities.TipoCurso;
-
-
 public class GestorConsultasTest {
 
 	@BeforeClass
@@ -55,12 +51,12 @@ public class GestorConsultasTest {
 	
 	@Test
 	public void consultarIngresos0() {		
-		assertTrue(consultarIngresos(TipoCurso.MASTER, -2023, -2098, -3, -8));
+		assertFalse(comProbarFecha(-2023, -2098, -3, -8));
 		
 	}
 	@Test
 	public void consultarIngresos1() {
-		assertFalse(consultarIngresos(TipoCurso.ESPECIALISTA, 2024, 2025, 4, 3));
+		assertTrue(comProbarFecha(2024, 2025, 4, 3));
 		
 	}
 
@@ -75,26 +71,46 @@ public class GestorConsultasTest {
 		assertTrue(comProbarFecha(2024, 2025, 4, 3));
 	}
 	
+	@Test
 	public void listarCursosEstado0() {
-		assertTrue(comProbarFecha(-2023, -2098, -3, -8));
+		assertFalse(comProbarFecha(-2023, 2023, 9, 6));
 	}
-	
+	@Test
 	public void listarCursosEstado1() {
-		assertTrue(comProbarFecha(2024, 2025, 4, 3));
+		assertTrue(comProbarFecha(2024, 2025, 4, 3)); 
+	}
+	@Test
+	public void listarCursosEstado2() {
+		assertFalse(comProbarFecha(2024, 2025, 7, 3)); 
+	}
+	@Test
+	public void listarCursosEstado3() {
+		assertFalse(comProbarFecha(2024, 2025, 2, 8)); 
 	}
 	
-
-	public boolean consultarIngresos(TipoCurso tipo, int anioInicio, int anioFin, int mesInicio, int mesFin) {
-		boolean valor = false;
-		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");	     
-	     Date fechaActual = new Date();
-	     String anioActual = getYearFormat.format(fechaActual);
-		valor = (anioInicio>= Integer.parseInt(anioActual) && anioFin>= Integer.parseInt(anioActual)
-	    		 && mesInicio != 8 && mesInicio != 7 && mesFin != 7 && mesFin != 8 && mesInicio <= 12 && mesFin <= 12 &&
-			    		 (tipo == TipoCurso.CORTA_DURACION || tipo == TipoCurso.ESPECIALISTA || tipo == TipoCurso.EXPERTO || tipo == TipoCurso.FORMACION_AVANZADA || tipo == TipoCurso.FORMACION_CONTINUA || tipo == TipoCurso.MASTER || tipo == TipoCurso.MICROCREDENCIALES));
-		return valor;
-		
+	@Test
+	public void listarCursosEstado4() {
+		assertFalse(comProbarFecha(2024, 2025, 3, 7)); 
 	}
+	@Test
+	public void listarCursosEstado5() {
+		assertFalse(comProbarFecha(2024, 2025, 8, 2)); 
+	}
+	@Test
+	public void listarCursosEstado6() {
+		assertFalse(comProbarFecha(2024, -2025, 8, 2)); 
+	}
+
+	@Test
+	public void listarCursosEstado7() {
+		assertFalse(comProbarFecha(2024, 2025, 4, 33)); 
+	}
+	
+	@Test
+	public void listarCursosEstado8() {
+		assertFalse(comProbarFecha(2024, 2025, 44, 3)); 
+	}
+	
 	public boolean comprobarId(int id) {
 		boolean valor = false;
 		valor= (id>=0);

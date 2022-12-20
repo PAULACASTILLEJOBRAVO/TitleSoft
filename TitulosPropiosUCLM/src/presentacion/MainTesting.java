@@ -23,7 +23,7 @@ public class MainTesting extends JFrame{
 	}
 
 	public MainTesting() {
-		setTitle("Gestion Titulaciones");
+		setTitle("Gestion Titulaciones"); 
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(300, 300, 670, 400);
 		contentPane = new JPanel();

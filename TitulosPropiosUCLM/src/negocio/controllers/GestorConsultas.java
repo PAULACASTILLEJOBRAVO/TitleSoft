@@ -75,7 +75,7 @@ public class GestorConsultas {
 
 
 		     String anioFin = getYearFormat.format(fechaFin);
-		     String mesFin = getMonthFormat.format(fechaInicio);
+		     String mesFin = getMonthFormat.format(fechaFin);
 
 		     Date fechaActual = new Date();
 		     String anioActual = getYearFormat.format(fechaActual);
