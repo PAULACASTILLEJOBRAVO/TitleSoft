@@ -740,3 +740,189 @@ Dec 20, 2022 12:51:10 PM presentacion.MainTesting escribirLog
 INFORMACIÓN: Error al conectar con la base de datos
 Dec 20, 2022 12:51:10 PM presentacion.MainTesting escribirLog
 INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 1:04:45 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:04:45 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:04:45 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:04:45 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:04:45 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:04:45 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:46:36 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:46:36 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:46:36 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:46:37 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:46:37 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:46:37 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:47:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:47:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:47:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:47:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:47:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:47:16 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:50:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:50:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:50:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:50:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:50:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:50:48 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:51:46 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:51:46 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:51:46 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:51:46 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:51:46 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:51:46 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:51:55 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:51:55 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:51:55 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:51:55 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:51:55 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:51:55 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:53:05 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:53:05 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:53:05 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:53:05 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:53:05 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:53:05 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:55:02 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:55:02 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:55:02 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:55:03 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1055e4af, see the next exception for details.
+Dec 20, 2022 1:55:03 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:55:03 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:57:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:57:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:57:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:57:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:57:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:57:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:57:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:57:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:57:51 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:25 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:25 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:25 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:30 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:34 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:34 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:34 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:35 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:57 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:57 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:57 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 1:59:59 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 2:00:34 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 2:00:34 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 2:00:34 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+Dec 20, 2022 2:00:42 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2328c243, see the next exception for details.
+Dec 20, 2022 2:00:42 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 2:00:42 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally

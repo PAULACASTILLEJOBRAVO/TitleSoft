@@ -133,7 +133,6 @@ public class GestorConsultasTest {
 			fechaInicio = format.parse(fecha1);
 			fechaFin=format.parse(fecha2);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    consulta = (negocio.controllers.GestorConsultas.consultarIngresos(tipo, fechaInicio, fechaFin));
