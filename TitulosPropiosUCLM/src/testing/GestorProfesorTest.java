@@ -11,22 +11,22 @@ public class GestorProfesorTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass(){
-		MainTesting.escribirLog("Errores.log", "@BeforeClass");		
+		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass()  {
-		MainTesting.escribirLog("Errores.log", "@AfterClass");		
+		MainTesting.escribirLog(MainTesting.ERROR, "@AfterClass");		
 	}
 
 	@Before
 	public void setUp() {
-		MainTesting.escribirLog("Errores.log", "@Before -> How many times do i appear?");
+		MainTesting.escribirLog(MainTesting.ERROR, "@Before -> How many times do i appear?");
 	}
 
 	@After
 	public void tearDown()  {
-		MainTesting.escribirLog("Errores.log", "@After -> How many times do i appear?");	
+		MainTesting.escribirLog(MainTesting.ERROR, "@After -> How many times do i appear?");	
 	}
 	
 	

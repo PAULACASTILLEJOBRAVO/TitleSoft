@@ -176,7 +176,7 @@ public class PantallaJefeGabineteVicerrectorado extends JFrame{
 			java.sql.Date fechaInicioSQL= new java.sql.Date(fechaInicioAux.getTime());
 			java.sql.Date fechaFinalSQL= new java.sql.Date(fechaFinalAux.getTime());
 
-			resultado=gConsultas.listarCursosEstados( fechaInicioSQL,fechaFinalSQL );
+			resultado=gConsultas.listarCursosRechazadosYPropuestos( fechaInicioSQL,fechaFinalSQL );
 		}catch (ParseException e) {
 			MainTesting.escribirLog(MainTesting.ERROR,"Error en la conversión de String a entero");
 		}

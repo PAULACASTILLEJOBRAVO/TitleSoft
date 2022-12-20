@@ -15,59 +15,79 @@ public class GestorUsuariosTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass(){
-		MainTesting.escribirLog("Errores.log", "@BeforeClass");		
+		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass()  {
-		MainTesting.escribirLog("Errores.log", "@AfterClass");		
+		MainTesting.escribirLog(MainTesting.ERROR, "@AfterClass");		
 	}
 
 	@Before
 	public void setUp() {
-		MainTesting.escribirLog("Errores.log", "@Before -> How many times do i appear?");
+		MainTesting.escribirLog(MainTesting.ERROR, "@Before -> How many times do i appear?");
 	}
 
 	@After
 	public void tearDown()  {
-		MainTesting.escribirLog("Errores.log", "@After -> How many times do i appear?");	
+		MainTesting.escribirLog(MainTesting.ERROR, "@After -> How many times do i appear?");	
 	}
 
 	@Test
 	public void comprobarUsuario() {
 		String usuario="";
 		String password="";
-		assertTrue( !(usuario.equals("")|| password.equals("")) ); 
+		assertTrue( (usuario.equals("")|| password.equals("")) ); 
 	}
 	@Test
 	public void comprobarUsuario2() {
-		String usuario="";
-		String password="";
-		assertFalse( !(usuario.equals("")|| password.equals("")) ); 
+		String usuario="jefe";
+		String password="jefe";
+		assertFalse( (usuario.equals("")|| password.equals("")) ); 
 	}
 	@Test
 	public void seleccionarUsuario() {
 		String usuario="";
-		assertTrue( !(usuario.equals("")) );
+		assertTrue( (usuario.equals("")) );
 	}
 	@Test
 	public void seleccionarUsuario2() {
-		String usuario="";
-		assertFalse( !(usuario.equals("")) );
+		String usuario="jefe";
+		assertFalse( (usuario.equals("")) );
 	}
 	@Test
 	public void contrasenaCorrectaLoging() {
-		Usuario usuario=new Usuario("jefe", "jefe", TipoUsuario.JEFE);
+		Usuario usuario=new Usuario("", "", TipoUsuario.JEFE);
 		
 		String password="";
-		assertTrue( !(password.equals("")|| usuario.getPassword().equals("") ) );
+		assertTrue( comprobarContraseña(usuario, password));
 		
 	}
 	@Test
 	public void contrasenaCorrectaLoging2() {
 		Usuario usuario=new Usuario("jefe", "jefe", TipoUsuario.JEFE);
 		
-		String password="";
-		assertFalse( !(password.equals("")|| usuario.getPassword().equals("") ) );
+		String password="jefe";
+		assertFalse(comprobarContraseña(usuario, password));
+	}
+	
+	public boolean comprobarContraseña(Usuario usuario, String password) {
+		if(password.equals("")) {
+			if(usuario.getPassword().equals("")) {
+				return true;
+			}
+		}
+			
+		return false;
+	}
+	
+	public boolean comprobarUsuario(String usuario, String password) {
+		if(password.equals("")) {
+			if(usuario.equals("")) {
+				return true;
+			}
+		}
+			
+		return false;
 	}
 }

@@ -2,7 +2,6 @@ package negocio.controllers;
 
 import negocio.entities.*;
 import persistencia.UsuarioDAO;
-import presentacion.MainTesting;
 
 public class GestorUsuarios {
 
@@ -14,12 +13,7 @@ public class GestorUsuarios {
 			return false;
 		}
 		Usuario usuarioAux=(Usuario) usuarioDAO.get(usuario);
-		if(contrasenaCorrectaLoging(usuarioAux, password)){
-			return true;
-		}else {
-			return false;
-		}
-
+		return contrasenaCorrectaLoging(usuarioAux, password);
 	}
 
 	public Usuario seleccionarUsuario(String usuario) {

@@ -45,11 +45,11 @@ public class GestorMateria {
 		String anioActual = getYearFormat.format(fechaActual);
 	
 		/*
-		 * El controlador Integer.parseInt(anioFin)< Integer.parseInt(anioActual) no lo pondria ya que el año fin puede ser a futuro
-		 * puede ser el año que viene
+		 * El controlador Integer.parseInt(anioFin)< Integer.parseInt(anioActual) no lo pondria ya que el aï¿½o fin puede ser a futuro
+		 * puede ser el aï¿½o que viene
 		 */
 		if(dniProfesorResponsable.length()> 9 || nombre.length() > 20 || Integer.parseInt(anioInicio)> Integer.parseInt(anioActual) ||Integer.parseInt(anioFin)> Integer.parseInt(anioActual)
-				|| Integer.parseInt(mesInicio) == 6 || Integer.parseInt(mesInicio) == 7 || Integer.parseInt(mesFin) == 6 || Integer.parseInt(mesFin) == 7) {
+				|| Integer.parseInt(mesInicio) == 8 || Integer.parseInt(mesInicio) == 7 || Integer.parseInt(mesFin) == 8 || Integer.parseInt(mesFin) == 7) {
 			return null;
 		}
 		materiaDAO.crearMateria(materiaNueva);
