@@ -648,6 +648,7 @@ Dec 20, 2022 12:10:45 PM presentacion.MainTesting escribirLog
 INFORMACIÓN: Error al conectar con la base de datos
 Dec 20, 2022 12:10:45 PM presentacion.MainTesting escribirLog
 INFORMACIÓN: Derby shut down normally
+<<<<<<< HEAD
 dic 20, 2022 1:14:45 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2aae9190, see the next exception for details.
 dic 20, 2022 1:14:45 P. M. presentacion.MainTesting escribirLog
@@ -1516,3 +1517,97 @@ dic 20, 2022 1:59:20 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: Error al conectar con la base de datos
 dic 20, 2022 1:59:20 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: Derby shut down normally
+=======
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:42:47 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:45:40 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:45:40 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:45:40 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:45:40 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:46:39 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:46:39 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:46:39 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:46:39 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:49:02 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:49:02 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:49:02 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:49:02 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:49:44 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:49:44 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:49:44 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:49:44 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:51:10 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:51:10 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+Dec 20, 2022 12:51:10 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+Dec 20, 2022 12:51:10 PM presentacion.MainTesting escribirLog
+INFORMACIÓN: Error calculando ingresos
+>>>>>>> branch 'testing' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git

@@ -128,72 +128,6 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		return resultado;
 	}
 
-
-	@Override
-	public Object get(String id) {
-		List<Object> resultado;
-		CursoPropio cursoReturn=null;
-		String selectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = "+id+" " ;
-
-		resultado = GestorBD.select(selectSQL);
-
-		if (!resultado.isEmpty()) {
-			cursoReturn= crearObjetoCursoPropio(resultado.toString());
-		}else
-			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar curso");
-		return cursoReturn ;
-	}
-
-	@Override
-	public int insert(Object entity) {
-		int resultado=0;
-		CursoPropio curso =(CursoPropio) entity;
-		String insertSQL = "INSERT INTO cursopropio (nombre,ETCS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,centro,secretario,director,tipoCurso) "
-				+ "VALUES ( '"+curso.getNombre()+"' , "+curso.getECTS()+SQLSEPARADORNUMERICO+" '"+curso.getFechaInicio()+SQLSEPARADORSTRING+curso.getFechaFin()+"' , "
-				+ curso.getTasaMatricula()+SQLSEPARADORNUMERICO+curso.getEdicion()+" , '"+curso.getEstado()+SQLSEPARADORSTRING+curso.getCentro()+"' , '"
-				+ curso.getSecretario().getDni()+SQLSEPARADORSTRING+curso.getDirector().getDni()+SQLSEPARADORSTRING+curso.getTipo()+"' )";
-
-		resultado = GestorBD.insert(insertSQL); 
-		if (resultado < 0) 
-			MainTesting.escribirLog(MainTesting.ERROR, "Error creando curso nuevo ");
-		return resultado;
-	}
-
-	@Override
-	public Object update(Object entity) {
-		int resultado=0;
-		CursoPropio curso=(CursoPropio)entity;
-		String updateSQL = "UPDATE cursopropio SET "
-				+ "nombre=  '"+curso.getNombre()+"' ,"
-				+ "ETCS= "+curso.getECTS()+", "
-				+ "fechaInicio= '"+curso.getFechaInicio()+"' , "
-				+ "fechaFin='"+curso.getFechaFin()+"',"
-				+ "tasaMatricula="+curso.getTasaMatricula()+","
-				+ "edicion= "+curso.getEdicion()+","
-				+ "estado= '"+curso.getEstado().toString().toLowerCase()+"',"
-				+ "tipoCurso='"+curso.getTipo().toString().toLowerCase()+"',"
-				+ "secretario='"+curso.getSecretario().getDni()+"',"
-				+ "director= '"+curso.getDirector().getDni()+"'"
-				+ " WHERE idCursoPropio= "+curso.getIdCursoPropio()+" ";
-
-		resultado = GestorBD.update(updateSQL);
-		if (resultado < 0) 
-			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando curso ");
-		return curso;
-	}
-
-	@Override
-	public int delete(Object entity) {
-		int resultado=0;
-		CursoPropio curso =(CursoPropio) entity;
-		String insertSQL = "DELETE FROM cursopropio WHERE id= '"+curso.getIdCursoPropio()+"' ";
-
-		resultado = GestorBD.insert(insertSQL); 
-		if (resultado < 0) 
-			MainTesting.escribirLog(MainTesting.ERROR, "Error eleminando curso ");
-		return resultado;
-	}
-
 	public int seleccinarID(CursoPropio curso) {
 		int idCurso=0;
 		List<Object> resultado;
@@ -290,25 +224,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		}
 	}
 
-	public Collection<CursoPropio> cursosPorCentro(String id){
-		Collection<Object> resultado=null;
-		Collection<CursoPropio> cursosCentroReturn=new LinkedList<>();
-		CursoPropio cursoReturn=null;
-		String selectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = '"+Integer.getInteger(id)+"' " ;
-
-		resultado = GestorBD.select(selectSQL);
-
-		if (resultado.isEmpty()) {
-			Iterator<Object> it=resultado.iterator();
-		
-			cursoReturn= crearObjetoCursoPropio(it.next().toString());
-			cursosCentroReturn.add(cursoReturn);
-		}else
-			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar curso");
-		return cursosCentroReturn;
-	}
-
-	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin)  {
+	public Collection<CursoPropio> listarCursosRechazadosYPropuestos(Date fechaInicio, Date fechaFin)  {
 		List<Object> resultado;
 		Collection<CursoPropio> cursosEncontrados=new ArrayList<>();
 		String selectSQLEdicion= "SELECT * FROM cursopropio"
@@ -324,5 +240,88 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		}else
 			MainTesting.escribirLog(MainTesting.ERROR, "Error encotrando ediciones");
 		return cursosEncontrados;
+	}
+	
+	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin)  {
+		List<Object> resultado;
+		Collection<CursoPropio> cursosEncontrados=new ArrayList<>();
+		String selectSQLEdicion= "SELECT * FROM cursopropio"
+				+ " WHERE  fechaInicio = '"+fechaInicio+"'and fechaFin = '"+fechaFin+"' ";
+
+		resultado = GestorBD.select(selectSQLEdicion);
+
+		if (resultado.isEmpty()) {
+			for (int i = 0; i < resultado.size(); i++) {
+				CursoPropio cursoAUX=crearObjetoCursoPropio(resultado.get(i).toString());
+				cursosEncontrados.add(cursoAUX);
+			}
+		}else
+			MainTesting.escribirLog(MainTesting.ERROR, "Error encotrando ediciones");
+		return cursosEncontrados;
+	}
+
+	@Override
+	public Object get(String id) {
+		List<Object> resultado;
+		CursoPropio cursoReturn=null;
+		String selectSQL= "SELECT * FROM cursopropio WHERE idCursoPropio = "+id+" " ;
+
+		resultado = GestorBD.select(selectSQL);
+
+		if (!resultado.isEmpty()) {
+			cursoReturn= crearObjetoCursoPropio(resultado.toString());
+		}else
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar curso");
+		return cursoReturn ;
+	}
+
+	@Override
+	public int insert(Object entity) {
+		int resultado=0;
+		CursoPropio curso =(CursoPropio) entity;
+		String insertSQL = "INSERT INTO cursopropio (nombre,ETCS,fechaInicio,fechaFin,tasaMatricula,edicion,estado,centro,secretario,director,tipoCurso) "
+				+ "VALUES ( '"+curso.getNombre()+"' , "+curso.getECTS()+SQLSEPARADORNUMERICO+" '"+curso.getFechaInicio()+SQLSEPARADORSTRING+curso.getFechaFin()+"' , "
+				+ curso.getTasaMatricula()+SQLSEPARADORNUMERICO+curso.getEdicion()+" , '"+curso.getEstado()+SQLSEPARADORSTRING+curso.getCentro()+"' , '"
+				+ curso.getSecretario().getDni()+SQLSEPARADORSTRING+curso.getDirector().getDni()+SQLSEPARADORSTRING+curso.getTipo()+"' )";
+
+		resultado = GestorBD.insert(insertSQL); 
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error creando curso nuevo ");
+		return resultado;
+	}
+
+	@Override
+	public Object update(Object entity) {
+		int resultado=0;
+		CursoPropio curso=(CursoPropio)entity;
+		String updateSQL = "UPDATE cursopropio SET "
+				+ "nombre=  '"+curso.getNombre()+"' ,"
+				+ "ETCS= "+curso.getECTS()+", "
+				+ "fechaInicio= '"+curso.getFechaInicio()+"' , "
+				+ "fechaFin='"+curso.getFechaFin()+"',"
+				+ "tasaMatricula="+curso.getTasaMatricula()+","
+				+ "edicion= "+curso.getEdicion()+","
+				+ "estado= '"+curso.getEstado().toString().toLowerCase()+"',"
+				+ "tipoCurso='"+curso.getTipo().toString().toLowerCase()+"',"
+				+ "secretario='"+curso.getSecretario().getDni()+"',"
+				+ "director= '"+curso.getDirector().getDni()+"'"
+				+ " WHERE idCursoPropio= "+curso.getIdCursoPropio()+" ";
+
+		resultado = GestorBD.update(updateSQL);
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando curso ");
+		return curso;
+	}
+
+	@Override
+	public int delete(Object entity) {
+		int resultado=0;
+		CursoPropio curso =(CursoPropio) entity;
+		String insertSQL = "DELETE FROM cursopropio WHERE id= '"+curso.getIdCursoPropio()+"' ";
+
+		resultado = GestorBD.insert(insertSQL); 
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error eleminando curso ");
+		return resultado;
 	}
 }
