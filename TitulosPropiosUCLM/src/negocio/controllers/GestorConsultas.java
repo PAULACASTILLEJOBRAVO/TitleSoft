@@ -62,7 +62,7 @@ public class GestorConsultas {
 		Collection<CursoPropio> ediciones = null;
 			
 		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
-			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM"); 
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");  
 		     String anioInicio = getYearFormat.format(fechaInicio);
 		     String mesInicio = getMonthFormat.format(fechaInicio);
 

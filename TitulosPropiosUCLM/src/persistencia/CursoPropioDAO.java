@@ -133,7 +133,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 	}
 
 	public CursoPropio crearObjetoCursoPropio(String cursoSplit) {
-		CursoPropio cursoReturn=null;
+		CursoPropio cursoReturn=null; 
 		CursoPropioDAO cursoDAO=new CursoPropioDAO(); 
 
 		String[] aux =  (cursoSplit.trim().replace("[", "").replace("]", "")).split(",") ;
@@ -177,17 +177,17 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		//tipoCurso
 		if(aux[11].trim().equalsIgnoreCase("CORTA_DURACION")) {
 			tipo=TipoCurso.CORTA_DURACION;
-		}else if (aux[11].equalsIgnoreCase("ESPECIALISTA")) {
+		}else if (aux[11].trim().equalsIgnoreCase("ESPECIALISTA")) {
 			tipo=TipoCurso.ESPECIALISTA;
-		}else if (aux[11].equalsIgnoreCase("EXPERTO")) {
+		}else if (aux[11].trim().equalsIgnoreCase("EXPERTO")) {
 			tipo=TipoCurso.EXPERTO;
-		}else if (aux[11].equalsIgnoreCase("FORMACION_AVANZADA")) {
+		}else if (aux[11].trim().equalsIgnoreCase("FORMACION_AVANZADA")) {
 			tipo=TipoCurso.FORMACION_AVANZADA;
-		}else if (aux[11].equalsIgnoreCase("FORMACION_CONTINUA")) {
+		}else if (aux[11].trim().equalsIgnoreCase("FORMACION_CONTINUA")) {
 			tipo=TipoCurso.FORMACION_CONTINUA;
-		}else if (aux[11].equalsIgnoreCase("MASTER")) {
+		}else if (aux[11].trim().equalsIgnoreCase("MASTER")) {
 			tipo=TipoCurso.MASTER;
-		}else if (aux[11].equalsIgnoreCase("MICROCREDENCIALES")) {
+		}else if (aux[11].trim().equalsIgnoreCase("MICROCREDENCIALES")) {
 			tipo=TipoCurso.MICROCREDENCIALES;
 		}
 
@@ -219,7 +219,7 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 		
 		
 		String selectSQLEdicion= "SELECT * FROM cursopropio"
-				+ " WHERE  fechaInicio = '"+fechaInicioSQL+"'and fechaFin = '"+fechaFinalSQL+"' and (estado = 'validado' or estado= 'propuesta_rechazada') ";
+				+ " WHERE  fechaInicio = '"+fechaInicioSQL+"'and fechaFin = '"+fechaFinalSQL+"' and (estado = 'VALIDADO' or estado= 'PROPUESTA_RECHAZADA') ";
 
 		resultado = GestorBD.select(selectSQLEdicion);
 
