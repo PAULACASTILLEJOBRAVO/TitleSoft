@@ -229,12 +229,13 @@ public class CursoPropioDAO implements AbstractEntityDAO  <Object> {
 				cursosEncontrados.add(cursoAUX);
 			}
 		}else
+			//cursosEncontrados = null;
 			MainTesting.escribirLog(MainTesting.ERROR, "Error encotrando ediciones");
 		return cursosEncontrados;
 	}
 	
 	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin)  {
-		List<Object> resultado;
+		List<Object> resultado=null;
 		Collection<CursoPropio> cursosEncontrados=new ArrayList<>();
 		String selectSQLEdicion= "SELECT * FROM cursopropio"
 				+ " WHERE  fechaInicio = '"+fechaInicio+"'and fechaFin = '"+fechaFin+"' ";
