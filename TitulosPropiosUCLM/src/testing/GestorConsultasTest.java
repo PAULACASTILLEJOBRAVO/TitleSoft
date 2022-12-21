@@ -17,25 +17,24 @@ import negocio.entities.TipoCurso;
 import presentacion.MainTesting;
 
 public class GestorConsultasTest {
-
 	@BeforeClass
-	public static void setUpBeforeClass() {
-		System.out.println("@BeforeClass");
-	}
+	public static void setUpBeforeClass(){
+		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		
+	} 
 
 	@AfterClass
-	public static void tearDownAfterClass() {
-		System.out.println("@AfterClass");
+	public static void tearDownAfterClass()  {
+		MainTesting.escribirLog(MainTesting.ERROR, "@AfterClass");		
 	}
 
 	@Before
 	public void setUp() {
-		System.out.println("@Before -> How many times do i appear?");
+		MainTesting.escribirLog(MainTesting.ERROR, "@Before -> How many times do i appear?");
 	}
 
 	@After
-	public void tearDown() {
-		System.out.println("@After -> How many times do i appear?");
+	public void tearDown()  {
+		MainTesting.escribirLog(MainTesting.ERROR, "@After -> How many times do i appear?");	
 	}
 	
 	@Test
