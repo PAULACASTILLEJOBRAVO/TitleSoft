@@ -124,6 +124,18 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 			<p>Gestor Propuestas Cursos (Iván)</p>
 			<p>Gestor Usuarios (Iván)</p>
 			<p>Gestor Materia (Iván)</p>
+	***********Resultados****** Nota: Realizamos la reunion pero no actualizamos el readme</p>
+			<p>Sonar (Paula). Gran mejora en la correccion de errores</p>
+			<p>Gestor Centro (Virginia).Completado</p>
+			<p>Gestor Consultas (Virginia). Completado</p>
+			<p>Gestor Matriculacion (Virginia). Completado</p>
+			<p>Gestor Profesor (Iván). Completado</p>
+			<p>Gestor Propuestas Cursos (Iván). Completado</p>
+			<p>Gestor Usuarios (Iván). Completado</p>
+			<p>Gestor Materia (Iván). Completado</p>
+<p>Sprint 8 final, dia 21/12/2022</p>
+	<p>Lo deseado para el dia 22/12/2022 </p>
+		<p>Correccion de errores y preparado para la entrega, es decir, la version 2.0.0</p>
 <p>-------------------------------------------------------------------------------------------------------------------------------</p>
 <br>
 <H2>2. Memoria del Proyecto:
