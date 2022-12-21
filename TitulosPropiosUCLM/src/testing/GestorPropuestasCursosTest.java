@@ -17,7 +17,7 @@ import java.util.Date;
 
 public class GestorPropuestasCursosTest {
 
-	GestorPropuestasCursos gCurso=new GestorPropuestasCursos();
+	GestorPropuestasCursos gCurso=new GestorPropuestasCursos(); 
 	@BeforeClass
 	public static void setUpBeforeClass(){
 		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		

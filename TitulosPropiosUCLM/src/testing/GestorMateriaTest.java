@@ -21,7 +21,7 @@ public class GestorMateriaTest {
 	@BeforeClass
 	public static void setUpBeforeClass(){
 		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		
-	}
+	} 
 
 	@AfterClass
 	public static void tearDownAfterClass()  {

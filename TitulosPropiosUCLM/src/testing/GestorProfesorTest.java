@@ -13,7 +13,7 @@ public class GestorProfesorTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass(){
-		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		
+		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		 
 	}
 
 	@AfterClass

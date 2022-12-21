@@ -19,7 +19,7 @@ public class GestorMatriculacionTest {
 	@BeforeClass
 	public static void setUpBeforeClass() {
 		System.out.println("@BeforeClass");
-	}
+	} 
 
 	@AfterClass
 	public static void tearDownAfterClass(){
