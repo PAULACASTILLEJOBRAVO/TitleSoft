@@ -9,8 +9,7 @@ import presentacion.MainTesting;
 public class GestorMatriculacion {
 	public static boolean realizarMatriculacion(String curso, String alumno, ModoPago tipo,Date fecha,boolean pagado){
 		boolean test = false;
-		Matricula matriculaNuevoIngreso = new Matricula(curso, alumno, tipo, fecha, pagado);
-		MatriculaDAO matriculaDAO= new MatriculaDAO();
+		
 		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
 		SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
 
@@ -20,6 +19,8 @@ public class GestorMatriculacion {
 		if(curso.length() < 20 && curso.length() > 0 && alumno.length() < 20 && alumno.length() > 0 && Integer.parseInt(anio)>= 2000 
 				&& Integer.parseInt(mes) != 7 && Integer.parseInt(mes) != 8
 				&& Integer.parseInt(mes)<= 12) {
+			Matricula matriculaNuevoIngreso = new Matricula(curso, alumno, tipo, fecha, pagado);
+			MatriculaDAO matriculaDAO= new MatriculaDAO();
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
 			test = true;
 		}
