@@ -19140,3 +19140,9 @@ dic 21, 2022 4:55:34 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: @After -> How many times do i appear?
 dic 21, 2022 4:55:34 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: @AfterClass
+dic 21, 2022 4:24:13 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 21, 2022 4:24:13 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: Error al conectar con la base de datos
+dic 21, 2022 4:24:13 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: Derby shut down normally
