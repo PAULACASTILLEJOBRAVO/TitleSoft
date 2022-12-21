@@ -1,98 +1,71 @@
 package persistencia;
 
-import java.util.Vector;
+import java.util.List;
 
-import negocio.entities.CursoPropio;
-import negocio.entities.TipoUsuario;
-import negocio.entities.Usuario;
+import negocio.entities.*;
+import presentacion.MainTesting;
 
-public class UsuarioDAO extends AbstractEntityDAO{
+public class UsuarioDAO implements AbstractEntityDAO  <Object> {
 
-	
-	@Override
-	public Object get(String id) throws Exception {
-		Vector<Object> resultado;
-		Usuario UsuarioReturn=null;
-		String SelectSQL= "SELECT * FROM usuarios WHERE idusuarios LIKE '"+id+"' " ;
-
+	public Object get(String id){
+		Usuario usuarioReturn = null;
+		List<Object> resultado;
+		String selectSQL = "SELECT * FROM usuario WHERE idusuario = '"+id+"' ";
+		resultado = GestorBD.select(selectSQL);
 		
-		resultado = GestorBD.select(SelectSQL);
-		
-		if (resultado.isEmpty()==false) {
-			System.out.println("usuario seleccionado");
-			
+		if (!resultado.isEmpty()) {
 			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",")   ;
-			
-			
-			if(aux[2].trim().equals("estudiante")) {
-				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
-			}else if(aux[2].trim().equals("profesor")) {
-				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
-			}else if (aux[2].trim().equals("vicerector")) {
-				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
+			if(aux[1].trim().equals("estudiante")) {
+				usuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.ESTUDIANTE);
+			}else if(aux[1].trim().equals("profesor")) {
+				usuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.PROFESOR);
+			}else if (aux[1].trim().equals("vicerector")) {
+				usuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.VICERECTOR);
 			}else if (aux[2].trim().equals("jefe")) {
-				UsuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
-			
+				usuarioReturn= new Usuario (aux[0],aux[1],TipoUsuario.JEFE);
 			}
-
 		}else
-			System.err.println("Error al seleccionar usuario");
-
-		return UsuarioReturn ;
-
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar usuario");
+		return usuarioReturn;
 	}
 
 	@Override
-	public int insert(Object entity) throws Exception {
+	public int insert(Object entity) {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String insertSQL = "INSERT INTO usuarios (idusuarios,password,tipo) "
+		String insertSQL = "INSERT INTO usuario (idusuario,password,tipo) "
 				+ "VALUES ( '"+usuario.getIdUsuario()+"', '"+usuario.getPassword()+"','"+usuario.getTipo()+"')";
 
 		resultado = GestorBD.insert(insertSQL); 
-		if (resultado > 0) {
-			System.out.println("Usuario nuevo creado");
-		}else
-			System.err.println("Error creando usuario nuevo ");
-
+		if (resultado < 0)
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar usuario");
 		return resultado;
 	}
 
 	@Override
-	public Object update(Object entity) throws Exception {
+	public Object update(Object entity) {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String updateSQL = "UPDATE usuarios SET "
+		String updateSQL = "UPDATE usuario SET "
 				+  "idusuario='"+usuario.getIdUsuario()+"',"
 				+ " password='"+usuario.getPassword()+"',"
 				+ "tipo='"+usuario.getTipo()+"' ";
 		resultado = GestorBD.update(updateSQL);
 		
-		
-		if (resultado > 0) {
-			System.out.println("usuario modificado");
-		}else
-			System.err.println("Error modificando usuario ");
-
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR, "Error modificando usuario ");
 		return usuario;
 	}
 
 	@Override
-	public int delete(Object entity) throws Exception {
+	public int delete(Object entity)  {
 		int resultado=0;
 		Usuario usuario =(Usuario) entity;
-		String insertSQL = " DELETE FROM usuarios WHERE idusuario='"+usuario.getIdUsuario()+"' ";
+		String insertSQL = " DELETE FROM usuario WHERE idusuario='"+usuario.getIdUsuario()+"' ";
 
 		resultado = GestorBD.insert(insertSQL); 
-		if (resultado > 0) {
-			System.out.println("Eliminado usuario");
-		}else
-			System.err.println("Error eliminando usuario  ");
-
+		if (resultado < 0) 
+			MainTesting.escribirLog(MainTesting.ERROR,"Error eliminando usuario  ");
 		return resultado;
 	}
-
-
-
-
 }

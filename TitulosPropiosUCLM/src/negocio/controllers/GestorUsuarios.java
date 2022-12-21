@@ -1,49 +1,40 @@
 package negocio.controllers;
 
-import java.util.*;
-
 import negocio.entities.*;
-import persistencia.EstudianteDAO;
 import persistencia.UsuarioDAO;
-import presentacion.Main_testing;
 
 public class GestorUsuarios {
 
-
-	public boolean ComprobarUsuario(String usuario,String password) {
-
+	public boolean comprobarUsuario(String usuario,String password) {
 		UsuarioDAO usuarioDAO=new UsuarioDAO();
 
-		try {
-			Usuario usuarioAux=(Usuario) usuarioDAO.get(usuario);
 
-			if(password.trim().equals(usuarioAux.getPassword().trim() )){
-				return true;
-			}else {
-				return false;
-			}
-
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
+		if(usuario.equals("") || password.equals("") ) {
 			return false;
 		}
-		
+		Usuario usuarioAux=(Usuario) usuarioDAO.get(usuario);
+		return contrasenaCorrectaLoging(usuarioAux, password);
 	}
 
 	public Usuario seleccionarUsuario(String usuario) {
-
 		UsuarioDAO usuarioDAO=new UsuarioDAO();
 
-		try {
-			return (Usuario) usuarioDAO.get(usuario);
-
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al encontrar usuario");
+		if(usuario.equals("")) {
 			return null;
 		}
-		
+
+		return (Usuario) usuarioDAO.get(usuario);
 
 	}
 
+	public boolean contrasenaCorrectaLoging(Usuario usuarioAux, String password) {
 
+		
+		if(usuarioAux.getPassword().equals("") || password.equals("")) {
+			return false;
+		}
+		return password.trim().equals(usuarioAux.getPassword().trim());
+
+
+	}	
 }
