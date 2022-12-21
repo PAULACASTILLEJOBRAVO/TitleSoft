@@ -12,7 +12,7 @@ import presentacion.MainTesting;
 public class GestorMateria {
 
 	public Materia seleccionarMaterias(String id) {
-		MateriaDAO materiaDAO=new MateriaDAO();
+		MateriaDAO materiaDAO=new MateriaDAO(); 
 		int n = Integer.parseInt(id);
 		if(n<0) {
 			MainTesting.escribirLog(MainTesting.ERROR,"id introducido no valido para la seleccion del curso");

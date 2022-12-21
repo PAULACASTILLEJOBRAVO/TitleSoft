@@ -1,6 +1,6 @@
 package negocio.controllers;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import negocio.entities.*;
 import persistencia.*;
@@ -15,7 +15,7 @@ public class GestorMatriculacion {
 		SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
 
 		String anio = getYearFormat.format(fecha); 
-		String mes = getMonthFormat.format(fecha);
+		String mes = getMonthFormat.format(fecha); 
 
 		if(curso.length() < 20 && curso.length() > 0 && alumno.length() < 20 && alumno.length() > 0 && Integer.parseInt(anio)>= 2000 
 				&& Integer.parseInt(mes) != 7 && Integer.parseInt(mes) != 8

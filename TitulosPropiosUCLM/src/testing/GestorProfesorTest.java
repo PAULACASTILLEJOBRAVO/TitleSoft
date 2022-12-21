@@ -1,7 +1,9 @@
 package testing;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.*;
 
@@ -13,7 +15,7 @@ public class GestorProfesorTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass(){
-		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		
+		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		 
 	}
 
 	@AfterClass
