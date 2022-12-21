@@ -170,6 +170,31 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 Hemos utilizado maven para incluir las dependencias del proyecto, es decir, otras librerías que java no contiene de forma nativa (los .jar). Por ejemplomysql-connector-java-8.0.28.jar
 </p>
 <br>
+<H3>2.6. Test:</H3>
+<p>Para la realizacion del testing de nuestro proyecto lo haremos en los controladores teniendo 6 clases.Para la realizacion de los test hemos decidido realizar una cobertura de decisiones para todos los metodos de los controladores. Tambien hemos llevado a cabo unas tablas en excel para la realizacion del testing, dicho excel se encuentra subido.</p>
+<br>
+<p>Cabe destacar que para la realizacion de los metodos en los test hemos creado un metodo principal el cual es el encargado de llamar al gestor y los metodos de test llaman a este para indicarle simplemente los datos a controlar. De esta manera evitamos codigo duplicado.</p>
+<br>
+<p>Ademas a la hora de realizar los tests utilizamos assertTrue y assertFalse para controlar los resultados de la ejecucion de dichos tests</p>
+<br>
+<H4>GestorMatriculacion:</H4>
+<p>Esta clase controlador tiene dos metodos de los cuales solo uno realizaremos el test. El metodo el cual no realziamos el test es debido a que su funcionamiento es muy simple y no realiza ninguna modificacion en el atributo que tiene,simplemente lo envia a otro metodo.</p>
+<br>
+<H4>GestorConsulta:</H4>
+<p>En este controlador nos encontramos con 6 metodos de los cuales realizamos el test en 5 de ellos. El metodo que queda sin tratar por el test es porque realiza una llamada a otro metodo pasando el atributo que este tiene,es decir, no realiza ninguna modificacion ni control sobre el atributo a la hora de pasarlo.</p>
+<br>
+<H4>GestorProfesor:</H4>
+<p>Para este gestor nos encontramos con que hay un solo metodo siendo este seleccionarProfesor. Este método solo tiene de entrada el dni del profesor siendo lo que controlamos.</p>
+<br>
+<H4>GestorMateria:</H4>
+<p>Para este gestor nos encotramos con 3 métodos pero solo realizamos el test en dos de ellos ya que el tercero es simplemente una llamada a otro metodo pasando el atributo que este tiene,es decir, no realiza ninguna modificacion ni control sobre el atributo a la hora de pasarlo. </p>
+<br>
+<H4>GestorUsuario:</H4>
+<p>En este controlador tenemos 3 métodos los cuales realziamos el test. En el metodo contrasenaCorrectaLoging no hemos recurrido al metodo que realiza la llamada al gestor ya que este metodo devuelve de por si un boolean por lo que no es necesario.</p>
+<br>
+<H4>GestorPropuestaCurso:</H4>
+<p>>Para este gestor nos encotramos con 2 métodos pero solo realizamos el test en uno de ellos ya que el segundo es simplemente una llamada a otro metodo pasando el atributo que este tiene,es decir, no realiza ninguna modificacion ni control sobre el atributo a la hora de pasarlo. </p>
+<br>
 <h2>3. Gestión de la Configuración:
 </h2>
 <h3>3.1. Introducción:
