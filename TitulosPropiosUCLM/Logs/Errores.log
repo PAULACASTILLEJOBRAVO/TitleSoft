@@ -20280,3 +20280,559 @@ dic 21, 2022 7:47:30 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: @After -> How many times do i appear?
 dic 21, 2022 7:47:30 P. M. presentacion.MainTesting escribirLog
 INFORMACIÓN: @AfterClass
+dic 21, 2022 8:19:33 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 21, 2022 8:19:33 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: Error al conectar con la base de datos
+dic 21, 2022 8:19:33 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: Derby shut down normally
+dic 21, 2022 8:21:54 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:21:54 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: id introducido no valido para la seleccion del curso
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:55 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@383534aa, see the next exception for details.
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Derby shut down normally
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:21:56 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:22:13 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: in connectionjava.sql.SQLException: Failed to start database 'BaseDeDatos' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@531d72ca, see the next exception for details.
+dic 21, 2022 8:22:13 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: Error al conectar con la base de datos
+dic 21, 2022 8:22:13 P.Â M. presentacion.MainTesting escribirLog
+INFORMACIÃ“N: Derby shut down normally
+dic 21, 2022 8:23:33 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:23:33 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar curso
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error encotrando ediciones
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error encotrando ediciones
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al insertar materia
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al buscar el identificador del curso
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al vincular materia con su curso correspondiente
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar profesor
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: id introducido no valido para la seleccion del curso
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error creando matricula nueva.
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:23:34 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error creando curso nuevo 
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:23:35 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:24:08 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:24:09 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar curso
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error encotrando ediciones
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error encotrando ediciones
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al insertar materia
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al buscar el identificador del curso
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar materia
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al vincular materia con su curso correspondiente
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al seleccionar profesor
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: id introducido no valido para la seleccion del curso
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error creando matricula nueva.
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:24:10 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error al conectar con la base de datos
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: Error creando curso nuevo 
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @BeforeClass
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @Before -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @After -> How many times do i appear?
+dic 21, 2022 8:24:11 P. M. presentacion.MainTesting escribirLog
+INFORMACIÓN: @AfterClass
