@@ -1,100 +1,122 @@
 package negocio.controllers;
 
-import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
-
-
+import presentacion.MainTesting;
 import negocio.entities.*;
 import persistencia.CursoPropioDAO;
-import presentacion.Main_testing;
-public class GestorConsultas {
-	/**
-	 * 
-	 * @param tipo
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-	public double consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
-		double ingresos = 0;
-		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
-		 try {
-			ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al consulatar ingresos");
+public class GestorConsultas { 
 
-		}
-		return ingresos;
+	public static double consultarIngresos(TipoCurso tipo, Date fechaInicio, Date fechaFin) {
+		double ingresos = -1;
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+
+
+			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM"); 
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
+		    
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
+		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
+		    	 	
+		    	 ingresos = cursoPropioDAO.listarIngresos(tipo, fechaInicio, fechaFin);
+
+		     }
+				return ingresos;
 	}
 
-	/**
-	 * 
-	 * @param estadoCurso
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
 	public Collection<CursoPropio> consultarCursosPropuestos(EstadoCurso estadoCurso) {
 		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
 		Collection<CursoPropio> estados = null;
-		try {
-			estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al consular por estados");
-
-		}
+		estados = cursoPropioDAO.listarCursosEstadoPropuesto(estadoCurso);
 		return estados; 
+	}
+
+	public static Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) {
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		Collection<CursoPropio> ediciones = null;
+			
+		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM"); 
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaInicio);
+
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
+		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
+		    	 ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
+		     }
+		return ediciones;
+	}
+	
+	public static Collection<CursoPropio> listarCursosRechazadosYPropuestos(Date fechaInicio, Date fechaFin) {
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		Collection<CursoPropio> ediciones = null;
+			
+		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");  
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaFin);
+
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
+		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
+
+			ediciones = cursoPropioDAO.listarCursosRechazadosYPropuestos(fechaInicio, fechaFin);
+		     }
+		return ediciones;
+	}
+
+	public static Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
+		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
+		Collection<CursoPropio> ediciones = null;
 		
-	}
-	
-	public Collection<CursoPropio> listarCursosEstados(Date fechaInicio, Date fechaFin) {
-		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
-		Collection<CursoPropio> ediciones = null;
-		try {
-			ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al consultar por ediciones");
+			 SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+			 SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
 
-		}
-		return ediciones;
-	}
-	
-	
-	/**
-	 * 
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-	public Collection<CursoPropio> listarEdicionesCursos(Date fechaInicio, Date fechaFin) {
-		CursoPropioDAO cursoPropioDAO = new CursoPropioDAO();
-		Collection<CursoPropio> ediciones = null;
-		try {
+		     String anioInicio = getYearFormat.format(fechaInicio);
+		     String mesInicio = getMonthFormat.format(fechaInicio);
+
+
+		     String anioFin = getYearFormat.format(fechaFin);
+		     String mesFin = getMonthFormat.format(fechaFin);
+
+		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 &&  Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
+		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
+		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
+
 			ediciones = cursoPropioDAO.listarEdicionesCursos(fechaInicio, fechaFin);
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al consultar por ediciones");
-
-		}
+			}
 		return ediciones;
 	}
 
-	
-	public CursoPropio seleccionarCurso(String id) throws Exception {
+
+	public static CursoPropio seleccionarCurso(String id) {
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
+		int n = Integer.parseInt(id);
+		if(n<0) {
+			MainTesting.escribirLog(MainTesting.ERROR, "id introducido no válido para la selección del curso");
+		}
 		return cursoDAO.seleccionarCurso(id);
 	}
-	
-	public CursoPropio actualizarCurso(CursoPropio curso) throws Exception {
-		
+
+	public CursoPropio actualizarCurso(CursoPropio curso) {	
 		CursoPropioDAO cursoDAO=new CursoPropioDAO();
 		return cursoDAO.editarCurso(curso);
 	}
-	
-	public Collection<CursoPropio> cursosPorCentro(String id) throws Exception{
-		CursoPropioDAO cursoDAO=new CursoPropioDAO();
-		return cursoDAO.cursosPorCentro(id);
-		
-	}
 
-	public int idCurso(CursoPropio curso) throws SQLException {
-		
+	public int idCurso(CursoPropio curso) {
 		CursoPropioDAO cursoDAO = new CursoPropioDAO();
 		return cursoDAO.seleccinarID(curso);
 	}

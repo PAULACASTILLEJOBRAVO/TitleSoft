@@ -11,8 +11,8 @@ public class ProfesorExterno extends Profesor {
 	public void setTitulacion(String titulacion) {
 		this.titulacion = titulacion;
 	}
-	public ProfesorExterno(String dni, String nombre, String apellidos, boolean doctor) {
+	public ProfesorExterno(String dni, String nombre, String apellidos, boolean doctor, String titulacion) {
 		super(dni, nombre, apellidos, doctor);
-		// TODO Auto-generated constructor stub
+		this.titulacion = titulacion;
 	}
 }

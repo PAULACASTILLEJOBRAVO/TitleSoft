@@ -1,46 +1,39 @@
 package negocio.controllers;
 
-import java.sql.Date;
-import java.sql.SQLException;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import negocio.entities.*;
 import persistencia.*;
-import presentacion.Main_testing;
+import presentacion.MainTesting;
 
 public class GestorMatriculacion {
+	public static boolean realizarMatriculacion(String curso, String alumno, ModoPago tipo,Date fecha,boolean pagado){
+		boolean test = false;
+		
+		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+		SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
 
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 * @throws Exception 
-	 */
-	public void realizarMatriculacion(String curso, String alumno, ModoPago tipo,Date fecha,boolean pagado) throws ClassNotFoundException, SQLException {
-		
-		
-		Matricula matriculaNuevoIngreso = new Matricula(curso, alumno, tipo, fecha, pagado);
-		MatriculaDAO matriculaDAO= new MatriculaDAO();
-		
-		try {
+		String anio = getYearFormat.format(fecha); 
+		String mes = getMonthFormat.format(fecha); 
+
+		if(curso.length() < 20 && curso.length() > 0 && alumno.length() < 20 && alumno.length() > 0 && Integer.parseInt(anio)>= 2000 
+				&& Integer.parseInt(mes) != 7 && Integer.parseInt(mes) != 8
+				&& Integer.parseInt(mes)<= 12) {
+			Matricula matriculaNuevoIngreso = new Matricula(curso, alumno, tipo, fecha, pagado);
+			MatriculaDAO matriculaDAO= new MatriculaDAO();
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
-		} catch (SQLException e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al realizar matricula");
-		}catch (ClassNotFoundException e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al no encontrar la clase en el sistema");
+			test = true;
 		}
+		return test; 
 	}
 
-	public Matricula seleccionarMatricula(String id) {
-
+	public static Matricula seleccionarMatricula(String id) {
 		MatriculaDAO matriculaDAO=new MatriculaDAO();
 
-		try {
-			return matriculaDAO.seleccionarMatricula(id);
-
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al seleccionar matricula");
-			return null;
+		int n = Integer.parseInt(id);
+		if(n <0) {
+			MainTesting.escribirLog(MainTesting.ERROR,"id no valido");
 		}
-		
+		return matriculaDAO.seleccionarMatricula(id);
 	}
 }

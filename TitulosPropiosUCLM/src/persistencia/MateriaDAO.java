@@ -1,186 +1,115 @@
 package persistencia;
 
-import java.util.Date;
-import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
+
+import java.util.Date;
 import java.util.List;
-import java.util.Vector;
 
 import negocio.controllers.GestorProfesor;
 import negocio.entities.*;
+import presentacion.MainTesting;
 
-public class MateriaDAO extends AbstractEntityDAO {
+public class MateriaDAO implements AbstractEntityDAO <Object>  {
 
-
-	public int crearMateria(Materia materia) throws Exception {
+	public int crearMateria(Materia materia) {
 		return insert(materia);
-
 	}
 
-
-	public Materia seleccionarMateria(String id) throws Exception {
-		return (Materia)get(id);
-
+	public Materia seleccionarMateria(String id) {
+		return (Materia) get(id);
 	}
 
-	/**
-	 * 
-	 * @param curso
-	 */
-	public Materia editarMateria(Materia materia) throws Exception {
+	public Materia editarMateria(Materia materia)  {
 		return (Materia)update(materia);
 	}
 
-	public int eliminarMateria(Materia materia) throws Exception{
+	public int eliminarMateria(Materia materia){
 		return delete(materia);
 	}
 	
-	/**
-	 * 
-	 * @param estado
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
- 	public Collection<Materia> listarMateriaHoras(int horas) throws Exception {
-		Vector<Object> resultado;
-		Collection materiaEncontradas=null;
-		String SelectSQLEdicion= "SELECT * FROM materia"
-				+ "WHERE horas >= '"+horas+"'";
-
-		resultado = GestorBD.select(SelectSQLEdicion);
-
-		if (resultado.isEmpty()==false) {
-			System.out.println("Materias encontradas");
-			for (int i = 0; i < resultado.size(); i++) {
-				Materia materiaAux=(Materia)resultado.get(i);
-				materiaEncontradas.add(materiaAux);
-			}
-		}else
-			System.err.println("Error encontrando materias");
-
-		return materiaEncontradas;
-
-		//lo he hecho con vector<object> porque es como lo hice en base de datos, se puede cambiar
+	public int vincularCursoMateria(int idMateria, int idCurso) {
+		int resultado=0;
+		String insertSQL = "INSERT INTO RELACIONMATERIASCURSO (materia,curso) "
+				+ "VALUES ("+idMateria+" , "+idCurso+") ";
+		
+		resultado = GestorBD.insert(insertSQL);
+		if (resultado < 0)
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al vincular materia con su curso correspondiente");
+		return resultado;
 	}
 
-	/**
-	 * 
-	 * @param tipo
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-	public Vector<Object> listarMateriaCurso(String curso) throws Exception {
-		// TODO - implement CursoPropioDAO.listarIngresos
-		Vector<Object> resultado;
-		Vector<Object>  materiaEncontrada=null;
-		String SelectSQLEdicion= "SELECT * FROM materia"
-				+ "WHERE Curso = '"+curso+"'";
-
-		resultado = GestorBD.select(SelectSQLEdicion);
-
-		if (resultado.isEmpty()==false) {
-			System.out.println("Materia encontrada");
-//			materiaEncontrada= (Materia)resultado.get(0);
+	public int seleccionarId(Materia materia) {
+		int idMateria=0;
+		
+		List<Object> resultado;
+		
+		String insertSQL = "SELECT idmateria FROM materia WHERE nombre = '"+materia.getNombre()
+				+"' AND fechaInicio = '"+materia.getFechaInicio()+"'  AND fechaFin = '"+materia.getFechaFin()
+				+"' AND dniProfesor = '"+materia.getResponsable().getDni()+"' AND horas = "+materia.getHoras()+" ";
+		
+		resultado = GestorBD.select(insertSQL); 
+		if (!resultado.isEmpty()) {
+			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
+			
+			idMateria=Integer.parseInt(aux[0]);
 		}else
-			System.err.println("Error encontrando materia");
-
-		return materiaEncontrada;
-
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar materia");
+		return idMateria;
 	}
-
-	/**
-	 * 
-	 * @param fechaInicio
-	 * @param fechaFin
-	 */
-	public Collection<Materia> listarEdicionesCursos(Date fechaInicio, Date fechaFin) throws Exception {
-		Vector<Object> resultado;
-		Collection<Materia> materiaEncontrada=null;
-
-
-		String SelectSQLEdicion= "SELECT * FROM materia"
-				+ "WHERE  fechaInicio= '"+fechaInicio+"'and fechaFin= '"+fechaFin+"' ";
-
-		resultado = GestorBD.select(SelectSQLEdicion);
-
-		if (resultado.isEmpty()==false) {
-			System.out.println("Materias encontradas");
-			for (int i = 0; i < resultado.size(); i++) {
-				Materia materiaAux=(Materia) resultado.get(i);
-				materiaEncontrada.add(materiaAux);
-			}
-
-		}else
-			System.err.println("Error encontrado materias");
-		return materiaEncontrada;
-
-
-
-	}
-
-
+	
 	@Override
-	public Object get(String id) throws Exception {
-		Vector<Object> resultado;
+	public Object get(String id) {
+		List<Object> resultado;
 		Materia materiaEncontrada=null;
-		String SelectSQL= "SELECT m.IDMATERIA, m.NOMBRE, m.HORAS, m.FECHAINICIO, m.FECHAFIN, m.DNIPROFESOR FROM MATERIA m, "
+		String selectSQL= "SELECT m.IDMATERIA, m.NOMBRE, m.HORAS, m.FECHAINICIO, m.FECHAFIN, m.DNIPROFESOR FROM MATERIA m, "
 		+ "RELACIONMATERIASCURSO r, CURSOPROPIO c WHERE c.IDCURSOPROPIO=r.CURSO AND m.IDMATERIA=r.MATERIA AND c.IDCURSOPROPIO="
 				+id;
 
+		resultado = GestorBD.select(selectSQL);
 
-		resultado = GestorBD.select(SelectSQL);
-
-		if (resultado.isEmpty()==false) {
-			System.out.println("Materia seleccionado");
-			
-			String[] aux =  (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
-			
+		if (!resultado.isEmpty()) {
+			String[] aux = (resultado.get(0).toString().trim().replace("[", "").replace("]", "")).split(",") ;
 			
 			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-			
-			Date fecha1=(Date) formato.parse(aux[3]);
-			java.sql.Date sqlDate1 = new java.sql.Date(fecha1.getTime());
-		
-			Date fecha2 = (Date) formato.parse(aux[3]);
-			java.sql.Date sqlDate2 = new java.sql.Date(fecha2.getTime());
 			
 			GestorProfesor gProfesor=new GestorProfesor();
 			
 			Profesor responsable=gProfesor.seleccionarProfesor(aux[5]);
 			
-			materiaEncontrada=new Materia(responsable, Integer.parseInt(aux[0]), aux[1], Double.parseDouble(aux[2]), sqlDate1, sqlDate2);
+			try {
+				Date fecha1= formato.parse(aux[3]);
+				java.sql.Date sqlDate1 = new java.sql.Date(fecha1.getTime());
+				
+				Date fecha2 = formato.parse(aux[3]);
+				java.sql.Date sqlDate2 = new java.sql.Date(fecha2.getTime());
 			
-			
-			
+				materiaEncontrada=new Materia(responsable, Integer.parseInt(aux[0]), aux[1], Double.parseDouble(aux[2]), sqlDate1, sqlDate2);
+			}catch (ParseException e) {
+				MainTesting.escribirLog(MainTesting.ERROR,"Error en la conversión de fecha SQL a fecha java");
+			}
 		}else
-			System.err.println("Error al seleccionar materia");
-
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al seleccionar materia");
 		return materiaEncontrada ;
-
 	}
 
 
 	@Override
-	public int insert(Object entity) throws Exception {
+	public int insert(Object entity){
 		int resultado=0;
 		Materia materia=(Materia)entity;
 		String insertSQL = "INSERT INTO materia (nombre,horas,fechaInicio,fechaFin,dniProfesor) " 
 				+ "VALUES ('"+materia.getNombre()+"' ,"+materia.getHoras()+" , '"+materia.getFechaInicio()+"', '"+materia.getFechaFin()+"', '"+materia.getResponsable().getDni()+"' )";
 
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Materia nuevo creado");
-		}else
-			System.err.println("Error creando materia nueva ");
-
+		if (resultado < 0)
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al insertar materia");
 		return resultado;
 	}
 
 
 	@Override
-	public Object update(Object entity) throws Exception {
-		// TODO - implement CursoPropioDAO.editarCurso
+	public Object update(Object entity){
 		int resultado=0;
 		Materia materia=(Materia)entity;
 		String updateSQL = "UPDATE materia SET"
@@ -191,63 +120,21 @@ public class MateriaDAO extends AbstractEntityDAO {
 				+ "Curso= '"+materia.getResponsable()+"',";
 
 		resultado = GestorBD.update(updateSQL);
-		if (resultado > 0) {
-			System.out.println("Materia modificado");
-		}else
-			System.err.println("Error modificando materia ");
-
+		if (resultado < 0)
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al actualizar materia");
 		return materia;
 	}
 
 
 	@Override
-	public int delete(Object entity) throws Exception {
+	public int delete(Object entity) {
 		int resultado=0;
 		Materia materia=(Materia)entity;
 		String insertSQL = "DELETE FROM materia WHERE nombre= '"+materia.getNombre()+"' ";
 		
-
 		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Materia nuevo creado");
-		}else
-			System.err.println("Error creando materia nueva ");
-
+		if (resultado < 0)
+			MainTesting.escribirLog(MainTesting.ERROR, "Error al eliminar materia");
 		return resultado;
-	}
-	
-	public int vincularCursoMateria(int idMateria, int IdCurso) throws ClassNotFoundException, SQLException {
-		int resultado=0;
-		String insertSQL = "INSERT INTO RELACIONMATERIASCURSO (materia,curso) "
-				+ "VALUES ("+idMateria+" , "+IdCurso+") ";
-		
-		resultado = GestorBD.insert(insertSQL);
-		if (resultado > 0) {
-			System.out.println("Materia añadida a curso");
-		}else
-			System.err.println("Error añadiendo materia nueva a un curso ");
-
-		return resultado;
-	}
-
-	public int seleccionarId(Materia materia) throws SQLException {
-		
-		int idMateria=0;
-		Vector<Object> resultado;
-		
-		String insertSQL = "SELECT idmateria FROM materia WHERE nombre = '"+materia.getNombre()
-				+"' AND fechaInicio = '"+materia.getFechaInicio()+"'  AND fechaFin = '"+materia.getFechaFin()
-				+"' AND dniProfesor = '"+materia.getResponsable().getDni()+"' AND horas = "+materia.getHoras()+" ";
-		
-		resultado = GestorBD.select(insertSQL); 
-		if (resultado.isEmpty()==false) {
-			System.out.println("Identificador de materia encontrado");
-			String[] aux =  (resultado.toString().trim().replace("[", "").replace("]", "")).split(",") ;
-			
-			idMateria=Integer.parseInt(aux[0]);
-		}else
-			System.err.println("Error al buscar el identificador de la materia");
-		
-		return idMateria;
 	}
 }

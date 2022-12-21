@@ -119,7 +119,7 @@ public class CursoPropio {
 	}
 	public CursoPropio(Collection<Matricula> matriculas, Profesor director, Profesor secretario,
 			Collection<Materia> materias, EstadoCurso estado, TipoCurso tipo, CursoPropioDAO cursoPropioDao,int idCursoPropio,
-			String nombre, int eCTS, Date fechaInicio, Date fechaFin, double tasaMatricula, int edicion) {
+			String nombre, int eCTS, Date fechaInicio, Date fechaFin, double tasaMatricula, int edicion,String centro) {
 		super();
 		this.matriculas = matriculas;
 		this.director = director;
@@ -135,6 +135,7 @@ public class CursoPropio {
 		this.fechaFin = fechaFin;
 		this.tasaMatricula = tasaMatricula;
 		this.edicion = edicion;
+		this.centro=centro;
 	}
 	
 	public CursoPropio(String nombre, Date fechaInicio, Date fechaFin, int eCTS, double tasaMatricula, int edicion, 

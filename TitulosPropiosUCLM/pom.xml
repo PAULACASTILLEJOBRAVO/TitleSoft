@@ -26,22 +26,20 @@
   	<version>10.14.2.0</version>
 	<scope>compile</scope>
   </dependency>
-  <dependency>
-    <groupId>org.junit.platform</groupId>
-    <artifactId>junit-platform-launcher</artifactId>
-    <version>1.9.0-RC1</version>
-    <scope>test</scope>
-  </dependency>
-  <dependency>
+
+<!-- https://mvnrepository.com/artifact/junit/junit -->
+<dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
-    <version>4.13.2</version>
-    <scope>test</scope>
-  </dependency>
+    <version>4.12</version>
+</dependency>
+
+	
 </dependencies>
 
 <build>
   <sourceDirectory>src</sourceDirectory>
+  <testSourceDirectory>testing</testSourceDirectory>
   <plugins>
 	<plugin>
 	  <artifactId>maven-compiler-plugin</artifactId>
@@ -99,7 +97,7 @@
 								<limit implementation="org.jacoco.report.check.Limit">
 									<counter>COMPLEXITY</counter>
 									<value>COVEREDRATIO</value>
-										<minimum>0.60</minimum>
+										<minimum>0.20</minimum>
 								</limit>
 							</limits>
 						</rule>
@@ -133,7 +131,7 @@
 	<plugin>
 		<groupId>org.jacoco</groupId>
 		<artifactId>jacoco-maven-plugin</artifactId>
-		<version>0.8.6</version>
+		<version>0.8.8</version>
 			<reportSets>
 				<reportSet>
 					<reports>

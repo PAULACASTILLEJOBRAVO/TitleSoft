@@ -2,18 +2,16 @@ package negocio.controllers;
 
 import negocio.entities.*;
 import persistencia.*;
-import presentacion.Main_testing;
 
 public class GestorProfesor {
 
-public Profesor seleccionarProfesor(String dni) {	
-		ProfesorDAO profesorDAO= new ProfesorDAO();
+	public Profesor seleccionarProfesor(String dni) {	
 
-		try {
-			return profesorDAO.seleccionarProfesor(dni);
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.ERROR,"Error al seleccionar Profesor");
+		if(dni.equals("") || dni.length()>9 ) {
 			return null;
 		}
+		ProfesorDAO profesorDAO= new ProfesorDAO();
+		return profesorDAO.seleccionarProfesor(dni);
+
 	}
 }
