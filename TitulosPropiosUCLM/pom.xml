@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>TitulosPropiosUCLM</groupId>
   <artifactId>tls4</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.4.0-SNAPSHOT</version>
   <name>Titesoft</name>
 <dependencies>
   <dependency>
@@ -23,18 +23,23 @@
   <dependency>
   	<groupId>org.apache.derby</groupId>
   	<artifactId>derby</artifactId>
-  	<version>10.12.1.1</version>
+  	<version>10.14.2.0</version>
 	<scope>compile</scope>
   </dependency>
-  <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
-    <version>8.0.26</version>
-  </dependency>
+
+<!-- https://mvnrepository.com/artifact/junit/junit -->
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+</dependency>
+
+	
 </dependencies>
 
 <build>
   <sourceDirectory>src</sourceDirectory>
+  <testSourceDirectory>testing</testSourceDirectory>
   <plugins>
 	<plugin>
 	  <artifactId>maven-compiler-plugin</artifactId>
@@ -43,12 +48,107 @@
         <release>17</release>
       </configuration>
 	</plugin>
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-site-plugin</artifactId>
+		<version>3.9.1</version>
+	</plugin>
+	<plugin>
+		<groupId>org.jacoco</groupId>
+		<artifactId>jacoco-maven-plugin</artifactId>
+		<version>0.8.8</version>
+		<executions>
+			<execution>
+				<id>default-prepare-agent</id>
+				<goals>
+					<goal>prepare-agent</goal>
+				</goals>
+			</execution>
+			<execution>
+				<id>default-prepare-agent-integration</id>
+				<goals>
+					<goal>prepare-agent-integration</goal>
+				</goals>
+			</execution>
+			<execution>
+				<id>default-report</id>
+				<goals>
+					<goal>report</goal>
+				</goals>
+			</execution>
+			<execution>
+				<id>default-report-integration</id>
+				<goals>
+					<goal>report-integration</goal>
+				</goals>
+			</execution>
+			<execution>
+				<id>default-check</id>
+				<goals>
+					<goal>check</goal>
+				</goals>
+				<configuration>
+					<rules>
+						<!-- implementation is needed only for Maven 2 -->
+						<rule implementation="org.jacoco.maven.RuleConfiguration">
+							<element>BUNDLE</element>
+							<limits>
+								<!-- implementation is needed only for Maven 2 -->
+								<limit implementation="org.jacoco.report.check.Limit">
+									<counter>COMPLEXITY</counter>
+									<value>COVEREDRATIO</value>
+										<minimum>0.20</minimum>
+								</limit>
+							</limits>
+						</rule>
+					</rules>
+				</configuration>
+			</execution>
+		</executions>
+	</plugin>
   </plugins>
 </build>
 
+<reporting>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-project-info-reports-plugin</artifactId>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-report-plugin</artifactId>
+			<version>3.0.0-M5</version>
+			<configuration>
+				<skipEmptyReport>false</skipEmptyReport>
+			</configuration>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jxr-plugin</artifactId>
+			<version>3.0.0</version>
+	</plugin>
+	<plugin>
+		<groupId>org.jacoco</groupId>
+		<artifactId>jacoco-maven-plugin</artifactId>
+		<version>0.8.8</version>
+			<reportSets>
+				<reportSet>
+					<reports>
+						<report>report</report>
+					</reports>
+				</reportSet>
+			</reportSets>
+	</plugin>
+	</plugins>
+</reporting>
+
+
 <properties>
+  <sonar.projectkey>SONAR_TOKEN</sonar.projectkey>
   <sonar.organization>titlesoft</sonar.organization>
   <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  <sonar.login>8836f9f2d8485fe7275255d3b391b4823ec0c9e9</sonar.login>
 </properties>
 
 </project>

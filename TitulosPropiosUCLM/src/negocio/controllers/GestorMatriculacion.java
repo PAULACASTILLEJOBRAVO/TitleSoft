@@ -1,83 +1,39 @@
 package negocio.controllers;
 
-import java.sql.Date;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import negocio.entities.*;
 import persistencia.*;
-import presentacion.Main_testing;
+import presentacion.MainTesting;
 
 public class GestorMatriculacion {
+	public static boolean realizarMatriculacion(String curso, String alumno, ModoPago tipo,Date fecha,boolean pagado){
+		boolean test = false;
+		
+		SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+		SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
 
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	public void realizarMatriculacion(String curso, ModoPago tipo,Date fecha,boolean pagado) {
-		
-		
-		Matricula matriculaNuevoIngreso = new Matricula(curso, tipo, fecha, pagado);
-		MatriculaDAO matriculaDAO= new MatriculaDAO();
-		
-		try {
+		String anio = getYearFormat.format(fecha); 
+		String mes = getMonthFormat.format(fecha); 
+
+		if(curso.length() < 20 && curso.length() > 0 && alumno.length() < 20 && alumno.length() > 0 && Integer.parseInt(anio)>= 2000 
+				&& Integer.parseInt(mes) != 7 && Integer.parseInt(mes) != 8
+				&& Integer.parseInt(mes)<= 12) {
+			Matricula matriculaNuevoIngreso = new Matricula(curso, alumno, tipo, fecha, pagado);
+			MatriculaDAO matriculaDAO= new MatriculaDAO();
 			matriculaDAO.crearMatricula(matriculaNuevoIngreso);
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error a realizar matricula");
+			test = true;
 		}
+		return test; 
 	}
 
-	public Matricula seleccionarMatricula(String id) {
-
+	public static Matricula seleccionarMatricula(String id) {
 		MatriculaDAO matriculaDAO=new MatriculaDAO();
 
-		try {
-			return (Matricula) matriculaDAO.seleccionarMatricula(id);
-
-		} catch (Exception e) {
-			Main_testing.escribirLog(Main_testing.error,"Error al seleccionar matricula");
-			return null;
+		int n = Integer.parseInt(id);
+		if(n <0) {
+			MainTesting.escribirLog(MainTesting.ERROR,"id no valido");
 		}
-		
-
+		return matriculaDAO.seleccionarMatricula(id);
 	}
-
-	
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	public void realizarPagoMatricula(CursoPropio curso, Estudiante estudiante, String id) {
-		
-		Matricula matricula = new Matricula(id, null, null, false);
-		
-		if(matricula.isPagado()) {
-			realizarPagoTarjeta(curso, estudiante);
-		
-			realizarPagoTransferencia(curso, estudiante);
-		
-			
-		}
-	}
-
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	private String realizarPagoTarjeta(CursoPropio curso, Estudiante estudiante) {
-		ModoPago targetaCredito = ModoPago.TARJETA_CREDITO;
-		return targetaCredito.name();
-	}
-
-	/**
-	 * 
-	 * @param curso
-	 * @param estudiante
-	 */
-	private String realizarPagoTransferencia(CursoPropio curso, Estudiante estudiante) {
-		ModoPago trasferencia = ModoPago.TRANSFERENCIA;
-		return trasferencia.name();
-	}
-
 }

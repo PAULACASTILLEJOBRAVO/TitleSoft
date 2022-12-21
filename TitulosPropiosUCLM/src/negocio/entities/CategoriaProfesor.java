@@ -8,5 +8,3 @@ public enum CategoriaProfesor {
 	AYUDANTE,
 	ASOCIADO
 }
-//this class is used for ProfesorUCLM. example: CategoriaProfesor profesor1 = Categoria.CATEDRATICO
-//profesor1.name() //return the category selected
