@@ -1,15 +1,16 @@
 package testing;
 
 
-import org.junit.*;
 
 import negocio.controllers.GestorPropuestasCursos;
 import negocio.entities.EstadoCurso;
 import negocio.entities.TipoCurso;
 import presentacion.MainTesting;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.*;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,7 +52,7 @@ public class GestorPropuestasCursosTest {
 		String dniSecretario="567";
 		String centro="UCLM";
 		try {
-			fechaInicio = format.parse("2002-02-20");
+			fechaInicio = format.parse("1999-02-20");
 			fechaFin=format.parse("2003-05-12");
 		} catch (Exception e) {
 			MainTesting.escribirLog(MainTesting.ERROR, "Error en la creacion de las fechas para los test ");	
@@ -75,7 +76,7 @@ public class GestorPropuestasCursosTest {
 		String dniSecretario="567";
 		String centro="UCLM";
 		try {
-			fechaInicio = format.parse("1999-02-20");
+			fechaInicio = format.parse("2002-02-20");
 			fechaFin=format.parse("2003-05-12");
 		} catch (Exception e) {
 			MainTesting.escribirLog(MainTesting.ERROR, "Error en la creacion de las fechas para los test ");	

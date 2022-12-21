@@ -17,25 +17,24 @@ import presentacion.MainTesting;
 public class GestorMatriculacionTest {
 
 	@BeforeClass
-	public static void setUpBeforeClass() {
-		System.out.println("@BeforeClass");
+	public static void setUpBeforeClass(){
+		MainTesting.escribirLog(MainTesting.ERROR, "@BeforeClass");		
 	} 
 
 	@AfterClass
-	public static void tearDownAfterClass(){
-		System.out.println("@AfterClass");
+	public static void tearDownAfterClass()  {
+		MainTesting.escribirLog(MainTesting.ERROR, "@AfterClass");		
 	}
 
 	@Before
 	public void setUp() {
-		System.out.println("@Before -> How many times do i appear?");
+		MainTesting.escribirLog(MainTesting.ERROR, "@Before -> How many times do i appear?");
 	}
 
 	@After
-	public void tearDown(){
-		System.out.println("@After -> How many times do i appear?");
+	public void tearDown()  {
+		MainTesting.escribirLog(MainTesting.ERROR, "@After -> How many times do i appear?");	
 	}
-	
 	@Test
 	public void realizarMatriculacion0() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -43,7 +42,7 @@ public class GestorMatriculacionTest {
 		try {
 			fecha = format.parse("2022-05-05");
 		} catch (Exception e) {
-			MainTesting.escribirLog("Errores.log", "Error en la creacion de las fechas para los test ");	
+			MainTesting.escribirLog(MainTesting.ERROR, "Error en la creacion de las fechas para los test ");	
 		}
 		assertTrue(realizarMatriculacion( "1", "123", ModoPago.TRANSFERENCIA, fecha, true));
 	}
@@ -55,7 +54,8 @@ public class GestorMatriculacionTest {
 		try {
 			fecha = format.parse("2022-05-05");
 		} catch (Exception e) {
-			MainTesting.escribirLog("Errores.log", "Error en la creacion de las fechas para los test ");	
+			
+			MainTesting.escribirLog(MainTesting.ERROR, "Error en la creacion de las fechas para los test ");	
 		}
 		assertFalse(realizarMatriculacion("86", "pepe", ModoPago.TRANSFERENCIA, fecha, false));
 	}
@@ -63,9 +63,9 @@ public class GestorMatriculacionTest {
 	public boolean realizarMatriculacion(String curso, String alumno, ModoPago tipo,Date fecha,boolean pagado) {
 		boolean value = false;
 		
-		java.sql.Date fecha1 = (java.sql.Date) fecha;
+//		java.sql.Date fecha1 = (java.sql.Date) fecha;
 
-			value = (negocio.controllers.GestorMatriculacion.realizarMatriculacion(curso, alumno, tipo, fecha1, pagado));
+			value = (negocio.controllers.GestorMatriculacion.realizarMatriculacion(curso, alumno, tipo, fecha, pagado));
 		
 		return value;
 	}
