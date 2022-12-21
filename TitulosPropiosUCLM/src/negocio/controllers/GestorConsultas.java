@@ -52,7 +52,7 @@ public class GestorConsultas {
 		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
 		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
 		    		 && Integer.parseInt(mesInicio)<= 12 && Integer.parseInt(mesFin)<=12){
-			ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
+		    	 ediciones = cursoPropioDAO.listarCursosEstados(fechaInicio, fechaFin);
 		     }
 		return ediciones;
 	}
@@ -67,7 +67,7 @@ public class GestorConsultas {
 		     String mesInicio = getMonthFormat.format(fechaInicio);
 
 		     String anioFin = getYearFormat.format(fechaFin);
-		     String mesFin = getMonthFormat.format(fechaInicio);
+		     String mesFin = getMonthFormat.format(fechaFin);
 
 		     if(Integer.parseInt(anioInicio)>= 2000 && Integer.parseInt(anioFin)>= 2000 && Integer.parseInt(anioFin)>= Integer.parseInt(anioInicio)
 		    		 && Integer.parseInt(mesInicio) != 7 && Integer.parseInt(mesInicio) != 8 && Integer.parseInt(mesFin) != 8 && Integer.parseInt(mesFin) != 7
