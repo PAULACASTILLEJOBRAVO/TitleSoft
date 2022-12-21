@@ -1,9 +1,14 @@
 package persistencia;
 
 public class ConstantesBD {
-	final static String DRIVER ="jdbc:derby";
-	final static String CONNECTION_STRING ="jdbc:derby:BaseDeDatos;create=true";
-	final static String DBNAME ="BaseDeDatos";
-	final static String DBUSER ="admin";
-	final static String DBPASS ="admin";
+	
+	private ConstantesBD() {
+		throw new IllegalStateException("Utility class");
+	}
+	
+	static final String DRIVER ="jdbc:derby";
+	static final String CONNECTION_STRING ="jdbc:derby:BaseDeDatos;create=true";
+	static final String DBNAME ="BaseDeDatos";
+	static final String DBUSER ="admin";
+	static final String DBPASS ="admin";
 }

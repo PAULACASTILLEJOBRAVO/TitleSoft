@@ -38,6 +38,105 @@ lo que se ha desarrollado. Como el product owner también ha participado en el d
 dificultades que ha tenido cada persona. De esta forma se crea una reunión híbrida entre la reunión de revisión del sprint y la reuinión de retrospectiva del sprint (que en la teoría es donde
 se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada miembro del equipo podrá mostrar lo que ha hecho y se pondrán soluciones a las cosas que no funcionen bien.
 </p>
+<p>-------------------------------------------------------------------------------------------------------------------------------</p>
+<p>Sprint 1, dia 19/11/2022.</p>
+<p>	Lo deseado para la proxima semana dia 26/11/2022</p>
+<p>		Base de datos de Derby terminada (Virginia)</p>
+<p>		Corregir Maven con sonarCloud y Junit(Paula)</p>
+<p>		Terminar funcionalidades de Jefe Gabinete(Iván)</p>
+<p>	***********Resultados******</p>
+<p>		Base de datos de Derby. Errores en la seleccion de los datos en la base de datos</p>
+<p>		Corregir Maven con SonarCloud y Junit. Todo conectado y solucionado</p>
+<p>		Terminar Funcionalides de Jefe Gabinete. Terminacion de la funicon Consultar Ingresos e implementacion de Listar Ediciones y Aprobar Cursos. No funcionales, tiene errores en ejecucion</p>
+
+<p>Sprint 2, dia 26/11/2022</p>
+<p>	Lo deseado para la proxima semana dia 3/12/2022</p>
+<p>		Corregir errores de Derby(Virginia)</p>
+<p>		Corregir errores de la funcionalides de Jefe Gabinete(Iván)</p>
+<p>		Terminar las funcionalides de Matriculacion(Paula)</p>
+<p>	***********Resultados******</p>
+<p>		Corregir errores de Derby. Completado </p>
+<p>		Corregir errores de la funcionalidad de Jefe Gabinete. Completado </p>
+<p>		Terminar las funcinalidades de Matriculacion. Completado </p>
+
+<p>Sprint 3, dia 3/12/2022</p>
+<p>	Lo deseado para la proxima semana dia 10/12/2022</p>
+<p>		Implementar la funcionalidad de crear cursos (Paula) </p>
+<p>			Nota: Se puede crear curso desde cero o modificar uno rechazado</p>
+<p>		Implementar la funcionalidad validar o rechazar cursos (Iván)</p>
+<p>			Nota: La funcionalidad esta creada en jefe, jefe solo muestra los cursos propuesta y rechazados</p>
+<p>		Inicializacion del testing (Virginia)</p>
+<p>	***********Resultados******</p>
+<p>		Implementar la funcionalidad de crear cursos. Incompleto,curso creado, falta añadir materias </p>
+<p>		Implementar la funcionalidad validar o rechazar cursos. Completado</p>
+<p>		Inicializacion del testing.Testing iniciado, creacion de algunos de los if controladores necesarios para el testing de los gestores.</p>
+
+<p>Sprint 4, dia 10/12/2022</p>
+<p>	Lo deseado para la proxima semana dia 17/12/2022</p>
+		<p>Terminar los if controladores para el testing y Creacion de las tablas de testing (Virginia) </p>
+			<p>Gestor Centro (Virginia) </p>
+			<p>Gestor Consultas (Virginia)</p>
+			<p>Gestor Matriculacion (Paula)</p>
+			<p>Gestor Profesor (Iván)</p>
+			<p>Gestor Propuestas Cursos (Paula)</p>
+			<p>Gestor Usuarios (Iván)</p>
+			<p>Gestor Materia (Paula)</p>
+		<p>Creacion de los report,jacoco,surefire,etc (Iván)</p>
+<p>	***********Resultados******</p>
+		<p>Terminar los if controladores para el testing y Creacion de las tablas de testing (Virginia). Empezado </p>
+			<p>Gestor Centro (Virginia). Empezado </p>
+			<p>Gestor Consultas (Virginia). Empezaado</p>
+			<p>Gestor Matriculacion (Paula). Sin empezar</p>
+			<p>Gestor Profesor (Iván). Empezado</p>
+			<p>Gestor Propuestas Cursos (Paula). Sin comenenzar</p>
+			<p>Gestor Usuarios (Iván). Empezado</p>
+			<p>Gestor Materia (Paula). Sin Comenzar</p>
+		 <p>Nota: Sonar (Paula). Empezado</p>
+		<p>Creacion de los report,jacoco,surefire,etc (Iván). Completado</p>
+<p>Sprint 6, dia 17/12/2022</p>
+	<p>Lo deseado para el dia 18/12/2022 </p>
+		 <p>Continuar el sonar y el testing</p>
+			<p>Sonar (Paula)</p>
+			<p>Gestor Centro (Virginia).</p>
+			<p>Gestor Consultas (Virginia)</p>
+			<p>Gestor Matriculacion (Virginia)</p>
+			<p>Gestor Profesor (Iván)</p>
+			<p>Gestor Propuestas Cursos (Iván)</p>
+			<p>Gestor Usuarios (Iván)</p>
+			<p>Gestor Materia (Iván)</p>
+<p>	***********Resultados******</p>
+			<p>Sonar (Paula). Gran mejora en la correccion de errores</p>
+			<p>Gestor Centro (Virginia). Controladores inicializados</p>
+			<p>Gestor Consultas (Virginia). Controladores inicializados</p>
+			<p>Gestor Matriculacion (Virginia). Controladores inicializados</p>
+			<p>Gestor Profesor (Iván). Controladores inicializados</p>
+			<p>Gestor Propuestas Cursos (Iván). Controladores inicializados</p>
+			<p>Gestor Usuarios (Iván). Controladores inicializados</p>
+			<p>Gestor Materia (Iván). Controladores inicializados</p>
+<p>Sprint 7, dia 18/12/2022</p>
+	<p>Lo deseado para el dia 19/12/2022 </p>
+		 <p>Continuar el sonar y el testing</p>
+			<p>Sonar (Paula)</p>
+			<p>Gestor Centro (Virginia).</p>
+			<p>Gestor Consultas (Virginia)</p>
+			<p>Gestor Matriculacion (Virginia)</p>
+			<p>Gestor Profesor (Iván)</p>
+			<p>Gestor Propuestas Cursos (Iván)</p>
+			<p>Gestor Usuarios (Iván)</p>
+			<p>Gestor Materia (Iván)</p>
+	***********Resultados****** Nota: Realizamos la reunion pero no actualizamos el readme</p>
+			<p>Sonar (Paula). Gran mejora en la correccion de errores</p>
+			<p>Gestor Centro (Virginia).Completado</p>
+			<p>Gestor Consultas (Virginia). Completado</p>
+			<p>Gestor Matriculacion (Virginia). Completado</p>
+			<p>Gestor Profesor (Iván). Completado</p>
+			<p>Gestor Propuestas Cursos (Iván). Completado</p>
+			<p>Gestor Usuarios (Iván). Completado</p>
+			<p>Gestor Materia (Iván). Completado</p>
+<p>Sprint 8 final, dia 21/12/2022</p>
+	<p>Lo deseado para el dia 22/12/2022 </p>
+		<p>Correccion de errores y preparado para la entrega, es decir, la version 2.0.0</p>
+<p>-------------------------------------------------------------------------------------------------------------------------------</p>
 <br>
 <H2>2. Memoria del Proyecto:
 </H2>
@@ -70,6 +169,31 @@ se mira lo que va bien y lo que no va bien). Con esta reunión híbrida cada mie
 <p>
 Hemos utilizado maven para incluir las dependencias del proyecto, es decir, otras librerías que java no contiene de forma nativa (los .jar). Por ejemplomysql-connector-java-8.0.28.jar
 </p>
+<br>
+<H3>2.6. Test:</H3>
+<p>Para la realizacion del testing de nuestro proyecto lo haremos en los controladores teniendo 6 clases.Para la realizacion de los test hemos decidido realizar una cobertura de decisiones para todos los metodos de los controladores. Tambien hemos llevado a cabo unas tablas en excel para la realizacion del testing, dicho excel se encuentra subido.</p>
+<br>
+<p>Cabe destacar que para la realizacion de los metodos en los test hemos creado un metodo principal el cual es el encargado de llamar al gestor y los metodos de test llaman a este para indicarle simplemente los datos a controlar. De esta manera evitamos codigo duplicado.</p>
+<br>
+<p>Ademas a la hora de realizar los tests utilizamos assertTrue y assertFalse para controlar los resultados de la ejecucion de dichos tests</p>
+<br>
+<H4>GestorMatriculacion:</H4>
+<p>Esta clase controlador tiene dos metodos de los cuales solo uno realizaremos el test. El metodo el cual no realziamos el test es debido a que su funcionamiento es muy simple y no realiza ninguna modificacion en el atributo que tiene,simplemente lo envia a otro metodo.</p>
+<br>
+<H4>GestorConsulta:</H4>
+<p>En este controlador nos encontramos con 6 metodos de los cuales realizamos el test en 5 de ellos. El metodo que queda sin tratar por el test es porque realiza una llamada a otro metodo pasando el atributo que este tiene,es decir, no realiza ninguna modificacion ni control sobre el atributo a la hora de pasarlo.</p>
+<br>
+<H4>GestorProfesor:</H4>
+<p>Para este gestor nos encontramos con que hay un solo metodo siendo este seleccionarProfesor. Este método solo tiene de entrada el dni del profesor siendo lo que controlamos.</p>
+<br>
+<H4>GestorMateria:</H4>
+<p>Para este gestor nos encotramos con 3 métodos pero solo realizamos el test en dos de ellos ya que el tercero es simplemente una llamada a otro metodo pasando el atributo que este tiene,es decir, no realiza ninguna modificacion ni control sobre el atributo a la hora de pasarlo. </p>
+<br>
+<H4>GestorUsuario:</H4>
+<p>En este controlador tenemos 3 métodos los cuales realziamos el test. En el metodo contrasenaCorrectaLoging no hemos recurrido al metodo que realiza la llamada al gestor ya que este metodo devuelve de por si un boolean por lo que no es necesario.</p>
+<br>
+<H4>GestorPropuestaCurso:</H4>
+<p>>Para este gestor nos encotramos con 2 métodos pero solo realizamos el test en uno de ellos ya que el segundo es simplemente una llamada a otro metodo pasando el atributo que este tiene,es decir, no realiza ninguna modificacion ni control sobre el atributo a la hora de pasarlo. </p>
 <br>
 <h2>3. Gestión de la Configuración:
 </h2>
