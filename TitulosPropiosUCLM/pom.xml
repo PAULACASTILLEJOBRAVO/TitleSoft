@@ -39,7 +39,11 @@
 
 <build>
   <sourceDirectory>src</sourceDirectory>
+<<<<<<< HEAD
 <testSourceDirectory>testing</testSourceDirectory>
+=======
+  <testSourceDirectory>testing</testSourceDirectory>
+>>>>>>> branch 'testing' of git@github.com:PAULACASTILLEJOBRAVO/TitleSoft.git
   <plugins>
 	<plugin>
 	  <artifactId>maven-compiler-plugin</artifactId>

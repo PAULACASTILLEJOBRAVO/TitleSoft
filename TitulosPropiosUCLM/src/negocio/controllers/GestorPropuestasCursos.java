@@ -56,9 +56,6 @@ public class GestorPropuestasCursos {
 		String anioFin = getYearFormat.format(fechaFin);
 		String mesFin = getMonthFormat.format(fechaFin);
 
-		Date fechaActual = new Date();
-		String anioActual = getYearFormat.format(fechaActual);
-
 		if(  !nombre.equals("") &&
 				tasaMatricula>0 &&
 				edicion>0 &&
